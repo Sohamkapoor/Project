@@ -11,13 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>New Customer</title>
          
-        <script>
-            p.declaration 
-    {
-    width: 768px;
-    word-wrap: break-word;
-    }
-        </script>
+       
     </head>
     <body>
         <%
