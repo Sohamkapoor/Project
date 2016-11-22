@@ -81,7 +81,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Shri Mangalam Indane</strong> Customer Information Sheet </h1>
+                            <h1><strong>Shri Mangalam Indane</strong> Non Domestic Customer Information Sheet </h1>
                             <div class="description">
                                 <p>
                                     <!--This is a free responsive multi-step registration form made with Bootstrap. 
@@ -93,12 +93,12 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="detail.jsp" method="post" class="registration-form">
+                            <form role="form" action="NDCustomerEntry.jsp" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
                                         <div class="form-top-left">
-                                            <h3>Step 1 / 4</h3>
+                                            <h3>Step 1 / 1</h3>
                                             <p>Tell us who you are:</p>
                                         </div>
                                         <div class="form-top-right">
@@ -114,25 +114,20 @@
                                         
                                <table border="1px">
                                             <tr>
-                                                <th>Opening Stock</th>
-                                                <th>Due CV</th>
                                                 <th>Filled CV</th> 
                                                 <th>Empty CV</th>
                                                 <th>Amount</th>
                                                 <th>Amount Paid</th>
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>                                                
-                                                <td><input type="text" name="form-filledcv4" placeholder="Filled CV" class="form-filledcv4 form-control" id="form-filledcv4" ></td>
-                                                <td><input type="text" name="form-emptycv4" placeholder="Empty CV" class="form-emptycv4 form-control" id="form-emptycv4" ></td>
-                                                <td></td>
-                                                <td></td>    
+                                            <tr>                                               
+                                                <td><input type="text" name="form-filledcv" placeholder="Filled CV" class="form-filledcv form-control" id="form-filledcv" ></td>
+                                                <td><input type="text" name="form-emptycv" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv" ></td>
+                                                <td><input type="text" name="form-amt" placeholder="Amount" class="form-amt form-control" id="form-amt" ></td>
+                                                <td><input type="text" name="form-counteramount" placeholder="Amount Paid" class="form-counteramount form-control" id="form-counteramount"></td>    
                                             </tr>
                                             
                                 </table>
                                         <br/>
-                                        <button type="button" class="btn" onclick="myfunction();"> Check Amount </button>
                                         <input type="submit" value="submit"/>
                                     </div>
                                 </fieldset>

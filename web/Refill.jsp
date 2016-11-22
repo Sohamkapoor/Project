@@ -38,34 +38,29 @@
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
         <script type="text/javascript">
             $(document).ready(function(){
-                function filledcv(){
                 var rate= document.getElementById("rate");
+                var amt=0;
                 alert(rate);
-                
-            $( "#form-filledcv1" ).keypress(function() {
-            var filledcv = document.getElementById('#form-filledcv1').value();
-                if(!filledcv===""){
-                var amt= rate*filledcv;
-                document.getElementById('#form-counteramount').value= amt;}
-             )};
-                }
-            $( "#form-filledcv2" ).keypress(function() {
-             var ratehd=document.getElementById('#form-filledcv2').value();
-                if(!ratehd===""){
-                amt= rate*ratehd;
-                document.getElementById('#form-hdamt').value=amt;}
+                $("#form-filledcv1").focusout(function(){
+                   amt= rate*parseInt($("#form-filledcv1"));
+                   $("#form-amt1").val(amt);
+                   $("#form-amt1").attr('readonly',true);
+               });
+         
+            $( "#form-filledcv2" ).focusout(function() {
+                amt= rate*parseInt($("#form-filledcv2"));
+                $("#form-amt2").val(amt);
+                $("#form-amt2").attr('readonly',true);}
+            );
+            $( "#form-filledcv3" ).focusout(function() {
+                amt=rate*parseInt($("#form-filledcv3"));
+                $("#form-amt3").val(amt);
+                $("#form-amt3").attr('readonly',true);
             )};
-            $( "#form-filledcv3" ).keypress(function() {
-             var rategd=document.getElementById('#form-filledcv3').value();
-                if(!rategd===""){
-                amt=rate*rategd;
-                document.getElementById('#form-gdamt').value=amt;}
-            )};
-            $( "#form-filledcv4" ).keypress(function() {
-            var ratevd=document.getElementById('#form-filledcv4').value();
-                if(!ratevd===""){
-                amt=rate*ratevd;
-                document.getElementById('#form-villageamt').value=amt;}
+            $( "#form-filledcv4" ).focusout(function() {
+                amt=rate*parseInt($("#form-filledcv4"));
+                $("#form-amt4").val(amt);
+                $("#form-amt4").attr('readonly',true);
             });
             });
              
@@ -148,18 +143,17 @@
                                         db.rs=db.st.executeQuery(sql);
                                         while(db.rs.next())
                                         {                  
-                                            rate= db.rs.getString("rate");
+                                            rate= db.rs.getString("rate");                                           
                                         }
                                         if(calendar == null)
                                         {
                                            System.out.println("Calendar ="+ calendar);
                                         }
-                                        
                                         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
                                          if(dayOfMonth == 1)
                                          { %>
                                              <input type="text" name="rateofgas" class="rateofgas form-control" id="rateofgas" placeholder="Enter Rate Of Gas"/>
-                                             <input type="hidden" value="<%= rate%>" id="rate" name="rate"/>
+                                             <input type="hidden" value="<%= rate %>" id="rate" name="rate" />
                                         <% }
                                          else  { %>
                                             <input type="hidden" name="hiddengas" class="hiddengas form-control" id="hiddengas" />
@@ -174,36 +168,36 @@
                                                 <th>Refill</th>
                                                 <th>Empty CV</th>
                                                 <th>Filled CV</th> 
-                                                <th>Amount</th>
                                                 <th>Amount Paid</th>
+                                                <th>Amount</th>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-counterrefill">Counter Refill </label></td>
                                                 <td><input type="text" name="form-emptycv1" placeholder="Empty CV" class="form-emptycv1 form-control" id="form-emptycv1" ></td>
                                                 <td><input type="text" name="form-filledcv1" placeholder="Filled CV" class="form-filledcv1 form-control" id="form-filledcv1"></td>
-                                                <td><input type="text" name="form-counteramount" placeholder="Amount Paid" class="form-counteramount form-control" id="form-counteramount" onkeypress="filledcv()"></td>
-                                                <td><input type="text" name="form-amt1" placeholder="Amount Paid" class="form-amt1 form-control" id="form-amt1" ></td>
+                                                <td><input type="text" name="form-counteramount" placeholder="Amount Paid" class="form-counteramount form-control" id="form-counteramount"></td>
+                                                <td><input type="text" name="form-amt1" placeholder="Amount" class="form-amt1 form-control" id="form-amt1" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-homedelivery">Home Delivery </label></td>
                                                 <td><input type="text" name="form-emptycv2" placeholder="Empty CV" class="form-emptycv2 form-control" id="form-emptycv2" ></td>
                                                 <td><input type="text" name="form-filledcv2" placeholder="Filled Cv" class="form-filledcv2 form-control" id="form-filledcv2" ></td> 
                                                 <td><input type="text" name="form-hdamt" placeholder="Amount Paid" class="form-hdamt form-control" id="form-hdamt" ></td>
-                                                <td><input type="text" name="form-amt2" placeholder="Amount Paid" class="form-amt2 form-control" id="form-amt2" ></td>
+                                                <td><input type="text" name="form-amt2" placeholder="Amount" class="form-amt2 form-control" id="form-amt2" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-godown">Godown </label></td>
                                                 <td><input type="text" name="form-emptycv3" placeholder="Empty CV" class="form-emptycv3 form-control" id="form-emptycv3" ></td>
                                                 <td><input type="text" name="form-filledcv3" placeholder="Filled CV" class="form-filledcv3 form-control" id="form-filledcv3" ></td>
                                                 <td><input type="text" name="form-gdamt" placeholder="Amount Paid" class="form-gdamt form-control" id="form-gdamt" ></td>
-                                                <td><input type="text" name="form-amt3" placeholder="Amount Paid" class="form-amt3 form-control" id="form-amt3" ></td>
+                                                <td><input type="text" name="form-amt3" placeholder="Amount" class="form-amt3 form-control" id="form-amt3" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-village">Village Refill </label></td>
                                                 <td><input type="text" name="form-emptycv4" placeholder="Empty CV" class="form-emptycv4 form-control" id="form-emptycv4" ></td>
                                                 <td><input type="text" name="form-filledcv4" placeholder="Filled CV" class="form-filledcv4 form-control" id="form-filledcv4" ></td>
                                                 <td><input type="text" name="form-villageamt" placeholder="Amount Paid" class="form-villageamt form-control" id="form-villageamt" ></td>
-                                                <td><input type="text" name="form-amt4" placeholder="Amount Paid" class="form-amt4 form-control" id="form-amt4" ></td>
+                                                <td><input type="text" name="form-amt4" placeholder="Amount" class="form-amt4 form-control" id="form-amt4" ></td>
                                             </tr>
                                         </table>
                                         <br/>
