@@ -23,6 +23,12 @@
         <link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
 
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -36,38 +42,37 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-        <script type="text/javascript">
-            $(document).ready(function(){
-                var rate= document.getElementById("rate");
-                var amt=0;
-                alert(rate);
-                $("#form-filledcv1").focusout(function(){
-                   amt= rate*parseInt($("#form-filledcv1"));
-                   $("#form-amt1").val(amt);
-                   $("#form-amt1").attr('readonly',true);
-               });
-         
-            $( "#form-filledcv2" ).focusout(function() {
-                amt= rate*parseInt($("#form-filledcv2"));
-                $("#form-amt2").val(amt);
-                $("#form-amt2").attr('readonly',true);}
-            );
-            $( "#form-filledcv3" ).focusout(function() {
-                amt=rate*parseInt($("#form-filledcv3"));
-                $("#form-amt3").val(amt);
-                $("#form-amt3").attr('readonly',true);
-            )};
-            $( "#form-filledcv4" ).focusout(function() {
-                amt=rate*parseInt($("#form-filledcv4"));
-                $("#form-amt4").val(amt);
-                $("#form-amt4").attr('readonly',true);
+        <script >
+            $(document).ready(function () {
+
+                var rate = document.getElementById("rate");
+                $("#form-filledcv1").focusout(function () {
+                    $("#form-amt1").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv1").val()));
+                    $("#form-amt1").attr('readonly', true);
+
+                });
+
+//            $( "#form-filledcv2" ).focusout(function() {
+//                amt= rate*parseInt($("#form-filledcv2"));
+//                $("#form-amt2").val(amt);
+//                $("#form-amt2").attr('readonly',true);}
+//            );
+//            $( "#form-filledcv3" ).focusout(function() {
+//                amt=rate*parseInt($("#form-filledcv3"));
+//                $("#form-amt3").val(amt);
+//                $("#form-amt3").attr('readonly',true);
+//            )};
+//            $( "#form-filledcv4" ).focusout(function() {
+//                amt=rate*parseInt($("#form-filledcv4"));
+//                $("#form-amt4").val(amt);
+//                $("#form-amt4").attr('readonly',true);
+//            });
             });
-            });
-             
+
         </script>
     </head>
     <body>
-             <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+        <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
@@ -135,33 +140,32 @@
 
                                     <div class="form-bottom">
                                         <h3>Enter Name Of Customer and choose Delivery Type :</h3>
-                                       <% 
-                                        Calendar calendar= Calendar.getInstance();
-                                        Datab db=new Datab();
-                                        String rate="";
-                                        String sql="select rate from gasrate where id="+1;
-                                        db.rs=db.st.executeQuery(sql);
-                                        while(db.rs.next())
-                                        {                  
-                                            rate= db.rs.getString("rate");                                           
-                                        }
-                                        if(calendar == null)
-                                        {
-                                           System.out.println("Calendar ="+ calendar);
-                                        }
-                                        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-                                         if(dayOfMonth == 1)
-                                         { %>
-                                             <input type="text" name="rateofgas" class="rateofgas form-control" id="rateofgas" placeholder="Enter Rate Of Gas"/>
-                                             <input type="hidden" value="<%= rate %>" id="rate" name="rate" />
-                                        <% }
-                                         else  { %>
-                                            <input type="hidden" name="hiddengas" class="hiddengas form-control" id="hiddengas" />
-                                        
-                                                <% } %>
+                                        <%
+                                            Calendar calendar = Calendar.getInstance();
+                                            Datab db = new Datab();
+                                            String rate = "";
+                                            String sql = "select rate from gasrate where id=" + 1;
+                                            db.rs = db.st.executeQuery(sql);
+                                            while (db.rs.next()) {
+                                                rate = db.rs.getString("rate");
+                                            }
+                                            if (calendar == null) {
+                                                System.out.println("Calendar =" + calendar);
+                                            }
+
+                                            System.out.println(rate);
+                                            int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                                           if (dayOfMonth == 1) { %>
+                                        <input type="text" name="rateofgas" class="rateofgas form-control" id="rateofgas" placeholder="Enter Rate Of Gas"/>
+
+                                        <% } else { %>
+                                        <input type="hidden" name="hiddengas" class="hiddengas form-control" id="hiddengas" />
+
+                                        <% }%>
+                                        <input type="hidden" value="<%= rate%>" id="rate" name="rates" />
                                         <div class="form-group">
                                             <label class="sr-only" for="form-noc">Name Of Customer </label>
-                                           <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
+                                            <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
                                         </div>
                                         <table border="1px">
                                             <tr>
@@ -205,26 +209,22 @@
                                         <input type="submit" value="submit"/>
                                     </div>
                                 </fieldset>
-                         </form>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                  
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-                                    <!-- Javascript -->
-                                    <script src="assets/js/jquery-1.11.1.min.js"></script>
-                                    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-                                    <script src="assets/js/jquery.backstretch.min.js"></script>
-                                    <script src="assets/js/retina-1.1.0.min.js"></script>
-                                    <script src="assets/js/scripts.js"></script>
 
-                                    <!--[if lt IE 10]>
-                                        <script src="assets/js/placeholder.js"></script>
-                                    <![endif]-->
+        <!-- Javascript -->
 
-                                    </body>
 
-                                    </html>
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>
