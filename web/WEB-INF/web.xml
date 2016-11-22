@@ -8,6 +8,10 @@
         <servlet-name>NewCustomerInfo</servlet-name>
         <servlet-class>NewCustomerInfo.NewCustomerInfo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailFill</servlet-name>
+        <servlet-class>DetailFill.DetailFill</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Connection</servlet-name>
         <url-pattern>/Connection</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>NewCustomerInfo</servlet-name>
         <url-pattern>/NewCustomerInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailFill</servlet-name>
+        <url-pattern>/DetailFill</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

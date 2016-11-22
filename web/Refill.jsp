@@ -4,6 +4,7 @@
     Author     : sohamkapoor
 --%>
 
+<%@page import="Datab.Datab"%>
 <%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,12 +36,39 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-        <script>
+        <script type="text/javascript">
             $(document).ready(function(){
-                var empty = $('form-emptycv1').val();
+                function filledcv(){
+                var rate= document.getElementById("rate");
+                alert(rate);
                 
-                
+            $( "#form-filledcv1" ).keypress(function() {
+            var filledcv = document.getElementById('#form-filledcv1').value();
+                if(!filledcv===""){
+                var amt= rate*filledcv;
+                document.getElementById('#form-counteramount').value= amt;}
+             )};
+                }
+            $( "#form-filledcv2" ).keypress(function() {
+             var ratehd=document.getElementById('#form-filledcv2').value();
+                if(!ratehd===""){
+                amt= rate*ratehd;
+                document.getElementById('#form-hdamt').value=amt;}
+            )};
+            $( "#form-filledcv3" ).keypress(function() {
+             var rategd=document.getElementById('#form-filledcv3').value();
+                if(!rategd===""){
+                amt=rate*rategd;
+                document.getElementById('#form-gdamt').value=amt;}
+            )};
+            $( "#form-filledcv4" ).keypress(function() {
+            var ratevd=document.getElementById('#form-filledcv4').value();
+                if(!ratevd===""){
+                amt=rate*ratevd;
+                document.getElementById('#form-villageamt').value=amt;}
             });
+            });
+             
         </script>
     </head>
     <body>
@@ -97,7 +125,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="DetailFill" method="post" class="registration-form">
+                            <form role="form" action="RefillDisplay.jsp" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -114,20 +142,29 @@
                                         <h3>Enter Name Of Customer and choose Delivery Type :</h3>
                                        <% 
                                         Calendar calendar= Calendar.getInstance();
+                                        Datab db=new Datab();
+                                        String rate="";
+                                        String sql="select rate from gasrate where id="+1;
+                                        db.rs=db.st.executeQuery(sql);
+                                        while(db.rs.next())
+                                        {                  
+                                            rate= db.rs.getString("rate");
+                                        }
                                         if(calendar == null)
                                         {
-                                            System.out.println("Calendar ="+ calendar);
+                                           System.out.println("Calendar ="+ calendar);
                                         }
                                         
                                         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
                                          if(dayOfMonth == 1)
-                                         {%>
+                                         { %>
                                              <input type="text" name="rateofgas" class="rateofgas form-control" id="rateofgas" placeholder="Enter Rate Of Gas"/>
+                                             <input type="hidden" value="<%= rate%>" id="rate" name="rate"/>
                                         <% }
-                                         else{ %>
+                                         else  { %>
                                             <input type="hidden" name="hiddengas" class="hiddengas form-control" id="hiddengas" />
-                                        <% } %>
-}
+                                        
+                                                <% } %>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-noc">Name Of Customer </label>
                                            <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
@@ -138,34 +175,39 @@
                                                 <th>Empty CV</th>
                                                 <th>Filled CV</th> 
                                                 <th>Amount</th>
+                                                <th>Amount Paid</th>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-counterrefill">Counter Refill </label></td>
                                                 <td><input type="text" name="form-emptycv1" placeholder="Empty CV" class="form-emptycv1 form-control" id="form-emptycv1" ></td>
-                                                <td><input type="text" name="form-filledcv1" placeholder="Filled CV" class="form-filledcv1 form-control" id="form-filledcv1" ></td>
-                                                <td><label for="form-counteramount" id="form-counteramount"> </label></td>
+                                                <td><input type="text" name="form-filledcv1" placeholder="Filled CV" class="form-filledcv1 form-control" id="form-filledcv1"></td>
+                                                <td><input type="text" name="form-counteramount" placeholder="Amount Paid" class="form-counteramount form-control" id="form-counteramount" onkeypress="filledcv()"></td>
+                                                <td><input type="text" name="form-amt1" placeholder="Amount Paid" class="form-amt1 form-control" id="form-amt1" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-homedelivery">Home Delivery </label></td>
                                                 <td><input type="text" name="form-emptycv2" placeholder="Empty CV" class="form-emptycv2 form-control" id="form-emptycv2" ></td>
-                                                <td><input type="text" name="form-filledcv2" placeholder="Filled Cv" class="form-filledcv2 form-control" id="form-filledcv2" ></td>                                                
-                                                <td><label for="form-hdamount" id="form-hdamount"> </label></td>
+                                                <td><input type="text" name="form-filledcv2" placeholder="Filled Cv" class="form-filledcv2 form-control" id="form-filledcv2" ></td> 
+                                                <td><input type="text" name="form-hdamt" placeholder="Amount Paid" class="form-hdamt form-control" id="form-hdamt" ></td>
+                                                <td><input type="text" name="form-amt2" placeholder="Amount Paid" class="form-amt2 form-control" id="form-amt2" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-godown">Godown </label></td>
                                                 <td><input type="text" name="form-emptycv3" placeholder="Empty CV" class="form-emptycv3 form-control" id="form-emptycv3" ></td>
                                                 <td><input type="text" name="form-filledcv3" placeholder="Filled CV" class="form-filledcv3 form-control" id="form-filledcv3" ></td>
-                                                <td><label for="form-godownamount" id="form-godownamount"> </label></td>
+                                                <td><input type="text" name="form-gdamt" placeholder="Amount Paid" class="form-gdamt form-control" id="form-gdamt" ></td>
+                                                <td><input type="text" name="form-amt3" placeholder="Amount Paid" class="form-amt3 form-control" id="form-amt3" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-village">Village Refill </label></td>
-                                                <td><input type="text" name="form-emptycv4" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv4" ></td>
-                                                <td><input type="text" name="form-filledcv4" placeholder="Filled CV" class="form-filledcv form-control" id="form-filledcv4" ></td>
-                                                <td><label for="form-vramount" id="form-vramount"> </label></td>
+                                                <td><input type="text" name="form-emptycv4" placeholder="Empty CV" class="form-emptycv4 form-control" id="form-emptycv4" ></td>
+                                                <td><input type="text" name="form-filledcv4" placeholder="Filled CV" class="form-filledcv4 form-control" id="form-filledcv4" ></td>
+                                                <td><input type="text" name="form-villageamt" placeholder="Amount Paid" class="form-villageamt form-control" id="form-villageamt" ></td>
+                                                <td><input type="text" name="form-amt4" placeholder="Amount Paid" class="form-amt4 form-control" id="form-amt4" ></td>
                                             </tr>
                                         </table>
                                         <br/>
-                                        <button type="button" class="btn btn-next">Set value</button>
+                                        <button type="button" class="btn" onclick="myfunction();"> Check Amount </button>
                                         <input type="submit" value="submit"/>
                                     </div>
                                 </fieldset>
@@ -175,7 +217,6 @@
                                     </div>
                                     </div>
                                     </div>
-
                                   
 
 

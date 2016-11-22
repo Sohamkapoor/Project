@@ -95,7 +95,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="NewCustomerInfo" method="post" class="registration-form">
+                            <form role="form" action="detail.jsp" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -343,122 +343,86 @@
                                                         <tr>                                                        
                                                             <td><label for="Sno">01</label></td>
                                                             <td><label for="form-cylinder">Deposite of Indane Gas Cylinder</label></td>
-                                                            <td><input type="number" name="form-rate1" id="form-rate1" placeholder="Enter rate"/></td>
-                                                            <td><input type="number" name="form-qty1" id="form-qty1" placeholder="Enter quantity"/> </td>                                                                                                                 
+                                                            <td><input type="text" name="form-rate1" id="form-rate1" class="form-rate1 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty1" id="form-qty1" class="form-qty1 form-control" placeholder="Enter quantity"/> </td>                                                                                                                 
                                                         </tr>
                                                         <tr>
                                                             <td><label for="Sno">02</label></td>
                                                             <td><label  for="form-dpr">Deposite of D.P.R</label></td> 
-                                                            <td>   <input type="number" name="form-rate2" id="form-rate2" placeholder="Enter rate"/> </td>                                                  
-                                                            <td>       <input type="number" name="form-qty2" id="form-qty2" placeholder="Enter quantity"/> </td>                                                         
-                                                                
-                                                            </td>
+                                                            <td><input type="text" name="form-rate2" id="form-rate2" class="form-rate2 form-control" placeholder="Enter rate"/> </td>                                                  
+                                                            <td><input type="text" name="form-qty2" id="form-qty2" class="form-qty2 form-control" placeholder="Enter quantity"/> </td>                                                                                                                    
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-group">
+                                                        <tr>                                               
                                                                     <td> <label for="Sno">03</label></td>
                                                                     <td><label for="form-plate">Hot Plate</label></td>
-                                                                    <input type="number" name="form-rate3" id="form-rate3" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty3" id="form-qty3" placeholder="Enter quantity"/>                                                              
-                                                                </div>
-                                                            </td>
+                                                                    <td><input type="text" name="form-rate3" id="form-rate3" class="form-rate3 form-control" placeholder="Enter rate"/></td>
+                                                                    <td><input type="text" name="form-qty3" id="form-qty3" class="form-qty3 form-control" placeholder="Enter quantity"/></td> 
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">04</label>
-                                                                    <label for="form-inspect">Hot Plate inspection charges</label>
-                                                                    <input type="number" name="form-rate4" id="form-rate4" placeholder="Enter rate"/>                                                       
-                                                                    <input type="number" name="form-qty4" id="form-qty4" placeholder="Enter quantity"/>                                                           
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">04</label></td>
+                                                            <td><label for="form-inspect">Hot Plate inspection charges</label></td>
+                                                            <td><input type="text" name="form-rate4" id="form-rate4" class="form-rate4 form-control" placeholder="Enter rate"/></td>                                                       
+                                                            <td><input type="text" name="form-qty4" id="form-qty4" class="form-qty4 form-control" placeholder="Enter quantity"/></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">05</label>
-                                                                    <label for="form-cost">Cost of Indane Gas Cylinder(14.2)</label>
-                                                                    <input type="number" name="form-rate5" id="form-rate5" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty5" id="form-qty5" placeholder="Enter quantity"/>
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">05</label></td>
+                                                            <td><label for="form-cost">Cost of Indane Gas Cylinder(14.2)</label></td>
+                                                            <td><input type="text" name="form-rate5" id="form-rate5" class="form-rate5 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty5" id="form-qty5" class="form-qty5 form-control" placeholder="Enter quantity"/></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">06</label>
-                                                                    <label for="form-deposite">Deposite of Indane Gas Suraksha Hosr 1.5MT</label>
-                                                                    <input type="number" name="form-rate6" id="form-rate6" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty6" id="form-qty6" placeholder="Enter quantity"/>
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">06</label></td>
+                                                            <td><label for="form-deposite">Deposite of Indane Gas Suraksha Hosr 1.5MT</label></td>
+                                                            <td><input type="text" name="form-rate6" id="form-rate6" class="form-rate6 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty6" id="form-qty6" class="form-qty6 form-control" placeholder="Enter quantity"/></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">07</label>
-                                                                    <label for="form-charges">Administrative Charges</label>
-                                                                    <input type="number" name="form-rate7" id="form-rate7" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty7" id="form-qty7" placeholder="Enter quantity"/>
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">07</label></td>
+                                                            <td><label for="form-charges">Administrative Charges</label></td>
+                                                            <td><input type="text" name="form-rate7" id="form-rate7" class="form-rate7 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty7" id="form-qty7" class="form-qty7 form-control" placeholder="Enter quantity"/></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">08</label>
-                                                                    <label  for="form-caps">Damage Regulator Caps</label>
-                                                                    <input type="number" name="form-rate8" id="form-rate8" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty8" id="form-qty8" placeholder="Enter quantity"/>
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">08</label></td>
+                                                            <td><label  for="form-caps">Damage Regulator Caps</label></td>
+                                                            <td><input type="text" name="form-rate8" id="form-rate8" class="form-rate8 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty8" id="form-qty8" class="form-qty8 form-control" placeholder="Enter quantity"/></td>     
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">09</label>
-                                                                    <label  for="form-cta">Administrative Charges seeking Confirmation Of CTA/ITA/TV etc.</label>
-                                                                    <input type="number" name="form-rate9" id="form-rate9" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty9" id="form-qty9" placeholder="Enter quantity"/>
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">09</label></td>
+                                                            <td><label  for="form-cta">Administrative Charges seeking Confirmation Of CTA/ITA/TV etc.</label></td>
+                                                            <td><input type="text" name="form-rate9" id="form-rate9" class="form-rate9 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty9" id="form-qty9" class="form-qty9 form-control" placeholder="Enter quantity"/></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">10</label>
-                                                                    <label  for="form-installation">Installation Charges</label>
-                                                                    <input type="number" name="form-rate10" id="form-rate10" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty10" id="form-qty10" placeholder="Enter quantity"/>
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">10</label></td>
+                                                            <td><label  for="form-installation">Installation Charges</label></td>
+                                                            <td><input type="text" name="form-rate10" id="form-rate10" class="form-rate10 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty10" id="form-qty10" class="form-qty10 form-control" placeholder="Enter quantity"/></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">11</label>
-                                                                    <label  for="form-indage">Indane Gas Con. Card</label>
-                                                                    <input type="number" name="form-rate11" id="form-rate11" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty11" id="form-qty11" placeholder="Enter quantity"/>
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">11</label></td>
+                                                            <td><label  for="form-indage">Indane Gas Con. Card</label></td>
+                                                            <td><input type="text" name="form-rate11" id="form-rate11" class="form-rate11 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty11" id="form-qty11" class="form-qty11 form-control" placeholder="Enter quantity"/></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <label for="Sno">12</label>
-                                                                    <label  for="form-installation">Other Terms</label>
-                                                                    <input type="number" name="form-rate12" id="form-rate12" placeholder="Enter rate"/>
-                                                                    <input type="number" name="form-qty12" id="form-qty12" placeholder="Enter quantity"/>
-                                                                </div>
-                                                            </td>
+                                                            <td><label for="Sno">12</label></td>
+                                                            <td><label  for="form-installation">Other Terms</label></td>
+                                                            <td><input type="text" name="form-rate12" class="form-rate12 form-control" id="form-rate12" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty12" id="form-qty12" class="form-qty12 form-control" placeholder="Enter quantity"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td><input type="text" name="form-vat" class="form-vat form-control" id="form-vat" placeholder="Enter vat amt"/></td>
                                                         </tr>
                                                     </table>
-                                                </div>
-
                                                 <button type="button" class="btn btn-previous">Previous</button>
                                                 <input type="submit" value="submit"/>
+                                                </div>
+
+
                                             </fieldset>
 
                                             </form>
