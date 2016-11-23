@@ -1,6 +1,6 @@
 <%-- 
-    Document   : NonDomestic
-    Created on : Nov 21, 2016, 6:11:55 PM
+    Document   : AdvanceNDBooking
+    Created on : Nov 23, 2016, 6:57:07 PM
     Author     : sohamkapoor
 --%>
 
@@ -13,7 +13,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Non Domestic</title>
+        <title>Advance N.D. Booking</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -35,48 +35,24 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
+        <script src="assets/js/scripts.js"></script>       
+        <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
         <script>
-            $(document).ready(function () {
-                var rate = document.getElementById("rate");
-                $("#form-filledcv").focusout(function () {
-                    $("#form-amt").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv").val()));
-                    $("#form-amt").attr('readonly', true);
-
-                });
-                $("#one").focusout(function () {
-                    $("#form-emptycv").val(0);
-                    $("#form-emptycv").attr('readonly', true);
-                })
-                $("#cash").focusout(function () {
-                    $("#form-emptycv").val(0);
-                    $("#form-filledcv").val(0);
-                    $("#form-amt").val(0);
-                    $("#form-emptycv").attr('readonly', true);
-                    $("#form-filledcv").attr('readonly', true);
-                    $("#form-amt").attr('readonly', true);
-                    $('input:radio[name="typeoftransaction"]').filter('[value="one way"]').attr('checked', true);
-                })
-                $("#cvdepo").focusout(function () {
-                    $("#form-filledcv").val(0);
-                    $("#form-amt").val(0);
-                    $("#form-counteramount").val(0);
-                    $("#form-counteramount").attr('readonly', true);
-                    $("#form-filledcv").attr('readonly', true);
-                    $("#form-amt").attr('readonly', true);
-                    $('input:radio[name="typeoftransaction"]').filter('[value="one way"]').attr('checked', true);
-                })
-            });
-        </script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker({ minDate: 0 });
+  });
+  </script>
     </head>
 
     <body>
@@ -147,51 +123,31 @@
                                             <i class="fa fa-user"></i>
                                         </div>
                                     </div>
-
-                                    <div class="form-bottom">  
-                                        <%
-                                            Datab db = new Datab();
-                                            String rate = "";
-                                            String sql = "select rate from gasrate where id=" + 1;
-                                            db.rs = db.st.executeQuery(sql);
-                                            while (db.rs.next()) {
-                                                rate = db.rs.getString("rate");
-                                            }
-                                        %>
+                                     <div class="form-bottom">
+                                         <div class="form-group">
+                                           <label class="sr-only" for="form-noc">Name Of Customer </label>
+                                           <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
+                                         </div>
+                                     
                                         <div class="form-group">
-                                            <label class="sr-only" for="form-noc">Name Of Customer </label>
-                                            <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
+                                                <label class="sr-only" for="form-phno">Register Phno </label>
+                                                <input type="text" name="form-phno" placeholder="Enter Registered Phno" class="form-phno form-control" id="form-phno" >
                                         </div>
                                         <div class="form-group">
-                                            <label class="sr-only" for="form-phno">Register Phno </label>
-                                            <input type="number" name="form-phno" placeholder="Enter Registered Phno" class="form-phno form-control" id="form-phno" >
+                                                <input type="date" name="datepicker" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker" >
                                         </div>
-                                        <input type="hidden" value="<%= rate%>" id="rate" name="rates" />
-                                        <input type="radio" name="onlycash" id="cash" > Only Cash Deposite
-                                        <input type="radio" name="onlycv" id="cvdepo" > C.V Deposite only
-                                        <table border="1px">
+                                         <table border="1px">
                                             <tr>
                                                 <th>Filled CV</th> 
-                                                <th>Empty CV</th>                                                
-                                                <th>Amount Paid</th>
+                                                <th>Amount Paid</th> 
                                                 <th>Amount</th>
-                                                <th>One Way</th>
-                                                <th>Two Way</th>
                                             </tr>
-                                            <tr>                                               
+                                            <tr>                                                                                              
                                                 <td><input type="number" name="form-filledcv" placeholder="Filled CV" class="form-filledcv form-control" id="form-filledcv" ></td>
-                                                <td><input type="number" name="form-emptycv" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv" ></td>                                               
-                                                <td><input type="number" name="form-counteramount" placeholder="Amount Paid" class="form-counteramount form-control" id="form-counteramount"></td>    
-                                                <td><input type="number" name="form-amt" placeholder="Amount" class="form-amt form-control" id="form-amt" ></td>
-                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="one" value="one way"></p></td>
-                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="two" value="two way"></p></td>
+                                                <td><input type="number" name="form-amt" placeholder="Amount Paid" class="form-amt form-control" id="form-amt" ></td>                                               
+                                                <td><input type="number" name="form-amount" placeholder="Amount" class="form-amount form-control" id="form-amount"></td> 
                                             </tr>
-
-                                        </table>
-                                        <br/>
-                                        <button type="button" class="btn btn-customer">Show Customer Detail</button>
-                                        <button type="button" class="btn btn-advance">Advance Booking</button>
-                                        <input type="submit" value="submit"/>
+                                         </table>
                                     </div>
                                 </fieldset>
                             </form>
@@ -201,12 +157,12 @@
             </div>
         </div>
 
-    </div>
 
 
 
 
-</body>
 
-</html>
 
+
+  
+  

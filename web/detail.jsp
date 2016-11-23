@@ -25,6 +25,7 @@
                 final int totalTextBox = 12;
                 String rateCheck, quantCheck, vat = "";
                 String salutation = request.getParameter("salutation");
+                String type = request.getParameter("type");
                 String fname = request.getParameter("form-first-name");
                 String mname = request.getParameter("middle-name");
                 String lname = request.getParameter("form-last-name");
@@ -66,6 +67,7 @@
         <table border="1px">
             <tr> <td> <h3>Customer Joining Date :</h3></td><td> <%= new java.util.Date()%></td></tr>
             <tr> <td> <h3>Salutation :</h3></td><td> <%= salutation%></td></tr>
+            <tr> <td> <h3>Type Of Customer :</h3></td><td> <%= type%></td></tr>
             <tr> <td> <h3>Name :</h3></td><td> <%= customername%></td></tr>
             <tr> <td><h3>Date Of Birth :</h3></td><td> <%= dob%></td></tr>
             <tr> <td><h3>Father's Name :</h3></td><td> <%= father%></td></tr>
@@ -131,7 +133,7 @@
                 } catch (NullPointerException f) {
                 }
                 try {
-                    String sql = "insert into new_customer(salutation,name,dob,fathername,mothername,spousename,address,pincode,telephone,mobile,email,bankname,bankaddress,ifsc,accno,idsubmitted,idnumber,purchase) values('" + salutation + "','" + customername + "','" + dob + "','" + father + "','" + mother + "','" + spouse + "','" + address + "','" + pincode + "','" + telephone + "','" + mob + "','" + email + "','" + bank + "','" + branch + "','" + ifsc + "','" + acc + "','" + idselected + "','" + idnumber + "','" + stove + "')";
+                    String sql = "insert into new_customer(salutation,name,dob,fathername,mothername,spousename,address,pincode,telephone,mobile,email,bankname,bankaddress,ifsc,accno,idsubmitted,idnumber,purchase,type) values('" + salutation + "','" + customername + "','" + dob + "','" + father + "','" + mother + "','" + spouse + "','" + address + "','" + pincode + "','" + telephone + "','" + mob + "','" + email + "','" + bank + "','" + branch + "','" + ifsc + "','" + acc + "','" + idselected + "','" + idnumber + "','" + stove + "','"+ type +"')";
                     db.conn.createStatement();
                     db.st.executeUpdate(sql);
                     System.out.println("row inserted");
@@ -224,7 +226,7 @@
         &nbsp; c) ___________________
     </p>
     <% }
-                   
+                   if(!type.equals("nd")){
         vat = request.getParameter("form-vat").trim();
         if (!vat.equals("")) {
             vatVal = Double.parseDouble(vat);
@@ -383,7 +385,7 @@
 </tr>
 
 </table>
-<%
+<% }
     } catch (Exception e) {
     }
 %> 

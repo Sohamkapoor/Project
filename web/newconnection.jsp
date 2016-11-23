@@ -110,12 +110,19 @@
 
                                     <div class="form-bottom">
                                         <div class="form-group">
-                                            <label  for="Salute">Salutation </label>
-                                            <input type="radio" name="salutation" id="Mr" value="Mr">Mr
-                                            <input type="radio" name="salutation" id="Mrs" value="Mrs">Mrs
-                                            <input type="radio" name="salutation" id="Ms" value="Ms">Ms
-                                            <input type="radio" name="salutation" id="Miss" value="Miss">Miss
-                                        </div>           
+                                            <label  for="Salute">Salutation :</label> &nbsp;
+                                            <input type="radio" name="salutation" id="Mr" value="Mr"> Mr &nbsp;
+                                            <input type="radio" name="salutation" id="Mrs" value="Mrs"> Mrs &nbsp;
+                                            <input type="radio" name="salutation" id="Ms" value="Ms"> Ms &nbsp;
+                                            <input type="radio" name="salutation" id="Miss" value="Miss"> Miss &nbsp;
+                                        </div>    
+                                        <div class="form-group">
+                                            <label  for="typeoc">Type Of Customer :</label> &nbsp;
+                                            <input type="radio" name="type" id="nd" value="nd"> N.D &nbsp;
+                                            <input type="radio" name="type" id="domestic" value="domestic"> Domestic &nbsp;
+                                            <input type="radio" name="type" id="tv" value="tv"> T.V &nbsp;
+                                            <input type="radio" name="type" id="ttv" value="ttv"> T.T.V &nbsp;
+                                        </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-first-name">First name </label>
                                             <input type="text" name="form-first-name" placeholder="First name" class="form-first-name form-control" id="form-first-name" >

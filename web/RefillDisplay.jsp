@@ -117,20 +117,21 @@
            }
            for(String ref:refill)
            {
-          
+               if(!ref.equals("")){
             for(emptytextbox=0;emptytextbox<4;emptytextbox++)
            {
             if(amount.get(emptytextbox)>0 && amountpaid.get(emptytextbox)>0)
                  {
                    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                    Date today = new Date();
-                   Date todayWithZeroTime = formatter.parse(formatter.format(today));
+                   String todayWithZeroTime = formatter.format(today);
                    String sql="insert into refill(name,filledcv,emptycv,amount,amtpaid,diffcv,diffamt,refillthrough,datoday)values('"+name+"','"+filled.get(emptytextbox)+"','"+empty.get(emptytextbox)+"','"+amount.get(emptytextbox)+"','"+amountpaid.get(emptytextbox)+"','"+differencecv.get(emptytextbox)+"','"+difference.get(emptytextbox)+"','"+ref+"','"+todayWithZeroTime+"')";
                    db.conn.createStatement();
                    db.st.executeUpdate(sql);
                    System.out.println("row inserted");
                  }   
-           } 
+           }
+               }
            }
       
         %>
