@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AdvanceNDBooking
-    Created on : Nov 23, 2016, 6:57:07 PM
+    Document   : ShowNDCDetail
+    Created on : Nov 24, 2016, 9:43:27 AM
     Author     : sohamkapoor
 --%>
 
@@ -13,7 +13,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Advance N.D. Booking</title>
+        <title>Non Domestic</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -35,48 +35,17 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/scripts.js"></script>       
-        <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
 
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
-        <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy', minDate: 0});
-    var rate = document.getElementById("rate");
-    
-       $('#form-counteramount').hide();
-       $("#form-chequeno").hide();
-       
-                   $("#cashonly").click(function(){
-                        $("#form-counteramount").show();
-                        $("#form-chequeno").val(0);
-                        $("#form-chequeno").hide();
-                        });
-
-                $("#cheque").click(function(){
-                   $("#form-counteramount").show(); 
-                   $("#form-chequeno").show();
-               });
-    
-    $("#form-filledcv").focusout(function () {
-    $("#form-amt").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv").val()));
-    $("#form-amt").attr('readonly', true);
-    $("#form-emptycv").val(0);
-    $("#form-emptycv").attr('readonly',true)
-                });
-
-  });
-  </script>
-    </head>
+           </head>
 
     <body>
 
@@ -146,59 +115,18 @@
                                             <i class="fa fa-user"></i>
                                         </div>
                                     </div>
-                                     <div class="form-bottom">
-                                          <%
+
+                                    <div class="form-bottom">
+                                        
+                                        <%
                                             Datab db = new Datab();
                                             String rate = "";
-                                            String sql = "select rate from gasrate where id=" + 1;
+                                            String sql = "select * from nondomestic where name ='" +name+"' and phno ='"+phno+"'" ;
                                             db.rs = db.st.executeQuery(sql);
                                             while (db.rs.next()) {
                                                 rate = db.rs.getString("rate");
                                             }
                                         %>
-                                         <div class="form-group">
-                                           <label class="sr-only" for="form-noc">Name Of Customer </label>
-                                           <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
-                                         </div>
-                                     
-                                        <div class="form-group">
-                                                <label class="sr-only" for="form-phno">Register Phno </label>
-                                                <input type="text" name="form-phno" placeholder="Enter Registered Phno" class="form-phno form-control" id="form-phno" >
-                                        </div>
-                                        <div class="form-group">
-                                                <input type="date" name="datepicker" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker" >
-                                                <input type="hidden" id="typeoftransaction" value="one way" name="typeoftransaction"/>
-                                                <input type="hidden" value="<%= rate%>" id="rate" name="rates" />
-                                        </div>
-                                         <table border="1px">
-                                            <tr>
-                                                <th>Filled CV</th>
-                                                <th>Empty CV</th>
-                                                <th colspan="2">Amount Paid</th> 
-                                                <th>Amount</th>
-                                                <th>Security Deposite</th>
-                                            </tr>
-                                            <tr>
-                                                <th></th>
-                                                <th></th>
-                                                <th>Cash</th>
-                                                <th>Cheque</th>
-                                                <th></th>
-                                            </tr>
-                                            <tr>                                                                                              
-                                                <td><input type="text" name="form-filledcv" placeholder="Filled CV" class="form-filledcv form-control" id="form-filledcv" ></td>
-                                                <td><input type="text" name="form-emptycv" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv" ></td>
-                                                <td><p align="center"><input type="radio" name="typeofpayment" id="cashonly"></p></td>
-                                                <td><p align="center"><input type="radio" name="typeofpayment" id="cheque"></p></td>
-                                                <td><input type="text" name="form-amt" placeholder="Amount" class="form-amt form-control" id="form-amt"></td> 
-                                                <td><input type="text" name="form-security" placeholder="Enter Security Amt" class="form-security form-control" id="form-security"></td>
-                                            </tr>
-                                         </table> <br/>
-                                          <input  type="text" name="form-counteramount" placeholder="Enter Amount" class="form-counteramount form-control" id="form-counteramount">
-                                          <input type="text" name="form-chequeno" placeholder="Enter Cheque Number" class="form-chequeno form-control" id="form-chequeno"> 
-                                         <br/>
-                                         <a href="NonDomestic.jsp">N.D Booking</a>
-                                        <input type="submit" value="submit"/>
                                     </div>
                                 </fieldset>
                             </form>
@@ -208,12 +136,15 @@
             </div>
         </div>
 
+    </div>
 
 
 
 
+</body>
+
+</html>
 
 
-
-  
-  
+    </body>
+</html>
