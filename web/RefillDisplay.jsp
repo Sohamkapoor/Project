@@ -21,6 +21,9 @@
             try{
             Datab db=new Datab();
            String name = request.getParameter("form-nameoc");
+           String employee= request.getParameter("form-nameoe");
+           String radio= request.getParameter("form-payment");
+           String chequeno = request.getParameter("form-chequeno");
            ArrayList<String> empty=new ArrayList<String>();
            ArrayList<String> filled=new ArrayList<String>();
            ArrayList<Integer> amount=new ArrayList<Integer>();
@@ -125,7 +128,7 @@
                    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                    Date today = new Date();
                    String todayWithZeroTime = formatter.format(today);
-                   String sql="insert into refill(name,filledcv,emptycv,amount,amtpaid,diffcv,diffamt,refillthrough,datoday)values('"+name+"','"+filled.get(emptytextbox)+"','"+empty.get(emptytextbox)+"','"+amount.get(emptytextbox)+"','"+amountpaid.get(emptytextbox)+"','"+differencecv.get(emptytextbox)+"','"+difference.get(emptytextbox)+"','"+ref+"','"+todayWithZeroTime+"')";
+                   String sql="insert into refill(name,filledcv,emptycv,amount,amtpaid,diffcv,diffamt,refillthrough,datoday,typeofpay,chequeno)values('"+name+"','"+filled.get(emptytextbox)+"','"+empty.get(emptytextbox)+"','"+amount.get(emptytextbox)+"','"+amountpaid.get(emptytextbox)+"','"+differencecv.get(emptytextbox)+"','"+difference.get(emptytextbox)+"','"+ref+"','"+todayWithZeroTime+"','"+radio+"','"+chequeno+"')";
                    db.conn.createStatement();
                    db.st.executeUpdate(sql);
                    System.out.println("row inserted");

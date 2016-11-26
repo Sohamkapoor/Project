@@ -35,62 +35,132 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/retina-1.1.0.min.js"></script>
         <script src="assets/js/scripts.js"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
         <script>
+//            function checkCashOnly()
+//            {
+//                     document.getElementById("cashon").checked=true;
+//                   document.getElementById("one").checked=false;
+//               
+//                
+//            }
+//            function oneWay()
+//            {     document.getElementById("one").checked=true;
+//                document.getElementById("cashon").checked=false;
+//            
+//            }
+            /**
+             * The below function is applicable for only cash column radio
+             * button.
+             * @returns {undefined}
+             */
+            function checkCash()
+            {
+                document.getElementById("cash").checked = true;
+                document.getElementById("cvdepo").checked = false;
+                document.getElementById("form-emptycv").readOnly = true;
+                document.getElementById("form-chequeno").hide();
+                $("#form-emptycv").val(0);
+                $("#form-counteramount").val("");
+                $("#form-chequeno").val(0);
+                $("#form-counteramount").attr('readonly', false);
+            }
+            function oneWayAgain()
+            {
+                document.getElementById("form-emptycv").readOnly = false;
+                document.getElementById("form-chequeno").show();
+                document.getElementById("cash").checked = false;
+                document.getElementById("cvdepo").checked = true;
+                if (document.getElementById("cheque").checked = true)
+                {
+                    $("#form-chequeno").val("");
+                    $("#form-counteramount").val("");
+                }
+                else if (document.getElementById("cashonly").checked = true)
+                {
+                    $("#form-chequeno").val(0);
+                    $("#form-counteramount").val("");
+                }
+                $("#form-emptycv").val(0);
+
+                $("#form-counteramount").attr('readonly', false);
+            }
+
             $(document).ready(function () {
-                
+                $("#datepicker").datepicker({dateFormat: 'dd/mm/yy', minDate: 0});
                 var rate = document.getElementById("rate");
                 $('#form-counteramount').hide();
                 $('#form-chequeno').hide();
                 $('#form-security').hide();
-                
-                   $("#cashonly").click(function(){
-                   $("#form-counteramount").show();
-                   $("#form-chequeno").val(0);
-                   $("#form-chequeno").hide();
-               });
 
-                $("#cheque").click(function(){
-                   $("#form-counteramount").show(); 
-                   $("#form-chequeno").show();
-               });
+                $("#cashonly").click(function () {
+                    $("#form-counteramount").show();
+                    $("#form-chequeno").val(0);
+                    $("#form-chequeno").hide();
+                });
+
+                $("#cheque").click(function () {
+                    $("#form-counteramount").show();
+                    $("#form-chequeno").show();
+                    $("#form-chequeno").val("");
+                });
                 $("#form-filledcv").focusout(function () {
                     $("#form-amt").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv").val()));
                     $("#form-amt").attr('readonly', true);
 
                 });
-                $("#one").focusout(function () {
-                    $("#form-emptycv").val(0);
-                    $("#form-emptycv").attr('readonly', true);
-                })
+//                $("#one").focusout(function () {
+//                    $("#form-emptycv").val(0);
+//                    $("#form-emptycv").attr('readonly', true);
+//                    
+//                })
                 $("#cash").click(function () {
+                    document.getElementById("cashon").checked = true;
+                    document.getElementById("one").checked = false;
                     $("#form-emptycv").val(0);
                     $("#form-filledcv").val(0);
                     $("#form-amt").val(0);
                     $("#form-emptycv").attr('readonly', true);
                     $("#form-filledcv").attr('readonly', true);
                     $("#form-amt").attr('readonly', true);
-                    $('input:radio[name="typeoftransaction"]').filter('[value="cash"]').attr('checked', true);
+                    //  $('input:radio[name="typeoftransaction"]').filter('[value="cashon"]').attr('checked', true);
                 })
                 $("#cvdepo").click(function () {
+
+                    document.getElementById("one").checked = true;
+                    document.getElementById("cashon").checked = false;
+                    if (document.getElementById("cheque").checked = true)
+                    {
+                        $("#form-chequeno").val("");
+                        $("#form-counteramount").val("");
+                        document.getElementById("form-chequeno").show();
+                    }
+                    else if (document.getElementById("cashonly").checked = true)
+                    {
+                        $("#form-chequeno").val(0);
+                        $("#form-counteramount").val("");
+                        document.getElementById("form-chequeno").hide();
+                    }
                     $("#form-filledcv").val(0);
                     $("#form-amt").val(0);
-                    $("#form-counteramount").val(0);
-                    $("#form-counteramount").attr('readonly', true);
+                    //  $("#form-counteramount").val(0);
+                    //  $("#form-chequeno").val(0);
                     $("#form-filledcv").attr('readonly', true);
+                    $("#form-emptycv").attr('readonly', false);
                     $("#form-amt").attr('readonly', true);
-                    $('input:radio[name="typeoftransaction"]').filter('[value="one way"]').attr('checked', true);
+                    //   $('input:radio[name="typeoftransaction"]').filter('[value="one way"]').attr('checked', true);
                 })
-             
+
             });
 
         </script>
@@ -158,7 +228,7 @@
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p>Tell us who you are:</p>
+                                            <p> Tell us your Order : </p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-user"></i>
@@ -184,18 +254,18 @@
                                             <input type="text" name="form-phno" placeholder="Enter Registered Phno" class="form-phno form-control" id="form-phno" >
                                         </div>
                                         <div class="form-group">
-                                            <input type="date" name="datepicker" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker" >
+                                            <input type="date" name="datepickers" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker">
                                         </div>
-                                        
+
                                         <input type="hidden" value="<%= rate%>" id="rate" name="rates" />
-                                        <input type="radio" name="onlycv" id="cash" > Only Cash Deposite
-                                        <input type="radio" name="onlycv" id="cvdepo" > C.V Deposite only
-                                        
+                                        <input type="radio" name="onlycv" id="cash" checked="checked"> Only Cash Deposite
+                                        <input type="radio" name="onlycv" id="cvdepo"  > C.V Deposite only
+
                                         <table border="1px">
                                             <tr>
                                                 <th>Filled CV</th> 
                                                 <th>Empty CV</th>                                                
-                                                <th colspan="2">Amount Paid</th>                                               
+                                                <th colspan="2">Cash/Cheque Amount</th>                                               
                                                 <th>Amount</th>
                                                 <th>Cash Only</th>
                                                 <th>One Way</th>
@@ -214,20 +284,20 @@
                                             <tr>                                               
                                                 <td><input type="text" name="form-filledcv" placeholder="Filled CV" class="form-filledcv form-control" id="form-filledcv" ></td>
                                                 <td><input type="text" name="form-emptycv" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv" ></td>                                                                                              
-                                                <td><p align="center"><input type="radio" name="typeofpayment" id="cashonly" value="cashonly"></p></td>
+                                                <td><p align="center"><input type="radio" name="typeofpayment" id="cashonly" value="cashonly" checked="checked"></p></td>
                                                 <td><p align="center"><input type="radio" name="typeofpayment" id="cheque" value="cheque"></p></td>
                                                 <td><input type="text" name="form-amt" placeholder="Amount" class="form-amt form-control" id="form-amt" ></td>
-                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="cash" value="cash"></p></td>
-                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="one" value="one way"></p></td>
-                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="two" value="two way"></p></td>
+                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="cashon" value="cash" onclick="checkCash()"></p></td>
+                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="one" value="one way" onclick="oneWayAgain()"></p></td>
+                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="two" value="two way" ></p></td>
                                             </tr>
 
                                         </table> <br/>
-                                        
-                                         <input  type="text" name="form-counteramount" placeholder="Enter Amount" class="form-counteramount form-control" id="form-counteramount">
-                                         <input type="text" name="form-security" placeholder="Enter Security Amt" class="form-security form-control" id="form-security" value="0">
-                                          <input type="text" name="form-chequeno" placeholder="Enter Cheque Number" class="form-chequeno form-control" id="form-chequeno"> 
-                                         <br/>
+
+                                        <input  type="text" name="form-counteramount" placeholder="Enter Amount" class="form-counteramount form-control" id="form-counteramount">
+                                        <input type="text" name="form-security" placeholder="Enter Security Amt" class="form-security form-control" id="form-security" value="0">
+                                        <input type="text" name="form-chequeno" placeholder="Enter Cheque Number" class="form-chequeno form-control" id="form-chequeno"> 
+                                        <br/>
                                         <!--a href="ShowNDCDetail.jsp">Show Customer Detail</a-->
                                         <button type="button" class="btn btn-Show" >Show N.D.C Detail</button>
                                         <a href="AdvanceNDBooking.jsp">Advance Booking</a>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AdvanceNDBooking
-    Created on : Nov 23, 2016, 6:57:07 PM
+    Document   : AddEmployee
+    Created on : Nov 25, 2016, 3:12:25 PM
     Author     : sohamkapoor
 --%>
 
@@ -13,7 +13,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Advance N.D. Booking</title>
+        <title> Attendance </title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -50,35 +50,10 @@
         <![endif]-->
         <script>
             $(document).ready(function () {
-                $("#datepicker").datepicker({dateFormat: 'dd/mm/yy', minDate: 0});
-                var rate = document.getElementById("rate");
-
-                $('#form-counteramount').hide();
-                $("#form-chequeno").hide();
-
-                $("#cashonly").click(function () {
-                    $("#form-counteramount").show();
-                    $("#form-chequeno").val(0);
-                    $("#form-chequeno").hide();
-                });
-
-                $("#cheque").click(function () {
-                    $("#form-counteramount").show();
-                    $("#form-chequeno").val("");
-                    $("#form-chequeno").show();
-                });
-
-                $("#form-filledcv").focusout(function () {
-                    $("#form-amt").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv").val()));
-                    $("#form-amt").attr('readonly', true);
-                    $("#form-emptycv").val(0);
-                    $("#form-emptycv").attr('readonly', true)
-                });
-
-            });
+            $("#datepicker").datepicker({dateFormat: 'dd/mm/yy', minDate: 0 });
+        });
         </script>
     </head>
-
     <body>
 
         <!-- Top menu -->
@@ -123,7 +98,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Shri Mangalam Indane</strong> Non Domestic Customer Information Sheet </h1>
+                            <h1><strong>Shri Mangalam Indane</strong> Add Employee </h1>
                             <div class="description">
                                 <p>
                                     <!--This is a free responsive multi-step registration form made with Bootstrap. 
@@ -135,71 +110,43 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="NDCustomerEntry.jsp" method="post" class="registration-form">
+                            <form role="form" action="AddEmployee" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p> Your Advance Order : </p>
+                                            <p> Add Employee : </p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-user"></i>
                                         </div>
                                     </div>
                                     <div class="form-bottom">
-                                        <%
-                                            Datab db = new Datab();
-                                            String rate = "";
-                                            String sql = "select rate from gasrate where id=" + 1;
-                                            db.rs = db.st.executeQuery(sql);
-                                            while (db.rs.next()) {
-                                                rate = db.rs.getString("rate");
-                                            }
-                                        %>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-noc">Name Of Customer </label>
-                                            <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-phno">Register Phno </label>
-                                            <input type="text" name="form-phno" placeholder="Enter Registered Phno" class="form-phno form-control" id="form-phno" >
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="date" name="datepicker" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker" >
-                                            <input type="hidden" id="typeoftransaction" value="one way" name="typeoftransaction"/>
-                                            <input type="hidden" value="<%= rate%>" id="rate" name="rates" />
-                                        </div>
-                                        <table border="1px">
-                                            <tr>
-                                                <th>Filled CV</th>
-                                                <th>Empty CV</th>
-                                                <th colspan="2">Cash/Cheque Amount</th> 
-                                                <th>Amount</th>
-                                                <th>Security Deposite</th>
-                                            </tr>
-                                            <tr>
-                                                <th></th>
-                                                <th></th>
-                                                <th>Cash</th>
-                                                <th>Cheque</th>
-                                                <th></th>
-                                            </tr>
-                                            <tr>                                                                                              
-                                                <td><input type="text" name="form-filledcv" placeholder="Filled CV" class="form-filledcv form-control" id="form-filledcv" ></td>
-                                                <td><input type="text" name="form-emptycv" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv" ></td>
-                                                <td><p align="center"><input type="radio" name="typeofpayment" id="cashonly" checked="checked"></p></td>
-                                                <td><p align="center"><input type="radio" name="typeofpayment" id="cheque"></p></td>
-                                                <td><input type="text" name="form-amt" placeholder="Amount" class="form-amt form-control" id="form-amt"></td> 
-                                                <td><input type="text" name="form-security" placeholder="Enter Security Amt" class="form-security form-control" id="form-security"></td>
-                                            </tr>
-                                        </table> <br/>
-                                        <input  type="text" name="form-counteramount" placeholder="Enter Amount" class="form-counteramount form-control" id="form-counteramount">
-                                        <input type="text" name="form-chequeno" placeholder="Enter Cheque Number" class="form-chequeno form-control" id="form-chequeno"> 
-                                        <br/>
-                                        <a href="NonDomestic.jsp">N.D Booking</a>
+                                        
+                                            <div class="form-group">
+                                                <label class="sr-only" for="form-noe">Name Of Employee </label>
+                                                <input type="text" name="form-nameoe" placeholder="Enter Name Of Employee" class="form-nameoe form-control" id="form-nameoe" >
+                                            </div>
+                                            <div class="form-group">                                           
+                                                <input type="text" name="form-phno" placeholder="Enter Phone Number" class="form-phno form-control" id="form-phno" >
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="date" name="datepicker" placeholder="Enter Joining Date dd/mm/yyyy" class="form-dob form-control" id="datepicker" >
+                                            </div>
+
+                                            <div class="form-group"> 
+                                                <input type="text" name="form-id" placeholder="Enter ID Name (eg:- Aadhar,PanCard)" class="form-id form-control" id="form-id" >
+                                                <input type="text" name="form-idno" placeholder="Enter ID Number" class="form-idno form-control" id="form-idno" >
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="salary" placeholder="Enter Salary" class="salary form-control" id="salary" >
+                                            </div>
+                                         <div class="form-group">
+                                        <a href="Attendance.jsp">Attendance</a> &nbsp; &nbsp; &nbsp;
                                         <input type="submit" value="submit"/>
+                                        </div>                                 
                                     </div>
                                 </fieldset>
                             </form>
@@ -208,13 +155,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
 
 
 

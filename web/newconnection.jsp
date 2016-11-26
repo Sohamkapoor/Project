@@ -342,10 +342,10 @@
                                                 <div class="form-bottom">   
                                                     <table border="1px" cellspacing="5">
                                                         <tr>
-                                                        <th><h3>S.No</h3></th> 
-                                                        <th><h3>Particulars</h3></th>                                                
-                                                        <th><h3>Rate</h3></th> 
-                                                        <th><h3>Quantity</h3></th>
+                                                        <th> &nbsp; S.No &nbsp; &nbsp; </th> 
+                                                        <th> &nbsp; Particulars &nbsp; &nbsp; </th>                                                
+                                                        <th> &nbsp; Rate &nbsp; &nbsp; </th> 
+                                                        <th> &nbsp; Quantity &nbsp; &nbsp; </th>
                                                         </tr>
                                                         <tr>                                                        
                                                             <td><label for="Sno">01</label></td>

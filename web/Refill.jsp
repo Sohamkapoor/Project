@@ -44,6 +44,20 @@
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
         <script >
             $(document).ready(function () {
+                $("#form-chequeno").hide();
+                $("#cheque").click(function () {
+                    if (document.getElementById("cheque").checked = true)
+                    {
+                        $("#form-chequeno").show();
+                        $("#form-chequeno").val("");
+                    }
+                });
+
+                $("#cash").click(function () {
+                    $("#form-chequeno").val(0);
+                    $("#form-chequeno").hide();
+                });
+
 
                 var rate = document.getElementById("rate");
                 $("#form-filledcv1").focusout(function () {
@@ -51,38 +65,23 @@
                     $("#form-amt1").attr('readonly', true);
 
                 });
-                
-                 $("#form-filledcv2").focusout(function () {
+
+                $("#form-filledcv2").focusout(function () {
                     $("#form-amt2").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv2").val()));
                     $("#form-amt2").attr('readonly', true);
 
                 });
-                
-                 $("#form-filledcv3").focusout(function () {
+
+                $("#form-filledcv3").focusout(function () {
                     $("#form-amt3").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv3").val()));
                     $("#form-amt3").attr('readonly', true);
 
                 });
-                 $("#form-filledcv4").focusout(function () {
+                $("#form-filledcv4").focusout(function () {
                     $("#form-amt4").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv4").val()));
                     $("#form-amt4").attr('readonly', true);
-
                 });
-//            $( "#form-filledcv2" ).focusout(function() {
-//                amt= rate*parseInt($("#form-filledcv2"));
-//                $("#form-amt2").val(amt);
-//                $("#form-amt2").attr('readonly',true);}
-//            );
-//            $( "#form-filledcv3" ).focusout(function() {
-//                amt=rate*parseInt($("#form-filledcv3"));
-//                $("#form-amt3").val(amt);
-//                $("#form-amt3").attr('readonly',true);
-//            )};
-//            $( "#form-filledcv4" ).focusout(function() {
-//                amt=rate*parseInt($("#form-filledcv4"));
-//                $("#form-amt4").val(amt);
-//                $("#form-amt4").attr('readonly',true);
-//            });
+
             });
 
         </script>
@@ -169,7 +168,7 @@
                                                 System.out.println("Calendar =" + calendar);
                                             }
                                             int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-                                           if (dayOfMonth == 1) { %>
+                                            if (dayOfMonth == 1) { %>
                                         <input type="text" name="rateofgas" class="rateofgas form-control" id="rateofgas" placeholder="Enter Rate Of Gas"/>
 
                                         <% } else { %>
@@ -181,12 +180,22 @@
                                             <label class="sr-only" for="form-noc">Name Of Customer </label>
                                             <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
                                         </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-noe">Name Of Employee </label>
+                                            <input type="text" name="form-nameoe" placeholder="Enter Name Of Employee" class="form-nameoe form-control" id="form-nameoe" >
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="radio" name="form-payment"  id="cash" value="cash" checked="checked"> Cash Payment
+                                            <input type="radio" name="form-payment"  id="cheque" value="cheque" > Cheque Payment
+                                        </div>
+                                        <br/>
+
                                         <table border="1px">
                                             <tr>
                                                 <th>Refill</th>
                                                 <th>Empty CV</th>
                                                 <th>Filled CV</th> 
-                                                <th>Amount Paid</th>
+                                                <th>Cash/Cheque Amount</th>
                                                 <th>Amount</th>
                                             </tr>
                                             <tr>
@@ -219,7 +228,8 @@
                                             </tr>
                                         </table>
                                         <br/>
-                                        <button type="button" class="btn" onclick="myfunction();"> Check Amount </button>
+                                        <input type="text" name="form-chequeno" placeholder="Enter Cheque No" class="form-chequeno form-control" id="form-chequeno">
+                                        <br/><button type="button" class="btn" onclick="myfunction();"> Check Amount </button>
                                         <input type="submit" value="submit"/>
                                     </div>
                                 </fieldset>
