@@ -22,6 +22,15 @@
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,6 +46,16 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
+
+<!--        <script>
+            $(document).ready(function () {
+                $("#datepicker").datepicker({dateFormat: 'mm/dd/yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: '-100y:c+nn',
+                    maxDate: '-1d'});
+            });
+        </script>-->
     </head>
 
     <body>
@@ -126,6 +145,7 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-first-name">First name </label>
                                             <input type="text" name="form-first-name" placeholder="First name" class="form-first-name form-control" id="form-first-name" >
+                                            <span id="errFirstNameMessage" style="color:red;font-weight:bold"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="middle-name">Middle name</label>
@@ -134,10 +154,12 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-last-name">Last name</label>
                                             <input type="text" name="form-last-name" placeholder="Last name" class="form-last-name form-control" id="form-last-name">
+                                             <span id="errLastNameMessage" style="color:red;font-weight:bold"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-dob">Date Of Birth</label>
-                                            <input type="text" name="form-dob" placeholder="Date of Birth format: DD/MM/YYYY" class="form-dob form-control" id="form-dob">
+                                            <input type="date" name="datepicker" placeholder="Enter Date of Birth dd/mm/yyyy" class="form-dob form-control" id="datepicker" >
+                                            
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-father-name">Father's Name</label>
@@ -164,10 +186,12 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-telephone">Telephone</label>
                                             <input type="text" name="form-telephone" placeholder="Telephone" class="form-telephone form-control" id="form-telephone">
+                                         
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-mob">Mobile Number</label>
-                                            <input type="number" name="form-mob" min="1111111111" max="9999999999" placeholder="Mobile Number" class="form-mob form-control" id="form-mob">
+                                            <input type="number" name="form-mob" placeholder="Mobile Number" class="form-mob form-control" id="form-mob">
+                                               <span id="errMessage" style="color:red;font-weight:bold"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-email">Email</label>
@@ -208,7 +232,7 @@
                                                    class="form-accno form-control" id="form-accno">
                                         </div>
                                         <button type="button" class="btn btn-previous">Previous</button>
-                                        <button type="button" class="btn btn-next">Next</button>
+                                         <button type="button" class="btn btn-next">Next</button>
                                     </div>
                                 </fieldset>
 
@@ -323,7 +347,7 @@
                                                 <input type="radio" name="form-stove" id="form-stove" value="no">No
                                             </div>
                                             <button type="button" class="btn btn-previous">Previous</button>
-                                            <button type="button" class="btn btn-next">Next</button>
+                                           <button type="button" class="btn btn-next">Next</button>
 
 
 
@@ -342,10 +366,10 @@
                                                 <div class="form-bottom">   
                                                     <table border="1px" cellspacing="5">
                                                         <tr>
-                                                        <th> &nbsp; S.No &nbsp; &nbsp; </th> 
-                                                        <th> &nbsp; Particulars &nbsp; &nbsp; </th>                                                
-                                                        <th> &nbsp; Rate &nbsp; &nbsp; </th> 
-                                                        <th> &nbsp; Quantity &nbsp; &nbsp; </th>
+                                                            <th> &nbsp; S.No &nbsp; &nbsp; </th> 
+                                                            <th> &nbsp; Particulars &nbsp; &nbsp; </th>                                                
+                                                            <th> &nbsp; Rate &nbsp; &nbsp; </th> 
+                                                            <th> &nbsp; Quantity &nbsp; &nbsp; </th>
                                                         </tr>
                                                         <tr>                                                        
                                                             <td><label for="Sno">01</label></td>
@@ -360,10 +384,10 @@
                                                             <td><input type="text" name="form-qty2" id="form-qty2" class="form-qty2 form-control" placeholder="Enter quantity"/> </td>                                                                                                                    
                                                         </tr>
                                                         <tr>                                               
-                                                                    <td> <label for="Sno">03</label></td>
-                                                                    <td><label for="form-plate">Hot Plate</label></td>
-                                                                    <td><input type="text" name="form-rate3" id="form-rate3" class="form-rate3 form-control" placeholder="Enter rate"/></td>
-                                                                    <td><input type="text" name="form-qty3" id="form-qty3" class="form-qty3 form-control" placeholder="Enter quantity"/></td> 
+                                                            <td> <label for="Sno">03</label></td>
+                                                            <td><label for="form-plate">Hot Plate</label></td>
+                                                            <td><input type="text" name="form-rate3" id="form-rate3" class="form-rate3 form-control" placeholder="Enter rate"/></td>
+                                                            <td><input type="text" name="form-qty3" id="form-qty3" class="form-qty3 form-control" placeholder="Enter quantity"/></td> 
                                                         </tr>
                                                         <tr>
                                                             <td><label for="Sno">04</label></td>
@@ -425,8 +449,8 @@
                                                             <td><input type="text" name="form-vat" class="form-vat form-control" id="form-vat" placeholder="Enter vat amt"/></td>
                                                         </tr>
                                                     </table>
-                                                <button type="button" class="btn btn-previous">Previous</button>
-                                                <input type="submit" value="submit"/>
+                                                    <button type="button" class="btn btn-previous">Previous</button>
+                                                    <input type="submit" value="submit"/>
                                                 </div>
 
 
@@ -442,12 +466,8 @@
                                     </div>
 
 
-                                    <!-- Javascript -->
-                                    <script src="assets/js/jquery-1.11.1.min.js"></script>
-                                    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-                                    <script src="assets/js/jquery.backstretch.min.js"></script>
-                                    <script src="assets/js/retina-1.1.0.min.js"></script>
-                                    <script src="assets/js/scripts.js"></script>
+
+
 
                                     <!--[if lt IE 10]>
                                         <script src="assets/js/placeholder.js"></script>
