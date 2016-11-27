@@ -4,6 +4,9 @@
     Author     : sohamkapoor
 --%>
 
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Datab.Datab"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -140,12 +143,21 @@
                                                 <th> &nbsp; Absent &nbsp; &nbsp; </th>
                                                 <th> &nbsp; Date &nbsp; &nbsp; </th>
                                             </tr>  
-                                            <% for(String em:emp) { %>
+                                            <% for(String em:emp) { 
+                                            Calendar cal = Calendar.getInstance();
+                                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SS");
+                                            String strDate = sdf.format(cal.getTime());
+                                            System.out.println("Current date in String Format: " + strDate);
+
+                                            SimpleDateFormat sdf1 = new SimpleDateFormat();
+                                            sdf1.applyPattern("dd/MM/yyyy HH:mm:ss.SS");
+                                            Date date = sdf1.parse(strDate);
+                                            %>
                                             <tr>                                               
-                                                <td><%= em %> </td>
-                                                <td><p align="center"><input type="radio" name="attendance" id="present" value="present" checked="checked"></p></td>
-                                                <td><p align="center"><input type="radio" name="attendance" id="absent" value="absent" ></p> </td>
-                                                <td><input type="date" onkeydown="return false" name="datepicker" placeholder="Enter Date dd/mm/yyyy" class="form-dob form-control" id="picker" ></td>                                               
+                                                <td><input type="text" name="<%= em+"name" %>" id="name" value="<%= em %>"> </td>
+                                                <td><p align="center"><input type="radio" name="<%= em+"attendance"%>" id="present" value="present" checked="checked"></p></td>
+                                                <td><p align="center"><input type="radio" name="<%= em+"attendance"%>" id="absent" value="absent" ></p> </td>
+                                                <td><input type="date" onkeydown="return false" name="datepicker"  class="form-dob form-control" id="picker" value="<%= date %>" ></td>                                               
                                             </tr>
                                             <% } %>
                                         </table>
