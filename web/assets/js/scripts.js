@@ -29,6 +29,34 @@ jQuery(document).ready(function () {
         $(this).removeClass('error');
     });
 
+
+    $("#form-first-name").keypress(function () {
+        $('#errFirstName').text('');
+    });
+    $("#form-last-name").keypress(function () {
+        $('#errLastName').text('');
+    });
+    $("#form-mob").keypress(function () {
+        $('#errMessage').text('');
+    });
+    $("#datepicker").click(function () {
+        $('#errDOB').text('');
+    });
+    $("#form-father-name").keypress(function () {
+        $('#errFatherName').text('');
+    });
+    $("#form-mother-name").keypress(function () {
+        $('#errMotherName').text('');
+    });
+    $("#form-address").keypress(function () {
+        $('#errAddress').text('');
+    });
+    $("#form-pincode").keypress(function () {
+        $('#errPinCode').text('');
+    });
+
+
+
     // next step
     $('.registration-form .btn-next').on('click', function () {
         var formFirstName = document.getElementById("form-first-name").value;
@@ -56,7 +84,7 @@ jQuery(document).ready(function () {
         switch (spaceCheck) {
             case formFirstName:
                 $('#errFirstName').text('Please enter first Name');
-                break;
+                break
             case formLastName:
                 $('#errLastName').text('Please enter Last Name');
                 break;
@@ -80,22 +108,14 @@ jQuery(document).ready(function () {
                 break;
             default:
                 blankValidate = true;
-                $('#errFirstName').text('');
-            $('#errLastName').text('');
-            $('#errMessage').text('');
-            $('#errDOB').text('');
-            $('#errFatherName').text('');
-            $('#errMotherName').text('');
-            $('#errAddress').text('');
-            $('#errPinCode').text('');
-
+        
         }
 
         //Indian Mobile Number Validation
         if (IndNum.test(formNumber)) {
             mobileValidate = true;
         } else {
-            $('#errMessage').text('please enter valid mobile number');
+            $('#errInvalidMobileMessage').text('please enter valid mobile number');
             document.getElementById('form-mob').focus();
 
         }
@@ -115,6 +135,7 @@ jQuery(document).ready(function () {
             $('#errFirstName').text('');
             $('#errLastName').text('');
             $('#errMessage').text('');
+            $('#errInvalidMobileMessage').text('');
             $('#errDOB').text('');
             $('#errFatherName').text('');
             $('#errMotherName').text('');
@@ -124,7 +145,7 @@ jQuery(document).ready(function () {
         } else
         {
             next_step = false;
-       
+
         }
 
         parent_fieldset.find('input[type="password"]').each(function () {

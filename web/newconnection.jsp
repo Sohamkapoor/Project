@@ -196,7 +196,8 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-mob">Mobile Number</label>
                                             <input type="text" name="form-mob" placeholder="Mobile Number" class="form-mob form-control" id="form-mob">
-                                               <span id="errMessage" style="color:red;font-weight:bold"></span>
+                                            <span id="errMessage" style="color:red;font-weight:bold"></span><br>
+                                               <span id="errInvalidMobileMessage" style="color:red;font-weight:bold"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-email">Email</label>
