@@ -145,7 +145,7 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-first-name">First name </label>
                                             <input type="text" name="form-first-name" placeholder="First name" class="form-first-name form-control" id="form-first-name" >
-                                            <span id="errFirstNameMessage" style="color:red;font-weight:bold"></span>
+                                            <span  style="color:red;font-weight:bold" id="errFirstName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="middle-name">Middle name</label>
@@ -154,20 +154,23 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-last-name">Last name</label>
                                             <input type="text" name="form-last-name" placeholder="Last name" class="form-last-name form-control" id="form-last-name">
-                                             <span id="errLastNameMessage" style="color:red;font-weight:bold"></span>
+                                              <span  style="color:red;font-weight:bold" id="errLastName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-dob">Date Of Birth</label>
                                             <input type="date" name="datepicker" placeholder="Enter Date of Birth dd/mm/yyyy" class="form-dob form-control" id="datepicker" >
+                                             <span  style="color:red;font-weight:bold" id="errDOB"></span>
                                             
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-father-name">Father's Name</label>
                                             <input type="text" name="form-father-name" placeholder="Father's Name" class="form-father-name form-control" id="form-father-name">
+                                             <span  style="color:red;font-weight:bold" id="errFatherName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-mother-name">Mother's Name</label>
                                             <input type="text" name="form-mother-name" placeholder="Mother's Name" class="form-mother-name form-control" id="form-mother-name">
+                                             <span  style="color:red;font-weight:bold" id="errMotherName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-spouse">Spouse's Name</label>
@@ -178,10 +181,12 @@
                                             <label class="sr-only" for="form-address">Address</label>
                                             <textarea name="form-address" placeholder="Address..." 
                                                       class="form-address form-control" id="form-address"></textarea>
+                                                       <span  style="color:red;font-weight:bold" id="errAddress"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-pincode">Pin Code</label>
                                             <input type="number" name="form-pincode" min="100000" max="999999" placeholder="Pin Code" class="form-pincode form-control" id="form-pincode">
+                                            <span  style="color:red;font-weight:bold" id="errPinCode"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-telephone">Telephone</label>
@@ -190,7 +195,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-mob">Mobile Number</label>
-                                            <input type="number" name="form-mob" placeholder="Mobile Number" class="form-mob form-control" id="form-mob">
+                                            <input type="text" name="form-mob" placeholder="Mobile Number" class="form-mob form-control" id="form-mob">
                                                <span id="errMessage" style="color:red;font-weight:bold"></span>
                                         </div>
                                         <div class="form-group">

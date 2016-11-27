@@ -31,33 +31,95 @@ jQuery(document).ready(function () {
 
     // next step
     $('.registration-form .btn-next').on('click', function () {
-        var firstName = document.getElementById("form-first-name");
-        var lastName = document.getElementById("form-last-name");
-        var Number = document.getElementById('form-mob').value;
-        var IndNum = /^[0]?[789]\d{9}$/;
+        var formFirstName = document.getElementById("form-first-name").value;
+        var formLastName = document.getElementById("form-last-name").value;
+        var formNumber = document.getElementById('form-mob').value.trim();
+        var formDOB = document.getElementById('datepicker').value;
+        var formFatherName = document.getElementById('form-father-name').value;
+        var formMotherName = document.getElementById('form-mother-name').value;
+        var formAddress = document.getElementById('form-address').value;
+        var formPinCode = document.getElementById('form-pincode').value.trim();
+
         var next_step = false;
-        //	var next_step = true;
+        var spaceCheck = "";
+
+        var parent_fieldset = $(this).parents('fieldset');
 
         //blank
-        
-        if(firstName!="" && lastName!="")
-        {
-            next_step = true;
-        }
-        else if(firstName=="")
-        {
-            $('#errFirstNameMessage').text('Cannot be empty');
-              next_step = false; 
+        var IndNum = /^[0]?[789]\d{9}$/;
+        var pinCodeRegx = /^[1-9][0-9]{5}$/;
+
+        var blankValidate = false;
+        var mobileValidate = false;
+        var pinCodeValidate = false;
+
+        switch (spaceCheck) {
+            case formFirstName:
+                $('#errFirstName').text('Please enter first Name');
+                break;
+            case formLastName:
+                $('#errLastName').text('Please enter Last Name');
+                break;
+            case formNumber:
+                $('#errMessage').text('Please enter Mobile Number');
+                break;
+            case formDOB:
+                $('#errDOB').text('Please enter DOB');
+                break;
+            case formFatherName:
+                $('#errFatherName').text('Please enter Father\'s Name');
+                break;
+            case formMotherName:
+                $('#errMotherName').text('Please enter Mother\'s Name');
+                break;
+            case formAddress:
+                $('#errAddress').text('Please enter Address');
+                break;
+            case formPinCode:
+                $('#errPinCode').text('Please enter PinCode');
+                break;
+            default:
+                blankValidate = true;
+
+
         }
 
-        if (IndNum.test(Number)) {
-            next_step = true;
+        //Indian Mobile Number Validation
+        if (IndNum.test(formNumber)) {
+            mobileValidate = true;
         } else {
             $('#errMessage').text('please enter valid mobile number');
             document.getElementById('form-mob').focus();
-            next_step = false;
+
         }
-        var parent_fieldset = $(this).parents('fieldset');
+        //Indian PinCode Validation
+        if (pinCodeRegx.test(formPinCode)) {
+            pinCodeValidate = true;
+        } else {
+            $('#errPinCode').text('Please enter Correct PinCode');
+            document.getElementById('form-pincode').focus();
+
+        }
+
+        //Proceed to next form
+        if (pinCodeValidate && mobileValidate && blankValidate)
+        {
+            next_step = true;
+            $('#errFirstName').text('');
+            $('#errLastName').text('');
+            $('#errMessage').text('');
+            $('#errDOB').text('');
+            $('#errFatherName').text('');
+            $('#errMotherName').text('');
+            $('#errAddress').text('');
+            $('#errPinCode').text('');
+
+        } else
+        {
+            next_step = false;
+       
+        }
+
         parent_fieldset.find('input[type="password"]').each(function () {
             if ($(this).val() == "") {
                 $(this).addClass('error');
@@ -77,7 +139,7 @@ jQuery(document).ready(function () {
 
     // previous step
     $('.registration-form .btn-previous').on('click', function () {
-        
+
         $(this).parents('fieldset').fadeOut(400, function () {
             $(this).prev().fadeIn();
         });
