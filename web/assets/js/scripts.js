@@ -80,7 +80,14 @@ jQuery(document).ready(function () {
                 break;
             default:
                 blankValidate = true;
-
+                $('#errFirstName').text('');
+            $('#errLastName').text('');
+            $('#errMessage').text('');
+            $('#errDOB').text('');
+            $('#errFatherName').text('');
+            $('#errMotherName').text('');
+            $('#errAddress').text('');
+            $('#errPinCode').text('');
 
         }
 
