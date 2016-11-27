@@ -254,7 +254,7 @@
                                             <input type="text" name="form-phno" placeholder="Enter Registered Phno" class="form-phno form-control" id="form-phno" >
                                         </div>
                                         <div class="form-group">
-                                            <input type="date" name="datepickers" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker">
+                                            <input type="date" name="datepickers" onkeydown="return false" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker">
                                         </div>
 
                                         <input type="hidden" value="<%= rate%>" id="rate" name="rates" />

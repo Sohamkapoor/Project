@@ -145,7 +145,7 @@
                                                 <td><%= em %> </td>
                                                 <td><p align="center"><input type="radio" name="attendance" id="present" value="present" checked="checked"></p></td>
                                                 <td><p align="center"><input type="radio" name="attendance" id="absent" value="absent" ></p> </td>
-                                                <td><input type="date" name="datepicker" placeholder="Enter Date dd/mm/yyyy" class="form-dob form-control" id="picker" ></td>                                               
+                                                <td><input type="date" onkeydown="return false" name="datepicker" placeholder="Enter Date dd/mm/yyyy" class="form-dob form-control" id="picker" ></td>                                               
                                             </tr>
                                             <% } %>
                                         </table>

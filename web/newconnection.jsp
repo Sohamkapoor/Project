@@ -28,7 +28,7 @@
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
+        <script src="assets/js/new_connection.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         
 
@@ -130,14 +130,14 @@
                                     <div class="form-bottom">
                                         <div class="form-group">
                                             <label  for="Salute">Salutation :</label> &nbsp;
-                                            <input type="radio" name="salutation" id="Mr" value="Mr"> Mr &nbsp;
+                                            <input type="radio" name="salutation" id="Mr" value="Mr" checked="checked"> Mr &nbsp;
                                             <input type="radio" name="salutation" id="Mrs" value="Mrs"> Mrs &nbsp;
                                             <input type="radio" name="salutation" id="Ms" value="Ms"> Ms &nbsp;
                                             <input type="radio" name="salutation" id="Miss" value="Miss"> Miss &nbsp;
                                         </div>    
                                         <div class="form-group">
                                             <label  for="typeoc">Type Of Customer :</label> &nbsp;
-                                            <input type="radio" name="type" id="nd" value="nd"> N.D &nbsp;
+                                            <input type="radio" name="type" id="nd" value="nd" checked="checked"> N.D &nbsp;
                                             <input type="radio" name="type" id="domestic" value="domestic"> Domestic &nbsp;
                                             <input type="radio" name="type" id="tv" value="tv"> T.V &nbsp;
                                             <input type="radio" name="type" id="ttv" value="ttv"> T.T.V &nbsp;
@@ -158,7 +158,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-dob">Date Of Birth</label>
-                                            <input type="date" name="datepicker" placeholder="Enter Date of Birth dd/mm/yyyy" class="form-dob form-control" id="datepicker" >
+                                            <input type="date" name="datepicker" placeholder="Enter Date of Birth dd/mm/yyyy" onkeydown="return false" class="form-dob form-control" id="datepicker" >
                                              <span  style="color:red;font-weight:bold" id="errDOB"></span>
                                             
                                         </div>
@@ -185,7 +185,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-pincode">Pin Code</label>
-                                            <input type="number" name="form-pincode" min="100000" max="999999" placeholder="Pin Code" class="form-pincode form-control" id="form-pincode">
+                                            <input type="number" name="form-pincode"  placeholder="Pin Code" class="form-pincode form-control" id="form-pincode">
                                             <span  style="color:red;font-weight:bold" id="errPinCode"></span>
                                         </div>
                                         <div class="form-group">
