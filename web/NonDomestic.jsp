@@ -107,6 +107,7 @@
                     $("#form-counteramount").show();
                     $("#form-chequeno").val(0);
                     $("#form-chequeno").hide();
+                    document.getElementById("cvdepo").checked = false;
                 });
 
                 $("#cheque").click(function () {
@@ -133,6 +134,7 @@
                     $("#form-emptycv").attr('readonly', true);
                     $("#form-filledcv").attr('readonly', true);
                     $("#form-amt").attr('readonly', true);
+                    
                     //  $('input:radio[name="typeoftransaction"]').filter('[value="cashon"]').attr('checked', true);
                 })
                 $("#cvdepo").click(function () {
@@ -258,7 +260,7 @@
                                         </div>
 
                                         <input type="hidden" value="<%= rate%>" id="rate" name="rates" />
-                                        <input type="radio" name="onlycv" id="cash" checked="checked"> Only Cash Deposite
+                                        <input type="radio" name="onlycv" id="cash"> Only Cash Deposite
                                         <input type="radio" name="onlycv" id="cvdepo"  > C.V Deposite only
 
                                         <table border="1px">

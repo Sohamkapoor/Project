@@ -144,7 +144,7 @@
                                                 <input type="text" name="salary" placeholder="Enter Salary" class="salary form-control" id="salary" >
                                             </div>
                                          <div class="form-group">
-                                        <a href="Attendance.jsp">Attendance</a> &nbsp; &nbsp; &nbsp;
+                                        <a href="Attendence.jsp">Attendance</a> &nbsp; &nbsp; &nbsp;
                                         <input type="submit" value="submit"/>
                                         </div>                                 
                                     </div>

@@ -8,6 +8,7 @@ package Attendance;
 import Datab.Datab;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -71,25 +72,40 @@ public class Attendance extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
         try (PrintWriter out = response.getWriter()) {
-            String name = request.getParameter("form-nameoe");
-            String date = request.getParameter("datepicker");
-            String attendance = request.getParameter("attendance");
             Datab db = new Datab();
-            String sql = "insert into attendance (name,date,attendance)values('" + name + "','" + date + "','" + attendance + "')";
-            db.conn.createStatement();
+            
+            ArrayList<String> emp = new ArrayList<String>();
+            String sql = "select name from employee";
+            db.rs = db.st.executeQuery(sql);
+            while (db.rs.next()) {
+                emp.add(db.rs.getString("name"));
+            }
+            for(String em:emp) {
+            String name = request.getParameter(em+"name");
+            System.out.println("name ="+name);
+            String date = request.getParameter("datepicker");
+            String attendance = request.getParameter(em+"attendance");
+            sql = "insert into attendance (name,date,attendance)values('" + name + "','" + date + "','" + attendance + "')"; 
+            System.out.println("sq"+sql);
+            db.conn.createStatement();           
             db.st.executeUpdate(sql);
+            }
             System.out.println("row inserted");
-             out.println("<!DOCTYPE html>");
-             out.println("<html>");
-             out.println("<head>");
-             out.println("<title>Servlet Attendance</title>");            
-             out.println("</head>");
-             out.println("<body>");
-             out.println("<h1> Attendance Posted </h1>");
-             out.println("</body>");
-             out.println("</html>");
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet Attendance</title>");
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1> Attendance Posted </h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+        
+      
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
