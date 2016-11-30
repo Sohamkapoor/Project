@@ -97,6 +97,7 @@ public class Miscellaneous extends HttpServlet {
             String extra = request.getParameter("form-extra");
             if(extra.equals("")){extra="0";}
             String nameoe = request.getParameter("form-adv");
+            String phno = request.getParameter("form-phno");
             String advamt = request.getParameter("form-advamt");
             if(advamt.equals("")){advamt="0";}
             Calendar cal = Calendar.getInstance();
@@ -109,7 +110,7 @@ public class Miscellaneous extends HttpServlet {
             Date date = sdf1.parse(strDate);
             
             
-            String sql="",snak="",ban="",name="",adv="",ext="",count="",amtadv="",pet="",vehno="",pic="",dro="",repair="";
+            String sql="",snak="",ban="",name="",adv="",ext="",count="",amtadv="",pet="",vehno="",pic="",dro="",repair="",sa="",ph="",na="";
             int counter=0,counter1=0;
            // sql="select count(*) from (select count(date) from miscellaneous where date ='"+date+"')t";
             sql="select * from miscellaneous where date ='"+date+"'";
@@ -123,11 +124,12 @@ public class Miscellaneous extends HttpServlet {
             if(ban.equals("")){ban="0";}
             ext=db.rs.getString("extra");
             if(ext.equals("")){ext="0";}
+            name =db.rs.getString("name_of_emp");
             counter++;
             }
             if(counter==0)
             {
-                sql="insert into miscellaneous(snacks,bank,extra,name_of_emp,advamt,date)values('"+snacks+"','"+bank+"','"+extra+"','"+nameoe+"','"+advamt+"','"+date+"')";
+                sql="insert into miscellaneous(snacks,bank,extra,name_of_emp,phno,advamt,date)values('"+snacks+"','"+bank+"','"+extra+"','"+nameoe+"','"+phno+"','"+advamt+"','"+date+"')";
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
             }
@@ -142,33 +144,44 @@ public class Miscellaneous extends HttpServlet {
                 db.st.executeUpdate(sql);
 
                 if(!nameoe.equals(""))
-                {   System.out.println("else");
+                {   
+                    if(nameoe.equals(name)){
                     sql="select advamt from miscellaneous where date ='"+date+"' and name_of_emp ='"+nameoe+"'";
                     db.rs = db.st.executeQuery(sql);
                     while(db.rs.next()){
                     amtadv = db.rs.getString("advamt");
-                    }
-                  
+                    }                 
                     int am = Integer.parseInt(amtadv)+ Integer.parseInt(advamt);
                     sql="update miscellaneous set advamt = '"+am+"' where name_of_emp ='"+nameoe+"' and date = '"+date+"'";
                     db.conn.createStatement();
                     db.st.executeUpdate(sql);
+                    }
+                    else{
+                        sql="insert into miscellaneous(snacks,bank,extra,name_of_emp,phno,advamt,date)values('"+snacks+"','"+bank+"','"+extra+"','"+nameoe+"','"+phno+"','"+advamt+"','"+date+"')";
+                        db.conn.createStatement();
+                        db.st.executeUpdate(sql);
+                    }
                 }
             }
-            sql="select * from miscellaneous where date ='"+date+"'";
+            sql="select * from vehicle where date ='"+date+"'";
             db.rs = db.st.executeQuery(sql);
             while(db.rs.next()){
             String count1 = db.rs.getString("date");
             pet = db.rs.getString("petrol");
             if(pet.equals("")){pet="0";}
-            vehno = db.rs.getString("vehicleno");
+            System.out.println("Petrol ="+pet);
+            vehno = db.rs.getString("vehicleno");           
             if(vehno.equals("")){vehno="0";}
-            pic= db.rs.getString("pick");
+            System.out.println("vehicle no ="+vehno);
+            pic= db.rs.getString("pick");           
             if(pic.equals("")){pic="0";}
+            System.out.println("pic ="+pic);
             dro = db.rs.getString("dropkm");
             if(dro.equals("")){dro="0";}
+            System.out.println("drop ="+drop);
             repair = db.rs.getString("repairing");
             if(repair.equals("")){repair="0";}
+            System.out.println("repair ="+repair);
             counter1++;
             }
             if(counter1==0){
@@ -183,8 +196,10 @@ public class Miscellaneous extends HttpServlet {
                 pe = Integer.parseInt(pick) + Integer.parseInt(pic);
                 dr = Integer.parseInt(drop) + Integer.parseInt(dro);
                 rep = Integer.parseInt(repairing) + Integer.parseInt(repair);
-                if(vehicleno == vehno){
-                sql= "update vehicle set petrol ='"+petro+"', pick='"+pe+"', dropkm='"+dr+"','"+rep+"' where date='"+date+"' and vehicleno ='"+vehicleno+"'";
+                
+                if(vehicleno.equals(vehno))
+                {
+                sql= "update vehicle set petrol ='"+petro+"', pick='"+pe+"', dropkm='"+dr+"',repairing ='"+rep+"' where date='"+date+"' and vehicleno ='"+vehicleno+"'";
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
                 }
@@ -194,9 +209,21 @@ public class Miscellaneous extends HttpServlet {
                 db.st.executeUpdate(sql);
                 }
             }
-//    System.out.println("petrol =" + petrol + " " + "vehicleno =" + vehicleno + " " + "pick =" + pick + " " + "drop =" + drop + "repairing =" + repairing);
-
-
+            
+                sql="select * from employee";
+                 db.rs = db.st.executeQuery(sql);
+                while(db.rs.next()){
+                 na = db.rs.getString("name");
+                 ph = db.rs.getString("phno");
+                 sa = db.rs.getString("salary");
+                }
+              //  System.out.println("name ="+ nameoe + "na ="+ na);
+              //  System.out.println("phno ="+ phno + "ph ="+ ph);
+                    int sal = Integer.parseInt(sa) - Integer.parseInt(advamt);
+    //    System.out.println("petrol =" + petrol + " " + "vehicleno =" + vehicleno + " " + "pick =" + pick + " " + "drop =" + drop + "repairing =" + repairing);
+                    sql="update employee set salary ='"+sal+"' where name='"+nameoe+"' and phno ='"+phno+"'";
+                    db.conn.createStatement();
+                    db.st.executeUpdate(sql);
         } catch (Exception e) {
             e.printStackTrace();
         }

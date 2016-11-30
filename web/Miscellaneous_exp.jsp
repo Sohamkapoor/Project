@@ -152,6 +152,7 @@
                                          </div>
                                         <div class="form-group">
                                             <input type="text" name="form-adv" placeholder="Employee Name asking Advance" class="form-adv form-control" id="form-adv" >
+                                            <input type="text" name="form-phno" placeholder=" Enter Employee Registered Phone Number " class="form-phno form-control" id="form-phno" >
                                             <input type="text" name="form-advamt" placeholder="Advance Amount" class="form-advamt form-control" id="form-advamt" >
                                          </div>
                                         <p align="center"><input type="submit" value="submit"/></p>
