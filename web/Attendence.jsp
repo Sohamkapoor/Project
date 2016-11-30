@@ -142,6 +142,7 @@
                                                 <th> &nbsp; Present &nbsp; &nbsp; </th>
                                                 <th> &nbsp; Absent &nbsp; &nbsp; </th>
                                                 <th> &nbsp; Date &nbsp; &nbsp; </th>
+                                                <th> &nbsp; Half Day &nbsp; &nbsp; </th>
                                             </tr>  
                                             <% 
                                              Calendar cal = Calendar.getInstance();
@@ -152,7 +153,10 @@
                                             SimpleDateFormat sdf1 = new SimpleDateFormat();
                                             sdf1.applyPattern("dd/MM/yyyy HH:mm:ss.SS");
                                             Date date = sdf1.parse(strDate);
-                                            
+                                            int hours = cal.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
+                                            System.out.println("hours ="+hours);
+                                            int hrs = cal.get(Calendar.HOUR);// get hour in 12 hrs format
+                                            System.out.println("hrs ="+hrs);
                                             for(String em:emp) { 
                                            
                                             %>
@@ -160,14 +164,24 @@
                                                 <td><input type="text" name="<%= em+"name" %>" onkeydown="return false" id="name" value="<%= em %>"> </td>
                                                 <td><p align="center"><input type="radio" name="<%= em+"attendance"%>" id="present" value="present" checked="checked"></p></td>
                                                 <td><p align="center"><input type="radio" name="<%= em+"attendance"%>" id="absent" value="absent" ></p> </td>
-                                                <td><input type="date" onkeydown="return false" name="datepicker"  class="form-dob form-control" id="picker" value="<%= date %>" ></td>                                                                                              
+                                                <td><input type="date" onkeydown="return false" name="datepicker"  class="form-dob form-control" id="picker" value="<%= date %>" ></td> 
+                                                <%
+                                                    if(hours >= 14 || hours <= 17)
+                                                    {%>
+                                                <td><p align="center"><input type="radio" name="<%= em+"halfday"%>" id="halfday" value="halfday"></p></td>
+                                                    <%}
+                                                %>
                                             </tr>
-                                            <% } %>
+                                            <% } 
+                                            session.setAttribute("allnames", emp);
+                                           // request.setAttribute("names", emp);
+                                            %>
                                         </table>
                                                <br/>                                                                                                               
                                         <div class="form-group">
                                         <a href="AddEmployee.jsp">Add Employee</a> &nbsp; &nbsp; &nbsp;
                                         <input type="submit" value="submit"/>
+                           
                                         </div>
                                     </div>                                  
                                 </fieldset>

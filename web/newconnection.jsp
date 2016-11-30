@@ -30,7 +30,7 @@
         <script src="assets/js/retina-1.1.0.min.js"></script>
         <script src="assets/js/new_connection.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-        
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,15 +47,15 @@
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
 
-<!--        <script>
-            $(document).ready(function () {
-                $("#datepicker").datepicker({dateFormat: 'mm/dd/yy',
-                    changeMonth: true,
-                    changeYear: true,
-                    yearRange: '-100y:c+nn',
-                    maxDate: '-1d'});
-            });
-        </script>-->
+        <!--        <script>
+                    $(document).ready(function () {
+                        $("#datepicker").datepicker({dateFormat: 'mm/dd/yy',
+                            changeMonth: true,
+                            changeYear: true,
+                            yearRange: '-100y:c+nn',
+                            maxDate: '-1d'});
+                    });
+                </script>-->
     </head>
 
     <body>
@@ -154,23 +154,23 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-last-name">Last name</label>
                                             <input type="text" name="form-last-name" placeholder="Last name" class="form-last-name form-control" id="form-last-name">
-                                              <span  style="color:red;font-weight:bold" id="errLastName"></span>
+                                            <span  style="color:red;font-weight:bold" id="errLastName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-dob">Date Of Birth</label>
                                             <input type="date" name="datepicker" placeholder="Enter Date of Birth dd/mm/yyyy" onkeydown="return false" class="form-dob form-control" id="datepicker" >
-                                             <span  style="color:red;font-weight:bold" id="errDOB"></span>
-                                            
+                                            <span  style="color:red;font-weight:bold" id="errDOB"></span>
+
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-father-name">Father's Name</label>
                                             <input type="text" name="form-father-name" placeholder="Father's Name" class="form-father-name form-control" id="form-father-name">
-                                             <span  style="color:red;font-weight:bold" id="errFatherName"></span>
+                                            <span  style="color:red;font-weight:bold" id="errFatherName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-mother-name">Mother's Name</label>
                                             <input type="text" name="form-mother-name" placeholder="Mother's Name" class="form-mother-name form-control" id="form-mother-name">
-                                             <span  style="color:red;font-weight:bold" id="errMotherName"></span>
+                                            <span  style="color:red;font-weight:bold" id="errMotherName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-spouse">Spouse's Name</label>
@@ -181,7 +181,7 @@
                                             <label class="sr-only" for="form-address">Address</label>
                                             <textarea name="form-address" placeholder="Address..." 
                                                       class="form-address form-control" id="form-address"></textarea>
-                                                       <span  style="color:red;font-weight:bold" id="errAddress"></span>
+                                            <span  style="color:red;font-weight:bold" id="errAddress"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-pincode">Pin Code</label>
@@ -191,13 +191,13 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-telephone">Telephone</label>
                                             <input type="text" name="form-telephone" placeholder="Telephone" class="form-telephone form-control" id="form-telephone">
-                                         
+
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-mob">Mobile Number</label>
                                             <input type="text" name="form-mob" placeholder="Mobile Number" class="form-mob form-control" id="form-mob">
                                             <span id="errMessage" style="color:red;font-weight:bold"></span><br>
-                                               <span id="errInvalidMobileMessage" style="color:red;font-weight:bold"></span>
+                                            <span id="errInvalidMobileMessage" style="color:red;font-weight:bold"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-email">Email</label>
@@ -238,7 +238,7 @@
                                                    class="form-accno form-control" id="form-accno">
                                         </div>
                                         <button type="button" class="btn btn-previous">Previous</button>
-                                         <button type="button" class="btn btn-next">Next</button>
+                                        <button type="button" class="btn btn-next">Next</button>
                                     </div>
                                 </fieldset>
 
@@ -353,7 +353,7 @@
                                                 <input type="radio" name="form-stove" id="form-stove" value="no">No
                                             </div>
                                             <button type="button" class="btn btn-previous">Previous</button>
-                                           <button type="button" class="btn btn-next">Next</button>
+                                            <button type="button" class="btn btn-next">Next</button>
 
 
 

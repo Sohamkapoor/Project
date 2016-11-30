@@ -28,6 +28,10 @@
         <servlet-name>Attendance</servlet-name>
         <servlet-class>Attendance.Attendance</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Miscellaneous</servlet-name>
+        <servlet-class>Miscellaneous.Miscellaneous</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailFill</servlet-name>
         <url-pattern>/DetailFill</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>Attendance</servlet-name>
         <url-pattern>/Attendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Miscellaneous</servlet-name>
+        <url-pattern>/Miscellaneous</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

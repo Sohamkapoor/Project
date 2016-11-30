@@ -9,6 +9,7 @@ import Datab.Datab;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -75,24 +76,29 @@ public class Attendance extends HttpServlet {
         
         try (PrintWriter out = response.getWriter()) {
             Datab db = new Datab();
-            
-            ArrayList<String> emp = new ArrayList<String>();
-            String sql = "select name from employee";
-            db.rs = db.st.executeQuery(sql);
-            while (db.rs.next()) {
-                emp.add(db.rs.getString("name"));
-            }
-            for(String em:emp) {
+            String sql="";
+
+            ArrayList<String> al=(ArrayList)request.getSession().getAttribute("allnames");
+            for(String em:al) {
+            String half = request.getParameter(em+"halfday");
             String name = request.getParameter(em+"name");
-            System.out.println("name ="+name);
             String date = request.getParameter("datepicker");
             String attendance = request.getParameter(em+"attendance");
+            
+          /*  if(half.equals("halfday"))
+            {
+             sql="update attendance set halfday='"+half+"' where name = '"+name+"' and date = '"+date+"'";
+             db.conn.createStatement();           
+             db.st.executeUpdate(sql);
+             System.out.println("row inserted");
+            }
+            else{*/
             sql = "insert into attendance (name,date,attendance)values('" + name + "','" + date + "','" + attendance + "')"; 
             System.out.println("sq"+sql);
             db.conn.createStatement();           
             db.st.executeUpdate(sql);
-            }
-            System.out.println("row inserted");
+            //}
+            System.out.println("row inserted");}
 //            out.println("<!DOCTYPE html>");
 //            out.println("<html>");
 //            out.println("<head>");
