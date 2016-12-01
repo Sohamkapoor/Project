@@ -81,7 +81,7 @@ public class AddEmployee extends HttpServlet {
             String id = request.getParameter("form-id");
             String idno = request.getParameter("form-idno");
             String salary = request.getParameter("salary");
-            String sql="insert into employee (name,phno,date,idname,idno,salary)values('"+name+"','"+phno+"','"+date+"','"+id+"','"+idno+"','"+salary+"')";
+            String sql="insert into employee (name,phno,date,idname,idno,salary,sal)values('"+name+"','"+phno+"','"+date+"','"+id+"','"+idno+"','"+salary+"','"+salary+"')";
             db.conn.createStatement();
             db.st.executeQuery(sql);
             System.out.println("row inserted");

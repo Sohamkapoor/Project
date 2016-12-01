@@ -32,6 +32,14 @@
         <servlet-name>Miscellaneous</servlet-name>
         <servlet-class>Miscellaneous.Miscellaneous</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Miscellaneous_vehicle</servlet-name>
+        <servlet-class>Miscellaneous_vehicle.Miscellaneous_vehicle</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Adv_salary</servlet-name>
+        <servlet-class>Adv_salary.Adv_salary</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailFill</servlet-name>
         <url-pattern>/DetailFill</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>Miscellaneous</servlet-name>
         <url-pattern>/Miscellaneous</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Miscellaneous_vehicle</servlet-name>
+        <url-pattern>/Miscellaneous_vehicle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Adv_salary</servlet-name>
+        <url-pattern>/Adv_salary</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

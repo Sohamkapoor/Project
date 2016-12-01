@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Miscellaneous_exp
-    Created on : Nov 30, 2016, 2:38:44 AM
+    Document   : Advance_Salary
+    Created on : Nov 30, 2016, 9:38:20 PM
     Author     : sohamkapoor
 --%>
 
@@ -110,13 +110,13 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="Miscellaneous" method="post" class="registration-form">
+                            <form role="form" action="Adv_salary" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p>Miscellaneous Expenses :</p>
+                                            <p> Advance Employee Salary :</p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-user"></i>
@@ -124,27 +124,21 @@
                                     </div>
 
                                     <div class="form-bottom">
-                                        
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
-                                            <input type="text" name="form-tea" placeholder="Tea/Cofee Snacks" class="form-tea form-control" id="form-tea" >
-                                         </div>
-                                        
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
-                                            <input type="text" name="form-bank" placeholder="Bank" class="form-bank form-control" id="form-bank" >
-                                         </div>
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
-                                            <input type="text" name="form-extra" placeholder="Extra Expenses" class="form-extra form-control" id="form-extra" >
-                                         </div>
-                                        
-                                        <a href ="miscellaneous_vehicle.jsp"> Miscellaneous Vehicle Expenses </a>
+                                        <div class="form-group">
+                                            <input type="text" name="form-adv" placeholder="Employee Name asking Advance" class="form-adv form-control" id="form-adv" >
+                                        </div>
+                                            <div class="form-group">
+                                            <input type="text" name="form-phno" placeholder=" Enter Employee Registered Phone Number " class="form-phno form-control" id="form-phno" >
+                                            </div>
+                                            <div class="form-group">
+                                            <input type="text" name="form-advamt" placeholder="Advance Amount" class="form-advamt form-control" id="form-advamt" >
+                                        </div>
+                                        <a href ="Miscellaneous_exp.jsp"> Miscellaneous Expenses </a>
                                         <input type="submit" value="submit"/>
-                                        <a href ="Advance_Salary.jsp"> Advance Salary </a>
+                                        <a href ="miscellaneous_vehicle.jsp"> Miscellaneous Vehicle Expense </a>
                                     </div>
                                 </fieldset>
-                                        
+
                             </form>
                         </div>
                     </div>

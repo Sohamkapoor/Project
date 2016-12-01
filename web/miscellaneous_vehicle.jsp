@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Miscellaneous_exp
-    Created on : Nov 30, 2016, 2:38:44 AM
+    Document   : miscellaneous_vehicle
+    Created on : Nov 30, 2016, 9:34:29 PM
     Author     : sohamkapoor
 --%>
 
@@ -41,8 +41,6 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-
-
         <!--        <script>
                     $(document).ready(function () {
                         $("#datepicker").datepicker({dateFormat: 'mm/dd/yy',
@@ -52,6 +50,60 @@
                             maxDate: '-1d'});
                     });
                 </script>-->
+        <script>
+            var counter=0;
+            function f(){
+            
+            var limit = 3;
+            if (counter == limit)  {
+                    alert("You have reached the limit of adding " + counter + " inputs");
+             }
+                    else{
+            var newdiv = document.createElement('input');
+            //newdiv.innerHTML = " <br>< type='text' placeholder='Enter Petrol Cost' name= petrol"+counter+" >";
+            newdiv.name = "petrol"+counter;
+            newdiv.type = "text";
+            newdiv.placeholder = "Enter Petrol Cost";
+            document.getElementById("petrol").appendChild(newdiv);
+
+            var newdiv = document.createElement('input');
+           // newdiv.innerHTML = " <br><input type='text' placeholder='Enter Vehicle No' name= vehicleno"+counter+" >";
+            newdiv.name = "vehicleno"+counter;
+            newdiv.type = "text";
+            newdiv.placeholder = "Enter Vehicle No";           
+            document.getElementById("vehicle").appendChild(newdiv);
+
+            var newdiv = document.createElement('input');
+           // newdiv.innerHTML = " <br><input type='text' placeholder='Enter Vehicle No' name= vehicleno"+counter+" >";
+            newdiv.name = "driver"+counter;
+            newdiv.type = "text";
+            newdiv.placeholder = "Enter Driver Name";           
+            document.getElementById("driver").appendChild(newdiv);
+
+            var newdiv = document.createElement('input');
+            //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Pick K.M.' name= pick"+counter+" >";
+            newdiv.name = "pick"+counter;
+            newdiv.type = "text";
+            newdiv.placeholder = "Enter Starting K.M.";
+            document.getElementById("pick").appendChild(newdiv);
+            
+            var newdiv = document.createElement('input');
+            //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Drop K.M.' name= drop"+counter+" >";
+            newdiv.name = "drop"+counter;
+            newdiv.type = "text";
+            newdiv.placeholder = "Enter Drop Cost";
+            document.getElementById("drop").appendChild(newdiv);
+
+            var newdiv = document.createElement('input');
+            //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Repair Cost' name= repair"+counter+" >";
+            newdiv.name = "repair"+counter;
+            newdiv.type = "text";
+            newdiv.placeholder = "Enter Repair Cost";
+            document.getElementById("repair").appendChild(newdiv);
+            counter++;
+                 }
+             }
+        </script>
     </head>
 
     <body>
@@ -110,41 +162,54 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="Miscellaneous" method="post" class="registration-form">
+                            <form role="form" action="Miscellaneous_vehicle" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p>Miscellaneous Expenses :</p>
+                                            <p>Miscellaneous Vehicle Expenses :</p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-user"></i>
                                         </div>
                                     </div>
-
-                                    <div class="form-bottom">
+                                    
+                                    <div class="form-bottom" id="form-bottom">
+                                        <table border="1px">
+                                            <tr>
+                                                <th>Petrol</th>
+                                                <th>Vehicleno</th>
+                                                <th>Driver Name</th>
+                                                <th>Morning Meter No</th>
+                                                <th>Evening Meter No</th>
+                                                <th>Repair</th>
+                                            </tr>
+                                            <tr>
+                                                <td id="petrol"></td>
+                                                <td id="vehicle"></td>
+                                                <td id="driver"></td>
+                                                <td id="pick"></td>
+                                                <td id="drop"></td>
+                                                <td id="repair"></td>
+                                            
+                                        </table>
+                                        </tr> <br/>
+                                            <input type="button" class="btn btn-success" onclick="f();" value="Add Form"><br/>
+                                        <!--div class="form-group" id="form-group">
+                                            <div class="col-sm-2" id="col-sm-2">
+                                                
+                                            </div>
+                                        </div-->
                                         
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
-                                            <input type="text" name="form-tea" placeholder="Tea/Cofee Snacks" class="form-tea form-control" id="form-tea" >
-                                         </div>
                                         
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
-                                            <input type="text" name="form-bank" placeholder="Bank" class="form-bank form-control" id="form-bank" >
-                                         </div>
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
-                                            <input type="text" name="form-extra" placeholder="Extra Expenses" class="form-extra form-control" id="form-extra" >
-                                         </div>
-                                        
-                                        <a href ="miscellaneous_vehicle.jsp"> Miscellaneous Vehicle Expenses </a>
+                                        <a href ="Miscellaneous_exp.jsp"> Miscellaneous Expenses </a>
                                         <input type="submit" value="submit"/>
                                         <a href ="Advance_Salary.jsp"> Advance Salary </a>
-                                    </div>
+                                    
+                                        </div>
                                 </fieldset>
-                                        
+
                             </form>
                         </div>
                     </div>
