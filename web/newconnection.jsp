@@ -303,6 +303,7 @@
                                                     <label class="sr-only" for="form-self"> Self-Declaration </label>												
                                                     <input type="checkbox" name="form-document"  value="self declaration" id="form-self">  Self-Declaration
                                                 </div>
+                                                <span  style="color:red;font-weight:bold" id="errCheckBox"></span>
                                             </div><!-- col -->
                                         </div><!-- row -->
 

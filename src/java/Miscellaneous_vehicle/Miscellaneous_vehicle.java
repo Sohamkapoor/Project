@@ -35,9 +35,9 @@ public class Miscellaneous_vehicle extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       // try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-           /* out.println("<!DOCTYPE html>");
+        // try (PrintWriter out = response.getWriter()) {
+        /* TODO output your page here. You may use following sample code. */
+ /* out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Miscellaneous_vehicle</title>");            
@@ -77,93 +77,74 @@ public class Miscellaneous_vehicle extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         try (PrintWriter out = response.getWriter()) {
-            Datab db=new Datab();
-             Calendar cal = Calendar.getInstance();
+            Datab db = new Datab();
+            Calendar cal = Calendar.getInstance();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String strDate = sdf.format(cal.getTime());
             System.out.println("Current date in String Format: " + strDate);
             SimpleDateFormat sdf1 = new SimpleDateFormat();
             sdf1.applyPattern("dd/MM/yyyy");
             Date date = sdf1.parse(strDate);
-            
-            ArrayList<String> price = new ArrayList<String>();
+
+            ArrayList<Integer> petrolPrice = new ArrayList<Integer>();
             ArrayList<String> vehicleno = new ArrayList<String>();
-            ArrayList<String> driver = new ArrayList<String>();
-            ArrayList<String> pick = new ArrayList<String>();
-            ArrayList<String> drop = new ArrayList<String>();
-            ArrayList<String> repair = new ArrayList<String>();
-            int count=0;
-            String sql="";
-            for(count=0;count<3;count++)
-            {
-                String pri = request.getParameter("petrol"+count);
-                if(pri==null)
-                {
-                    pri="";
+            ArrayList<String> driverName = new ArrayList<String>();
+            ArrayList<Integer> pick_Up_Km = new ArrayList<Integer>();
+            ArrayList<Integer> drop_Km = new ArrayList<Integer>();
+            ArrayList<Integer> repairCharges = new ArrayList<Integer>();
+            int retriveCounter = Integer.parseInt(request.getParameter("counter").trim());
+            int count = 0;
+            String sql = "", pri = "", vehicle = "", drive = "", pic = "", dro = "", rep = "";
+            for (count = 0; count < retriveCounter; count++) {
+                pri = request.getParameter("petrol" + count).trim();
+
+                if (pri.equals("")) {
+                    petrolPrice.add(0);
+                } else {
+                    petrolPrice.add(Integer.parseInt(pri));
                 }
-                else if(!pri.equals(""))
-                {
-                    price.add(pri);
-                }
-                
-                String vehicle = request.getParameter("vehicleno"+count);
-                if(vehicle==null)
-                {
-                    vehicle="";
-                }
-                else if(!vehicle.equals(""))
-                {
+
+                vehicle = request.getParameter("vehicleno" + count).trim();
+                if (vehicle.equals("")) {
+                    vehicleno.add("XYZ123");
+                } else {
                     vehicleno.add(vehicle);
                 }
-                
-                String drive = request.getParameter("driver"+count);
-                if(drive==null)
-                {
-                    drive="";
+
+                drive = request.getParameter("driver" + count).trim();
+                if (drive.equals("")) {
+                    driverName.add("NA");;
+                } else {
+                    driverName.add(drive);
                 }
-                else if(!drive.equals(""))
-                {
-                    driver.add(drive);
+
+                pic = request.getParameter("pick" + count).trim();
+                if (pic.equals("")) {
+                    pick_Up_Km.add(0);
+                } else {
+                    pick_Up_Km.add(Integer.parseInt(pic));
                 }
-                
-                String pic = request.getParameter("pick"+count);
-                if(pic==null)
-                {
-                    pic="";
+
+                dro = request.getParameter("drop" + count).trim();
+                if (dro.equals("")) {
+                    drop_Km.add(0);
+                } else {
+                    drop_Km.add(Integer.parseInt(dro));
                 }
-                else if(!pic.equals(""))
-                {
-                    pick.add(pic);
+
+                rep = request.getParameter("repair" + count).trim();
+                if (rep.equals("")) {
+                    repairCharges.add(0);
+                } else {
+                    repairCharges.add(Integer.parseInt(rep));
                 }
-                
-                String dro = request.getParameter("drop"+count);
-                if(dro==null)
-                {
-                    dro="";
-                }
-                else if(!dro.equals(""))
-                {
-                    drop.add(dro);
-                }
-                
-                String rep = request.getParameter("repair"+count);
-                if(rep==null)
-                {
-                    rep="";
-                }
-                else if(!rep.equals(""))
-                {
-                    repair.add(rep);
-                }               
             }
-            for(count=1;count<=3;count++)
-            {
-            sql ="insert into vehicle (petrol,vehicleno,driver,pick,dropkm,repairing,date) values ('"+price.get(count)+"','"+vehicleno.get(count)+"','"+driver.get(count)+"','"+pick.get(count)+"','"+drop.get(count)+"','"+repair.get(count)+"','"+date+"')";
-            db.conn.createStatement();
-            db.st.executeUpdate(sql);
+            for (count = 0; count < retriveCounter; count++) {
+                sql = "insert into vehicle (petrol,vehicleno,driver,pick,dropkm,repairing,date) values ('" + petrolPrice.get(count) + "','" + vehicleno.get(count) + "','" + driverName.get(count) + "','" + pick_Up_Km.get(count) + "','" + drop_Km.get(count) + "','" + repairCharges.get(count) + "','" + date + "')";
+                db.conn.createStatement();
+                db.st.executeUpdate(sql);
             }
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
