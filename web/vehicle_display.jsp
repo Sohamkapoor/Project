@@ -1,9 +1,14 @@
 <%-- 
-    Document   : miscellaneous_vehicle
-    Created on : Nov 30, 2016, 9:34:29 PM
+    Document   : vehicle_display
+    Created on : Dec 2, 2016, 10:38:56 AM
     Author     : sohamkapoor
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="Datab.Datab"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +16,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Miscellaneous Expenses</title>
+        <title>Vehicle Display</title>
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -51,74 +56,12 @@
                     });
                 </script>-->
         <script>
-            var counter = 0;
-            function f() {
-
-                var limit = 3;
-                if (counter == limit) {
-                    alert("You have reached the limit of adding " + counter + " inputs");
-                } else {
-                    var newdiv = document.createElement('input');
-                    //newdiv.innerHTML = " <br>< type='text' placeholder='Enter Petrol Cost' name= petrol"+counter+" >";
-                    newdiv.name = "petrol" + counter;
-                    newdiv.type = "text";
-                    newdiv.placeholder = "Enter Petrol Cost";
-                    document.getElementById("petrol").appendChild(newdiv);
-
-                    var newdiv = document.createElement('input');
-                    // newdiv.innerHTML = " <br><input type='text' placeholder='Enter Vehicle No' name= vehicleno"+counter+" >";
-                    newdiv.name = "vehicleno" + counter;
-                    newdiv.type = "text";
-                    newdiv.placeholder = "Enter Vehicle No";
-                    document.getElementById("vehicle").appendChild(newdiv);
-
-                    var newdiv = document.createElement('input');
-                    // newdiv.innerHTML = " <br><input type='text' placeholder='Enter Vehicle No' name= vehicleno"+counter+" >";
-                    newdiv.name = "driver" + counter;
-                    newdiv.type = "text";
-                    newdiv.placeholder = "Enter Driver Name";
-                    document.getElementById("driver").appendChild(newdiv);
-
-                    var newdiv = document.createElement('input');
-                    //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Pick K.M.' name= pick"+counter+" >";
-                    newdiv.name = "pick" + counter;
-                    newdiv.type = "text";
-                    newdiv.placeholder = "Enter Starting K.M.";
-                    document.getElementById("pick").appendChild(newdiv);
-
-                    var newdiv = document.createElement('input');
-                    //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Drop K.M.' name= drop"+counter+" >";
-                    newdiv.name = "drop" + counter;
-                    newdiv.type = "text";
-                    newdiv.placeholder = "Enter Drop Cost";
-                    document.getElementById("drop").appendChild(newdiv);
-
-                    var newdiv = document.createElement('input');
-                    //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Repair Cost' name= repair"+counter+" >";
-                    newdiv.name = "repair" + counter;
-                    newdiv.type = "text";
-                    newdiv.placeholder = "Enter Repair Cost";
-                    document.getElementById("repair").appendChild(newdiv);
-                    counter++;
-
-                }
-                return counter;
-
-            }
-
-            function retriveCounterVal()
+            function f()
             {
-                document.getElementById("count").value = f();
+            window.location.href="http://localhost:8080/gas/miscellaneous_vehicle.jsp";
             }
-
-            function showDetail()
-            {
-                window.location.href="http://localhost:8080/gas/vehicle_display.jsp";
-            }
-            
-        </script>
+            </script>
     </head>
-
     <body>
 
         <!-- Top menu -->
@@ -175,13 +118,12 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="Miscellaneous_vehicle" method="post" class="registration-form">
-
+                            <form role="form" action="vehicle" method="post" class="registration-form">
                                 <fieldset>
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p>Miscellaneous Vehicle Expenses :</p>
+                                            <p>Enter Drop K.M. :</p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-user"></i>
@@ -189,35 +131,63 @@
                                     </div>
 
                                     <div class="form-bottom" id="form-bottom">
+                                        <%
+                                                Datab db = new Datab();
+                                                String sql = "";
+                                                
+                                                Calendar cal = Calendar.getInstance();
+                                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                                String strDate = sdf.format(cal.getTime());
+                                                System.out.println("Current date in String Format: " + strDate);
+                                                SimpleDateFormat sdf1 = new SimpleDateFormat();
+                                                sdf1.applyPattern("dd/MM/yyyy");
+                                                Date date = sdf1.parse(strDate);
+                                                
+                                                ArrayList<String> petrolPrice = new ArrayList<String>();
+                                                ArrayList<String> vehicleno = new ArrayList<String>();
+                                                ArrayList<String> driverName = new ArrayList<String>();
+                                                ArrayList<String> pick_Up_Km = new ArrayList<String>();
+                                                ArrayList<String> drop_Km = new ArrayList<String>();
+                                                ArrayList<String> repairCharges = new ArrayList<String>();
+                                                sql = "select * from vehicle where date ='"+date+"'";
+                                                db.rs = db.st.executeQuery(sql);
+                                                while (db.rs.next()) {
+                                                    petrolPrice.add(db.rs.getString("petrol"));
+                                                    vehicleno.add(db.rs.getString("vehicleno"));
+                                                    driverName.add(db.rs.getString("driver"));
+                                                    pick_Up_Km.add(db.rs.getString("pick"));
+                                                    drop_Km.add(db.rs.getString("dropkm"));
+                                                    repairCharges.add(db.rs.getString("repairing"));
+                                                }                                        
+                                        %>
                                         <table border="1px">
                                             <tr>
                                                 <th>Petrol</th>
-                                                <th>Vehicleno</th>
+                                                <th>Vehicle No</th>
                                                 <th>Driver Name</th>
                                                 <th>Morning Meter No</th>
                                                 <th>Evening Meter No</th>
                                                 <th>Repair</th>
                                             </tr>
+                                            <%
+
+                                                for(int i=0;i<vehicleno.size();i++)
+                                                {
+
+                                            %>
                                             <tr>
-                                                <td id="petrol"></td>
-                                                <td id="vehicle"></td>
-                                                <td id="driver"></td>
-                                                <td id="pick"></td>
-                                                <td id="drop"></td>
-                                                <td id="repair"></td>
-
-                                        </table>
-                                        </tr> <br/>
+                                                <td> <input type="text" name="petrolPrice<%=i%>"  id="petrolPrice<%=i%>" value="<%= petrolPrice.get(i) %>"> </td>
+                                                <td> <input type="text" name="vehicleno<%=i%>" onkeydown="return false" id=" vehicleno<%=i%>" value="<%= vehicleno.get(i) %>"> </td>
+                                                <td> <input type="text" name="<% driverName.get(i); %>" onkeydown="return false" id="<% driverName.get(i); %>" value="<%= driverName.get(i) %>"> </td>
+                                                <td> <input type="text" name="<% pick_Up_Km.get(i); %>" onkeydown="return false" id="<% pick_Up_Km.get(i); %>" value="<%= pick_Up_Km.get(i) %>"> </td>
+                                                <td> <input type="text" name="drop<%=i%>"  id="drop<%=i%>" value="<%= drop_Km.get(i) %>"> </td>
+                                                <td> <input type="text" name="repair<%=i %>"  id="repair<%= i %>" value="<%= repairCharges.get(i) %>"> </td>
+                                             </tr> <br/>   
+                                             <% } %>   
+                                        </table><br/>
+                                        <input type="hidden" name="count" id="count" value="<%=vehicleno.size()%>"/>
                                         <input type="hidden" name="counter" id="count">
-                                        <input type="button" class="btn btn-success" onclick="retriveCounterVal();" value="Add Form">
-                                        <input type="button" class="btn btn-success" value="Enter Drop K.M." onclick="showDetail();"><br/>
-                                        <!--div class="form-group" id="form-group">
-                                            <div class="col-sm-2" id="col-sm-2">
-                                                
-                                            </div>
-                                        </div-->
-
-                                        
+                                        <input type="button" class="btn btn-success" onclick="f();" value="Add Form"><br/>                                      
                                         <a href ="Miscellaneous_exp.jsp"> Miscellaneous Expenses </a>
                                         <input type="submit" value="submit"/>
                                         <a href ="Advance_Salary.jsp"> Advance Salary </a>

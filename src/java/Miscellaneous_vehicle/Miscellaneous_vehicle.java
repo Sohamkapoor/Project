@@ -93,6 +93,7 @@ public class Miscellaneous_vehicle extends HttpServlet {
             ArrayList<Integer> drop_Km = new ArrayList<Integer>();
             ArrayList<Integer> repairCharges = new ArrayList<Integer>();
             int retriveCounter = Integer.parseInt(request.getParameter("counter").trim());
+            
             int count = 0;
             String sql = "", pri = "", vehicle = "", drive = "", pic = "", dro = "", rep = "";
             for (count = 0; count < retriveCounter; count++) {
@@ -144,6 +145,8 @@ public class Miscellaneous_vehicle extends HttpServlet {
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
             }
+             response.setIntHeader("Refresh", 2);
+            response.sendRedirect("http://localhost:8080/gas/miscellaneous_vehicle.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

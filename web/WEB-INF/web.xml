@@ -40,6 +40,10 @@
         <servlet-name>Adv_salary</servlet-name>
         <servlet-class>Adv_salary.Adv_salary</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>vehicle</servlet-name>
+        <servlet-class>vehicle.vehicle</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailFill</servlet-name>
         <url-pattern>/DetailFill</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>Adv_salary</servlet-name>
         <url-pattern>/Adv_salary</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vehicle</servlet-name>
+        <url-pattern>/vehicle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
