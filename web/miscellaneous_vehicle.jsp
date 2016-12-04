@@ -167,7 +167,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="Miscellaneous_vehicle" method="post" class="registration-form">
+                            <form role="form" action="Miscellaneous_vehicle" method="post" class="registration-form" >
 
                                 <fieldset>
                                     <div class="form-top">
@@ -197,8 +197,8 @@
                                                 <td id="pick"></td>
                                                 <td id="drop"></td>
                                                 <td id="repair"></td>
-                                            </tr> <br/>
-                                        </table>
+                                            </tr> 
+                                        </table><br/>
                                         
                                         <input type="hidden" name="counter" id="count">
                                         <input type="button" class="btn btn-success" onclick="retriveCounterVal();" value="Add Form">

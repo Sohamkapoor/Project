@@ -172,7 +172,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-bottom" id="form-bottom">
+                                    <div class="form-bottom" id="form-bottom" >
                                         <%
                                             Datab db = new Datab();
                                             String sql = "";

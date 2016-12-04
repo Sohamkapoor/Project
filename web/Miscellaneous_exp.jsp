@@ -52,6 +52,32 @@
                             maxDate: '-1d'});
                     });
                 </script>-->
+        <script>
+            function teaValidate(){
+            var x = document.getElementById("form-tea").value;
+            if ((x%1) != 0) 
+            {
+                $('#errtea').text('Enter Numbers Only');
+            }
+            
+        };
+        function extraValidate()
+        {
+            var x = document.getElementById("form-extra").value;
+            if((x%1)!=0)
+            {
+                $('#errextra').text('Enter Number only');
+            }
+        };
+        function bankValidate()
+        {
+            var x = document.getElementById("form-bank").value;
+            if((x%1)!=0)
+            {
+                $('#errbank').text('Enter Number only');
+            }
+        }
+        </script>
     </head>
 
     <body>
@@ -124,27 +150,27 @@
                                     </div>
 
                                     <div class="form-bottom">
-                                        
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
-                                            <input type="text" name="form-tea" placeholder="Tea/Cofee Snacks" class="form-tea form-control" id="form-tea" >
-                                         </div>
-                                        
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
+
+                                        <div class="form-group">
+                                            <input type="text" name="form-tea" placeholder="Tea/Cofee Snacks" class="form-tea form-control" id="form-tea" onblur="teaValidate()" >
+                                            <span  style="color:red;font-weight:bold" name="errorSpan" id="errtea"></span>
+                                        </div>
+
+                                        <div class="form-group">
                                             <input type="text" name="form-bank" placeholder="Bank" class="form-bank form-control" id="form-bank" >
-                                         </div>
-                                         <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name </label>
-                                            <input type="text" name="form-extra" placeholder="Extra Expenses" class="form-extra form-control" id="form-extra" >
-                                         </div>
-                                        
+                                            <span  style="color:red;font-weight:bold" name="errorSpan" id="errbank"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="form-extra" placeholder="Extra Expenses" class="form-extra form-control" id="form-extra" onblur="extraValidate()">
+                                            <span  style="color:red;font-weight:bold" name="errorSpan" id="errextra"></span>
+                                        </div>
+
                                         <a href ="miscellaneous_vehicle.jsp"> Miscellaneous Vehicle Expenses </a>
                                         <input type="submit" value="submit"/>
                                         <a href ="Advance_Salary.jsp"> Advance Salary </a>
                                     </div>
                                 </fieldset>
-                                        
+
                             </form>
                         </div>
                     </div>
