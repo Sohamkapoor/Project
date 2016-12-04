@@ -50,67 +50,59 @@
                             maxDate: '-1d'});
                     });
                 </script>-->
-        <script>
+<script>
             var counter = 0;
-            function f() {
 
+            
+            
+            function f() {
                 var limit = 3;
                 if (counter == limit) {
                     alert("You have reached the limit of adding " + counter + " inputs");
                 } else {
                     var newdiv = document.createElement('input');
-                    //newdiv.innerHTML = " <br>< type='text' placeholder='Enter Petrol Cost' name= petrol"+counter+" >";
                     newdiv.name = "petrol" + counter;
                     newdiv.type = "text";
                     newdiv.placeholder = "Enter Petrol Cost";
                     document.getElementById("petrol").appendChild(newdiv);
-
+    
                     var newdiv = document.createElement('input');
-                    // newdiv.innerHTML = " <br><input type='text' placeholder='Enter Vehicle No' name= vehicleno"+counter+" >";
                     newdiv.name = "vehicleno" + counter;
                     newdiv.type = "text";
                     newdiv.placeholder = "Enter Vehicle No";
                     document.getElementById("vehicle").appendChild(newdiv);
-
+    
                     var newdiv = document.createElement('input');
-                    // newdiv.innerHTML = " <br><input type='text' placeholder='Enter Vehicle No' name= vehicleno"+counter+" >";
                     newdiv.name = "driver" + counter;
                     newdiv.type = "text";
                     newdiv.placeholder = "Enter Driver Name";
                     document.getElementById("driver").appendChild(newdiv);
-
+    
                     var newdiv = document.createElement('input');
-                    //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Pick K.M.' name= pick"+counter+" >";
                     newdiv.name = "pick" + counter;
                     newdiv.type = "text";
                     newdiv.placeholder = "Enter Starting K.M.";
                     document.getElementById("pick").appendChild(newdiv);
-
+    
                     var newdiv = document.createElement('input');
-                    //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Drop K.M.' name= drop"+counter+" >";
                     newdiv.name = "drop" + counter;
                     newdiv.type = "text";
                     newdiv.placeholder = "Enter Drop Cost";
                     document.getElementById("drop").appendChild(newdiv);
-
+    
                     var newdiv = document.createElement('input');
-                    //newdiv.innerHTML = " <br><input type='text' placeholder='Enter Repair Cost' name= repair"+counter+" >";
                     newdiv.name = "repair" + counter;
                     newdiv.type = "text";
                     newdiv.placeholder = "Enter Repair Cost";
                     document.getElementById("repair").appendChild(newdiv);
                     counter++;
-
                 }
                 return counter;
-
             }
-
             function retriveCounterVal()
             {
                 document.getElementById("count").value = f();
             }
-
             function showDetail()
             {
                 window.location.href="http://localhost:8080/gas/vehicle_display.jsp";
@@ -205,20 +197,13 @@
                                                 <td id="pick"></td>
                                                 <td id="drop"></td>
                                                 <td id="repair"></td>
-
+                                            </tr> <br/>
                                         </table>
-                                        </tr> <br/>
+                                        
                                         <input type="hidden" name="counter" id="count">
                                         <input type="button" class="btn btn-success" onclick="retriveCounterVal();" value="Add Form">
-                                        <input type="button" class="btn btn-success" value="Enter Drop K.M." onclick="showDetail();"><br/>
-                                        <!--div class="form-group" id="form-group">
-                                            <div class="col-sm-2" id="col-sm-2">
-                                                
-                                            </div>
-                                        </div-->
-
-                                        
-                                        <a href ="Miscellaneous_exp.jsp"> Miscellaneous Expenses </a>
+                                        <input type="button" class="btn btn-success" value="Enter Drop K.M." onclick="showDetail();"><br/>                                       
+                                        <br/><a href ="Miscellaneous_exp.jsp"> Miscellaneous Expenses </a>
                                         <input type="submit" value="submit"/>
                                         <a href ="Advance_Salary.jsp"> Advance Salary </a>
 

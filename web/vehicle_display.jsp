@@ -56,11 +56,53 @@
                     });
                 </script>-->
         <script>
+
+            $(document).ready(function () {
+                var count = document.getElementById("count").value;
+                var morningkm = "", eveningkm = "";
+                var petrol = 0;
+              //  alert(count);
+                for (var i = 0; i < count; i++)
+                {
+                    if (document.getElementById("petrolPrice" + i).value > 0)
+                    {
+                        document.getElementById("petrolPrice" + i).readOnly = true;
+                    }
+                  /*  if (document.getElementById("drop" + i).value > 0)
+                    {
+                        document.getElementById("drop" + i).readOnly = true;
+                    }*/
+                    if (document.getElementById("repair" + i).value > 0)
+                    {
+                        document.getElementById("repair" + i).readOnly = true;
+                    }
+
+                }
+            });
+
+            function m()
+            {
+                var count = document.getElementById("count").value;
+                for (var i = 0; i < count; i++)
+                {
+
+                    morningkm = document.getElementById("pick" + i).value;
+                    eveningkm = document.getElementById("drop" + i).value;
+
+                    if (morningkm > eveningkm)
+                    {
+                        $('#errCompKm' +i).text('Please enter drop km greater than pickup km');
+                    }
+
+                }
+            }
+
+
             function f()
             {
-            window.location.href="http://localhost:8080/gas/miscellaneous_vehicle.jsp";
+                window.location.href = "http://localhost:8080/gas/miscellaneous_vehicle.jsp";
             }
-            </script>
+        </script>
     </head>
     <body>
 
@@ -132,33 +174,33 @@
 
                                     <div class="form-bottom" id="form-bottom">
                                         <%
-                                                Datab db = new Datab();
-                                                String sql = "";
-                                                
-                                                Calendar cal = Calendar.getInstance();
-                                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                                                String strDate = sdf.format(cal.getTime());
-                                                System.out.println("Current date in String Format: " + strDate);
-                                                SimpleDateFormat sdf1 = new SimpleDateFormat();
-                                                sdf1.applyPattern("dd/MM/yyyy");
-                                                Date date = sdf1.parse(strDate);
-                                                
-                                                ArrayList<String> petrolPrice = new ArrayList<String>();
-                                                ArrayList<String> vehicleno = new ArrayList<String>();
-                                                ArrayList<String> driverName = new ArrayList<String>();
-                                                ArrayList<String> pick_Up_Km = new ArrayList<String>();
-                                                ArrayList<String> drop_Km = new ArrayList<String>();
-                                                ArrayList<String> repairCharges = new ArrayList<String>();
-                                                sql = "select * from vehicle where date ='"+date+"'";
-                                                db.rs = db.st.executeQuery(sql);
-                                                while (db.rs.next()) {
-                                                    petrolPrice.add(db.rs.getString("petrol"));
-                                                    vehicleno.add(db.rs.getString("vehicleno"));
-                                                    driverName.add(db.rs.getString("driver"));
-                                                    pick_Up_Km.add(db.rs.getString("pick"));
-                                                    drop_Km.add(db.rs.getString("dropkm"));
-                                                    repairCharges.add(db.rs.getString("repairing"));
-                                                }                                        
+                                            Datab db = new Datab();
+                                            String sql = "";
+                                            // Date
+                                            Calendar cal = Calendar.getInstance();
+                                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                            String strDate = sdf.format(cal.getTime());
+                                            System.out.println("Current date in String Format: " + strDate);
+                                            SimpleDateFormat sdf1 = new SimpleDateFormat();
+                                            sdf1.applyPattern("dd/MM/yyyy");
+                                            Date date = sdf1.parse(strDate);
+                                            // Date end
+                                            ArrayList<String> petrolPrice = new ArrayList<String>();
+                                            ArrayList<String> vehicleno = new ArrayList<String>();
+                                            ArrayList<String> driverName = new ArrayList<String>();
+                                            ArrayList<String> pick_Up_Km = new ArrayList<String>();
+                                            ArrayList<String> drop_Km = new ArrayList<String>();
+                                            ArrayList<String> repairCharges = new ArrayList<String>();
+                                            sql = "select * from vehicle where date ='" + date + "'";
+                                            db.rs = db.st.executeQuery(sql);
+                                            while (db.rs.next()) {
+                                                petrolPrice.add(db.rs.getString("petrol"));
+                                                vehicleno.add(db.rs.getString("vehicleno"));
+                                                driverName.add(db.rs.getString("driver"));
+                                                pick_Up_Km.add(db.rs.getString("pick"));
+                                                drop_Km.add(db.rs.getString("dropkm"));
+                                                repairCharges.add(db.rs.getString("repairing"));
+                                            }
                                         %>
                                         <table border="1px">
                                             <tr>
@@ -170,23 +212,24 @@
                                                 <th>Repair</th>
                                             </tr>
                                             <%
-
-                                                for(int i=0;i<vehicleno.size();i++)
-                                                {
+                                                for (int i = 0; i < vehicleno.size(); i++) {
 
                                             %>
                                             <tr>
-                                                <td> <input type="text" name="petrolPrice<%=i%>"  id="petrolPrice<%=i%>" value="<%= petrolPrice.get(i) %>"> </td>
-                                                <td> <input type="text" name="vehicleno<%=i%>" onkeydown="return false" id=" vehicleno<%=i%>" value="<%= vehicleno.get(i) %>"> </td>
-                                                <td> <input type="text" name="<% driverName.get(i); %>" onkeydown="return false" id="<% driverName.get(i); %>" value="<%= driverName.get(i) %>"> </td>
-                                                <td> <input type="text" name="<% pick_Up_Km.get(i); %>" onkeydown="return false" id="<% pick_Up_Km.get(i); %>" value="<%= pick_Up_Km.get(i) %>"> </td>
-                                                <td> <input type="text" name="drop<%=i%>"  id="drop<%=i%>" value="<%= drop_Km.get(i) %>"> </td>
-                                                <td> <input type="text" name="repair<%=i %>"  id="repair<%= i %>" value="<%= repairCharges.get(i) %>"> </td>
-                                             </tr> <br/>   
-                                             <% } %>   
+                                                <td> <input type="text" name="petrolPrice<%=i%>"  id="petrolPrice<%=i%>" value="<%= petrolPrice.get(i)%>"> </td>
+                                                <td> <input type="text" name="vehicleno<%=i%>" onkeydown="return false" id=" vehicleno<%=i%>" value="<%= vehicleno.get(i)%>"> </td>
+                                                <td> <input type="text" name="driver<%=i%>" onkeydown="return false" id="driver<%=i%>" value="<%= driverName.get(i)%>"> </td>
+                                                <td> <input type="text" name="pick<%=i%>" onkeydown="return false" id="pick<%=i%>" value="<%= pick_Up_Km.get(i)%>"> </td>
+                                                <td> <input type="text" name="drop<%=i%>"  id="drop<%=i%>" value="<%= drop_Km.get(i)%>" onblur="m()"/> 
+                                                <span  style="color:red;font-weight:bold" name="errorSpan" id="errCompKm<%=i%>"></span>  </td>                                              
+                                            <td> <input type="text" name="repair<%=i%>"  id="repair<%= i%>" value="<%= repairCharges.get(i)%>"> </td>
+                                            </tr> <br/> 
+                                            
+                                            <% }%>   
                                         </table><br/>
                                         <input type="hidden" name="count" id="count" value="<%=vehicleno.size()%>"/>
                                         <input type="hidden" name="counter" id="count">
+                                        
                                         <input type="button" class="btn btn-success" onclick="f();" value="Add Form"><br/>                                      
                                         <a href ="Miscellaneous_exp.jsp"> Miscellaneous Expenses </a>
                                         <input type="submit" value="submit"/>
