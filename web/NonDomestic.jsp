@@ -51,29 +51,39 @@
             chequeRow = "<tr> <th id='head1'></th><th id='head2'></th> <th id='head3'></th> </tr>";
             tdRow = "<tr><td id='td1' align='center'></td> <td id='td2' align='center'></td> </tr>"; // table data
             chequetd = "<tr><td id='tdcheque1' align='center'></td> <td id='tdcheque2' align='center'></td> <td id='tdcheque3' align='center'></td></tr>"; // table data
+
+           
+
             $(document).ready(function () {
-            $("#pickdrop").click(function () {
-        var somehead = "<tr> <th id='header1' ></th><th id='header2'></th><th colspan='2' id='header3'></th><th id='header4'></th> </tr>"; // table header 
-        var subhead ="<tr> <th></th><th></th><th id='cas'></th><th id='che'></th><th></th> </tr>"           
-        var cashhead = "<tr> <th id='fill'></th><th id='emp'></th><th id='amt'></th><th id='tot'></th> </tr>";
-        // var chequehead = "<tr> <th id='head1'></th><th id='head2'></th> <th id='head3'></th><th id='head4'></th> </tr>";
-        var sometddata = "<tr><td id='td1' align='center'></td> <td id='td2' align='center'></td> <td id='td3' align='center'></td> <td id='td4' align='center'></td> <td id='td5' align='center'></td> </tr>"; // table data
-        var newtddata =  "<tr><td id='tdd1' align='center'></td> <td id='tdd2' align='center'></td> <td id='tdd3' align='center'></td> <td id='tdd4' align='center'></td> </tr>";         
-        // var chequetddata = "<tr><td id='tdcheque1' align='center'></td> <td id='tdcheque2' align='center'></td> <td id='tdcheque3' align='center'></td><td id='tdcheque4' align='center'></td></tr>"; // table data
+                $("#pickdrop").click(function () {
+                    var somehead = "<tr> <th id='header1' ></th><th id='header2'></th><th colspan='2' id='header3'></th><th id='header4'></th> </tr>"; // table header 
+                    var subhead = "<tr> <th></th><th></th><th id='cas'></th><th id='che'></th><th></th> </tr>"
+                    var cashhead = "<tr> <th id='fill'></th><th id='emp'></th><th id='amt'></th><th id='tot'></th> </tr>";
+                    // var chequehead = "<tr> <th id='head1'></th><th id='head2'></th> <th id='head3'></th><th id='head4'></th> </tr>";
+                    var sometddata = "<tr><td id='td1' align='center'></td> <td id='td2' align='center'></td> <td id='td3' align='center'></td> <td id='td4' align='center'></td> <td id='td5' align='center'></td> </tr>"; // table data
+                    var newtddata = "<tr><td id='tdd1' align='center'></td> <td id='tdd2' align='center'></td> <td id='tdd3' align='center'></td> <td id='tdd4' align='center'></td> </tr>";
+                    // var chequetddata = "<tr><td id='tdcheque1' align='center'></td> <td id='tdcheque2' align='center'></td> <td id='tdcheque3' align='center'></td><td id='tdcheque4' align='center'></td></tr>"; // table data
                     var newdiv = document.createElement('table'); //create table
                     newdiv.id = "dynatable";
                     newdiv.setAttribute('border', '1');
 
                     var cashonly = document.createElement('label'); // label for cash button
                     var cheque = document.createElement('label'); // label for cheque button
-                    
+
                     var newradiocash = document.createElement('input'); // one way deposite radio
                     newradiocash.name = "typeofpayment";
                     newradiocash.type = "radio";
                     newradiocash.value = "cash";
                     newradiocash.id = "cashonly";
                     newradiocash.onclick = function ()
-                    {   $("#header1").hide();
+                    {
+                        $("#head1").hide();
+                        $("#head2").hide();
+                        $("#head3").hide();
+                        $("#tscheque1").hide();
+                        $("#tdcheque2").hide();
+                        $("#tdcheque3").hide();
+                        $("#header1").hide();
                         $("#header2").hide();
                         $("#header3").hide();
                         $("#header4").hide();
@@ -84,6 +94,10 @@
                         $("#td3").hide();
                         $("#td4").hide();
                         $("#td5").hide();
+                        $("#tdd1").hide();
+                        $("#tdd2").hide();
+                        $("#tdd3").hide();
+                        $("#tdd4").hide();
                         $("#dynatable").append(cashhead);
                         $("#dynatable").append(newtddata);
                         $("#fill").text("Filled Cylinder");
@@ -96,13 +110,13 @@
                         document.getElementById("tdd3").appendChild(newinput5);
                         document.getElementById("tdd4").appendChild(newinput4);
                     };
-                    
+
                     var newradiocheque = document.createElement('input'); //cheque payment radio
                     newradiocheque.name = "typeofpayment";
                     newradiocheque.type = "radio";
                     newradiocheque.value = "cheque";
                     newradiocheque.id = "cheque";
-                    newradiocheque.onclick = function () 
+                    newradiocheque.onclick = function ()
                     {
                         $("#fill").hide();
                         $("#emp").hide();
@@ -126,32 +140,32 @@
                         document.getElementById("td3").appendChild(newinput5);
                         document.getElementById("td4").appendChild(newinput3);
                         document.getElementById("td5").appendChild(newinput4);
-                    };  
-                    
+                    };
+
                     var newinput1 = document.createElement('input'); // empty cylinder
                     newinput1.name = "form-filledcv";
                     newinput1.id = "form-filledcv";
                     newinput1.type = "text";
                     newinput1.placeholder = "Enter Number Of Filled Cylinder";
-                    
+
                     var newinput2 = document.createElement('input'); // empty cylinder
                     newinput2.name = "form-emptycv";
                     newinput2.id = "form-emptycv";
                     newinput2.type = "text";
                     newinput2.placeholder = "Enter Number Of Empty Cylinder";
-                    
+
                     var newinput3 = document.createElement('input'); // cheque transaction
                     newinput3.name = "form-chequeno";
                     newinput3.id = "form-chequeno";
                     newinput3.type = "text";
                     newinput3.placeholder = "Enter Cheque Number";
-                    
+
                     var newinput4 = document.createElement('input'); // empty cylinder
                     newinput4.name = "form-amt";
                     newinput4.id = "form-amt";
                     newinput4.type = "text";
                     newinput4.placeholder = "Total";
-                    
+
                     var newinput5 = document.createElement('input'); // amount text box
                     newinput5.name = "counteramount";
                     newinput5.type = "text";
@@ -162,7 +176,7 @@
                     newinput6.name = "typeoftransaction";
                     newinput6.type = "radio";
                     newinput6.value = "two way";
-                    
+
                     document.getElementById("table").appendChild(newdiv); // appending data to table
                     $("#dynatable").append(newradiocash);
                     $("#dynatable").append(cashonly);
@@ -171,12 +185,7 @@
                     cashonly.innerHTML = "Cash Payment";
                     cheque.innerHTML = " Cheque Payment ";
                 });
-                
-                
-                
-                
-                
-                
+
                 $("#cash").click(function () {
                     $("#form-filledcv").val("0");
                     $("#form-amt").val("0");
@@ -290,7 +299,7 @@
                     var newdiv = document.createElement('table'); //create table
                     newdiv.id = "dynatable";
                     newdiv.setAttribute('border', '1');
-
+                    var rate = document.getElementById("rate"); // get rate from db
                     var cashonly = document.createElement('label'); // label for cash button
                     var cheque = document.createElement('label'); // label for cheque button
 
@@ -371,9 +380,8 @@
                     cheque.innerHTML = " Cheque Payment ";
 
                 });
-                
 
-                
+
             });
 
 
@@ -476,7 +484,7 @@
                                             <input type="date" name="datepickers" onkeydown="return false" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker">
                                         </div>
 
-                                        <input type="hidden" value="<%= rate%>" id="rate" name="rates" />
+                                        <input type="hidden" value="<%= rate%>" id="rate" name="rate" />
                                         <input type="radio" name="onlycv" id="cash" > Cash Deposite Only <br/>
                                         <input type="radio" name="onlycv" id="cvdepo"  > Empty Cylinder only <br/>
                                         <input type="radio" name="onlycv" id="pickdrop"  > Pick and Drop <br/>

@@ -45,6 +45,7 @@
         <script >
             $(document).ready(function () {
                 $("#form-chequeno").hide();
+                
                 $("#cheque").click(function () {
                     if (document.getElementById("cheque").checked = true)
                     {
@@ -54,7 +55,7 @@
                 });
 
                 $("#cash").click(function () {
-                    $("#form-chequeno").val(0);
+                    $("#form-chequeno").val("0");
                     $("#form-chequeno").hide();
                 });
 
@@ -202,28 +203,28 @@
                                                 <td><label for="form-counterrefill">Counter Refill </label></td>
                                                 <td><input type="text" name="form-emptycv1" placeholder="Empty CV" class="form-emptycv1 form-control" id="form-emptycv1" ></td>
                                                 <td><input type="text" name="form-filledcv1" placeholder="Filled CV" class="form-filledcv1 form-control" id="form-filledcv1"></td>
-                                                <td><input type="text" name="form-counteramount" placeholder="Amount Paid" class="form-counteramount form-control" id="form-counteramount"></td>
+                                                <td><input type="text" name="form-counteramount1" placeholder="Amount Paid" class="form-counteramount form-control" id="form-counteramount"></td>
                                                 <td><input type="text" name="form-amt1" placeholder="Amount" class="form-amt1 form-control" id="form-amt1" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-homedelivery">Home Delivery </label></td>
                                                 <td><input type="text" name="form-emptycv2" placeholder="Empty CV" class="form-emptycv2 form-control" id="form-emptycv2" ></td>
                                                 <td><input type="text" name="form-filledcv2" placeholder="Filled Cv" class="form-filledcv2 form-control" id="form-filledcv2" ></td> 
-                                                <td><input type="text" name="form-hdamt" placeholder="Amount Paid" class="form-hdamt form-control" id="form-hdamt" ></td>
+                                                <td><input type="text" name="form-counteramount2" placeholder="Amount Paid" class="form-hdamt form-control" id="form-hdamt" ></td>
                                                 <td><input type="text" name="form-amt2" placeholder="Amount" class="form-amt2 form-control" id="form-amt2" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-godown">Godown </label></td>
                                                 <td><input type="text" name="form-emptycv3" placeholder="Empty CV" class="form-emptycv3 form-control" id="form-emptycv3" ></td>
                                                 <td><input type="text" name="form-filledcv3" placeholder="Filled CV" class="form-filledcv3 form-control" id="form-filledcv3" ></td>
-                                                <td><input type="text" name="form-gdamt" placeholder="Amount Paid" class="form-gdamt form-control" id="form-gdamt" ></td>
+                                                <td><input type="text" name="form-counteramount3" placeholder="Amount Paid" class="form-gdamt form-control" id="form-gdamt" ></td>
                                                 <td><input type="text" name="form-amt3" placeholder="Amount" class="form-amt3 form-control" id="form-amt3" ></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="form-village">Village Refill </label></td>
                                                 <td><input type="text" name="form-emptycv4" placeholder="Empty CV" class="form-emptycv4 form-control" id="form-emptycv4" ></td>
                                                 <td><input type="text" name="form-filledcv4" placeholder="Filled CV" class="form-filledcv4 form-control" id="form-filledcv4" ></td>
-                                                <td><input type="text" name="form-villageamt" placeholder="Amount Paid" class="form-villageamt form-control" id="form-villageamt" ></td>
+                                                <td><input type="text" name="form-counteramount4" placeholder="Amount Paid" class="form-villageamt form-control" id="form-villageamt" ></td>
                                                 <td><input type="text" name="form-amt4" placeholder="Amount" class="form-amt4 form-control" id="form-amt4" ></td>
                                             </tr>
                                         </table>

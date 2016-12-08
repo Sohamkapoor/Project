@@ -25,10 +25,12 @@
             String emptycc= request.getParameter("form-emptycv");
             String amtpaid=request.getParameter("form-counteramount");
             String amount=request.getParameter("form-amt");
-            String advdate= request.getParameter("datepicker");
+            String advdate= request.getParameter("datepickers");
             String transaction= request.getParameter("typeoftransaction");
             String chequeno = request.getParameter("form-chequeno");
-            String security = request.getParameter("form-security");
+            String security = request.getParameter("security");
+            System.out.println("security ="+security);
+            
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             String sql="";
             Date today = new Date();
@@ -53,7 +55,8 @@
             }   
             finalamt += diffamt;
             finalcv += diffcv;
-             sql="insert into nondomestic (name,filled,empty,amount,amountpaid,chequeno,osamt,cvdue,transaction,daytoday,phno,advdate)values('"+name+"','"+filledcc+"','"+emptycc+"','"+amount+"','"+amtpaid+"','"+chequeno+"','"+diffamt+"','"+diffcv+"','"+transaction+"','"+tod+"','"+phno+"','"+advdate+"')";
+             sql="insert into nondomestic (name,filled,empty,amount,amountpaid,chequeno,osamt,cvdue,transaction,daytoday,phno,advdate,security)values('"+name+"','"+filledcc+"','"+emptycc+"','"+amount+"','"+amtpaid+"','"+chequeno+"','"+diffamt+"','"+diffcv+"','"+transaction+"','"+tod+"','"+phno+"','"+advdate+"','"+security+"')";
+             System.out.println(sql);
              db.conn.createStatement();
              db.st.executeUpdate(sql);
              System.out.println("row inserted");
