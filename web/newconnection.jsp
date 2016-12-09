@@ -203,6 +203,8 @@
                                             <label class="sr-only" for="form-email">Email</label>
                                             <input type="email" name="form-email" placeholder="Email ID" class="form-email form-control" id="form-email">
                                         </div>
+                                        
+                                        <input type="hidden" name="unique" id="unique" value="1">
                                         <button type="button" class="btn btn-next">Next</button>
                                     </div>
                                 </fieldset>
@@ -303,7 +305,7 @@
                                                     <label class="sr-only" for="form-self"> Self-Declaration </label>												
                                                     <input type="checkbox" name="form-document"  value="self declaration" id="form-self">  Self-Declaration
                                                 </div>
-                                                <span  style="color:red;font-weight:bold" id="errCheckBox"></span>
+                                                
                                             </div><!-- col -->
                                         </div><!-- row -->
 
@@ -352,9 +354,12 @@
                                                 <label for="form-stove">Do you want to purchase Stove(Chula)? </label><br/>
                                                 <input type="radio" name="form-stove" id="form-stove" value="yes">Yes
                                                 <input type="radio" name="form-stove" id="form-stove" value="no">No
+                                                
+                                                <span  style="color:red;font-weight:bold" id="errCheckBox"></span>
                                             </div>
+                                            
                                             <button type="button" class="btn btn-previous">Previous</button>
-                                            <button type="button" class="btn btn-next">Next</button>
+                                            <button type="button" class="btn btn-next" id="btn3">Next</button>
 
 
 

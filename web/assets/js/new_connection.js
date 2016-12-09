@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function () {
 
     $("#datepicker").datepicker({dateFormat: 'dd/mm/yy',
@@ -30,6 +29,9 @@ jQuery(document).ready(function () {
     });
 
 
+
+
+
     $("#form-first-name").keypress(function () {
         $('#errFirstName').text('');
     });
@@ -57,6 +59,8 @@ jQuery(document).ready(function () {
 
 
 
+
+
     // next step
     $('.registration-form .btn-next').on('click', function () {
         var formFirstName = document.getElementById("form-first-name").value;
@@ -68,9 +72,10 @@ jQuery(document).ready(function () {
         var formAddress = document.getElementById('form-address').value;
         var formPinCode = document.getElementById('form-pincode').value.trim();
 
+        var pinCodeValidate = false;
         var next_step = false;
         var spaceCheck = "";
-
+        var okay = false;
         var parent_fieldset = $(this).parents('fieldset');
 
         //blank
@@ -79,7 +84,9 @@ jQuery(document).ready(function () {
 
         var blankValidate = false;
         var mobileValidate = false;
-        var pinCodeValidate = false;
+
+        var unique = document.getElementById("unique").value;
+
 
         switch (spaceCheck) {
             case formFirstName:
@@ -108,8 +115,9 @@ jQuery(document).ready(function () {
                 break;
             default:
                 blankValidate = true;
-        
+
         }
+
 
         //Indian Mobile Number Validation
         if (IndNum.test(formNumber)) {
@@ -128,8 +136,32 @@ jQuery(document).ready(function () {
 
         }
 
-        //Proceed to next form
-        if (pinCodeValidate && mobileValidate && blankValidate)
+        if (unique === "111")
+        {
+            var checkboxs = document.getElementsByName("form-document");
+
+            for (var checkBoxCount = 0, l = checkboxs.length; checkBoxCount < l; checkBoxCount++)
+            {
+                if (checkboxs[checkBoxCount].checked)
+                {
+                    okay = true;
+                    break;
+                }
+
+
+            }
+            if (okay !== true)
+            {
+                next_step = false;
+                $('#errCheckBox').text("Please check atleast 1 check box");
+
+            } else
+            {
+                next_step = true;
+            }
+
+
+        } else if (pinCodeValidate && mobileValidate && blankValidate)
         {
             next_step = true;
             $('#errFirstName').text('');
@@ -148,8 +180,12 @@ jQuery(document).ready(function () {
 
         }
 
+
+        //Proceed to next form
+
+
         parent_fieldset.find('input[type="password"]').each(function () {
-            if ($(this).val() == "") {
+            if ($(this).val() === "") {
                 $(this).addClass('error');
                 next_step = false;
             } else {
@@ -161,13 +197,25 @@ jQuery(document).ready(function () {
             parent_fieldset.fadeOut(400, function () {
                 $(this).next().fadeIn();
             });
+            document.getElementById("unique").value = unique + 1;
         }
+
 
     });
 
     // previous step
     $('.registration-form .btn-previous').on('click', function () {
-
+        var unique = document.getElementById("unique").value;
+        if (unique === "111")
+        {
+            document.getElementById("unique").value = "11";
+        } else if (unique === "11")
+        {
+            document.getElementById("unique").value = "1";
+        } else
+        {
+            document.getElementById("unique").value = "111";
+        }
         $(this).parents('fieldset').fadeOut(400, function () {
             $(this).prev().fadeIn();
         });
