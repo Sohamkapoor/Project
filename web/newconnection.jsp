@@ -145,7 +145,7 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-first-name">First name </label>
                                             <input type="text" name="form-first-name" placeholder="First name" class="form-first-name form-control" id="form-first-name" >
-                                            <span  style="color:red;font-weight:bold" id="errFirstName"></span>
+                                            <span  style="color:red;" id="errFirstName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="middle-name">Middle name</label>
@@ -154,23 +154,23 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-last-name">Last name</label>
                                             <input type="text" name="form-last-name" placeholder="Last name" class="form-last-name form-control" id="form-last-name">
-                                            <span  style="color:red;font-weight:bold" id="errLastName"></span>
+                                            <span  style="color:red;" id="errLastName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-dob">Date Of Birth</label>
                                             <input type="date" name="datepicker" placeholder="Enter Date of Birth dd/mm/yyyy" onkeydown="return false" class="form-dob form-control" id="datepicker" >
-                                            <span  style="color:red;font-weight:bold" id="errDOB"></span>
+                                            <span  style="color:red;" id="errDOB"></span>
 
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-father-name">Father's Name</label>
                                             <input type="text" name="form-father-name" placeholder="Father's Name" class="form-father-name form-control" id="form-father-name">
-                                            <span  style="color:red;font-weight:bold" id="errFatherName"></span>
+                                            <span  style="color:red;" id="errFatherName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-mother-name">Mother's Name</label>
                                             <input type="text" name="form-mother-name" placeholder="Mother's Name" class="form-mother-name form-control" id="form-mother-name">
-                                            <span  style="color:red;font-weight:bold" id="errMotherName"></span>
+                                            <span  style="color:red;" id="errMotherName"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-spouse">Spouse's Name</label>
@@ -181,12 +181,12 @@
                                             <label class="sr-only" for="form-address">Address</label>
                                             <textarea name="form-address" placeholder="Address..." 
                                                       class="form-address form-control" id="form-address"></textarea>
-                                            <span  style="color:red;font-weight:bold" id="errAddress"></span>
+                                            <span  style="color:red;" id="errAddress"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-pincode">Pin Code</label>
-                                            <input type="number" name="form-pincode"  placeholder="Pin Code" class="form-pincode form-control" id="form-pincode">
-                                            <span  style="color:red;font-weight:bold" id="errPinCode"></span>
+                                            <input type="text" name="form-pincode"  placeholder="Pin Code" class="form-pincode form-control" id="form-pincode">
+                                            <span  style="color:red;" id="errPinCode"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-telephone">Telephone</label>
@@ -196,15 +196,15 @@
                                         <div class="form-group">
                                             <label class="sr-only" for="form-mob">Mobile Number</label>
                                             <input type="text" name="form-mob" placeholder="Mobile Number" class="form-mob form-control" id="form-mob">
-                                            <span id="errMessage" style="color:red;font-weight:bold"></span><br>
-                                            <span id="errInvalidMobileMessage" style="color:red;font-weight:bold"></span>
+                                            <span id="errMessage" style="color:red;"></span><br>
+                                            <span id="errInvalidMobileMessage" style="color:red;"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-email">Email</label>
                                             <input type="email" name="form-email" placeholder="Email ID" class="form-email form-control" id="form-email">
                                         </div>
-                                        
-                                        <input type="hidden" name="unique" id="unique" value="1">
+
+                                        <input type="hidden" name="unique" id="uniquePage" value="1">
                                         <button type="button" class="btn btn-next">Next</button>
                                     </div>
                                 </fieldset>
@@ -305,8 +305,9 @@
                                                     <label class="sr-only" for="form-self"> Self-Declaration </label>												
                                                     <input type="checkbox" name="form-document"  value="self declaration" id="form-self">  Self-Declaration
                                                 </div>
-                                                
+
                                             </div><!-- col -->
+                                            <span  style="color:red;" id="errCheckBox"></span>
                                         </div><!-- row -->
 
                                         <hr>
@@ -331,6 +332,7 @@
                                                         <input type="text" name="form-dlno" placeholder="Driving Licence ..." class="form-dlno form-control" id="form-dlno">
                                                     </div>
                                                 </div>
+                                                <span  style="color:red;" id="errIDs"></span>
                                             </div><!-- col -->
                                             <div class="col-sm-6">
                                                 <div class="form-bottom">
@@ -348,16 +350,17 @@
                                                     </div>
                                                 </div>
                                             </div><!-- col -->
+
                                         </div><!-- row -->
                                         <div class="form-bottom">
                                             <div class="form-group">
                                                 <label for="form-stove">Do you want to purchase Stove(Chula)? </label><br/>
-                                                <input type="radio" name="form-stove" id="form-stove" value="yes">Yes
-                                                <input type="radio" name="form-stove" id="form-stove" value="no">No
-                                                
-                                                <span  style="color:red;font-weight:bold" id="errCheckBox"></span>
+                                                <input type="radio" name="form-stove" id="form-stoveyes" value="yes">Yes
+                                                <input type="radio" name="form-stove" id="form-stoveno" value="no">No
+
+
                                             </div>
-                                            
+
                                             <button type="button" class="btn btn-previous">Previous</button>
                                             <button type="button" class="btn btn-next" id="btn3">Next</button>
 

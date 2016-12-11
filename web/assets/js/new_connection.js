@@ -1,4 +1,18 @@
+function F5Btn(e)
+{
+    if ((e.which || e.keyCode) === 116 || (e.which || e.keyCode) === 82)
+    {
+        //e.preventDefault();
+        document.getElementById("uniquePage").value = "1";
+
+    }
+}
+;
+
 jQuery(document).ready(function () {
+    document.getElementById("form-stoveyes").checked=true;
+    $(document).bind("keydown", F5Btn);
+
 
     $("#datepicker").datepicker({dateFormat: 'dd/mm/yy',
         changeMonth: true,
@@ -40,6 +54,8 @@ jQuery(document).ready(function () {
     });
     $("#form-mob").keypress(function () {
         $('#errMessage').text('');
+        $('#errInvalidMobileMessage').text('');
+
     });
     $("#datepicker").click(function () {
         $('#errDOB').text('');
@@ -85,8 +101,18 @@ jQuery(document).ready(function () {
         var blankValidate = false;
         var mobileValidate = false;
 
-        var unique = document.getElementById("unique").value;
+        var unique = document.getElementById("uniquePage").value;
+        var checkboxs = document.getElementsByName("form-document");
+        
 
+        var form_adharno = document.getElementById("form-adharno").value;
+        var form_panno = document.getElementById("form-panno").value;
+        var form_passportno = document.getElementById("form-passportno").value;
+        var form_dlno = document.getElementById("form-dlno").value;
+        var form_rationno = document.getElementById("form-rationno").value;
+        var form_voterno = document.getElementById("form-voterno").value;
+        var form_stateid = document.getElementById("form-stateid").value;
+        
 
         switch (spaceCheck) {
             case formFirstName:
@@ -123,7 +149,7 @@ jQuery(document).ready(function () {
         if (IndNum.test(formNumber)) {
             mobileValidate = true;
         } else {
-            $('#errInvalidMobileMessage').text('please enter valid mobile number');
+            $('#errInvalidMobileMessage').text('Please enter valid mobile number');
             document.getElementById('form-mob').focus();
 
         }
@@ -136,9 +162,10 @@ jQuery(document).ready(function () {
 
         }
 
+
+
         if (unique === "111")
         {
-            var checkboxs = document.getElementsByName("form-document");
 
             for (var checkBoxCount = 0, l = checkboxs.length; checkBoxCount < l; checkBoxCount++)
             {
@@ -150,14 +177,25 @@ jQuery(document).ready(function () {
 
 
             }
+
+
+
             if (okay !== true)
             {
                 next_step = false;
-                $('#errCheckBox').text("Please check atleast 1 check box");
+                $('#errCheckBox').text("Please ask for atleast 1 valid ID of Customer");
+
+            } else if (form_adharno === '' && form_panno === '' && form_passportno === '' && form_dlno === '' && form_rationno === '' && form_voterno === '' && form_stateid === '')
+            {
+                next_step = false;
+                $('#errIDs').text("Please enter atleast 1 valid ID Proof details");
 
             } else
             {
+
                 next_step = true;
+                $('#errCheckBox').text('');
+                $('#errID').text('');
             }
 
 
@@ -197,7 +235,7 @@ jQuery(document).ready(function () {
             parent_fieldset.fadeOut(400, function () {
                 $(this).next().fadeIn();
             });
-            document.getElementById("unique").value = unique + 1;
+            document.getElementById("uniquePage").value = unique + 1;
         }
 
 
@@ -205,17 +243,21 @@ jQuery(document).ready(function () {
 
     // previous step
     $('.registration-form .btn-previous').on('click', function () {
-        var unique = document.getElementById("unique").value;
+        var unique = document.getElementById("uniquePage").value;
+        $('#errCheckBox').text('');
+        $('#errID').text('');
         if (unique === "111")
         {
-            document.getElementById("unique").value = "11";
+            document.getElementById("uniquePage").value = "11";
+
         } else if (unique === "11")
         {
-            document.getElementById("unique").value = "1";
+            document.getElementById("uniquePage").value = "1";
         } else
         {
-            document.getElementById("unique").value = "111";
+            document.getElementById("uniquePage").value = "111";
         }
+
         $(this).parents('fieldset').fadeOut(400, function () {
             $(this).prev().fadeIn();
         });
@@ -225,7 +267,7 @@ jQuery(document).ready(function () {
     $('.registration-form').on('submit', function (e) {
 
         $(this).find('input[type="password"]').each(function () {
-            if ($(this).val() == "") {
+            if ($(this).val() === "") {
                 e.preventDefault();
                 $(this).addClass('error');
             } else {
