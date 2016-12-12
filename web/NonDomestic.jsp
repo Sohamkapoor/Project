@@ -47,344 +47,172 @@
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
         <script>
-            someRow = "<tr> <th id='header1' ></th><th id='header2'></th> </tr>"; // table header 
-            chequeRow = "<tr> <th id='head1'></th><th id='head2'></th> <th id='head3'></th> </tr>";
-            tdRow = "<tr><td id='td1' align='center'></td> <td id='td2' align='center'></td> </tr>"; // table data
-            chequetd = "<tr><td id='tdcheque1' align='center'></td> <td id='tdcheque2' align='center'></td> <td id='tdcheque3' align='center'></td></tr>"; // table data
 
-           
+                $(document).ready(function () {
+                    $("#datepicker").datepicker({dateFormat: 'dd/mm/yy', minDate: 0});
+                    $('#cash').click(function () {
+                        $('#cashSelect').show();
+                        $('#cylinderDeposite').hide();
+                        $('#pickdropCashTrasaction').hide();
+                        $('#pickdropChequeTrasaction').hide();
+                        $('#cvChequeDeposite').hide();
+                        $('#cvCashDeposite').hide();                       
+                        $('#cashonly').attr('checked', false);
+                        $('#cheque').attr('checked', false);
 
-            $(document).ready(function () {
-                $("#pickdrop").click(function () {
-                    var somehead = "<tr> <th id='header1' ></th><th id='header2'></th><th colspan='2' id='header3'></th><th id='header4'></th> </tr>"; // table header 
-                    var subhead = "<tr> <th></th><th></th><th id='cas'></th><th id='che'></th><th></th> </tr>"
-                    var cashhead = "<tr> <th id='fill'></th><th id='emp'></th><th id='amt'></th><th id='tot'></th> </tr>";
-                    // var chequehead = "<tr> <th id='head1'></th><th id='head2'></th> <th id='head3'></th><th id='head4'></th> </tr>";
-                    var sometddata = "<tr><td id='td1' align='center'></td> <td id='td2' align='center'></td> <td id='td3' align='center'></td> <td id='td4' align='center'></td> <td id='td5' align='center'></td> </tr>"; // table data
-                    var newtddata = "<tr><td id='tdd1' align='center'></td> <td id='tdd2' align='center'></td> <td id='tdd3' align='center'></td> <td id='tdd4' align='center'></td> </tr>";
-                    // var chequetddata = "<tr><td id='tdcheque1' align='center'></td> <td id='tdcheque2' align='center'></td> <td id='tdcheque3' align='center'></td><td id='tdcheque4' align='center'></td></tr>"; // table data
-                    var newdiv = document.createElement('table'); //create table
-                    newdiv.id = "dynatable";
-                    newdiv.setAttribute('border', '1');
+                        $('#cashonly').click(function () {
+                            $('#cashSelect').show();
+                            $('#cylinderDeposite').hide();
+                            $('#pickdropCashTrasaction').hide();
+                            $('#pickdropChequeTrasaction').hide();
+                            $('#cvChequeDeposite').hide();
+                            $('#cvCashDeposite').hide();
+                            $('#chequeDeposite').hide();
+                            $("#cashon").attr('checked', true);
+                            $("#form-filledcv").val("0");
+                            $("#form-emptycv").val("0");
+                            $('#form-amt').val("0");
+                            $('#form-counteramount').val("");
+                            $("#form-chequeno").val("0");
+                            $('#cashDeposite').show();                           
+                        });
+                        $('#cheque').click(function () {
+                            $('#cashSelect').show();
+                            $('#cylinderDeposite').hide();
+                            $('#pickdropCashTrasaction').hide();
+                            $('#pickdropChequeTrasaction').hide();
+                            $('#cvChequeDeposite').hide();
+                            $('#cvCashDeposite').hide();
+                            $('#cashDeposite').hide();
+                            $('#form-counterammount1').val("");
+                            $('#cashon1').attr('checked', true);
+                            $("#form-filledcv").val("0");
+                            $("#form-emptycv").val("0");
+                            $('#form-amt').val("0");
+                            $('#form-chequeno').val("");
+                            $('#chequeDeposite').show();                           
+                        });
+                    });
 
-                    var cashonly = document.createElement('label'); // label for cash button
-                    var cheque = document.createElement('label'); // label for cheque button
-
-                    var newradiocash = document.createElement('input'); // one way deposite radio
-                    newradiocash.name = "typeofpayment";
-                    newradiocash.type = "radio";
-                    newradiocash.value = "cash";
-                    newradiocash.id = "cashonly";
-                    newradiocash.onclick = function ()
-                    {
-                        $("#head1").hide();
-                        $("#head2").hide();
-                        $("#head3").hide();
-                        $("#tscheque1").hide();
-                        $("#tdcheque2").hide();
-                        $("#tdcheque3").hide();
-                        $("#header1").hide();
-                        $("#header2").hide();
-                        $("#header3").hide();
-                        $("#header4").hide();
-                        $("#cas").hide();
-                        $("#che").hide();
-                        $("#td1").hide();
-                        $("#td2").hide();
-                        $("#td3").hide();
-                        $("#td4").hide();
-                        $("#td5").hide();
-                        $("#tdd1").hide();
-                        $("#tdd2").hide();
-                        $("#tdd3").hide();
-                        $("#tdd4").hide();
-                        $("#dynatable").append(cashhead);
-                        $("#dynatable").append(newtddata);
-                        $("#fill").text("Filled Cylinder");
-                        $("#emp").text("Empty Cylinder");
-                        $("#amt").text("Amount To Pay");
-                        $("#tot").text("Amount");
+                    $('#cvdepo').click(function () {
+                        $('#cashSelect').hide();
+                        $('#chequeDeposite').hide();
+                        $('#cashDeposite').hide();
+                        $('#cashSelect').hide();
+                        $('#cvChequeDeposite').hide();
+                        $('#cvCashDeposite').hide();
+                        $('#pickdropCashTrasaction').hide();
+                        $('#pickdropChequeTrasaction').hide();
+                        $('#one1').attr('checked', true);
+                        $('#form-filledcv').val("0");
+                        $('#form-amt').val("0");
                         $("#form-chequeno").val("0");
-                        document.getElementById("tdd1").appendChild(newinput1);
-                        document.getElementById("tdd2").appendChild(newinput2);
-                        document.getElementById("tdd3").appendChild(newinput5);
-                        document.getElementById("tdd4").appendChild(newinput4);
-                    };
+                        $('#form-counteramount').val("0");
+                        $('#form-emptycv').val("");
+                        $('#cylinderDeposite').show();
+                    });
 
-                    var newradiocheque = document.createElement('input'); //cheque payment radio
-                    newradiocheque.name = "typeofpayment";
-                    newradiocheque.type = "radio";
-                    newradiocheque.value = "cheque";
-                    newradiocheque.id = "cheque";
-                    newradiocheque.onclick = function ()
-                    {
-                        $("#fill").hide();
-                        $("#emp").hide();
-                        $("#amt").hide();
-                        $("#tot").hide();
-                        $("#tdd1").hide();
-                        $("#tdd2").hide();
-                        $("#tdd3").hide();
-                        $("#tdd4").hide();
-                        $("#dynatable").append(somehead);
-                        $("#dynatable").append(subhead);
-                        $("#dynatable").append(sometddata);
-                        $("#header1").text("Filled Cylinder");
-                        $("#header2").text("Empty Cylinder");
-                        $("#header3").text("Amount To Pay");
-                        $("#header4").text("Amount");
-                        $("#cas").text("Cash/Cheque Amount");
-                        $("#che").text("Cheque");
-                        document.getElementById("td1").appendChild(newinput1);
-                        document.getElementById("td2").appendChild(newinput2);
-                        document.getElementById("td3").appendChild(newinput5);
-                        document.getElementById("td4").appendChild(newinput3);
-                        document.getElementById("td5").appendChild(newinput4);
-                    };
-
-                    var newinput1 = document.createElement('input'); // empty cylinder
-                    newinput1.name = "form-filledcv";
-                    newinput1.id = "form-filledcv";
-                    newinput1.type = "text";
-                    newinput1.placeholder = "Enter Number Of Filled Cylinder";
-
-                    var newinput2 = document.createElement('input'); // empty cylinder
-                    newinput2.name = "form-emptycv";
-                    newinput2.id = "form-emptycv";
-                    newinput2.type = "text";
-                    newinput2.placeholder = "Enter Number Of Empty Cylinder";
-
-                    var newinput3 = document.createElement('input'); // cheque transaction
-                    newinput3.name = "form-chequeno";
-                    newinput3.id = "form-chequeno";
-                    newinput3.type = "text";
-                    newinput3.placeholder = "Enter Cheque Number";
-
-                    var newinput4 = document.createElement('input'); // empty cylinder
-                    newinput4.name = "form-amt";
-                    newinput4.id = "form-amt";
-                    newinput4.type = "text";
-                    newinput4.placeholder = "Total";
-
-                    var newinput5 = document.createElement('input'); // amount text box
-                    newinput5.name = "counteramount";
-                    newinput5.type = "text";
-                    newinput5.id = "counteramount";
-                    newinput5.placeholder = "Enter Amount to be Paid";
-
-                    var newinput6 = document.createElement('input'); // cash transaction
-                    newinput6.name = "typeoftransaction";
-                    newinput6.type = "radio";
-                    newinput6.value = "two way";
-
-                    document.getElementById("table").appendChild(newdiv); // appending data to table
-                    $("#dynatable").append(newradiocash);
-                    $("#dynatable").append(cashonly);
-                    $("#dynatable").append(newradiocheque);
-                    $("#dynatable").append(cheque);
-                    cashonly.innerHTML = "Cash Payment";
-                    cheque.innerHTML = " Cheque Payment ";
-                });
-
-                $("#cash").click(function () {
-                    $("#form-filledcv").val("0");
-                    $("#form-amt").val("0");
-
-                    var newdiv = document.createElement('table'); //create table
-                    newdiv.id = "dynatable";
-                    newdiv.setAttribute('border', '1');
-
-                    var cashonly = document.createElement('label'); // label for cash button
-                    var cheque = document.createElement('label'); // label for cheque button
-
-                    var newradiocash = document.createElement('input'); // cash deposite only radio
-                    newradiocash.name = "typeofpayment";
-                    newradiocash.type = "radio";
-                    newradiocash.value = "cash";
-                    newradiocash.id = "cashonly";
-                    newradiocash.onclick = function ()
-                    {
-                        $("#form-chequeno").val("0");
-                        $("#dynatable").append(someRow);
-                        $("#dynatable").append(tdRow);
-                        $("#header1").text("Amount");
-                        $("#header2").text("type");
-                        document.getElementById("td1").appendChild(newinput1);
-                        document.getElementById("td2").appendChild(newinput2);
-                    };
-
-                    var newradiocheque = document.createElement('input'); //cheque payment radio
-                    newradiocheque.name = "typeofpayment";
-                    newradiocheque.type = "radio";
-                    newradiocheque.value = "cheque";
-                    newradiocheque.id = "cheque";
-                    newradiocheque.onclick = function () {
-                        $("#header1").hide();
-                        $("#header2").hide();
-                        $("#td1").hide();
-                        $("#td2").hide();
-                        $("#form-chequeno").val("");
-                        $("#dynatable").append(chequeRow);
-                        $("#dynatable").append(chequetd);
-                        $("#head1").text("Amount");
-                        $("#head2").text("type");
-                        $("#head3").text("Cheque Number");
-                        document.getElementById("tdcheque1").appendChild(newinput1);
-                        document.getElementById("tdcheque2").appendChild(newinput2);
-                        document.getElementById("tdcheque3").appendChild(newinput3);
-                    };
-
-                    var newinput1 = document.createElement('input'); // amount text box
-                    newinput1.name = "counteramount";
-                    newinput1.type = "text";
-                    newinput1.placeholder = "Enter Amount to be Paid";
-
-
-                    var newinput2 = document.createElement('input'); // cash transaction
-                    newinput2.name = "typeoftransaction";
-                    newinput2.type = "radio";
-                    newinput2.value = "cash";
-
-                    var newinput3 = document.createElement('input'); // cheque transaction
-                    newinput3.name = "form-chequeno";
-                    newinput3.id = "form-chequeno";
-                    newinput3.type = "text";
-                    newinput3.placeholder = "Enter Cheque Number";
-
-                    document.getElementById("table").appendChild(newdiv);
-                    $("#dynatable").append(newradiocash);
-                    $("#dynatable").append(cashonly);
-                    $("#dynatable").append(newradiocheque);
-                    $("#dynatable").append(cheque);
-                    cashonly.innerHTML = "Cash Payment";
-                    cheque.innerHTML = " Cheque Payment ";
-                });
-
-                $("#cvdepo").click(function () {
-                    $("#form-filledcv").val("0");
-                    $("#form-amt").val("0");
-                    $("#form-counteramount").val("0");
-                    $("#form-chequeno").val("0");
-                    var newdiv = document.createElement('table'); //create table
-                    newdiv.id = "dynatable";
-                    newdiv.setAttribute('border', '1');
-
-                    var newradiocash = document.createElement('input'); // one way deposite radio
-                    newradiocash.name = "typeofpayment";
-                    newradiocash.type = "radio";
-                    newradiocash.value = "one way";
-                    newradiocash.id = "one";
-                    newradiocash.checked = "checked";
-
-                    var newinput1 = document.createElement('input'); // amount text box
-                    newinput1.name = "form-emptycv";
-                    newinput1.id = "form-emptycv";
-                    newinput1.type = "text";
-                    newinput1.placeholder = "Enter No of Empty Cylinders";
-
-                    document.getElementById("table").appendChild(newdiv);
-                    $("#dynatable").append(someRow);
-                    $("#dynatable").append(tdRow);
-                    $("#header1").text("No. Of Cylinders");
-                    $("#header2").text("type");
-                    document.getElementById("td1").appendChild(newinput1);
-                    document.getElementById("td2").appendChild(newradiocash);
-                });
-
-                $("#cashcv").click(function () { // cash and Cylinder Deposite
-                    var some = "<tr> <th id='header1' ></th><th id='header2'></th><th id='header3'></th> </tr>"; // table header 
-                    var chequeR = "<tr> <th id='head1'></th><th id='head2'></th> <th id='head3'></th><th id='head4'></th> </tr>";
-                    var tdR = "<tr><td id='td1' align='center'></td> <td id='td2' align='center'></td><td id='td3' align='center'></td> </tr>"; // table data
-                    var chequet = "<tr><td id='tdcheque1' align='center'></td> <td id='tdcheque2' align='center'></td> <td id='tdcheque3' align='center'></td><td id='tdcheque4' align='center'></td></tr>"; // table data
-                    var newdiv = document.createElement('table'); //create table
-                    newdiv.id = "dynatable";
-                    newdiv.setAttribute('border', '1');
-                    var rate = document.getElementById("rate"); // get rate from db
-                    var cashonly = document.createElement('label'); // label for cash button
-                    var cheque = document.createElement('label'); // label for cheque button
-
-                    var newradiocash = document.createElement('input'); // one way deposite radio
-                    newradiocash.name = "typeofpayment";
-                    newradiocash.type = "radio";
-                    newradiocash.value = "cash";
-                    newradiocash.id = "cashonly";
-                    newradiocash.onclick = function ()
-                    {
+                    $('#cashcv').click(function () {
+                        $('#cylinderDeposite').hide();
+                        $('#cashSelect').hide();
+                        $('#chequeDeposite').hide();
+                        $('#cashDeposite').hide();
+                        $('#pickdropCashTrasaction').hide();
+                        $('#pickdropChequeTrasaction').hide();
                         $("#form-filledcv").val("0");
-                        $("#form-amt").val("0");
-                        $("#form-chequeno").val("0");
-                        $("#dynatable").append(some);
-                        $("#dynatable").append(tdR);
-                        $("#header1").text("Amount");
-                        $("#header2").text("type");
-                        $("#header3").text("Empty Cylinder");
-                        document.getElementById("td1").appendChild(newinput1);
-                        document.getElementById("td2").appendChild(newinput2);
-                        document.getElementById("td3").appendChild(newinput4);
-                    };
+                        $('#form-amt').val("0");
+                        $('#cashonly').attr('checked', false);
+                        $('#cheque').attr('checked', false);
+                        $('#cashSelect').show();
+                        $('#cashonly').click(function () {
+                            $('#cashSelect').show();
+                            $('#cylinderDeposite').hide();
+                            $('#chequeDeposite').hide();
+                            $('#cashDeposite').hide();
+                            $('#pickdropCashTrasaction').hide();
+                            $('#pickdropChequeTrasaction').hide();
+                            $('#cvChequeDeposite').hide();
+                            $('#form-emptycv1').val("");
+                            $('#form-counteramount2').val("");
+                            $("#form-chequeno2").val("0"); // not working
+                            $('#one2').attr('checked', true);
+                            $('#cvCashDeposite').show();
+                            
+                        });
+                        $('#cheque').click(function () {
+                            $('#cashSelect').show();
+                            $('#cylinderDeposite').hide();
+                            $('#chequeDeposite').hide();
+                            $('#cashDeposite').hide();
+                            $('#pickdropCashTrasaction').hide();
+                            $('#pickdropChequeTrasaction').hide();
+                            $('#cvCashDeposite').hide();
+                            $("#form-chequeno2").val("");
+                            $('#form-emptycv3').val("");
+                            $('#form-counteramount3').val("");
+                            $('#one3').attr('checked', true);
+                            $('#cvChequeDeposite').show();
+                            
+                        });
+                    });
 
-                    var newradiocheque = document.createElement('input'); //cheque payment radio
-                    newradiocheque.name = "typeofpayment";
-                    newradiocheque.type = "radio";
-                    newradiocheque.value = "cheque";
-                    newradiocheque.id = "cheque";
-                    newradiocheque.onclick = function () {
-                        $("#form-filledcv").val("0");
-                        $("#form-amt").val("0");
-                        $("#header1").hide();
-                        $("#header2").hide();
-                        $("#header3").hide();
-                        $("#td1").hide();
-                        $("#td2").hide();
-                        $("#td3").hide();
-                        $("#form-chequeno").val("");
-                        $("#dynatable").append(chequeR);
-                        $("#dynatable").append(chequet);
-                        $("#head1").text("Amount");
-                        $("#head2").text("type");
-                        $("#head3").text("Cheque Number");
-                        $("#head4").text("Empty Cylinder")
-                        document.getElementById("tdcheque1").appendChild(newinput1);
-                        document.getElementById("tdcheque2").appendChild(newinput2);
-                        document.getElementById("tdcheque3").appendChild(newinput3);
-                        document.getElementById("tdcheque4").appendChild(newinput4);
-                    };
-                    var newinput1 = document.createElement('input'); // amount text box
-                    newinput1.name = "counteramount";
-                    newinput1.type = "text";
-                    newinput1.placeholder = "Enter Amount to be Paid";
+                    $('#pickdrop').click(function () {
+                        $('#cvChequeDeposite').hide();
+                        $('#cvCashDeposite').hide();
+                        $('#cylinderDeposite').hide();
+                        $('#cashDeposite').hide();
+                        $('#chequeDeposite').hide();
+                        $('#cashonly').attr('checked', false);
+                        $('#cheque').attr('checked', false);
+                        $('#cashSelect').show();
+                        
+                        $('#cashonly').click(function () {
+                            $('#cashSelect').show();
+                            $('#cvChequeDeposite').hide();
+                            $('#cvCashDeposite').hide();
+                            $('#cylinderDeposite').hide();
+                            $('#cashDeposite').hide();
+                            $('#chequeDeposite').hide();
+                            $('#pickdropChequeTrasaction').hide();
+                            $("#form-chequeno5").val("0"); // not working
+                            $('#two').attr('checked', true);
+                            $('#form-filledcv').val("");
+                            $('#form-emptycv4').val("");
+                            $('#form-counteramount4').val("");
+                            $('#form-amt').val("");
+                            $('#pickdropCashTrasaction').show();                           
+                        });
 
-                    var newinput2 = document.createElement('input'); // cash transaction
-                    newinput2.name = "typeoftransaction";
-                    newinput2.type = "radio";
-                    newinput2.value = "cash";
-
-                    var newinput3 = document.createElement('input'); // cheque transaction
-                    newinput3.name = "form-chequeno";
-                    newinput3.id = "form-chequeno";
-                    newinput3.type = "text";
-                    newinput3.placeholder = "Enter Cheque Number";
-
-                    var newinput4 = document.createElement('input'); // empty cylinder
-                    newinput4.name = "form-emptycv";
-                    newinput4.id = "form-emptycv";
-                    newinput4.type = "text";
-                    newinput4.placeholder = "Enter Number Of Empty Cylinder";
-
-                    document.getElementById("table").appendChild(newdiv); // appending data to table
-                    $("#dynatable").append(newradiocash);
-                    $("#dynatable").append(cashonly);
-                    $("#dynatable").append(newradiocheque);
-                    $("#dynatable").append(cheque);
-                    cashonly.innerHTML = "Cash Payment";
-                    cheque.innerHTML = " Cheque Payment ";
-
-                });
-
-
-            });
-
-
+                        $('#cheque').click(function () {
+                            $('#cashSelect').show();
+                            $('#cvChequeDeposite').hide();
+                            $('#cvCashDeposite').hide();
+                            $('#cylinderDeposite').hide();
+                            $('#cashDeposite').hide();
+                            $('#chequeDeposite').hide();
+                            $('#pickdropCashTrasaction').hide();
+                            $('#form-filledcv1').val("");
+                            $('#form-emptycv5').val("");
+                            $('#form-counteramount5').val("");
+                            $('#form-amt1').val("");
+                            $("#form-chequeno5").val("");
+                            $('#twocheque').attr('checked', true);
+                            $('#pickdropChequeTrasaction').show();                          
+                        });
+                        $('#form-filledcv').focusout(function () {
+                            var rate = document.getElementById("rate").value;
+                            var amt = document.getElementById("form-filledcv").value;
+                            var amount = amt * rate;
+                            $('#form-amt1').val(amount);
+                        });
+                        $('#form-filled').focusout(function () {
+                            var rate = document.getElementById("rate").value;
+                            var amt = document.getElementById("form-filled").value;
+                            var amount = amt * rate;
+                            $('#form-amt').val(amount);
+                        });
+                    });
+                }); 
 
         </script>
     </head>
@@ -466,6 +294,7 @@
                                             db.rs = db.st.executeQuery(sql);
                                             while (db.rs.next()) {
                                                 rate = db.rs.getString("rate");
+                                                System.out.println("rate =" + rate);
                                             }
                                         %>
                                         <div class="form-group">
@@ -485,30 +314,139 @@
                                         </div>
 
                                         <input type="hidden" value="<%= rate%>" id="rate" name="rate" />
-                                        <input type="radio" name="onlycv" id="cash" > Cash Deposite Only <br/>
-                                        <input type="radio" name="onlycv" id="cvdepo"  > Empty Cylinder only <br/>
-                                        <input type="radio" name="onlycv" id="pickdrop"  > Pick and Drop <br/>
-                                        <input type="radio" name="onlycv" id="cashcv"  > Cash & Cylinder Deposite Only <br/>
-                                        <div id="table"></div>
-                                        <!--table border="1px">
-                                          
-                                            <tr>                                               
-                                                <td><input type="text" name="form-filledcv" placeholder="Filled CV" class="form-filledcv form-control" id="form-filledcv" ></td>
-                                                <td><input type="text" name="form-emptycv" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv" ></td>                                                                                              
-                                                <td><p align="center"><input type="radio" name="typeofpayment" id="cashonly" value="cashonly"></p></td>
-                                                <td><p align="center"><input type="radio" name="typeofpayment" id="cheque" value="cheque"></p></td>
-                                                <td><input type="text" name="form-amt" placeholder="Amount" class="form-amt form-control" id="form-amt" ></td>
-                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="cashon" value="cash" onclick="checkCash()"></p></td>
-                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="one" value="one way" onclick="oneWayAgain()"></p></td>
-                                                <td><p align="center"><input type="radio" name="typeoftransaction" id="two" value="two way" ></p></td>
-                                            </tr>
-
-                                        </table--> <br/>
-
-                                        <!--input  type="text" name="form-counteramount" placeholder="Enter Amount" class="form-counteramount form-control" id="form-counteramount">
-                                        
-                                        <input type="text" name="form-chequeno" placeholder="Enter Cheque Number" class="form-chequeno form-control" id="form-chequeno"> 
+                                        <input type="radio" name="onlycv" id="cash" onclick="cashDepoOnly()" value="cash"> Cash Deposite Only <br/>
+                                        <input type="radio" name="onlycv" id="cvdepo" onclick="cylinderDepoOnly()" value="cvdepo" > Empty Cylinder only <br/>
+                                        <input type="radio" name="onlycv" id="pickdrop" onclick="pickdrop()" value="pickdrop"> Pick and Drop <br/>
+                                        <input type="radio" name="onlycv" id="cashcv" onclick="cashcvDepo()" value="cashcv"> Cash & Cylinder Deposite Only <br/>
                                         <br/>
+                                        <!-- === Common Selector === -->
+                                        <div id="cashSelect" hidden="true">
+                                            <table border="1px">
+                                                <tr>
+                                                    <th> Cash Deposite </th>
+                                                    <th> Cheque Deposite </th>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center"> <input type="radio" id="cashonly" name="typeofpayment" value="cashonly">Cash Only </td>
+                                                    <td align="center"> <input type="radio" id="cheque" name="typeofpayment" value="cheque">Cheque </td>
+                                                </tr>
+                                            </table>    
+                                        </div> <br/>
+                                        <div id="abstract">
+                                            <!-- === Cash Deposite === -->
+                                            <section id="cashDeposite" hidden ="true">
+                                                <table border="1px" >
+                                                    <tr>
+                                                        <th>&nbsp; Amount &nbsp;</th>
+                                                        <th>&nbsp; Type &nbsp;</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <input type="text" id="form-counteramount" placeholder="Enter Amount" name="form-counteramount"> </td>
+                                                        <td align="center"> <input type="radio"  name="cashon" value="cash" id="cashon"> </td>
+                                                    </tr>                                               
+                                                </table>
+                                            </section>
+                                            <!-- === Cheque Deposite === -->
+                                            <section id="chequeDeposite" hidden="true">
+                                                <table border="1px" >
+                                                    <tr>
+                                                        <th>Amount</th>
+                                                        <th>Type</th>
+                                                        <th>ChequeNo</th> 
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <input type="text" id="form-counteramount1" placeholder="Enter Cheque Amount" name="form-counteramount1"> </td>
+                                                        <td align="center"> <input type="radio"  name="cashon1" value="cash" id="cashon1"> </td>
+                                                        <td><input type="text" placeholder="Enter Cheque No" name="form-chequeno" id="form-chequeno"></td>
+                                                    </tr>                                               
+                                                </table>
+                                            </section>
+                                            <!-- === Cash Deposite Complete === === Start Of Cylinder Deposite === -->
+                                            <section id="cylinderDeposite" hidden="true">
+                                                <table border="1px" >
+                                                    <tr>
+                                                        <th>&nbsp; Empty Cylinder &nbsp;</th>
+                                                        <th>&nbsp; Type &nbsp;</th> 
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <input type="text" id="form-emptycv" placeholder="Enter No Of Empty Cylinders" name="form-emptycv"> </td>
+                                                        <td align="center"> <input type="radio"  name="one1" value="one way" id="one1" > </td>                                                    
+                                                    </tr>                                               
+                                                </table>
+                                            </section> <!-- === Cylinder Deposite over === -->
+                                            <!-- === Cylinder and cash deposite === -->
+                                            <section id="cvCashDeposite" hidden="true"> <!-- === Cash Payment === -->
+                                                <table border="1px" >
+                                                    <tr>
+                                                        <th>&nbsp; Empty Cylinder &nbsp;</th>
+                                                        <th>&nbsp; Type &nbsp;</th>
+                                                        <th>&nbsp; Amount &nbsp;</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <input type="text" id="form-emptycv1" placeholder="Enter No Of Empty Cylinders" name="form-emptycv1"> </td>
+                                                        <td align="center"> <input type="radio"  name="one2" value="one way" id="one2" > </td>
+                                                        <td> <input type="text" id="form-counteramount2" name="form-counteramount2" placeholder="Enter Amount"></td>
+                                                    </tr>
+                                                </table>
+                                            </section>
+                                            <section id="cvChequeDeposite" hidden="true"> <!-- === Cheque Payment === -->
+                                                <table border="1px" >
+                                                    <tr>
+                                                        <th>Empty Cylinder</th>
+                                                        <th>Type</th>
+                                                        <th>Amount</th>
+                                                        <th>Cheque Amount</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <input type="text" id="form-emptycv3"  placeholder="Enter No Of Empty Cylinders" name="form-emptycv3"> </td>
+                                                        <td align="center"> <input type="radio"  name="one3" value="one way" id="one3" > </td>
+                                                        <td> <input type="text" id="form-counteramount3" name="form-counteramount3" placeholder="Enter Amount"></td>
+                                                        <td> <input type="text" id="form-chequeno2" name="form-chequeno2" placeholder="Enter Cheque no"></td>
+                                                    </tr>
+                                                </table>
+                                            </section> <!-- === Cash and CV Deposite Complete === -->
+                                            <!-- === Pick and Drop Start === -->
+                                            <section id="pickdropCashTrasaction" hidden="true"> <!-- === Pick And Drop Cash === -->
+                                                <table border="1px" >
+                                                    <tr>
+                                                        <th>Filled Cylinder</th>
+                                                        <th>Empty Cylinder</th>
+                                                        <th>Type</th>
+                                                        <th>Amount Paid</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <input type="text" id="form-filled" placeholder="Enter No Of Filled Cylinders" name="form-filled"> </td>
+                                                        <td> <input type="text" id="form-emptycv4" placeholder="Enter No Of Empty Cylinders" name="form-emptycv4"> </td>
+                                                        <td align="center"> <input type="radio"  name="two" value="two way" id="two" > </td>
+                                                        <td> <input type="text" id="form-counteramount4" name="form-counteramount4" placeholder="Enter Amount"></td>
+                                                        <td> <input type="text" id="form-amt" placeholder="Enter No Of Empty Cylinders" name="form-amt"> </td>
+                                                    </tr>
+                                                </table>
+                                            </section>
+                                            <section id="pickdropChequeTrasaction" hidden="true"><!-- === Pick And Drop Cheque === -->
+                                                <table border="1px" >
+                                                    <tr>
+                                                        <th>Filled Cylinder</th>
+                                                        <th>Empty Cylinder</th>
+                                                        <th>Type</th>
+                                                        <th>Amount Paid</th>
+                                                        <th>Amount</th>
+                                                        <th>Cheque Amount</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <input type="text" id="form-filledcv1" placeholder="Enter No Of Filled Cylinders" name="form-filledcv1"> </td>
+                                                        <td> <input type="text" id="form-emptycv5" placeholder="Enter No Of Empty Cylinders" name="form-emptycv5"> </td>
+                                                        <td align="center"> <input type="radio"  name="twocheque" value="two way" id="twocheque" > </td>
+                                                        <td> <input type="text" id="form-counteramount5" name="form-counteramount5" placeholder="Enter Amount"></td>
+                                                        <td> <input type="text" id="form-amt1" placeholder="Enter No Of Empty Cylinders" name="form-amt1"> </td>
+                                                        <td> <input type="text" id="form-chequeno5" name="form-chequeno5" placeholder="Enter Cheque no"></td>
+                                                    </tr>
+                                                </table>
+                                            </section>
+                                            <!-- === Pick and Drop end === -->
+                                        </div>
+                                         <br/>
                                         <!--a href="ShowNDCDetail.jsp">Show Customer Detail</a-->
                                         <button type="button" class="btn btn-Show" >Show N.D.C Detail</button>
                                         <a href="AdvanceNDBooking.jsp">Advance Booking</a>
