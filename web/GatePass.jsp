@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Godown
-    Created on : Dec 5, 2016, 10:06:34 PM
+    Document   : GatePass
+    Created on : Dec 12, 2016, 10:50:34 PM
     Author     : sohamkapoor
 --%>
 
@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Godown</title>
+        <title>Gate Pass</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -115,48 +115,34 @@
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p> Update Godown :</p>
+                                            <p> Get Your Gate Pass :</p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-database"></i>
                                         </div>
                                     </div>
 
-                                    <div class="form-bottom">                                     
-                                        <div class="form-group">
-                                            <input type="text" name="form-filled-stock" placeholder="Enter Filled Stock in Godown" class="form-filled-stock form-control" id="form-filled-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errFilledStock"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-empty-stock" placeholder="Enter Empty Stock in Godown" class="form-empty-stock form-control" id="form-empty-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errEmptyStock"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-defect-stock" placeholder="Enter Defect Stock in Godown" class="form-defect-stock form-control" id="form-defect-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errDefectStock"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-refill" placeholder="Refill" class="form-refill form-control" id="form-refill" >
-                                            <span  style="color:red;font-weight:bold" id="errRefill"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-night-filled-stock" placeholder="Enter Night Filled Stock" class="form-night-filled-stock form-control" id="form-night-filled-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errNightFilledStock"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-night-empty-stock" placeholder="Enter Night Empty Stock" class="form-night-empty-stock form-control" id="form-night-empty-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errNightEmptyStock"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-night-defective-stock" placeholder="Enter Night Defective Stock" class="form-night-defective-stock form-control" id="form-night-defective-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errNightDefectiveStock"></span>
-                                        </div>
-                                        <p align="center"><input type="submit" value="Godown Entry" /> </p>
-                                    </div>
+                                    <div class="form-bottom">                                         
 
-
+                                        <div class="form-group">
+                                            <input type="text" name="form-local-driver" placeholder="Local Driver Name" class="form-local-driver form-control" id="form-local-driver" >
+                                            <span  style="color:red;font-weight:bold" id="errLocalDriver"></span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="text" name="form-issue-tampoo" placeholder=" Tampoo No " class="form-issue-tampoo form-control" id="form-issue-tampoo" >
+                                            <span  style="color:red;font-weight:bold" id="errIssueTampoo"></span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="text" name="form-issue-load" placeholder="Issue Load" class="form-issue-load form-control" id="form-issue-load" >
+                                            <span  style="color:red;font-weight:bold" id="errIssueLoad"></span>
+                                        </div>
+                                        
+                                        <a href="http://localhost:8080/Project/DriverDispatch.jsp"> Evening Load Detail </a>
+                                        <p align="center"><input type="submit" value="Gate Pass" /></p>                                        
+                                    </div>                                
                                 </fieldset>
-
                             </form>
                         </div>
                     </div>
@@ -169,10 +155,11 @@
 
 
 
-    <!--[if lt IE 10]>
-        <script src="assets/js/placeholder.js"></script>
-    <![endif]-->
 
-</body>
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
 
 </html>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Godown
-    Created on : Dec 5, 2016, 10:06:34 PM
+    Document   : DriverDispatch
+    Created on : Dec 14, 2016, 10:49:50 PM
     Author     : sohamkapoor
 --%>
 
@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Godown</title>
+        <title>Gate Pass</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -115,48 +115,45 @@
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p> Update Godown :</p>
+                                            <p> Get Your Gate Pass :</p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-database"></i>
                                         </div>
                                     </div>
 
-                                    <div class="form-bottom">                                     
+                                    <div class="form-bottom"> 
                                         <div class="form-group">
-                                            <input type="text" name="form-filled-stock" placeholder="Enter Filled Stock in Godown" class="form-filled-stock form-control" id="form-filled-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errFilledStock"></span>
+                                            <input type="text" name="form-customer-name" placeholder="Enter Customer name" class="form-customer-name form-control" id="form-customer-name" >
+                                            <span  style="color:red;font-weight:bold" id="errCustomerName"></span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="form-empty-stock" placeholder="Enter Empty Stock in Godown" class="form-empty-stock form-control" id="form-empty-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errEmptyStock"></span>
+                                            <input type="text" name="form-domestic" placeholder="Enter no of Domestic Cylinder " class="form-domestic form-control" id="form-domestic" >
+                                            <span  style="color:red;font-weight:bold" id="errdomestic"></span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="form-defect-stock" placeholder="Enter Defect Stock in Godown" class="form-defect-stock form-control" id="form-defect-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errDefectStock"></span>
+                                            <input type="text" name="form-nondomestic" placeholder="Enter no of Non Domestic Cylinder " class="form-nondomestic form-control" id="form-nondomestic" >
+                                            <span  style="color:red;font-weight:bold" id="errnondomestic"></span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="form-refill" placeholder="Refill" class="form-refill form-control" id="form-refill" >
-                                            <span  style="color:red;font-weight:bold" id="errRefill"></span>
+                                            <input type="text" name="form-defective" placeholder="Enter no of Defective Cylinder " class="form-defective form-control" id="form-defective" >
+                                            <span  style="color:red;font-weight:bold" id="errdefective"></span>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-night-filled-stock" placeholder="Enter Night Filled Stock" class="form-night-filled-stock form-control" id="form-night-filled-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errNightFilledStock"></span>
+                                        <div class="form-group"> <!-- if driver returns some cylinder after selling to customer -->
+                                            <input type="text" name="form-filled-godown" placeholder="Enter no of Return filled Cylinder " class="form-filled-godown form-control" id="form-filled-godown" >
+                                            <span  style="color:red;font-weight:bold" id="errfilled"></span>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-night-empty-stock" placeholder="Enter Night Empty Stock" class="form-night-empty-stock form-control" id="form-night-empty-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errNightEmptyStock"></span>
+                                        <div class="form-group"> <!-- if driver returns some cylinder after selling to customer -->
+                                            <input type="text" name="form-empty-godown" placeholder="Enter no of Return Empty Cylinder " class="form-empty-godown form-control" id="form-empty-godown" >
+                                            <span  style="color:red;font-weight:bold" id="errempty"></span>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-night-defective-stock" placeholder="Enter Night Defective Stock" class="form-night-defective-stock form-control" id="form-night-defective-stock" >
-                                            <span  style="color:red;font-weight:bold" id="errNightDefectiveStock"></span>
+                                        <div class="form-group"> <!-- if driver returns some cylinder after selling to customer -->
+                                            <input type="text" name="form-defective-godown" placeholder="Enter no of Return Defective Cylinder " class="form-defective-godown form-control" id="form-defective-godown" >
+                                            <span  style="color:red;font-weight:bold" id="errdefectivegodown"></span>
                                         </div>
-                                        <p align="center"><input type="submit" value="Godown Entry" /> </p>
-                                    </div>
-
-
+                                        <input type="submit" class="btn btn-success" value="Add Detail"/>
+                                    </div>                                
                                 </fieldset>
-
                             </form>
                         </div>
                     </div>
@@ -169,10 +166,11 @@
 
 
 
-    <!--[if lt IE 10]>
-        <script src="assets/js/placeholder.js"></script>
-    <![endif]-->
 
-</body>
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
 
 </html>
