@@ -139,8 +139,8 @@
                                             <span  style="color:red;font-weight:bold" id="errIssueLoad"></span>
                                         </div>
                                         
-                                        <a href="http://localhost:8080/Project/DriverDispatch.jsp"> Evening Load Detail </a>
-                                        <p align="center"><input type="submit" value="Gate Pass" /></p>                                        
+                                        <a href="http://localhost:8080/gas/DriverDispatch.jsp"> Evening Load Detail </a>
+                                        <p align="center"><input type="submit" value="Get Gate Pass" /></p>                                        
                                     </div>                                
                                 </fieldset>
                             </form>

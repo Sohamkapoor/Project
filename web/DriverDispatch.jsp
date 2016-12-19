@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Gate Pass</title>
+        <title>Driver Dispatch Entry</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -51,6 +51,15 @@
                             maxDate: '-1d'});
                     });
                 </script>-->
+        <script>
+           $(document).ready(function(){
+               $('#form-customer-name').hide();
+               $('#form-customer-name').val("");
+               $('#form-defective').keyup(function(){
+                  $('#form-customer-name').show(); 
+               });
+           }); 
+        </script>
     </head>
 
     <body>
@@ -109,7 +118,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="detail.jsp" method="post" class="registration-form">
+                            <form role="form" action="DriverDispatch" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -124,32 +133,32 @@
 
                                     <div class="form-bottom"> 
                                         <div class="form-group">
-                                            <input type="text" name="form-customer-name" placeholder="Enter Customer name" class="form-customer-name form-control" id="form-customer-name" >
-                                            <span  style="color:red;font-weight:bold" id="errCustomerName"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-domestic" placeholder="Enter no of Domestic Cylinder " class="form-domestic form-control" id="form-domestic" >
-                                            <span  style="color:red;font-weight:bold" id="errdomestic"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="form-nondomestic" placeholder="Enter no of Non Domestic Cylinder " class="form-nondomestic form-control" id="form-nondomestic" >
-                                            <span  style="color:red;font-weight:bold" id="errnondomestic"></span>
-                                        </div>
+                                            <input type="text" name="form-driver-name" placeholder="Enter Driver name" class="form-driver-name form-control" id="form-driver-name" >
+                                            <span  style="color:red;font-weight:bold" id="errDriverName"></span>
+                                        </div>                                         
                                         <div class="form-group">
                                             <input type="text" name="form-defective" placeholder="Enter no of Defective Cylinder " class="form-defective form-control" id="form-defective" >
                                             <span  style="color:red;font-weight:bold" id="errdefective"></span>
                                         </div>
-                                        <div class="form-group"> <!-- if driver returns some cylinder after selling to customer -->
-                                            <input type="text" name="form-filled-godown" placeholder="Enter no of Return filled Cylinder " class="form-filled-godown form-control" id="form-filled-godown" >
-                                            <span  style="color:red;font-weight:bold" id="errfilled"></span>
+                                        <div class="form-group">
+                                            <input type="text" name="form-customer-name" placeholder="Enter Customer name" class="form-customer-name form-control" id="form-customer-name" >
+                                            <span  style="color:red;font-weight:bold" id="errCustomerName"></span>
                                         </div>
                                         <div class="form-group"> <!-- if driver returns some cylinder after selling to customer -->
-                                            <input type="text" name="form-empty-godown" placeholder="Enter no of Return Empty Cylinder " class="form-empty-godown form-control" id="form-empty-godown" >
-                                            <span  style="color:red;font-weight:bold" id="errempty"></span>
+                                            <input type="text" name="form-filled-domestic-godown" placeholder="Enter no of Return filled Domestic Cylinder " class="form-filled-domestic-godown form-control" id="form-filled-domestic-godown" >
+                                            <span  style="color:red;font-weight:bold" id="errfilleddomestic"></span>
                                         </div>
                                         <div class="form-group"> <!-- if driver returns some cylinder after selling to customer -->
-                                            <input type="text" name="form-defective-godown" placeholder="Enter no of Return Defective Cylinder " class="form-defective-godown form-control" id="form-defective-godown" >
-                                            <span  style="color:red;font-weight:bold" id="errdefectivegodown"></span>
+                                            <input type="text" name="form-filled-nondomestic-godown" placeholder="Enter no of Return filled NonDomestic Cylinder " class="form-filled-nondomestic-godown form-control" id="form-filled-nondomestic-godown" >
+                                            <span  style="color:red;font-weight:bold" id="errfillednondomestic"></span>
+                                        </div>
+                                        <div class="form-group"> <!-- if driver returns some cylinder after selling to customer -->
+                                            <input type="text" name="form-empty-domestic-godown" placeholder="Enter no of Return Empty Domestic Cylinder " class="form-empty-domestic-godown form-control" id="form-empty-domestic-godown" >
+                                            <span  style="color:red;font-weight:bold" id="erremptydomestic"></span>
+                                        </div>  
+                                        <div class="form-group"> <!-- if driver returns some cylinder after selling to customer -->
+                                            <input type="text" name="form-empty-nondomestic-godown" placeholder="Enter no of Return Empty NonDomestic Cylinder " class="form-empty-nondomestic-godown form-control" id="form-empty-nondomestic-godown" >
+                                            <span  style="color:red;font-weight:bold" id="erremptynondomestic"></span>
                                         </div>
                                         <input type="submit" class="btn btn-success" value="Add Detail"/>
                                     </div>                                

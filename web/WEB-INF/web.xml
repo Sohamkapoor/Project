@@ -44,6 +44,22 @@
         <servlet-name>vehicle</servlet-name>
         <servlet-class>vehicle.vehicle</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GatePass</servlet-name>
+        <servlet-class>GatePass.GatePass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Factory</servlet-name>
+        <servlet-class>Factory.Factory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DriverDispatch</servlet-name>
+        <servlet-class>DriverDispatch.DriverDispatch</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdvanceND</servlet-name>
+        <servlet-class>AdvanceND.AdvanceND</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailFill</servlet-name>
         <url-pattern>/DetailFill</url-pattern>
@@ -71,6 +87,22 @@
     <servlet-mapping>
         <servlet-name>vehicle</servlet-name>
         <url-pattern>/vehicle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GatePass</servlet-name>
+        <url-pattern>/GatePass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Factory</servlet-name>
+        <url-pattern>/Factory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DriverDispatch</servlet-name>
+        <url-pattern>/DriverDispatch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdvanceND</servlet-name>
+        <url-pattern>/AdvanceND</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

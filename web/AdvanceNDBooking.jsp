@@ -55,7 +55,12 @@
 
                 $('#form-counteramount').hide();
                 $("#form-chequeno").hide();
-
+                $('#form-advance').focusout(function(){
+                    if(document.getElementById("form-advance").value <= 0)
+                    {
+                        $('#erradvance').text("Enter Value greater than 0");
+                    }
+                });
                 $("#cashonly").click(function () {
                     $("#form-counteramount").show();
                     $("#form-chequeno").val(0);
@@ -135,7 +140,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="NDCustomerEntry.jsp" method="post" class="registration-form">
+                            <form role="form" action="AdvanceND" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -176,6 +181,7 @@
                                                 <th>Filled CV</th>
                                                 <th>Empty CV</th>
                                                 <th colspan="2">Cash/Cheque Amount</th> 
+                                                <th>Advance Deposite</th>
                                                 <th>Amount</th>
                                                 <th>Security Deposite</th>
                                             </tr>
@@ -185,12 +191,15 @@
                                                 <th>Cash</th>
                                                 <th>Cheque</th>
                                                 <th></th>
+                                                <th></th>
+                                                <th></th>
                                             </tr>
                                             <tr>                                                                                              
                                                 <td><input type="text" name="form-filledcv" placeholder="Filled CV" class="form-filledcv form-control" id="form-filledcv" ></td>
                                                 <td><input type="text" name="form-emptycv" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv" ></td>
                                                 <td><p align="center"><input type="radio" name="typeofpayment" id="cashonly" checked="checked"></p></td>
                                                 <td><p align="center"><input type="radio" name="typeofpayment" id="cheque"></p></td>
+                                                <td><input type="text" name="form-advance" placeholder="Enter Advance Amount" class="form-advance form-control" id="form-advance"><span id="erradvance"></span>></td>
                                                 <td><input type="text" name="form-amt" placeholder="Amount" class="form-amt form-control" id="form-amt"></td> 
                                                 <td><input type="text" name="form-security" placeholder="Enter Security Amt" class="form-security form-control" id="form-security"></td>
                                             </tr>

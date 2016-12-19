@@ -23,9 +23,12 @@
             String name= request.getParameter("form-nameoc").trim();
             String phno = request.getParameter("form-phno").trim();
             String advdate= request.getParameter("datepickers");
+            String advance = request.getParameter("form-advance");
             String security = request.getParameter("security").trim();
             if(security.equals(""))
             {security="0";}
+            if(advance.equals(""))
+            {advance="0";}
             //get Transaction type for what user has came
             String cvtype = request.getParameter("onlycv").trim();
            // transaction= request.getParameter("typeoftransaction");
@@ -131,7 +134,6 @@
             finalcv += diffcv;
             
              sql="insert into nondomestic (name,filled,empty,amount,amountpaid,chequeno,osamt,cvdue,transaction,daytoday,phno,advdate,security)values('"+name+"','"+filledcc+"','"+emptycc+"','"+amount+"','"+amtpaid+"','"+chequeno+"','"+diffamt+"','"+diffcv+"','"+transaction+"','"+tod+"','"+phno+"','"+advdate+"','"+security+"')";
-             System.out.println(sql);
              db.conn.createStatement();
              db.st.executeUpdate(sql);
              System.out.println("row inserted");

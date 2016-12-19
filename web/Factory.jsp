@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Gate Pass</title>
+        <title>Factory</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -52,30 +52,40 @@
                     });
                 </script>-->
         <script>
-            var domestic=0,nondomestic=0,defective=0,returnload=0;
+            var domestic=0,nondomestic=0,defective=0,returnload=0,domesticempty=0,nondomesticempty=0;
             $(document).ready(function(){
                 $('#form-return-load').hide();
                 $('#form-2domestic').hide();
                 $('#form-2nondomestic').hide();
+                $('#form-2domesticempty').hide();
+                $('#form-2nondomesticempty').hide();
                 $('#form-2defective').hide();
-                $('#twoway').click(function(){
+                $('#twoway').click(function(){      //  two war radio button click
                    $('#form-return-load').show(); 
                    $('#form-2domestic').show();
                    $('#form-2nondomestic').show();
+                   $('#form-2domesticempty').show();
+                   $('#form-2nondomesticempty').show();
                    $('#form-2defective').show();
                    $('#form-return-load').val("");
                    $('#form-2domestic').val("");
                    $('#form-2nondomestic').val("");
+                   $('#form-2domesticempty').val("");
+                   $('#form-2nondomesticempty').val("");
                    $('#form-2defective').val("");                  
                 });
-                $('#oneway').click(function(){
+                $('#oneway').click(function(){  // one way radio button click
                     $('#form-return-load').hide();
                     $('#form-2domestic').hide();
                     $('#form-2nondomestic').hide();
+                    $('#form-2domesticempty').hide();
+                    $('#form-2nondomesticempty').hide();
                     $('#form-2defective').hide();
                     $('#form-return-load').val("0");
                     $('#form-2domestic').val("0");
                     $('#form-2nondomestic').val("0");
+                    $('#form-2domesticempty').val("0");
+                    $('#form-2nondomesticempty').val("0");                    
                     $('#form-2defective').val("0");
                     $('#err2domestic').text("");
                     $('#err2nondomestic').text("");
@@ -89,77 +99,91 @@
                     nondomestic=parseInt(document.getElementById('form-2nondomestic').value);
                     f();
                 });
+                $('#form-2domesticempty').focusout(function(){
+                    domesticempty=parseInt(document.getElementById('form-2domestic').value);
+                    f();
+                });
+                $('#form-2nondomesticempty').focusout(function(){
+                    nondomesticempty=parseInt(document.getElementById('form-2nondomestic').value);
+                    f();
+                });
                 $('#form-2defective').focusout(function(){
                     defective=parseInt(document.getElementById('form-2defective').value);
                     f();
                 });
-               function f()
+               function f() // adding values and displaying
                {
-                   returnload=domestic+nondomestic+defective;
+                   returnload=domestic+nondomestic+defective+domesticempty+nondomesticempty;
                    document.getElementById('form-return-load').value=returnload;
                };
-               $('#form-2domestic').click(function(){
+               $('#form-2domestic').click(function(){ // removing error text
                     $('#err2domestic').text("");
                     $('#err2nondomestic').text("");
+                    $('#err2domesticempty').text("");
+                    $('#err2nondomesticempty').text("");
                     $('#err2defective').text("");
                });
                $('#form-2nondomestic').click(function(){
                     $('#err2domestic').text("");
                     $('#err2nondomestic').text("");
+                    $('#err2domesticempty').text("");
+                    $('#err2nondomesticempty').text("");
                     $('#err2defective').text("");
                });
                $('#form-2defective').click(function(){
                     $('#err2domestic').text("");
                     $('#err2nondomestic').text("");
+                    $('#err2domesticempty').text("");
+                    $('#err2nondomesticempty').text("");
                     $('#err2defective').text("");
                });
                  $('#form-driver-name').click(function(){
-                      $('#errDriverName').text('');
+                      $('#errDriverName').text("");
                   });
                   $('#form-fourteen').click(function(){
-                      $('#err14').text('');
-                       $('#err19').text('');
-                       $('#err5').text('');
+                      $('#err14').text("");
+                       $('#err19').text("");
+                       $('#err5').text("");
                   });
                   $('#form-nineteen').click(function(){
-                       $('#err14').text('');
-                       $('#err19').text('');
-                       $('#err5').text('');
+                       $('#err14').text("");
+                       $('#err19').text("");
+                       $('#err5').text("");
                   });
                   $('#form-five').click(function(){
-                      $('#err14').text('');
-                       $('#err19').text('');
-                       $('#err5').text('');
+                      $('#err14').text("");
+                       $('#err19').text("");
+                       $('#err5').text("");
                   });
                   $('#form-domestic').click(function(){
-                      $('#errdomestic').text('');
-                      $('#errnondomestic').text('');
-                      $('#errdefective').text('');
+                      $('#errdomestic').text("");
+                      $('#errnondomestic').text("");
+                      $('#errdefective').text("");
                   });
                   $('#form-nondomestic').click(function(){
-                      $('#errdomestic').text('');
-                      $('#errnondomestic').text('');
-                      $('#errdefective').text('');
+                      $('#errdomestic').text("");
+                      $('#errnondomestic').text("");
+                      $('#errdefective').text("");
                   });
                   $('#form-defective').click(function(){
-                      $('#errdomestic').text('');
-                      $('#errnondomestic').text('');
-                      $('#errdefective').text('');
+                      $('#errdomestic').text("");
+                      $('#errnondomestic').text("");
+                      $('#errdefective').text("");
                   });                
             });
             function fun() {
                     if(document.getElementById("form-driver-name").value == "")
                         {
-                            $('#errDriverName').text('Enter Driver Name');
+                            $('#errDriverName').text("Enter Driver Name");
                             event.preventDefault() ;
                             alert(document.getElementById("form-fourteen").value);
                         }
                         
                     else if((document.getElementById("form-fourteen").value == "") && (document.getElementById("form-nineteen").value =="" ) && (document.getElementById("form-five").value == ""))
                     {                      
-                            $('#err14').text('Atleast one of type should be deployed');
-                            $('#err19').text('Atleast one of type should be deployed');
-                            $('#err5').text('Atleast one of type should be deployed');
+                            $('#err14').text("Atleast one of type should be deployed");
+                            $('#err19').text("Atleast one of type should be deployed");
+                            $('#err5').text("Atleast one of type should be deployed");
                             event.preventDefault() ;
                     }
                     
@@ -175,13 +199,14 @@
                    {
                        if(((document.getElementById("form-2domestic").value <= 0) || (document.getElementById("form-2domestic").value == "")) && ((document.getElementById("form-2nondomestic").value <= 0) || (document.getElementById("form-2nondomestic").value == "")) && (document.getElementById("form-2defective").value <= 0|| (document.getElementById("form-2defective").value == "")))
                        {
-                           $('#err2domestic').text("Atleast one of the three should be filled");
-                           $('#err2nondomestic').text("Atleast one of the three should be filled");
-                           $('#err2defective').text("Atleast one of the three should be filled");
+                           $('#err2domestic').text("Atleast one of the five should be filled");
+                           $('#err2nondomestic').text("Atleast one of the five should be filled");
+                           $('#err2domesticempty').text("Atleast one of the five should be filled");
+                           $('#err2nondomesticempty').text("Atleast one of the five should be filled");
+                           $('#err2defective').text("Atleast one of the five should be filled");
                            event.preventDefault() ;
                        }
                        else{
-                           alert("hi");
                         var x = document.getElementsByTagName("form");
                         x[0].submit();// Form submission
                             }
@@ -250,7 +275,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="godown" method="post" class="registration-form">
+                            <form role="form" action="Factory" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -272,9 +297,17 @@
                                             <input type="text" name="form-fourteen" placeholder="Enter no of 14.2 kg Cylinder " class="form-fourteen form-control" id="form-fourteen" >
                                             <span  style="color:red;font-weight:bold" id="err14"></span>
                                         </div>
+                                         <div class="form-group">
+                                            <input type="text" name="form-domestic-price" placeholder="Enter Domestic Cylinder Price" class="form-domestic-price form-control" id="form-domestic-price" >
+                                            <span  style="color:red;font-weight:bold" id="errdomesticprice"></span>
+                                        </div>
                                         <div class="form-group">
                                             <input type="text" name="form-nineteen" placeholder="Enter no of 19 kg Cylinder " class="form-nineteen form-control" id="form-nineteen" >
                                             <span  style="color:red;font-weight:bold" id="err19"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="form-nondomestic-price" placeholder="Enter Non Domestic Cylinder Price " class="form-nondomestic-price form-control" id="form-nondomestic-price" >
+                                            <span  style="color:red;font-weight:bold" id="errnondomesticprice"></span>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="form-five" placeholder="Enter no of 5 kg Cylinder " class="form-five form-control" id="form-five" >
@@ -284,10 +317,12 @@
                                             <input type="text" name="form-domestic" placeholder="Enter no of Domestic Cylinder " class="form-domestic form-control" id="form-domestic" >
                                             <span  style="color:red;font-weight:bold" id="errdomestic"></span>
                                         </div>
+                                       
                                         <div class="form-group">
                                             <input type="text" name="form-nondomestic" placeholder="Enter no of Non Domestic Cylinder " class="form-nondomestic form-control" id="form-nondomestic" >
                                             <span  style="color:red;font-weight:bold" id="errnondomestic"></span>
                                         </div>
+
                                         <div class="form-group">
                                             <input type="text" name="form-defective" placeholder="Enter no of Defective Cylinder " class="form-defective form-control" id="form-defective" >
                                             <span  style="color:red;font-weight:bold" id="errdefective"></span>
@@ -297,12 +332,20 @@
                                             <input type="radio" name="form-type" id="twoway" value="two way"/>Two Way
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="form-2domestic" placeholder="Enter Return no of Domestic Cylinder " class="form-2domestic form-control" id="form-2domestic" >
+                                            <input type="text" name="form-2domestic" placeholder="Enter Return no of Domestic Filled Cylinder " class="form-2domestic form-control" id="form-2domestic" >
                                             <span  style="color:red;font-weight:bold" id="err2domestic"></span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="form-2nondomestic" placeholder="Enter Return no of Non Domestic Cylinder " class="form-2nondomestic form-control" id="form-2nondomestic" >
+                                            <input type="text" name="form-2domesticempty" placeholder="Enter Return no of Domestic Empty Cylinder " class="form-2domesticempty form-control" id="form-2domesticempty" >
+                                            <span  style="color:red;font-weight:bold" id="err2domesticempty"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="form-2nondomestic" placeholder="Enter Return no of Non Domestic Filled Cylinder " class="form-2nondomestic form-control" id="form-2nondomestic" >
                                             <span  style="color:red;font-weight:bold" id="err2nondomestic"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="form-2nondomesticempty" placeholder="Enter Return no of Non Domestic Empty Cylinder " class="form-2nondomesticempty form-control" id="form-2nondomesticempty" >
+                                            <span  style="color:red;font-weight:bold" id="err2nondomesticempty"></span>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="form-2defective" placeholder="Enter Return no of Defective Cylinder " class="form-2defective form-control" id="form-2defective" >
