@@ -445,7 +445,7 @@
                                                 </table>
                                             </section>
                                             <!-- === Pick and Drop end === -->
-                                        </div>
+                                        </div><!-- === abstract over === -->
                                          <br/>
                                         <!--a href="ShowNDCDetail.jsp">Show Customer Detail</a-->
                                         <button type="button" class="btn btn-Show" >Show N.D.C Detail</button>

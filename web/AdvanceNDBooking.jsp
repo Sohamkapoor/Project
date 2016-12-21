@@ -199,7 +199,7 @@
                                                 <td><input type="text" name="form-emptycv" placeholder="Empty CV" class="form-emptycv form-control" id="form-emptycv" ></td>
                                                 <td><p align="center"><input type="radio" name="typeofpayment" id="cashonly" checked="checked"></p></td>
                                                 <td><p align="center"><input type="radio" name="typeofpayment" id="cheque"></p></td>
-                                                <td><input type="text" name="form-advance" placeholder="Enter Advance Amount" class="form-advance form-control" id="form-advance"><span id="erradvance"></span>></td>
+                                                <td><input type="text" name="form-advance" placeholder="Enter Advance Amount" class="form-advance form-control" id="form-advance"><span  style="color:red;font-weight:bold" id="erradvance"></span></td>
                                                 <td><input type="text" name="form-amt" placeholder="Amount" class="form-amt form-control" id="form-amt"></td> 
                                                 <td><input type="text" name="form-security" placeholder="Enter Security Amt" class="form-security form-control" id="form-security"></td>
                                             </tr>
