@@ -78,6 +78,7 @@ public class DriverDispatch extends HttpServlet {
          try (PrintWriter out = response.getWriter()) {
           Datab db = new Datab();
           String name="",drivername="",defective="",filledgodown="",emptygodown="",sql="",fillednondomestic="",emptynondomestic="";
+          int four=0,nine=0,f5=0,defect=0,returnfour=0,returnnine=0,returnf5=0,returndefect=0;
           name= request.getParameter("form-customer-name");
           drivername= request.getParameter("form-driver-name");
           defective = request.getParameter("form-defective");
@@ -95,6 +96,26 @@ public class DriverDispatch extends HttpServlet {
           sql="insert into dispatchdriver(drivername,customername,defective,filledgodown,fillednondomestic,emptygodown,emptynondomestic,day)values('"+drivername+"','"+name+"','"+defective+"','"+filledgodown+"','"+fillednondomestic+"','"+emptygodown+"','"+emptynondomestic+"','"+date+"')";
           db.conn.createStatement();
           db.st.executeUpdate(sql);
+          sql="select * from godown ";
+            db.rs = db.st.executeQuery(sql);
+             while (db.rs.next()) {
+                 four += db.rs.getInt("filled_fourteen");
+                 nine += db.rs.getInt("filled_nineteen");
+//                 f5 += db.rs.getInt("filled_five");
+                 defect += db.rs.getInt("filled_defective");
+                 returnfour += db.rs.getInt("empty_fourteen");
+                 returnnine += db.rs.getInt("empty_nineteen");
+//                 returnf5 += db.rs.getInt("empty_five");
+//                 returndefect += db.rs.getInt("empty_defective");
+             }
+             four += Integer.parseInt(filledgodown);
+             returnfour -= Integer.parseInt(emptygodown);
+             nine += Integer.parseInt(fillednondomestic);
+             returnnine -= Integer.parseInt(emptynondomestic);
+             defect += Integer.parseInt(defective);
+             sql="update godown set filled_fourteen ='"+four+"',filled_nineteen='"+nine+"',filled_defective='"+defect+"',empty_fourteen='"+returnfour+"',empty_nineteen='"+returnnine+"',day='"+date+"' where id ="+1;
+             db.conn.createStatement();
+             db.st.executeUpdate(sql);
          }catch(Exception e)
          {
              e.printStackTrace();

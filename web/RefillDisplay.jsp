@@ -37,8 +37,8 @@
                 ArrayList<String> refill = new ArrayList<String>();
                 int filledtextbox = 0, emptytextbox = 0, counter = 4, gasrat = 0;
                 String emptybox = "", filledbox = "", amtpaid = "", gas = "", rate = "", sql = "", sql1 = "";
-                int diff = 0, amts = 0, am = 0, cal = 0;
-                int total = 0;
+                int diff = 0, amts = 0, am = 0, cal = 0,total=0,var=1;
+                int four=0,nine=0,f5=0,defect=0,returnfour=0,returnnine=0,returnf5=0,returndefect=0;
                 gas = request.getParameter("rateofgas");
 
                 if (gas == null) {
@@ -113,11 +113,25 @@
                     if (!ref.equals("")) {
                         for (emptytextbox = 0; emptytextbox < 4; emptytextbox++) {
                             if (amount.get(emptytextbox) > 0 && amountpaid.get(emptytextbox) > 0 ) {
-                                System.out.println("hi");
                                 sql1 = "insert into refill(name,filledcv,emptycv,amount,amtpaid,diffcv,diffamt,refillthrough,datoday,typeofpay,chequeno)values('" + name + "','" + filled.get(emptytextbox) + "','" + empty.get(emptytextbox) + "','" + amount.get(emptytextbox) + "','" + amountpaid.get(emptytextbox) + "','" + differencecv.get(emptytextbox) + "','" + difference.get(emptytextbox) + "','" + ref + "','" + todayWithZeroTime + "','" + radio + "','" + chequeno + "')";
                                 db.conn.createStatement();
                                 db.st.executeUpdate(sql1);
-                                System.out.println("after query");
+                                sql = "select * from godown";
+                                db.rs=db.st.executeQuery(sql);
+                                while(db.rs.next())
+                                {
+                                    four += db.rs.getInt("filled_fourteen");
+                                    returnfour += db.rs.getInt("empty_fourteen");
+                                }
+                                four -= Integer.parseInt(filled.get(emptytextbox));
+                                returnfour += Integer.parseInt(empty.get(emptytextbox));
+                                if(four==0)
+                                {
+                                    out.println("<html><body onload=\"alert('No More Filled Cylinder available in godown')\"></body></html>");
+                                }
+                                sql = "update godown set filled_fourteen ='"+four+"',empty_fourteen ='"+returnfour+"' where id='"+var+"'";
+                                db.conn.createStatement();
+                                db.st.executeUpdate(sql);
                             }
                         }
                     }
