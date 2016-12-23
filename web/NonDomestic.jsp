@@ -273,7 +273,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="NDCustomerEntry.jsp" method="post" class="registration-form">
+                            <form role="form" action="NDCustomerEntry.jsp" method="post" style="width:820px;" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -395,18 +395,18 @@
                                                         <th>Empty Cylinder</th>
                                                         <th>Type</th>
                                                         <th>Amount</th>
-                                                        <th>Cheque Amount</th>
+                                                        <th>Cheque Number</th>
                                                     </tr>
                                                     <tr>
-                                                        <td> <input type="text" id="form-emptycv3"  placeholder="Enter No Of Empty Cylinders" name="form-emptycv3"> </td>
+                                                        <td> <input type="text" id="form-emptycv3"  placeholder="Enter No Of Empty Cylinders" name="form-emptycv3" > </td>
                                                         <td align="center"> <input type="radio"  name="one3" value="one way" id="one3" > </td>
                                                         <td> <input type="text" id="form-counteramount3" name="form-counteramount3" placeholder="Enter Amount"></td>
-                                                        <td> <input type="text" id="form-chequeno2" name="form-chequeno2" placeholder="Enter Cheque no"></td>
+                                                        <td> <input type="text" id="form-chequeno2" name="form-chequeno2" placeholder="Enter Cheque no" ></td>
                                                     </tr>
                                                 </table>
                                             </section> <!-- === Cash and CV Deposite Complete === -->
                                             <!-- === Pick and Drop Start === -->
-                                            <section id="pickdropCashTrasaction" hidden="true"> <!-- === Pick And Drop Cash === -->
+                                            <section id="pickdropCashTrasaction" class="pickdropCashTrasaction" hidden="true"> <!-- === Pick And Drop Cash === -->
                                                 <table border="1px" >
                                                     <tr>
                                                         <th>Filled Cylinder</th>
@@ -416,11 +416,11 @@
                                                         <th>Amount</th>
                                                     </tr>
                                                     <tr>
-                                                        <td> <input type="text" id="form-filled" placeholder="Enter No Of Filled Cylinders" name="form-filled"> </td>
-                                                        <td> <input type="text" id="form-emptycv4" placeholder="Enter No Of Empty Cylinders" name="form-emptycv4"> </td>
-                                                        <td align="center"> <input type="radio"  name="two" value="two way" id="two" > </td>
-                                                        <td> <input type="text" id="form-counteramount4" name="form-counteramount4" placeholder="Enter Amount"></td>
-                                                        <td> <input type="text" id="form-amt" placeholder="Enter No Of Empty Cylinders" name="form-amt"> </td>
+                                                        <td> <input type="text" id="form-filled" placeholder="Enter No Of Filled Cylinders" name="form-filled" style="width:150px;"> </td>
+                                                        <td> <input type="text" id="form-emptycv4" placeholder="Enter No Of Empty Cylinders" name="form-emptycv4" style="width:150px;" > </td>
+                                                        <td align="center"> <input type="radio"  name="two" value="two way" id="two"> </td>
+                                                        <td> <input type="text" id="form-counteramount4" name="form-counteramount4" placeholder="Enter Amount" style="width:150px;" ></td>
+                                                        <td> <input type="text" id="form-amt" placeholder="Enter No Of Empty Cylinders" name="form-amt" style="width:150px;"> </td>
                                                     </tr>
                                                 </table>
                                             </section>
@@ -432,15 +432,15 @@
                                                         <th>Type</th>
                                                         <th>Amount Paid</th>
                                                         <th>Amount</th>
-                                                        <th>Cheque Amount</th>
+                                                        <th>Cheque Number</th>
                                                     </tr>
                                                     <tr>
-                                                        <td> <input type="text" id="form-filledcv1" placeholder="Enter No Of Filled Cylinders" name="form-filledcv1"> </td>
-                                                        <td> <input type="text" id="form-emptycv5" placeholder="Enter No Of Empty Cylinders" name="form-emptycv5"> </td>
+                                                        <td> <input type="text" id="form-filledcv1" placeholder="Enter No Of Filled Cylinders" name="form-filledcv1" style="width:150px;"> </td>
+                                                        <td> <input type="text" id="form-emptycv5" placeholder="Enter No Of Empty Cylinders" name="form-emptycv5" style="width:150px;"> </td>
                                                         <td align="center"> <input type="radio"  name="twocheque" value="two way" id="twocheque" > </td>
-                                                        <td> <input type="text" id="form-counteramount5" name="form-counteramount5" placeholder="Enter Amount"></td>
-                                                        <td> <input type="text" id="form-amt1" placeholder="Enter No Of Empty Cylinders" name="form-amt1"> </td>
-                                                        <td> <input type="text" id="form-chequeno5" name="form-chequeno5" placeholder="Enter Cheque no"></td>
+                                                        <td> <input type="text" id="form-counteramount5" name="form-counteramount5" placeholder="Enter Amount" style="width:150px;"></td>
+                                                        <td> <input type="text" id="form-amt1" placeholder="Enter No Of Empty Cylinders" name="form-amt1" style="width:150px;"> </td>
+                                                        <td> <input type="text" id="form-chequeno5" name="form-chequeno5" placeholder="Enter Cheque no" style="width:150px;"></td>
                                                     </tr>
                                                 </table>
                                             </section>

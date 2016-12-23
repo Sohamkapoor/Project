@@ -30,7 +30,7 @@
                 String mname = request.getParameter("middle-name");
                 String lname = request.getParameter("form-last-name");
                 String customername = fname + " " + mname + " " + lname;
-                String dob = request.getParameter("form-dob");
+                String dob = request.getParameter("datepicker");
                 String father = request.getParameter("form-father-name");
                 String mother = request.getParameter("form-mother-name");
                 String spouse = request.getParameter("form-spouse");
