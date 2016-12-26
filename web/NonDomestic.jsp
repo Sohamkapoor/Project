@@ -50,7 +50,7 @@
 
                 $(document).ready(function () {
                     $("#datepicker").datepicker({dateFormat: 'dd/mm/yy', minDate: 0});
-                    $('#cash').click(function () {
+                    $('#cash').click(function () {                       
                         $('#cashSelect').show();
                         $('#cylinderDeposite').hide();
                         $('#pickdropCashTrasaction').hide();
@@ -61,6 +61,8 @@
                         $('#cheque').attr('checked', false);
 
                         $('#cashonly').click(function () {
+                            var e = document.getElementById("registration-form");
+                            e.style.width = "580px";
                             $('#cashSelect').show();
                             $('#cylinderDeposite').hide();
                             $('#pickdropCashTrasaction').hide();
@@ -77,6 +79,8 @@
                             $('#cashDeposite').show();                           
                         });
                         $('#cheque').click(function () {
+                            var e = document.getElementById("registration-form");
+                            e.style.width = "580px";
                             $('#cashSelect').show();
                             $('#cylinderDeposite').hide();
                             $('#pickdropCashTrasaction').hide();
@@ -95,6 +99,8 @@
                     });
 
                     $('#cvdepo').click(function () {
+                        var e = document.getElementById("registration-form");
+                        e.style.width = "580px";
                         $('#cashSelect').hide();
                         $('#chequeDeposite').hide();
                         $('#cashDeposite').hide();
@@ -112,7 +118,7 @@
                         $('#cylinderDeposite').show();
                     });
 
-                    $('#cashcv').click(function () {
+                    $('#cashcv').click(function () {                       
                         $('#cylinderDeposite').hide();
                         $('#cashSelect').hide();
                         $('#chequeDeposite').hide();
@@ -125,6 +131,8 @@
                         $('#cheque').attr('checked', false);
                         $('#cashSelect').show();
                         $('#cashonly').click(function () {
+                            var e = document.getElementById("registration-form");
+                            e.style.width = "600px";
                             $('#cashSelect').show();
                             $('#cylinderDeposite').hide();
                             $('#chequeDeposite').hide();
@@ -140,6 +148,8 @@
                             
                         });
                         $('#cheque').click(function () {
+                            var e = document.getElementById("registration-form");
+                            e.style.width = "810px";
                             $('#cashSelect').show();
                             $('#cylinderDeposite').hide();
                             $('#chequeDeposite').hide();
@@ -167,6 +177,8 @@
                         $('#cashSelect').show();
                         
                         $('#cashonly').click(function () {
+                            var e = document.getElementById("registration-form");
+                            e.style.width = "720px";
                             $('#cashSelect').show();
                             $('#cvChequeDeposite').hide();
                             $('#cvCashDeposite').hide();
@@ -184,6 +196,8 @@
                         });
 
                         $('#cheque').click(function () {
+                            var e = document.getElementById("registration-form");
+                            e.style.width = "830px";
                             $('#cashSelect').show();
                             $('#cvChequeDeposite').hide();
                             $('#cvCashDeposite').hide();
@@ -273,7 +287,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="NDCustomerEntry.jsp" method="post" style="width:820px;" class="registration-form">
+                            <form role="form" action="NDCustomerEntry.jsp" method="post" id="registration-form" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
