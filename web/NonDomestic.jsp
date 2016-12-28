@@ -49,6 +49,7 @@
         <script>
 
                 $(document).ready(function () {
+                    var rate = document.getElementById("rate");                    
                     $("#datepicker").datepicker({dateFormat: 'dd/mm/yy', minDate: 0});
                     $('#cash').click(function () {                       
                         $('#cashSelect').show();
@@ -56,7 +57,9 @@
                         $('#pickdropCashTrasaction').hide();
                         $('#pickdropChequeTrasaction').hide();
                         $('#cvChequeDeposite').hide();
-                        $('#cvCashDeposite').hide();                       
+                        $('#cvCashDeposite').hide();    
+                        var e = document.getElementById("registration-form");
+                            e.style.width = "580px";
                         $('#cashonly').attr('checked', false);
                         $('#cheque').attr('checked', false);
 
@@ -72,7 +75,11 @@
                             $('#chequeDeposite').hide();
                             $("#cashon").attr('checked', true);
                             $("#form-filledcv").val("0");
+                            $('#form-advance').val("0");
+                            $('#form-advance1').val("0");
                             $("#form-emptycv").val("0");
+                            $('#form-discount').val("0");
+                            $('#form-discount1').val("0");
                             $('#form-amt').val("0");
                             $('#form-counteramount').val("");
                             $("#form-chequeno").val("0");
@@ -91,6 +98,10 @@
                             $('#form-counterammount1').val("");
                             $('#cashon1').attr('checked', true);
                             $("#form-filledcv").val("0");
+                            $('#form-advance').val("0");
+                            $('#form-advance1').val("0");
+                            $('#form-discount').val("0");
+                            $('#form-discount1').val("0");
                             $("#form-emptycv").val("0");
                             $('#form-amt').val("0");
                             $('#form-chequeno').val("");
@@ -112,6 +123,10 @@
                         $('#one1').attr('checked', true);
                         $('#form-filledcv').val("0");
                         $('#form-amt').val("0");
+                        $('#form-advance').val("0");
+                        $('#form-advance1').val("0");
+                        $('#form-discount').val("0");
+                        $('#form-discount1').val("0");
                         $("#form-chequeno").val("0");
                         $('#form-counteramount').val("0");
                         $('#form-emptycv').val("");
@@ -127,6 +142,8 @@
                         $('#pickdropChequeTrasaction').hide();
                         $("#form-filledcv").val("0");
                         $('#form-amt').val("0");
+                        var e = document.getElementById("registration-form");
+                            e.style.width = "580px";
                         $('#cashonly').attr('checked', false);
                         $('#cheque').attr('checked', false);
                         $('#cashSelect').show();
@@ -143,6 +160,10 @@
                             $('#form-emptycv1').val("");
                             $('#form-counteramount2').val("");
                             $("#form-chequeno2").val("0"); // not working
+                            $('#form-advance').val("0");
+                            $('#form-advance1').val("0");
+                            $('#form-discount').val("0");
+                            $('#form-discount1').val("0");
                             $('#one2').attr('checked', true);
                             $('#cvCashDeposite').show();
                             
@@ -158,6 +179,10 @@
                             $('#pickdropChequeTrasaction').hide();
                             $('#cvCashDeposite').hide();
                             $("#form-chequeno2").val("");
+                            $('#form-advance').val("0");
+                            $('#form-advance1').val("0");
+                            $('#form-discount').val("0");
+                            $('#form-discount1').val("0");
                             $('#form-emptycv3').val("");
                             $('#form-counteramount3').val("");
                             $('#one3').attr('checked', true);
@@ -171,6 +196,8 @@
                         $('#cvCashDeposite').hide();
                         $('#cylinderDeposite').hide();
                         $('#cashDeposite').hide();
+                        var e = document.getElementById("registration-form");
+                            e.style.width = "580px";
                         $('#chequeDeposite').hide();
                         $('#cashonly').attr('checked', false);
                         $('#cheque').attr('checked', false);
@@ -178,7 +205,7 @@
                         
                         $('#cashonly').click(function () {
                             var e = document.getElementById("registration-form");
-                            e.style.width = "720px";
+                            e.style.width = "760px";
                             $('#cashSelect').show();
                             $('#cvChequeDeposite').hide();
                             $('#cvCashDeposite').hide();
@@ -190,6 +217,8 @@
                             $('#two').attr('checked', true);
                             $('#form-filledcv').val("");
                             $('#form-emptycv4').val("");
+                            $('#form-advance').val("");
+                            $('#form-discount').val("");
                             $('#form-counteramount4').val("");
                             $('#form-amt').val("");
                             $('#pickdropCashTrasaction').show();                           
@@ -197,7 +226,7 @@
 
                         $('#cheque').click(function () {
                             var e = document.getElementById("registration-form");
-                            e.style.width = "830px";
+                            e.style.width = "860px";
                             $('#cashSelect').show();
                             $('#cvChequeDeposite').hide();
                             $('#cvCashDeposite').hide();
@@ -208,14 +237,16 @@
                             $('#form-filledcv1').val("");
                             $('#form-emptycv5').val("");
                             $('#form-counteramount5').val("");
+                            $('#form-advance1').val("");
+                            $('#form-discount1').val("");
                             $('#form-amt1').val("");
                             $("#form-chequeno5").val("");
                             $('#twocheque').attr('checked', true);
                             $('#pickdropChequeTrasaction').show();                          
                         });
-                        $('#form-filledcv').focusout(function () {
+                        $('#form-filledcv1').focusout(function () {
                             var rate = document.getElementById("rate").value;
-                            var amt = document.getElementById("form-filledcv").value;
+                            var amt = document.getElementById("form-filledcv1").value;
                             var amount = amt * rate;
                             $('#form-amt1').val(amount);
                         });
@@ -224,6 +255,76 @@
                             var amt = document.getElementById("form-filled").value;
                             var amount = amt * rate;
                             $('#form-amt').val(amount);
+                        });
+                        $('#form-advance').focusout(function () {
+                            var rate = document.getElementById("rate").value;
+                            var amt = document.getElementById("form-filled").value;
+                            var adv = document.getElementById("form-advance").value;
+                            if(adv === ""){
+                            $('#erradvance').text("advance cannot be empty");    
+                            adv=0;}
+                            var amount = ((amt * rate)-adv);
+                            $('#form-amt').val(amount);
+                        });
+                        $('#form-advance').focusin(function () {
+                            $('#erradvance').text("");
+                        });
+                        $('#form-advance1').focusout(function () {
+                            var rate = document.getElementById("rate").value;
+                            var amt = document.getElementById("form-filledcv1").value;
+                            var adv = document.getElementById("form-advance1").value;
+                            if(adv === ""){
+                            $('#erradvance1').text("advance cannot be empty");
+                            adv =0;    }
+                            var amount = ((amt * rate)-adv);
+                            $('#form-amt1').val(amount);
+                        });
+                        $('#form-advance1').focusin(function () {
+                            $('#erradvance1').text("");
+                        });
+                        $('#form-discount').focusout(function () {
+                            var rate = document.getElementById("rate").value;
+                            var amt = document.getElementById("form-filled").value;
+                            var adv = document.getElementById("form-advance").value;
+                            var dis = document.getElementById("form-discount").value;
+                            if(adv === ""){adv=0;}
+                            if(dis === ""){dis=0;}
+                            var amount = ((amt * rate)-adv-dis);
+                            $('#form-amt').val(amount);
+                        });
+                        $('#form-discount1').focusout(function () {
+                            var rate = document.getElementById("rate").value;
+                            var amt = document.getElementById("form-filledcv1").value;
+                            var adv = document.getElementById("form-advance1").value;
+                            var dis = document.getElementById("form-discount1").value;
+                            if(adv === ""){adv=0;}
+                            if(dis === ""){dis=0;}
+                            var amount = ((amt * rate)-adv-dis);
+                            $('#form-amt1').val(amount);
+                        });
+                        $('#form-counteramount4').focusout(function(){
+                            var amt = document.getElementById("form-counteramount4").value;
+                            var am = document.getElementById("form-amt").value;
+                            if(amt > am)
+                            {
+                                $('#form-counteramount4').val("");
+                                $('#errcounteramount4').text("Cannot pay more than bill amount");
+                            }                            
+                        });
+                        $('#form-counteramount4').focusin(function(){
+                            $('#errcounteramount4').text("");
+                        });
+                         $('#form-counteramount5').focusout(function(){
+                            var amt = document.getElementById("form-counteramount5").value;
+                            var am = document.getElementById("form-amt1").value;
+                            if(amt > am)
+                            {
+                                $('#form-counteramount5').val("");
+                                $('#errcounteramount5').text("Cannot pay more than bill amount");
+                            }                            
+                        });
+                        $('#form-counteramount5').focusin(function(){
+                            $('#errcounteramount5').text("");
                         });
                     });
                 }); 
@@ -426,15 +527,19 @@
                                                         <th>Filled Cylinder</th>
                                                         <th>Empty Cylinder</th>
                                                         <th>Type</th>
+                                                        <th>Advance Amount</th>
+                                                        <th> Discount </th>
                                                         <th>Amount Paid</th>
                                                         <th>Amount</th>
                                                     </tr>
                                                     <tr>
-                                                        <td> <input type="text" id="form-filled" placeholder="Enter No Of Filled Cylinders" name="form-filled" style="width:150px;"> </td>
-                                                        <td> <input type="text" id="form-emptycv4" placeholder="Enter No Of Empty Cylinders" name="form-emptycv4" style="width:150px;" > </td>
-                                                        <td align="center"> <input type="radio"  name="two" value="two way" id="two"> </td>
-                                                        <td> <input type="text" id="form-counteramount4" name="form-counteramount4" placeholder="Enter Amount" style="width:150px;" ></td>
-                                                        <td> <input type="text" id="form-amt" placeholder="Enter No Of Empty Cylinders" name="form-amt" style="width:150px;"> </td>
+                                                        <td> <input type="text" id="form-filled" placeholder="Enter No Of Filled Cylinders" name="form-filled" style="width:120px;"> </td>
+                                                        <td> <input type="text" id="form-emptycv4" placeholder="Enter No Of Empty Cylinders" name="form-emptycv4" style="width:120px;" > </td>
+                                                        <td align="center"> <input type="radio"  name="two" value="two way" id="two"> </td>                                                        
+                                                        <td> <input type="text" id="form-advance" name="form-advance" placeholder="Enter Advance Amount" style="width:120px;" ><span  style="color:red;" id="erradvance"></span></td>
+                                                        <td> <input type="text" id="form-discount" name="form-discount" placeholder="Enter Discount Amount" style="width:120px;" ></td>
+                                                        <td> <input type="text" id="form-counteramount4" name="form-counteramount4" placeholder="Enter Amount" style="width:120px;" ><span  style="color:red;" id="errcounteramount4"></span></td>
+                                                        <td> <input type="text" id="form-amt" placeholder="Enter No Of Empty Cylinders" name="form-amt" style="width:120px;"> </td>
                                                     </tr>
                                                 </table>
                                             </section>
@@ -443,18 +548,22 @@
                                                     <tr>
                                                         <th>Filled Cylinder</th>
                                                         <th>Empty Cylinder</th>
-                                                        <th>Type</th>
+                                                        <th>Type</th>                                                        
+                                                        <th>Advance Amount </th>
+                                                        <th> Discount </th>
                                                         <th>Amount Paid</th>
                                                         <th>Amount</th>
                                                         <th>Cheque Number</th>
                                                     </tr>
                                                     <tr>
-                                                        <td> <input type="text" id="form-filledcv1" placeholder="Enter No Of Filled Cylinders" name="form-filledcv1" style="width:150px;"> </td>
-                                                        <td> <input type="text" id="form-emptycv5" placeholder="Enter No Of Empty Cylinders" name="form-emptycv5" style="width:150px;"> </td>
-                                                        <td align="center"> <input type="radio"  name="twocheque" value="two way" id="twocheque" > </td>
-                                                        <td> <input type="text" id="form-counteramount5" name="form-counteramount5" placeholder="Enter Amount" style="width:150px;"></td>
-                                                        <td> <input type="text" id="form-amt1" placeholder="Enter No Of Empty Cylinders" name="form-amt1" style="width:150px;"> </td>
-                                                        <td> <input type="text" id="form-chequeno5" name="form-chequeno5" placeholder="Enter Cheque no" style="width:150px;"></td>
+                                                        <td> <input type="text" id="form-filledcv1" placeholder="Enter No Of Filled Cylinders" name="form-filledcv1" style="width:120px;"> </td>
+                                                        <td> <input type="text" id="form-emptycv5" placeholder="Enter No Of Empty Cylinders" name="form-emptycv5" style="width:120px;"> </td>
+                                                        <td align="center"> <input type="radio"  name="twocheque" value="two way" id="twocheque" > </td>                                                        
+                                                        <td> <input type="text" id="form-advance1" name="form-advance1" placeholder="Enter Advance Amount" style="width:120px;" ><span  style="color:red;" id="erradvance1"></span></td>
+                                                        <td> <input type="text" id="form-discount1" name="form-discount1" placeholder="Enter Discount Amount" style="width:120px;" ></td>
+                                                        <td> <input type="text" id="form-counteramount5" name="form-counteramount5" placeholder="Enter Amount" style="width:120px;"><span  style="color:red;" id="errcounteramount5"></span></td>
+                                                        <td> <input type="text" id="form-amt1" placeholder="Enter No Of Empty Cylinders" name="form-amt1" style="width:120px;"> </td>
+                                                        <td> <input type="text" id="form-chequeno5" name="form-chequeno5" placeholder="Enter Cheque no" style="width:120px;"></td>
                                                     </tr>
                                                 </table>
                                             </section>

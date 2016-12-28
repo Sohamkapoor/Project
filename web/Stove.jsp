@@ -56,15 +56,18 @@
         $(document).ready(function () {
             var e = document.getElementById("registration-form");
             e.style.width = "600px";
+            $('#button').hide();
             $('#factory').click(function(){
                 $('#form-group').show();
                 $('#stove').show(); 
                 $('#selling').hide();
+                $('#button').show();
             });
             $('#sell').click(function(){
                 $('#form-group').show();
                 $('#stove').hide();
                 $('#selling').show();
+                $('#button').show();
             });
         });
         
@@ -108,6 +111,7 @@
                     newdiv = document.createElement("label");
                     newdiv.setAttribute("for", element);
                     newdiv.innerHTML = element;
+                    $('#c'+counter).val(element);
                     $('#count1111'+counter).show();
                     document.getElementById("count1111" + counter).appendChild(newdiv);
 
@@ -128,6 +132,7 @@
                     newdiv.setAttribute("for", element);
                     newdiv.innerHTML = element;
                     $('#count1111'+counter).show();
+                    $('#c'+counter).val(element);
                     document.getElementById("count1111" + counter).appendChild(newdiv);
 
                     newdiv = document.createElement("input");
@@ -151,6 +156,7 @@
                     newdiv = document.createElement("label");
                     newdiv.setAttribute("for", element);
                     newdiv.innerHTML = element;
+                    $('#c'+counter).val(element);
                     $('#count111'+counter).show();
                     document.getElementById("count111" + counter).appendChild(newdiv);
 
@@ -169,6 +175,7 @@
                     newdiv = document.createElement("label");
                     newdiv.setAttribute("for", element);
                     newdiv.innerHTML = element;
+                    $('#c'+counter).val(element);
                     $('#count111'+counter).show();
                     document.getElementById("count111" + counter).appendChild(newdiv);
 
@@ -317,8 +324,12 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        
-                                        <input type="button" value="Add" onclick="count();">
+                                        <input type="hidden" id="c1"/>
+                                        <input type="hidden" id="c2"/>
+                                        <input type="hidden" id="c3"/>
+                                        <input type="hidden" id="c4"/>
+                                        <input type="button" class="btn btn-success" id="button" value="Add" onclick="count();">
+                                        <input type="submit" value="submit details"/>
                                     </div>
                                 </fieldset>
                             </form>

@@ -20,7 +20,7 @@
         <%
             try {
                 Datab db = new Datab();
-                String name = request.getParameter("form-nameoc");
+//                String name = request.getParameter("form-nameoc");
                 String employee = request.getParameter("form-nameoe");
                 String radio = request.getParameter("form-payment");
                 String chequeno = request.getParameter("form-chequeno").trim();
@@ -113,7 +113,7 @@
                     if (!ref.equals("")) {
                         for (emptytextbox = 0; emptytextbox < 4; emptytextbox++) {
                             if (amount.get(emptytextbox) > 0 && amountpaid.get(emptytextbox) > 0 ) {
-                                sql1 = "insert into refill(name,filledcv,emptycv,amount,amtpaid,diffcv,diffamt,refillthrough,datoday,typeofpay,chequeno)values('" + name + "','" + filled.get(emptytextbox) + "','" + empty.get(emptytextbox) + "','" + amount.get(emptytextbox) + "','" + amountpaid.get(emptytextbox) + "','" + differencecv.get(emptytextbox) + "','" + difference.get(emptytextbox) + "','" + ref + "','" + todayWithZeroTime + "','" + radio + "','" + chequeno + "')";
+                                sql1 = "insert into refill(name,filledcv,emptycv,amount,amtpaid,diffcv,diffamt,refillthrough,datoday,typeofpay,chequeno)values('"+employee+"'," + filled.get(emptytextbox) + "','" + empty.get(emptytextbox) + "','" + amount.get(emptytextbox) + "','" + amountpaid.get(emptytextbox) + "','" + differencecv.get(emptytextbox) + "','" + difference.get(emptytextbox) + "','" + ref + "','" + todayWithZeroTime + "','" + radio + "','" + chequeno + "')";
                                 db.conn.createStatement();
                                 db.st.executeUpdate(sql1);
                                 sql = "select * from godown";
@@ -138,7 +138,7 @@
                 }
 
         %>
-        <h3>Name : <%= name%></h3>
+        <h3>Name : <%= employee %></h3>
         <table border="1px">
             <tr>
                 <th>Refill</th>

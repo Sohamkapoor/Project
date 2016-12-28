@@ -19,18 +19,14 @@
         <%
             try {
                 Datab db = new Datab();
-                String filledcc = "", emptycc = "", amtpaid = "", amount = "", transaction = "", chequeno = "", typeofpayment = "";
+                String filledcc = "", emptycc = "", amtpaid = "", amount = "", transaction = "", chequeno = "", typeofpayment = "",advance="",discount="";
                 int nine = 0, returnnine = 0, var = 1;
                 String name = request.getParameter("form-nameoc").trim();
                 String phno = request.getParameter("form-phno").trim();
                 String advdate = request.getParameter("datepickers");
-                String advance = request.getParameter("form-advance");
                 String security = request.getParameter("security").trim();
                 if (security.equals("")) {
                     security = "0";
-                }
-                if (advance.equals("")) {
-                    advance = "0";
                 }
                 //get Transaction type for what user has came
                 String cvtype = request.getParameter("onlycv").trim();
@@ -44,12 +40,16 @@
                         amtpaid = request.getParameter("form-counteramount").trim();
                         emptycc = "0"; //request.getParameter("form-emptycv");
                         amount = "0"; //request.getParameter("form-amt");
+                        advance="0";
+                        discount ="0";
                         chequeno = "0"; //request.getParameter("form-chequeno");
                     } else if (typeofpayment.equals("cheque")) {
                         filledcc = "0"; //request.getParameter("form-filledcv");
                         amtpaid = request.getParameter("form-counteramount1").trim();
                         emptycc = "0"; //request.getParameter("form-emptycv");
                         amount = "0"; //request.getParameter("form-amt");
+                        advance="0";
+                        discount ="0";
                         chequeno = request.getParameter("form-chequeno").trim();
                     }
                 } else if (cvtype.equals("cvdepo")) {
@@ -57,18 +57,24 @@
                     amtpaid = "0"; //request.getParameter("form-counteramount");
                     emptycc = request.getParameter("form-emptycv").trim();
                     amount = "0"; //request.getParameter("form-amt");
+                    advance="0";
+                        discount ="0";
                     chequeno = "0"; //request.getParameter("form-chequeno");               
                 } else if (cvtype.equals("pickdrop")) {
                     if (typeofpayment.equals("cashonly")) {
                         filledcc = request.getParameter("form-filled").trim();
                         amtpaid = request.getParameter("form-counteramount4").trim();
                         emptycc = request.getParameter("form-emptycv4").trim();
+                        advance = request.getParameter("form-advance").trim();
+                        discount = request.getParameter("form-discount").trim();
                         amount = request.getParameter("form-amt").trim();
                         chequeno = "0"; //request.getParameter("form-chequeno");
                     } else if (typeofpayment.equals("cheque")) {
                         filledcc = request.getParameter("form-filledcv1").trim();
                         amtpaid = request.getParameter("form-counteramount5").trim();
                         emptycc = request.getParameter("form-emptycv5").trim();
+                        advance = request.getParameter("form-advance1").trim();
+                        discount = request.getParameter("form-discount1").trim();
                         amount = request.getParameter("form-amt1").trim();
                         chequeno = request.getParameter("form-chequeno5").trim();
                     }
@@ -76,14 +82,18 @@
                     if (typeofpayment.equals("cashonly")) {
                         filledcc = "0"; //request.getParameter("form-filledcv");
                         amtpaid = request.getParameter("form-counteramount2").trim();
-                        emptycc = request.getParameter("form-emptycv1").trim();
+                        emptycc = request.getParameter("form-emptycv1").trim();                        
                         amount = "0"; //request.getParameter("form-amt");
+                        advance="0";
+                        discount ="0";
                         chequeno = "0"; //request.getParameter("form-chequeno");
                     } else if (typeofpayment.equals("cheque")) {
                         filledcc = "0"; //request.getParameter("form-filledcv");
                         amtpaid = request.getParameter("form-counteramount3").trim();
                         emptycc = request.getParameter("form-emptycv3").trim();
                         amount = "0"; //request.getParameter("form-amt");
+                        advance="0";
+                        discount ="0";
                         chequeno = request.getParameter("form-chequeno2").trim();
                     }
                 }
@@ -111,7 +121,7 @@
                 finalamt += diffamt;
                 finalcv += diffcv;
 
-                sql = "insert into nondomestic (name,filled,empty,amount,amountpaid,chequeno,osamt,cvdue,transaction,daytoday,phno,advdate,security)values('" + name + "','" + filledcc + "','" + emptycc + "','" + amount + "','" + amtpaid + "','" + chequeno + "','" + diffamt + "','" + diffcv + "','" + transaction + "','" + tod + "','" + phno + "','" + advdate + "','" + security + "')";
+                sql = "insert into nondomestic (name,filled,empty,amount,amountpaid,advance,discount,chequeno,osamt,cvdue,transaction,daytoday,phno,advdate,security)values('" + name + "','" + filledcc + "','" + emptycc + "','" + amount + "','" + amtpaid + "','"+advance+"','"+discount+"','" + chequeno + "','" + diffamt + "','" + diffcv + "','" + transaction + "','" + tod + "','" + phno + "','" + advdate + "','" + security + "')";
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
                 sql = "select * from godown ";

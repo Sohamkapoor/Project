@@ -35,9 +35,9 @@ public class vehicle extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       // try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-           /* out.println("<!DOCTYPE html>");
+        // try (PrintWriter out = response.getWriter()) {
+        /* TODO output your page here. You may use following sample code. */
+ /* out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet vehicle</title>");            
@@ -75,41 +75,41 @@ public class vehicle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);        
-        try (PrintWriter out = response.getWriter()){
+        processRequest(request, response);
+        try (PrintWriter out = response.getWriter()) {
             Datab db = new Datab();
             Calendar cal = Calendar.getInstance();
-                                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                                                String strDate = sdf.format(cal.getTime());
-                                                System.out.println("Current date in String Format: " + strDate);
-                                                SimpleDateFormat sdf1 = new SimpleDateFormat();
-                                                sdf1.applyPattern("dd/MM/yyyy");
-                                                Date date = sdf1.parse(strDate);
-            String sql="",v="",petrol,repair;
-            String count= request.getParameter("count");
-            int c=Integer.parseInt(count);
-            int i=0;
-            
-            for(;i<c;i++)
-            {
-                petrol = request.getParameter("petrolPrice"+i);
-                if(petrol.equals(""))
-                {petrol="0";}
-                repair = request.getParameter("repair"+i);
-                if(repair.equals(""))
-                {repair="0";}
-                v=request.getParameter("vehicleno"+i);
-                System.out.println("v ="+v);
-                sql="update vehicle set dropkm='"+request.getParameter("drop"+i)+"', petrol='"+petrol+"',repairing='"+repair+"' where vehicleno='"+v+"' and date='"+date+"'";
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String strDate = sdf.format(cal.getTime());
+            System.out.println("Current date in String Format: " + strDate);
+            SimpleDateFormat sdf1 = new SimpleDateFormat();
+            sdf1.applyPattern("dd/MM/yyyy");
+            Date date = sdf1.parse(strDate);
+            String sql = "", v = "", petrol, repair;
+            String count = request.getParameter("count");
+            int c = Integer.parseInt(count);
+            int i = 0;
+
+            for (; i < c; i++) {
+                petrol = request.getParameter("petrolPrice" + i);
+                if (petrol.equals("")) {
+                    petrol = "0";
+                }
+                repair = request.getParameter("repair" + i);
+                if (repair.equals("")) {
+                    repair = "0";
+                }
+                v = request.getParameter("vehicleno" + i);
+                System.out.println("v =" + v);
+                sql = "update vehicle set dropkm='" + request.getParameter("drop" + i) + "', petrol='" + petrol + "',repairing='" + repair + "' where vehicleno='" + v + "' and date='" + date + "'";
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
             }
             response.setIntHeader("Refresh", 2);
             response.sendRedirect("http://localhost:8080/gas/miscellaneous_vehicle.jsp");
-            }catch(Exception e)
-            {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

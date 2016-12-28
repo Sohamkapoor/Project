@@ -177,10 +177,10 @@
 
                                         <% }%>
                                         <input type="hidden" value="<%= rate%>" id="rate" name="rates" />
-                                        <div class="form-group">
+<!--                                        <div class="form-group">
                                             <label class="sr-only" for="form-noc">Name Of Customer </label>
                                             <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
-                                        </div>
+                                        </div>-->
                                         <div class="form-group">
                                             <label class="sr-only" for="form-noe">Name Of Employee </label>
                                             <input type="text" name="form-nameoe" placeholder="Enter Name Of Employee" class="form-nameoe form-control" id="form-nameoe" >
