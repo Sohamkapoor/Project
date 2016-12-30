@@ -64,6 +64,14 @@
         <servlet-name>Stove</servlet-name>
         <servlet-class>Stove.Stove</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LinkCustomer</servlet-name>
+        <servlet-class>LinkCustomer.LinkCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>New</servlet-name>
+        <servlet-class>New.New</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailFill</servlet-name>
         <url-pattern>/DetailFill</url-pattern>
@@ -111,6 +119,14 @@
     <servlet-mapping>
         <servlet-name>Stove</servlet-name>
         <url-pattern>/Stove</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LinkCustomer</servlet-name>
+        <url-pattern>/LinkCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>New</servlet-name>
+        <url-pattern>/New</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
