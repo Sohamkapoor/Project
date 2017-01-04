@@ -388,13 +388,13 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="NDCustomerEntry.jsp" method="post" id="registration-form" class="registration-form">
+                            <form role="form" action="NDCustomerEntry" method="post" id="registration-form" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p> Tell us your Order : </p>
+                                            <p> Tell us about your Non Domestic Order : </p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-user"></i>
@@ -414,8 +414,17 @@
                                         %>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-noc">Name Of Customer </label>
+                                            <input type="text" name="form-nameoe" placeholder="Enter Name Of Employee" class="form-nameoe form-control" id="form-nameoe" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-noc">Name Of Customer </label>
                                             <input type="text" name="form-nameoc" placeholder="Enter Name Of Customer" class="form-nameoc form-control" id="form-nameoc" >
                                         </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-noc">Name Of Customer </label>
+                                            <input type="text" name="form-customer-address" placeholder="Enter Customer Address" class="form-customer-address form-control" id="form-customer-address" >
+                                        </div>
+                       
                                         <div class="form-group">
                                             <label class="sr-only" for="form-phno">Register Phno </label>
                                             <input type="text" name="form-phno" placeholder="Enter Registered Phno" class="form-phno form-control" id="form-phno" >

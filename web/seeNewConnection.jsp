@@ -14,7 +14,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Refill</title>
+        <title>New Customer List</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -86,7 +86,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Shri Mangalam Indane</strong> Refill Information Sheet </h1>
+                            <h1><strong>Shri Mangalam Indane</strong> New Connection List </h1>
                             <div class="description">
                                 <p>
                                     <!--This is a free responsive multi-step registration form made with Bootstrap. 
@@ -120,8 +120,6 @@
                                                 <th> Salutation </th>
                                                 <th> Name </th>
                                                 <th> DOB </th>
-                                                <th> Father's Name </th>
-                                                <th> Mother's Name </th>
                                                 <th> Address </th>
                                                 <th> Mobile </th>                                                
                                                 <th> ID Submitted </th>
@@ -142,8 +140,6 @@
                                                 <td align="center"><%= db.rs.getString("salutation")%></td>
                                                 <td align="center"><%= db.rs.getString("name") %></td>
                                                 <td align="center"><%= db.rs.getString("dob") %></td>
-                                                <td align="center"><%= db.rs.getString("fathername") %></td>
-                                                <td align="center"><%= db.rs.getString("mothername") %></td>
                                                 <td align="center"><%= db.rs.getString("address") %></td>
                                                 <td align="center"><%= db.rs.getString("mobile") %></td>
                                                 <td align="center"><%= db.rs.getString("idsubmitted") %></td>

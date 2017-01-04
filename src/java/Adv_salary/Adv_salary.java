@@ -85,13 +85,13 @@ public class Adv_salary extends HttpServlet {
             SimpleDateFormat sdf1 = new SimpleDateFormat();
             sdf1.applyPattern("dd/MM/yyyy");
             Date date = sdf1.parse(strDate);
-
-            String nameoe = request.getParameter("form-adv");
-            String phno = request.getParameter("form-phno");
-            String advamt = request.getParameter("form-advamt");
-
+            String nameoe="",phno="",advamt="";
+            nameoe = request.getParameter("form-adv");
+            phno = request.getParameter("form-phno");
+            advamt = request.getParameter("form-advamt");
+            System.out.println("adv amt="+advamt);
             String sql = "", na = "", ph = "", sa = "";
-
+            int sal=0;
             sql = "insert into adv_salary(nameoe,phno,advamt,date)values('" + nameoe + "','" + phno + "','" + advamt + "','" + date + "')";
             db.conn.createStatement();
             db.st.executeUpdate(sql);
@@ -101,9 +101,11 @@ public class Adv_salary extends HttpServlet {
             while (db.rs.next()) {
                 sa = db.rs.getString("salary");
             }
+            System.out.println("sa ="+sa);
               //  System.out.println("name ="+ nameoe + "na ="+ na);
             //  System.out.println("phno ="+ phno + "ph ="+ ph);
-            int sal = Integer.parseInt(sa) - Integer.parseInt(advamt);
+            sal = ((Integer.parseInt(sa)) - (Integer.parseInt(advamt))) ;
+            System.out.println("sal ="+sal);
             //    System.out.println("petrol =" + petrol + " " + "vehicleno =" + vehicleno + " " + "pick =" + pick + " " + "drop =" + drop + "repairing =" + repairing);
             sql = "update employee set salary ='" + sal + "' where name='" + nameoe + "' and phno ='" + phno + "'";
             db.conn.createStatement();

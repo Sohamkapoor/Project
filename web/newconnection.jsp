@@ -46,10 +46,28 @@
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
-
-
-
-
+        <script>
+            $(document).ready(function(){
+               $('#form-tinno').hide();
+               $('#form-tinno').val("0");
+                $('#nd').click(function(){
+                    $('#form-tinno').show();
+                    $('#form-tinno').val("");
+                }); 
+                $('#domestic').click(function(){
+                    $('#form-tinno').hide();
+                    $('#form-tinno').val("0");
+                });
+                $('#tv').click(function(){
+                    $('#form-tinno').hide();
+                    $('#form-tinno').val("0");
+                });
+                $('#ttv').click(function(){
+                    $('#form-tinno').hide();
+                    $('#form-tinno').val("0");
+                });
+            });
+            </script>
     </head>
 
     <body>
@@ -108,7 +126,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="detail.jsp" method="post" class="registration-form">
+                            <form role="form" action="New_Connection" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -131,10 +149,15 @@
                                         </div>    
                                         <div class="form-group">
                                             <label  for="typeoc">Type Of Customer :</label> &nbsp;
-                                            <input type="radio" name="type" id="nd" value="nd" checked="checked"> N.D &nbsp;
+                                            <input type="radio" name="type" id="nd" value="nd"> N.D &nbsp;
                                             <input type="radio" name="type" id="domestic" value="domestic"> Domestic &nbsp;
                                             <input type="radio" name="type" id="tv" value="tv"> T.V &nbsp;
                                             <input type="radio" name="type" id="ttv" value="ttv"> T.T.V &nbsp;
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-first-name">Connectionby </label>
+                                            <input type="text" name="form-connectionby" placeholder="Connection By office/name" class="form-connectionby form-control" id="form-connectionby" >
+                                            <span  style="color:red;" id="errConnectionBy"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-first-name">First name </label>
@@ -151,8 +174,13 @@
                                             <span  style="color:red;" id="errLastName"></span>
                                         </div>
                                         <div class="form-group">
+                                            <label class="sr-only" for="form-first-name">Tin No </label>
+                                            <input type="text" name="form-tinno" placeholder="Tin No" class="form-tinno form-control" id="form-tinno" >
+                                            <span  style="color:red;" id="errTinno"></span>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="sr-only" for="form-dob">Date Of Birth</label>
-                                            <input type="date" name="datepicker" placeholder="Enter Date of Birth dd/mm/yyyy" onkeydown="return false" class="form-dob form-control" id="datepicker" >
+                                            <input type="text" placeholder="Enter D.O.B dd/mm/yyyy" class="form-date form-control" id="datepicker" name="datepicker"/>
                                             <span  style="color:red;" id="errDOB"></span>
 
                                         </div>

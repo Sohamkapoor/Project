@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Factory</title>
+        <title>Stove</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -56,14 +56,42 @@
         $(document).ready(function () {
             var e = document.getElementById("registration-form");
             e.style.width = "600px";
+            $('#agency_name').hide();
+            $('#nameoc').hide();
+            $('#invoice_no').hide();
+            $('#tin_no').hide();
+            $('#tax_no').hide();
             $('#button').hide();
+            $('#agency_name').val("0");
+            $('#invoice_no').val("0");
+            $('#tin_no').val("0");
+            $('#tax_no').val("0");
             $('#factory').click(function(){
                 $('#form-group').show();
                 $('#stove').show(); 
                 $('#selling').hide();
+                $('#agency_name').val("");
+                $('#invoice_no').val("");
+                $('#tin_no').val("");
+                $('#tax_no').val("");
+                $('#nameoc').hide();
                 $('#button').show();
+                $('#agency_name').show();
+                $('#invoice_no').show();
+                $('#tin_no').show();
+                $('#tax_no').show();
+                $()
             });
             $('#sell').click(function(){
+                $('#agency_name').hide();
+                $('#invoice_no').hide();
+                $('#tin_no').hide();
+                $('#nameoc').show();
+                $('#tax_no').hide();
+                $('#agency_name').val("0");
+                $('#invoice_no').val("0");
+                $('#tin_no').val("0");
+                $('#tax_no').val("0");
                 $('#form-group').show();
                 $('#stove').hide();
                 $('#selling').show();
@@ -267,29 +295,58 @@
 
                                     <div class="form-bottom"> 
                                         <input type="radio" name="type" id="sell" value="sell"/> Sell
-                                        <input type="radio" name="type" id="factory" value="godown"/> Factory
-                                        <div class="form-group" id="form-group" hidden="true">
+                                        <input type="radio" name="type" id="factory" value="godown"/> Trading & Company
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-noc">Invoice Number </label>
+                                            <input type="text" name="agency_name" id="agency_name" placeholder="Enter Agency Name"/><br/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-noc">Invoice Number </label>
+                                            <input type="text" name="invoice_no" id="invoice_no" placeholder="Enter Invoice Number"/><br/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-noc">Invoice Number </label>
+                                            <input type="text" name="nameoc" id="nameoc" placeholder="Enter Name Of Customer"/><br/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-noc">Tin Number </label>
+                                            <input type="text" name="tin_no" id="tin_no" placeholder="Enter Tin Number"/><br/>
+                                        </div>  
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-noc">Tin Number </label>
+                                            <input type="text" name="tax_no" id="tax_no" placeholder="Enter VAT Amount"/><br/>
+                                        </div> 
+                                            <!-- Rate insert -->
                                             <!-- === add form here === -->                                            
                                             <table id="stove" border="1px solid">
                                                 <tr>
-                                                    <th> &nbsp; Stove 197 &nbsp; </th>
-                                                    <th> &nbsp; Stove 199 &nbsp; </th>
+                                                    
+                                                    <th> &nbsp; Stove 1975 &nbsp; </th>
+                                                    <th> &nbsp; Bill Price &nbsp;</th>
+                                                    <th> &nbsp; Stove 99 &nbsp; </th>
+                                                    <th> &nbsp; Bill Price &nbsp;</th>
                                                     <th> &nbsp; PR &nbsp; </th>
+                                                    <th> &nbsp; Bill Price &nbsp;</th>
                                                     <th> &nbsp; 1.5 Pipe &nbsp; </th>
-                                                    <th> &nbsp; CY &nbsp; </th>
+                                                    <th> &nbsp; Bill Price &nbsp;</th>
                                                     <th> &nbsp; Dairy &nbsp; </th>
+                                                    <th> &nbsp; Bill Price &nbsp;</th>
                                                     <th id="count11111" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
                                                     <th id="count11112" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
                                                     <th id="count11113" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
                                                     <th id="count11114" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
                                                 </tr>
                                                 <tr>
-                                                    <td><input type="number" name="stove1975" id="stove1975" placeholder="Enter Quantity" style="width:98px; height:50px;"></td>
-                                                    <td><input type="number" name="stove1990" id="stove1990" placeholder="Enter Quantity"style="width:98px; height:50px;"></td>
-                                                    <td><input type="number" name="pr" id="pr" placeholder="PR"style="width:80px; height:50px;"></td>
-                                                    <td><input type="number" name="1.5pipe" id="1.5pipe" placeholder="Enter Pipe"style="width:80px; height:50px;"></td>
-                                                    <td><input type="number" name="cy" id="cy" placeholder="Enter CY"style="width:80px; height:50px;"></td>
-                                                    <td><input type="number" name="dairy" id="dairy" placeholder="Enter Dairy"style="width:80px; height:50px;"></td>
+                                                    <td><input type="number" name="stove1975" id="stove1975" placeholder="Enter Quantity" style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="stove1975price" id="stove1975price" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="stove1990" id="stove1990" placeholder="Enter Quantity"style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="stove1990price" id="stove1990price" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="pr" id="pr" placeholder="PR"style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="prprice" id="prprice" placeholder="Enter Pr Price" style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="1.5pipe" id="1.5pipe" placeholder="Enter Pipe"style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="1.5pipeprice" id="s1.5pipeprice" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="dairy" id="dairy" placeholder="Enter Dairy"style="width:50px; height:50px;"></td>
+                                                    <td><input type="number" name="dairyprice" id="dairyprice" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
                                                     <td id="counter11111" style="width:98px;" hidden="true"></td>
                                                     <td id="counter11112" style="width:98px;" hidden="true"></td>
                                                     <td id="counter11113" style="width:98px;" hidden="true"></td>
@@ -300,10 +357,9 @@
                                             <table id="selling" border="1px">
                                                 <tr>
                                                     <th> &nbsp; Stove 1975 &nbsp; </th>
-                                                    <th> &nbsp; Stove 1990 &nbsp; </th>
+                                                    <th> &nbsp; Stove 990 &nbsp; </th>
                                                     <th> &nbsp; PR &nbsp; </th>
                                                     <th> &nbsp; 1.5 Pipe &nbsp; </th>
-                                                    <th> &nbsp; CY &nbsp; </th>
                                                     <th> &nbsp; Dairy &nbsp; </th>
                                                     <th id="count1111" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
                                                     <th id="count1112" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
@@ -315,7 +371,6 @@
                                                     <td><input type="number" name="stove199" id="stove199" placeholder="Enter Quantity"style="width:98px; height:50px;"></td>
                                                     <td><input type="number" name="prsell" id="prsell" placeholder="PR"style="width:80px; height:50px;"></td>
                                                     <td><input type="number" name="pipe1.5" id="pipe1.5" placeholder="Enter Pipe"style="width:80px; height:50px;"></td>
-                                                    <td><input type="number" name="cysell" id="cysell" placeholder="Enter CY"style="width:80px; height:50px;"></td>
                                                     <td><input type="number" name="dairysell" id="dairysell" placeholder="Enter Dairy"style="width:80px; height:50px;"></td>
                                                     <td id="counter1111" style="width:98px;" hidden="true"></td>
                                                     <td id="counter1112" style="width:98px;" hidden="true"></td>

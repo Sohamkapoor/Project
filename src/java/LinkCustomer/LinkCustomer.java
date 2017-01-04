@@ -96,20 +96,13 @@ public class LinkCustomer extends HttpServlet {
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
                 
-                sql =" select type,cylinder,pr,pipe15,dairy,cy from new_customer where id ='"+check[i]+"'";
+                sql =" select type,dairy from new_customer where id ='"+check[i]+"'";
                 db.rs = db.st.executeQuery(sql);
                 while (db.rs.next()) {
                 type[i] = db.rs.getString("type");
-                cylinder[i] = db.rs.getString("cylinder");
-                pr[i] = db.rs.getString("pr");
-                pipe[i] = db.rs.getString("pipe15");
                 dairy[i] = db.rs.getString("dairy");
-                cy[i] = db.rs.getString("cy");
-                if(pr[i]==""){pr[i]="0";}
-                if(pipe[i] ==""){pipe[i]="0";}
-                if(cy[i] ==""){cy[i]="0";}
+
                 }
-                System.out.println("cylinder ="+cylinder[i]+"pr ="+pr[i]+"pipe ="+pipe[i]+"dairy ="+dairy[i]+"cy ="+cy[i]);
             }
             
           // run update query
@@ -130,39 +123,28 @@ public class LinkCustomer extends HttpServlet {
           while(db.rs.next())
           {
               dairy1 = db.rs.getString("dairy");
-              pr1 = db.rs.getString("pr");
-              pipe15 = db.rs.getString("pipe15");
-              cy1 = db.rs.getString("cy");
           }
-          System.out.println("dairy ="+dairy1+"pr ="+ pr1+"pipe"+pipe15+"cy"+cy1);
           for(int i=0;i<check.length;i++)
-          {              System.out.println("hi");
+          {
               if(type[i].equals("domestic"))
               {
-                  System.out.print("inside");
-                  cylinde = fourteen - (Integer.parseInt(cylinder[i]));
-                  sql1 = "update godown set filled_fourteen ='"+cylinde+"' where id='1'";
-                  db.conn.createStatement();
-                  db.st.executeUpdate(sql1);
+//                  cylinde = fourteen - (Integer.parseInt(cylinder[i]));
+//                  sql1 = "update godown set filled_fourteen ='"+cylinde+"' where id='1'";
+//                  db.conn.createStatement();
+//                  db.st.executeUpdate(sql1);
                   dair = (Integer.parseInt(dairy1)) - 1 ;
-                  p = (Integer.parseInt(pr1)) - (Integer.parseInt(pr[i]));
-                  c = (Integer.parseInt(cy1)) - (Integer.parseInt(cy[i]));
-                  pip = (Integer.parseInt(pipe15)) - (Integer.parseInt(pipe[i]));
-                  sql ="update stove_factory set dairy ='"+dair+"', pr ='"+p+"', cy ='"+c+"', pipe15 ='"+pip+"',day ='"+date+"' where id='1'";
+                  sql ="update stove_factory set dairy ='"+dair+"',day ='"+date+"' where id='1'";
                   db.conn.createStatement();
                   db.st.executeUpdate(sql);
               }
               if(type[i].equals("nd"))
               {
-                  cylinde = nineteen - (Integer.parseInt(cylinder[i]));
-                  sql = "update godown set nineteen ='"+cylinde+"' where id='1'";
-                  db.conn.createStatement();
-                  db.st.executeUpdate(sql);
+//                  cylinde = nineteen - (Integer.parseInt(cylinder[i]));
+//                  sql = "update godown set filled_nineteen ='"+cylinde+"' where id='1'";
+//                  db.conn.createStatement();
+//                  db.st.executeUpdate(sql);
                   dair = (Integer.parseInt(dairy1)) - (Integer.parseInt(dairy[i]));
-                  p = (Integer.parseInt(pr1)) - (Integer.parseInt(pr[i]));
-                  c = (Integer.parseInt(cy1)) - (Integer.parseInt(cy[i]));
-                  pip = (Integer.parseInt(pipe15)) - (Integer.parseInt(pipe[i]));
-                  sql ="update stove_factory set dairy ='"+dair+"', pr ='"+p+"', cy ='"+c+"', pipe15 ='"+pip+"',date ='"+date+"' where id='1'";
+                  sql ="update stove_factory set dairy ='"+dair+"',date ='"+date+"' where id='1'";
                   db.conn.createStatement();
                   db.st.executeUpdate(sql);
               }

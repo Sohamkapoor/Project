@@ -81,9 +81,15 @@ public class Stove extends HttpServlet {
             int stove1975 = 0, stove1990 = 0, pr = 0, pipe15 = 0, cy = 0, dairy = 0, counter1 = 0, counter2 = 0, counter3 = 0, counter4 = 0, extra = 0;
             String stove197 = "", stove199 = "", pr1 = "", pipe = "", cv = "", dairy1 = "", count1 = "", count2 = "", count3 = "", count4 = "", type = "", sql = "";
             String c = "", c1 = "", c2 = "", c3 = "", table1 = "", table2 = "", table3 = "", table4 = "",sql1="", table5 = "", table6 = "", table7 = "";
+            String agencyname="",tinno="",invoiceno="",nameoc="",taxno="";
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
             String tod=formatter.format(date);
+            agencyname = request.getParameter("agency_name");
+            tinno = request.getParameter("tin_no");
+            taxno = request.getParameter("tax_no");
+            nameoc = request.getParameter("nameoc");
+            invoiceno = request.getParameter("invoice_no");
             type = request.getParameter("type");
             if (type.equals("sell")) {
                 stove197 = request.getParameter("stove197");
@@ -193,7 +199,7 @@ public class Stove extends HttpServlet {
                 counter3 = Integer.parseInt(count3);
                 counter4 = Integer.parseInt(count4);
                 extra = (Integer.parseInt(table7)) + counter1 + counter2 + counter3 + counter4;
-                sql = "insert into stove(stove1975,stove1990,pr,pipe15,cy,dairy,type,offername1,offer1,offername2,offer2,offername3,offer3,offername4,offer4,day)values('" + stove197 + "','" + stove199 + "','" + pr1 + "','" + pipe + "','" + cv + "','" + dairy1 + "','" + type + "','" + c + "','" + count1 + "','" + c1 + "','" + count2 + "','" + c2 + "','" + count3 + "','" + c3 + "','" + count4 + "','" + date + "')";
+                sql = "insert into stove(agencyname,tinno,taxno,invoiceno,customername,stove1975,stove1990,pr,pipe15,cy,dairy,type,offername1,offer1,offername2,offer2,offername3,offer3,offername4,offer4,day)values('"+agencyname+"','"+tinno+"','"+taxno+"','"+invoiceno+"','"+nameoc+"','" + stove197 + "','" + stove199 + "','" + pr1 + "','" + pipe + "','" + cv + "','" + dairy1 + "','" + type + "','" + c + "','" + count1 + "','" + c1 + "','" + count2 + "','" + c2 + "','" + count3 + "','" + c3 + "','" + count4 + "','" + date + "')";
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
                 sql1 = "update stove_factory set stove1975 ='" + stove1975 + "',stove1990 ='" + stove1990 + "',pr ='" + pr + "',pipe15 ='" + pipe15 + "',cy ='" + cy + "',dairy ='" + dairy + "',extra ='" + extra + "',day ='" + date + "' where id=1";
@@ -223,7 +229,7 @@ public class Stove extends HttpServlet {
                 
                 else if ((stove1975 >= 0) && (stove1990 >= 0) && (pr >= 0) && (pipe15 >= 0) && (cy >= 0) && (dairy >= 0) && (extra >= 0)) {
                     /* === Store date wise data in table === */
-                    sql = "insert into stove(stove1975,stove1990,pr,pipe15,cy,dairy,type,offername1,offer1,offername2,offer2,offername3,offer3,offername4,offer4,day)values('" + stove197 + "','" + stove199 + "','" + pr1 + "','" + pipe + "','" + cv + "','" + dairy1 + "','" + type + "','" + c + "','" + count1 + "','" + c1 + "','" + count2 + "','" + c2 + "','" + count3 + "','" + c3 + "','" + count4 + "','" + date + "')";
+                    sql = "insert into stove(agencyname,tinno,taxno,invoiceno,customername,stove1975,stove1990,pr,pipe15,cy,dairy,type,offername1,offer1,offername2,offer2,offername3,offer3,offername4,offer4,day)values('"+agencyname+"','"+tinno+"','"+taxno+"','"+invoiceno+"','"+nameoc+"','" + stove197 + "','" + stove199 + "','" + pr1 + "','" + pipe + "','" + cv + "','" + dairy1 + "','" + type + "','" + c + "','" + count1 + "','" + c1 + "','" + count2 + "','" + c2 + "','" + count3 + "','" + c3 + "','" + count4 + "','" + date + "')";
                     db.conn.createStatement();
                     db.st.executeUpdate(sql);
                     /* === update factory === */

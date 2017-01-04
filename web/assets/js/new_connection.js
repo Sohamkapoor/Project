@@ -10,6 +10,7 @@ function F5Btn(e)
 ;
 
 jQuery(document).ready(function () {
+  
     document.getElementById("form-stoveyes").checked=true;
     $(document).bind("keydown", F5Btn);
 
@@ -43,7 +44,7 @@ jQuery(document).ready(function () {
     });
 
 
-
+      
 
 
     $("#form-first-name").keypress(function () {

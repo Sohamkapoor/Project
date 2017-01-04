@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Factory</title>
+        <title>Plant</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -53,19 +53,20 @@
                 </script>-->
         <script>
             // domestic=0,nondomestic=0,
-            defective=0,returnload=0,domesticempty=0,nondomesticempty=0,five=0;
+            defective=0,returnload=0,domesticempty=0,nondomesticempty=0,five=0,domesticwsempty=0;
             $(document).ready(function(){
                 $('#form-return-load').hide();
                 $('#form-2domestic').hide();
                 $('#form-2nondomestic').hide();
                 $('#form-fourteen-price').hide();   // hide price columns
                 $('#form-nineteen-price').hide();   // hide price columns
-                $('#form-five-price').hide();       // hide price columns
+                $('#form-five-price').hide();  
+                $('#form-fourteen-wprice').hide();// hide price columns
                 $('#form-fourteen-price').val("0");   // set val 0
                 $('#form-nineteen-price').val("0");   
                 $('#form-five-price').val("0");
-                
                 $('#form-2domesticempty').hide();
+                $('#form-2domesticwsempty').hide();
                 $('#form-2nondomesticempty').hide();
                 $('#form-2five').hide();
                 $('#form-2defective').hide();
@@ -75,6 +76,7 @@
                    $('#form-2five').show();
                    $('#form-2nondomestic').show();
                    $('#form-2domesticempty').show();
+                   $('#form-2domesticwsempty').show();
                    $('#form-2nondomesticempty').show();
                    $('#form-2defective').show();
                    $('#form-return-load').val("");
@@ -82,6 +84,7 @@
                    $('#form-2five').val("");
                    $('#form-2nondomestic').val("");
                    $('#form-2domesticempty').val("");
+                   $('#form-2domesticwsempty').val("");
                    $('#form-2nondomesticempty').val("");
                    $('#form-2defective').val("");                  
                 });
@@ -90,6 +93,7 @@
                     $('#form-2domestic').hide();
                     $('#form-2nondomestic').hide();
                     $('#form-2domesticempty').hide();
+                    $('#form-2domesticwsempty').hide();
                     $('#form-2nondomesticempty').hide();
                     $('#form-2five').hide();
                     $('#form-2defective').hide();
@@ -97,6 +101,7 @@
                     $('#form-2domestic').val("0");
                     $('#form-2nondomestic').val("0");
                     $('#form-2domesticempty').val("0");
+                    $('#form-2domesticwsempty').val("0");
                     $('#form-2nondomesticempty').val("0"); 
                     $('#form-2five').val("0");
                     $('#form-2defective').val("0");
@@ -112,13 +117,26 @@
                     $('#form-fourteen-price').val("");
                     $('#form-fourteen-price').show();
                 });
+                $('#form-fourteen-wsubsidy').keydown(function(){
+                   $('#form-fourteen-wprice').val("");
+                   $('#form-fourteen-wprice').show();
+                });
                 $('#form-fourteen-price').click(function(){
                     $('#errdomesticprice').text("");
+                });
+                $('#form-fourteen-wprice').click(function(){
+                    $('#errwdomesticprice').text("");
                 });
                 $('#form-fourteen-price').focusout(function(){
                     if(document.getElementById("form-fourteen-price").value <= 0)
                     {
                         $('#errdomesticprice').text("Enter Bill Value");
+                    }
+                });
+                $('#form-fourteen-wprice').focusout(function(){
+                    if(document.getElementById("form-fourteen-wprice").value <= 0)
+                    {
+                        $('#errwdomesticprice').text("Enter Bill Value");
                     }
                 });
                 $('#form-nineteen').keydown(function(){
@@ -159,6 +177,10 @@
                     domesticempty = parseInt(document.getElementById("form-2domesticempty").value);
                     f();
                 });
+                $('#form-2domesticwsempty').focusout(function(){
+                    domesticwsempty = parseInt(document.getElementById("form-2domesticwsempty").value);
+                    f();
+                });
                 $('#form-2nondomesticempty').focusout(function(){
                     nondomesticempty=parseInt(document.getElementById("form-2nondomesticempty").value);
                     f();
@@ -169,7 +191,7 @@
                 });
                function f() // adding values and displaying
                {
-                   returnload=defective+domesticempty+nondomesticempty+five;
+                   returnload=defective+domesticempty+nondomesticempty+five+domesticwsempty;
                    document.getElementById('form-return-load').value=returnload;
                };
 //               $('#form-2domestic').click(function(){ // removing error text
@@ -197,38 +219,67 @@
                  $('#form-driver-name').click(function(){
                       $('#errDriverName').text("");
                   });
+                  $('#form-driver-no').click(function(){
+                      $('#errDriverNo').text("");
+                  });
+                  $('#form-truck-no').click(function(){
+                      $('#errTruckNo').text("");
+                  });
+                  $('#form-sono').click(function(){
+                      $('#errsono').text("");
+                  });
                   $('#form-fourteen').click(function(){
                       $('#err14').text("");
+                      $('#err14ws').text("");
+                       $('#err19').text("");
+                       $('#err5').text("");
+                       $('#errdefective').text("");
+                  });
+                   $('#form-fourteenws').click(function(){
+                      $('#err14').text("");
+                      $('#err14ws').text("");
                        $('#err19').text("");
                        $('#err5').text("");
                        $('#errdefective').text("");
                   });
                   $('#form-nineteen').click(function(){
                        $('#err14').text("");
+                       $('#err14ws').text("");
                        $('#err19').text("");
                        $('#err5').text("");
                        $('#errdefective').text("");
                   });
                   $('#form-five').click(function(){
                       $('#err14').text("");
+                      $('#err14ws').text("");
                        $('#err19').text("");
                        $('#err5').text("");
                        $('#errdefective').text("");
                   });
                   $('#form-2domesticempty').click(function(){
                       $('#err2domesticempty').text("");
+                      $('#err2domesticwsempty').text("");
+                      $('#err2nondomesticempty').text("");
+                      $('#err2defective').text("");
+                      $('#err2five').text("");
+                  });
+                  $('#form-2domesticwsempty').click(function(){
+                      $('#err2domesticempty').text("");
+                      $('#err2domesticwsempty').text("");
                       $('#err2nondomesticempty').text("");
                       $('#err2defective').text("");
                       $('#err2five').text("");
                   });
                   $('#form-2nondomesticempty').click(function(){
                       $('#err2domesticempty').text("");
+                      $('#err2domesticwsempty').text("");
                       $('#err2nondomesticempty').text("");
                       $('#err2defective').text("");
                       $('#err2five').text("");
                   });
                   $('#form-2five').click(function(){
                       $('#err2domesticempty').text("");
+                      $('#err2domesticwsempty').text("");
                       $('#err2nondomesticempty').text("");
                       $('#err2defective').text("");
                       $('#err2five').text("");
@@ -244,12 +295,26 @@
                         {
                             $('#errDriverName').text("Enter Driver Name");
                             event.preventDefault() ;
-                            alert(document.getElementById("form-fourteen").value);
                         }
-                        
+                     if(document.getElementById("form-sono").value == "")
+                     {
+                         $('#errsono').text("Enter sales order no");
+                         event.preventDefault();
+                     }
+                     if(document.getElementById("form-driver-no").value == "")
+                     {
+                         $('#errDriverNo').text("Enter Driver No");
+                         event.preventDefault();
+                     }
+                     if(document.getElementById("form-truck-no").value == "")
+                     {
+                         $('#errTruckNo').text("Enter Truck No");
+                         event.preventDefault();
+                     }
                     else if((document.getElementById("form-fourteen").value == "") && (document.getElementById("form-nineteen").value =="" ) && (document.getElementById("form-five").value == "") && (document.getElementById("form-defective").value == "" ))
                     {                      
                             $('#err14').text("Atleast one of type should be deployed");
+                            $('#err14ws').text("Atleast one of the type should be filled");
                             $('#err19').text("Atleast one of type should be deployed");
                             $('#err5').text("Atleast one of type should be deployed");
                             $('#errdefective').text("Enter value in atleast one column");
@@ -271,10 +336,11 @@
                        {
 //                           $('#err2domestic').text("Atleast one of the five should be filled");
 //                           $('#err2nondomestic').text("Atleast one of the five should be filled");
-                           $('#err2domesticempty').text("Atleast one of the four should be filled");
-                           $('#err2nondomesticempty').text("Atleast one of the four should be filled");
-                           $('#err2five').text("Atleast one of the four should be filled");
-                           $('#err2defective').text("Atleast one of the four should be filled");
+                           $('#err2domesticempty').text("Atleast one of the five should be filled");
+                           $('#err2domesticwsempty').text("Atlest one of the five should be filled");
+                           $('#err2nondomesticempty').text("Atleast one of the five should be filled");
+                           $('#err2five').text("Atleast one of the five should be filled");
+                           $('#err2defective').text("Atleast one of the five should be filled");
                            event.preventDefault() ;
                        }
                        else{
@@ -352,25 +418,46 @@
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p> Get Your Gate Pass :</p>
+                                            <p> Enter Your Plant Detail :</p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-database"></i>
                                         </div>
                                     </div>
 
-                                    <div class="form-bottom"> 
+                                    <div class="form-bottom">
+                                        <div class="form-group">
+                                            <input type="text" name="form-sono" placeholder="Enter Sales Order No" class="form-sono form-control" id="form-sono" >
+                                            <span  style="color:red;font-weight:bold" id="errsono"></span>
+                                        </div>
                                         <div class="form-group">
                                             <input type="text" name="form-driver-name" placeholder="Enter Driver name" class="form-driver-name form-control" id="form-driver-name" >
                                             <span  style="color:red;font-weight:bold" id="errDriverName"></span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="number" name="form-fourteen" placeholder="Enter no of 14.2 kg Cylinder " class="form-fourteen form-control" id="form-fourteen" >
+                                            <input type="text" name="form-truck-no" placeholder="Enter Truck No" class="form-truck-no form-control" id="form-truck-no" >
+                                            <span  style="color:red;font-weight:bold" id="errTruckNo"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="form-driver-no" placeholder="Enter Driver No" class="form-driver-no form-control" id="form-driver-no" >
+                                            <span  style="color:red;font-weight:bold" id="errDriverNo"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" name="form-fourteen" placeholder="Enter no of 14.2DNSC kg Cylinder " class="form-fourteen form-control" id="form-fourteen" >
                                             <span  style="color:red;font-weight:bold" id="err14"></span>
                                         </div>
                                          <div class="form-group">
-                                            <input type="number" name="form-fourteen-price" placeholder="Enter 14.2 Kg Cylinder Bill Price" class="form-fourteen-price form-control" id="form-fourteen-price" >
+                                            <input type="number" name="form-fourteen-price" placeholder="Enter 14.2DNSC Kg Cylinder Bill Price" class="form-fourteen-price form-control" id="form-fourteen-price" >
                                             <span  style="color:red;font-weight:bold" id="errdomesticprice"></span>
+                                        </div>
+                                        <!-- without subsidy -->
+                                        <div class="form-group">
+                                            <input type="number" name="form-fourteen-wsubsidy" placeholder="Enter no of 14.2WS kg Cylinder " class="form-fourteen-wsubsidy form-control" id="form-fourteen-wsubsidy" >
+                                            <span  style="color:red;font-weight:bold" id="err14ws"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" name="form-fourteen-wprice" placeholder="Enter 14.2WS Kg Cylinder Bill Price" class="form-fourteen-wprice form-control" id="form-fourteen-wprice" >
+                                            <span  style="color:red;font-weight:bold" id="errwdomesticprice"></span>
                                         </div>
                                         <div class="form-group">
                                             <input type="number" name="form-nineteen" placeholder="Enter no of 19 kg Cylinder " class="form-nineteen form-control" id="form-nineteen" >
@@ -418,10 +505,10 @@
                                             <input type="number" name="form-2domesticempty" placeholder="Enter Return no of Domestic Empty Cylinder " class="form-2domesticempty form-control" id="form-2domesticempty" >
                                             <span  style="color:red;font-weight:bold" id="err2domesticempty"></span>
                                         </div>
-<!--                                        <div class="form-group">
-                                            <input type="text" name="form-2nondomestic" placeholder="Enter Return no of Non Domestic Filled Cylinder " class="form-2nondomestic form-control" id="form-2nondomestic" >
-                                            <span  style="color:red;font-weight:bold" id="err2nondomestic"></span>
-                                        </div>-->
+                                        <div class="form-group">
+                                            <input type="number" name="form-2domesticwsempty" placeholder="Enter Return no of Domestic WS Empty Cylinder " class="form-2domesticwsempty form-control" id="form-2domesticwsempty" >
+                                            <span  style="color:red;font-weight:bold" id="err2domesticwsempty"></span>
+                                        </div>
                                         <div class="form-group">
                                             <input type="number" name="form-2nondomesticempty" placeholder="Enter Return no of Non Domestic Empty Cylinder " class="form-2nondomesticempty form-control" id="form-2nondomesticempty" >
                                             <span  style="color:red;font-weight:bold" id="err2nondomesticempty"></span>
@@ -435,7 +522,7 @@
                                             <span  style="color:red;font-weight:bold" id="errReturnLoad"></span>
                                         </div>
                                         
-                                        <p align="center"><input type="button" class="btn btn-success" value="Gate Pass" id="gatepass" onclick="fun()"></p>                                        
+                                        <p align="center"><input type="button" class="btn btn-success" value="Submit" id="gatepass" onclick="fun()"></p>                                        
                                     </div>                                
                                 </fieldset>
                             </form>

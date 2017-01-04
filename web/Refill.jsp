@@ -82,7 +82,10 @@
                     $("#form-amt4").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv4").val()));
                     $("#form-amt4").attr('readonly', true);
                 });
-
+                 $("#form-filledcv5").focusout(function () {
+                    $("#form-amt5").val((parseInt($("#rate").val())) * parseInt($("#form-filledcv5").val()));
+                    $("#form-amt5").attr('readonly', true);
+                });
             });
 
         </script>
@@ -141,7 +144,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="RefillDisplay.jsp" method="post" class="registration-form">
+                            <form role="form" action="RefillDisplay" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -200,32 +203,39 @@
                                                 <th>Amount</th>
                                             </tr>
                                             <tr>
-                                                <td><label for="form-counterrefill">Counter Refill </label></td>
+                                                <td><label for="form-counterrefill">Counter Refill DNSC</label></td>
                                                 <td><input type="text" name="form-emptycv1" placeholder="Empty CV" class="form-emptycv1 form-control" id="form-emptycv1" ></td>
                                                 <td><input type="text" name="form-filledcv1" placeholder="Filled CV" class="form-filledcv1 form-control" id="form-filledcv1"></td>
                                                 <td><input type="text" name="form-counteramount1" placeholder="Amount Paid" class="form-counteramount form-control" id="form-counteramount"></td>
                                                 <td><input type="text" name="form-amt1" placeholder="Amount" class="form-amt1 form-control" id="form-amt1" ></td>
                                             </tr>
                                             <tr>
-                                                <td><label for="form-homedelivery">Home Delivery </label></td>
+                                                <td><label for="form-homedelivery">Home Delivery DNSC</label></td>
                                                 <td><input type="text" name="form-emptycv2" placeholder="Empty CV" class="form-emptycv2 form-control" id="form-emptycv2" ></td>
                                                 <td><input type="text" name="form-filledcv2" placeholder="Filled Cv" class="form-filledcv2 form-control" id="form-filledcv2" ></td> 
                                                 <td><input type="text" name="form-counteramount2" placeholder="Amount Paid" class="form-hdamt form-control" id="form-hdamt" ></td>
                                                 <td><input type="text" name="form-amt2" placeholder="Amount" class="form-amt2 form-control" id="form-amt2" ></td>
                                             </tr>
                                             <tr>
-                                                <td><label for="form-godown">Godown </label></td>
+                                                <td><label for="form-godown">Godown DNSC</label></td>
                                                 <td><input type="text" name="form-emptycv3" placeholder="Empty CV" class="form-emptycv3 form-control" id="form-emptycv3" ></td>
                                                 <td><input type="text" name="form-filledcv3" placeholder="Filled CV" class="form-filledcv3 form-control" id="form-filledcv3" ></td>
                                                 <td><input type="text" name="form-counteramount3" placeholder="Amount Paid" class="form-gdamt form-control" id="form-gdamt" ></td>
                                                 <td><input type="text" name="form-amt3" placeholder="Amount" class="form-amt3 form-control" id="form-amt3" ></td>
                                             </tr>
                                             <tr>
-                                                <td><label for="form-village">Village Refill </label></td>
+                                                <td><label for="form-village">Village Refill DNSC</label></td>
                                                 <td><input type="text" name="form-emptycv4" placeholder="Empty CV" class="form-emptycv4 form-control" id="form-emptycv4" ></td>
                                                 <td><input type="text" name="form-filledcv4" placeholder="Filled CV" class="form-filledcv4 form-control" id="form-filledcv4" ></td>
                                                 <td><input type="text" name="form-counteramount4" placeholder="Amount Paid" class="form-villageamt form-control" id="form-villageamt" ></td>
                                                 <td><input type="text" name="form-amt4" placeholder="Amount" class="form-amt4 form-control" id="form-amt4" ></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="form-village">Domestic WS</label></td>
+                                                <td><input type="text" name="form-emptycv5" placeholder="Empty CV" class="form-emptycv5 form-control" id="form-emptycv5" ></td>
+                                                <td><input type="text" name="form-filledcv5" placeholder="Filled CV" class="form-filledcv5 form-control" id="form-filledcv5" ></td>
+                                                <td><input type="text" name="form-counteramount5" placeholder="Amount Paid" class="form-domesticws form-control" id="form-domesticws" ></td>
+                                                <td><input type="text" name="form-amt5" placeholder="Amount" class="form-amt5 form-control" id="form-amt5" ></td>
                                             </tr>
                                         </table>
                                         <br/>

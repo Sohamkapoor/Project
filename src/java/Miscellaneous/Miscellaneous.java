@@ -82,8 +82,8 @@ public class Miscellaneous extends HttpServlet {
             Datab db = new Datab();
             String snacks = request.getParameter("form-tea");
             if(snacks.equals("")){snacks="0";}               
-            
-            
+            String bankwithdraw = request.getParameter("form-bank-withdraw");
+            if(bankwithdraw.equals("")){bankwithdraw="0";}
             String bank = request.getParameter("form-bank");
             if(bank.equals("")){bank="0";}
             String extra = request.getParameter("form-extra");
@@ -99,36 +99,37 @@ public class Miscellaneous extends HttpServlet {
             Date date = sdf1.parse(strDate);
             
             
-            String sql="",snak="",ban="",name="",adv="",ext="",count="",amtadv="",pet="",vehno="",pic="",dro="",repair="",sa="",ph="",na="";
+            String sql="",snak="",ban="",name="",adv="",ext="",amtadv="",pet="",vehno="",pic="",dro="",repair="",sa="",ph="",na="",banwith="";
             int counter=0,counter1=0;
            // sql="select count(*) from (select count(date) from miscellaneous where date ='"+date+"')t";
             sql="select * from miscellaneous where date ='"+date+"'";
             db.rs = db.st.executeQuery(sql);
-            while(db.rs.next()){
-            count = db.rs.getString("date");
-            if(count.equals("")){count="0";}                
+            while(db.rs.next()){                
             snak = db.rs.getString("snacks");
             if(snak.equals("")){snak="0";}
             ban= db.rs.getString("bank");
             if(ban.equals("")){ban="0";}
             ext=db.rs.getString("extra");
             if(ext.equals("")){ext="0";}
+            banwith = db.rs.getString("banwith");
+            if(banwith.equals("")){banwith="0";}
 //            name =db.rs.getString("name_of_emp");
             counter++;
             }
             if(counter==0)
             {
-                sql="insert into miscellaneous(snacks,bank,extra,date)values('"+snacks+"','"+bank+"','"+extra+"','"+date+"')";
+                sql="insert into miscellaneous(snacks,bank,banwith,extra,date)values('"+snacks+"','"+bank+"','"+banwith+"','"+extra+"','"+date+"')";
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
             }
             else if(counter>0)
             {
-                int ba = Integer.parseInt(bank)+Integer.parseInt(ban);
-                int sna = Integer.parseInt(snacks)+Integer.parseInt(snak);
-                int ex = Integer.parseInt(extra) + Integer.parseInt(ext);
+                int ba = (Integer.parseInt(bank))+(Integer.parseInt(ban));
+                int sna = (Integer.parseInt(snacks))+(Integer.parseInt(snak));
+                int ex = (Integer.parseInt(extra)) + (Integer.parseInt(ext));
+                int bawith = (Integer.parseInt(banwith)) + (Integer.parseInt(bankwithdraw));
                 System.out.println(ba+" "+ sna+" "+ex);
-                sql="update miscellaneous set snacks ='"+sna+"' , bank = '"+ba+"' , extra='"+ex+"'  where date = '"+date+"'";
+                sql="update miscellaneous set snacks ='"+sna+"' , bank = '"+ba+"' , extra='"+ex+"',banwith='"+bawith+"'  where date = '"+date+"'";
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);              
             }

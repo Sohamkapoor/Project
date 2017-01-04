@@ -72,6 +72,22 @@
         <servlet-name>New</servlet-name>
         <servlet-class>New.New</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddEmployee</servlet-name>
+        <servlet-class>AddEmployee.AddEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RefillDisplay</servlet-name>
+        <servlet-class>RefillDisplay.RefillDisplay</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>New_Connection</servlet-name>
+        <servlet-class>New_Connection.New_Connection</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NDCustomerEntry</servlet-name>
+        <servlet-class>NDCustomerEntry.NDCustomerEntry</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailFill</servlet-name>
         <url-pattern>/DetailFill</url-pattern>
@@ -127,6 +143,22 @@
     <servlet-mapping>
         <servlet-name>New</servlet-name>
         <url-pattern>/New</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmployee</servlet-name>
+        <url-pattern>/AddEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RefillDisplay</servlet-name>
+        <url-pattern>/RefillDisplay</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>New_Connection</servlet-name>
+        <url-pattern>/New_Connection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NDCustomerEntry</servlet-name>
+        <url-pattern>/NDCustomerEntry</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
