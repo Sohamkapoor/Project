@@ -160,14 +160,8 @@
                                     <div class="form-bottom">
                                         <h3>Enter Name Of Customer and choose Delivery Type :</h3>
                                         <%
-                                            Calendar calendar = Calendar.getInstance();
-                                            Datab db = new Datab();
+                                            Calendar calendar = Calendar.getInstance(); 
                                             String rate = "";
-                                            String sql = "select rate from gasrate where id=" + 1;
-                                            db.rs = db.st.executeQuery(sql);
-                                            while (db.rs.next()) {
-                                                rate = db.rs.getString("rate");
-                                            }
                                             if (calendar == null) {
                                                 System.out.println("Calendar =" + calendar);
                                             }
@@ -175,7 +169,14 @@
                                             if (dayOfMonth == 1) { %>
                                         <input type="text" name="rateofgas" class="rateofgas form-control" id="rateofgas" placeholder="Enter Rate Of Gas"/>
 
-                                        <% } else { %>
+                                        <% } else {
+                                        Datab db = new Datab();                                            
+                                            String sql = "select rate from gasrate where id=" + 1;
+                                            db.rs = db.st.executeQuery(sql);
+                                            while (db.rs.next()) {
+                                                rate = db.rs.getString("rate");
+                                            }
+                                        %>
                                         <input type="hidden" name="hiddengas" class="hiddengas form-control" id="hiddengas" />
 
                                         <% }%>

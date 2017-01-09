@@ -119,13 +119,13 @@
                                     <div class="form-bottom">
                                         
                                         <%
-                                            Datab db = new Datab();
-                                            String rate = "";
-                                            String sql = "select * from nondomestic where name ='" +name+"' and phno ='"+phno+"'" ;
-                                            db.rs = db.st.executeQuery(sql);
-                                            while (db.rs.next()) {
-                                                rate = db.rs.getString("rate");
-                                            }
+//                                            Datab db = new Datab();
+//                                            String rate = "";
+//                                            String sql = "select * from nondomestic where name ='" +name+"' and phno ='"+phno+"'" ;
+//                                            db.rs = db.st.executeQuery(sql);
+//                                            while (db.rs.next()) {
+//                                                rate = db.rs.getString("rate");
+//                                            }
                                         %>
                                     </div>
                                 </fieldset>

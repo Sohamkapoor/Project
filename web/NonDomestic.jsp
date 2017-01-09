@@ -4,6 +4,7 @@
     Author     : sohamkapoor
 --%>
 
+<%@page import="java.util.Calendar"%>
 <%@page import="Datab.Datab"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -403,15 +404,27 @@
 
                                     <div class="form-bottom">  
                                         <%
-                                            Datab db = new Datab();
+                                            Calendar calendar = Calendar.getInstance();
                                             String rate = "";
-                                            String sql = "select rate from gasrate where id=" + 1;
+                                            if (calendar == null) {
+                                                System.out.println("Calendar =" + calendar);
+                                            }
+                                            int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                                            if (dayOfMonth == 1) { %>
+                                            <h3>Note: Please Update only rate once and dont fill any other details while updating rate</h3>
+                                        <input type="text" name="rate1" class="rateofgas form-control" id="rateofgas" placeholder="Enter Rate Of Gas"/>
+
+                                        <% } else { 
+                                        Datab db = new Datab();                                            
+                                            String sql = "select rate from gasrate where id=" + 2;
                                             db.rs = db.st.executeQuery(sql);
                                             while (db.rs.next()) {
                                                 rate = db.rs.getString("rate");
                                                 System.out.println("rate =" + rate);
                                             }
                                         %>
+                                        <input type="hidden" value="<%= rate %>" id="rate" name="rate" />
+                                        <% } %>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-noc">Name Of Customer </label>
                                             <input type="text" name="form-nameoe" placeholder="Enter Name Of Employee" class="form-nameoe form-control" id="form-nameoe" >
@@ -434,7 +447,7 @@
 
 
                                         <div class="form-group">
-                                            <input type="date" name="datepickers" onkeydown="return false" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker">
+                                            <input type="text" name="datepickers" onkeydown="return false" placeholder="Enter Booking Date dd/mm/yyyy" class="form-dob form-control" id="datepicker">
                                         </div>
 
                                         <input type="hidden" value="<%= rate%>" id="rate" name="rate" />
@@ -592,7 +605,6 @@
             </div>
         </div>
 
-    </div>
 
 
 
