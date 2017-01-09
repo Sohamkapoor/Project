@@ -109,7 +109,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="detail.jsp" method="post" class="registration-form">
+                            <form role="form" action="GatePass" method="post" class="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -135,9 +135,21 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <input type="text" name="form-issue-load" placeholder="Issue Load" class="form-issue-load form-control" id="form-issue-load" >
-                                            <span  style="color:red;font-weight:bold" id="errIssueLoad"></span>
+                                            <input type="text" name="form-domestic" placeholder="14.2 KG Load" class="form-domestic form-control" id="form-domestic" >
+                                            <span  style="color:red;font-weight:bold" id="errdomestic"></span>
                                         </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="text" name="form-nondomestic" placeholder="19 KG Load" class="form-nondomestic form-control" id="form-nondomestic" >
+                                            <span  style="color:red;font-weight:bold" id="errnondomestic"></span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="text" name="form-five" placeholder="5 KGG Load" class="form-five form-control" id="form-five" >
+                                            <span  style="color:red;font-weight:bold" id="errfive"></span>
+                                        </div>
+                                        
+                                       
                                         
                                         <a href="http://localhost:8080/gas/DriverDispatch.jsp"> Evening Load Detail </a>
                                         <p align="center"><input type="submit" value="Get Gate Pass" /></p>                                        

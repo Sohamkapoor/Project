@@ -87,7 +87,6 @@ public class NDCustomerEntry extends HttpServlet {
             String security = request.getParameter("security").trim();
             int rate = Integer.parseInt(request.getParameter("rate"));
             String rate1 = request.getParameter("rate1");
-            System.out.println("rate1 ="+rate1);
             int ra=0;
             if(rate1 == null)
             {
@@ -170,8 +169,10 @@ public class NDCustomerEntry extends HttpServlet {
             String sql = "";
             Date today = new Date();
             String tod = formatter.format(today);
+            if(emptycc.equals("")){emptycc="0";}
             int filledcv = Integer.parseInt(filledcc);
             int emptycv = Integer.parseInt(emptycc);
+            if(amtpaid.equals("")){amtpaid="0";}
             int amountpaid = Integer.parseInt(amtpaid);
             int amt = Integer.parseInt(amount);
             int amo = 0, finalamt = 0, cvd = 0, finalcv = 0;
@@ -187,13 +188,6 @@ public class NDCustomerEntry extends HttpServlet {
                 finalamt += amo;
                 finalcv += cvd;
             }
-
-            finalamt += diffamt;
-            finalcv += diffcv;
-            sql = "insert into nondomestic (nameoe,name,addres,filled,empty,amount,amountpaid,advance,discount,chequeno,osamt,cvdue,transaction,daytoday,phno,advdate,security)values('" + nameoe + "','" + name + "','" + add + "','" + filledcc + "','" + emptycc + "','" + amount + "','" + amtpaid + "','" + advance + "','" + discount + "','" + chequeno + "','" + diffamt + "','" + diffcv + "','" + transaction + "','" + tod + "','" + phno + "','" + advdate + "','" + security + "')";
-            db.conn.createStatement();
-            db.st.executeUpdate(sql);
-            System.out.println("insert done");
             sql = "select * from godown ";
             db.rs = db.st.executeQuery(sql);
             while (db.rs.next()) {
@@ -202,51 +196,27 @@ public class NDCustomerEntry extends HttpServlet {
             }
             nine -= Integer.parseInt(filledcc);
             returnnine += Integer.parseInt(emptycc);
-            if (nine == 0) {
-                out.println("<html><body onload=\"alert('No More Filled Cylinder available in godown')\"></body></html>");
-            }
+            if (nine >= 0) {            
+            finalamt += diffamt;
+            finalcv += diffcv;
+            sql = "insert into nondomestic (nameoe,name,addres,filled,empty,amount,amountpaid,advance,discount,chequeno,osamt,cvdue,transaction,daytoday,phno,advdate,security)values('" + nameoe + "','" + name + "','" + add + "','" + filledcc + "','" + emptycc + "','" + amount + "','" + amtpaid + "','" + advance + "','" + discount + "','" + chequeno + "','" + diffamt + "','" + diffcv + "','" + transaction + "','" + tod + "','" + phno + "','" + advdate + "','" + security + "')";
+            db.conn.createStatement();
+            db.st.executeUpdate(sql);
+            System.out.println("insert done");
+            
             sql = "update godown set filled_nineteen ='" + nine + "',empty_nineteen ='" + returnnine + "' where id='" + var + "'";
             db.conn.createStatement();
             db.st.executeUpdate(sql);
             ra = rate * filledcv;
-//            out.println("<table border=\"1px\">");
-//            out.println("<tr><td colspan='2'><h3>Name :- " + name + " </h3></td> <td></td> <td></td> <td></td> <p align=\"right\"><td colspan='3'><h3> Phone number :- " + phno + " </h3></td></p></tr>");
-//            out.println("<tr>\n"
-//                    + "            <th>Outstanding Amount</th>\n"
-//                    + "            <th>Due CV</th>\n"
-//                    + "            <th>Filled </th>\n"
-//                    + "            <th>Empty </th>\n"
-//                    + "            <th>Amount</th>\n"
-//                    + "            <th>Amount Paid</th>\n"
-//                    + "            <th>Transaction Type</th>\n"
-//                    + "            <th>Date Of Transaction</th>              \n"
-//                    + "        </tr>");
-//            out.println("<tr>\n"
-//                    + "            <td> " + diffamt + " </td>\n"
-//                    + "            <td> " + diffcv + " </td>\n"
-//                    + "            <td> " + filledcc + " </td>\n"
-//                    + "            <td> " + emptycc + " </td>\n"
-//                    + "            <td> " + amt + " </td>\n"
-//                    + "            <td> " + amountpaid + " </td>\n"
-//                    + "            <td> " + transaction + "</td>\n"
-//                    + "            <td> " + tod + " </td>\n"
-//                    + "        </tr>");
-//            out.println("<tr>\n"
-//                    + "            <td> Total amount due </td>\n"
-//                    + "            \n"
-//                    + "            <td> " + finalamt + " </td>\n"
-//                    + "            \n"
-//                    + "            \n"
-//                    + "            <td>Total C.V Due</td>\n"
-//                    + "            \n"
-//                    + "            <td> " + finalcv + " </td>\n"
-//                    + "        </tr>");
-//            out.println("<br/>");
+            double vat = (ra*14.5)/100;
+            double finalamount = ra - vat;
+            double f= finalamount + vat;
+
             out.println("<br/>");
             out.println("</table>");
             out.println("<table border='1px'>");
             out.println("<tr><td colspan='2'>Tin No: 08390014694</td><td colspan='2' align='right'>Delivery Challan</td></tr>");
-            out.println("<tr><td colspan='4' align='center'><h3>Shree Manglam Indane</h3></td></tr>");
+            out.println("<tr><td colspan='2' align='center'><img src='assets/img/indane-gas-agency-in-faridabad.jpg' height='60px' width='200px'></td><td colspan='2' align='center'><h3>Shree Manglam Indane</h3></td></tr>");
             out.println("<tr><td colspan='4'>C-66, B.K.Kaul Nagar, Hari Bhau Upadhayay Nagar Ajmer(305001)</td></tr>");
             out.println("<tr><td colspan='2'>S.No </td> <td colspan='3'>Date: " + new java.util.Date() + "</td></tr>");
             out.println("<tr><td colspan='4' align='center'><h3>Name: " + name + " </h3></td></tr>");
@@ -267,7 +237,7 @@ public class NDCustomerEntry extends HttpServlet {
                     + "	<td>Issue Cly</td>\n"
                     + "	<td>"+filledcc+"</td>\n"
                     + "	<td>"+rate+"</td>\n"
-                    + "	<td>"+ra+"</td>\n"
+                    + "	<td></td>\n"
                     + "</tr>");
             out.println("<tr>\n"
                     + "	<td>Advance</td>\n"
@@ -276,10 +246,16 @@ public class NDCustomerEntry extends HttpServlet {
                     + "	<td>"+advance+"</td>\n"
                     + "</tr>");
             out.println("<tr>\n"
+                    + "	<td>Discount</td>\n"
+                    + "	<td></td>\n"
+                    + "	<td></td>\n"
+                    + "	<td>"+discount+"</td>\n"
+                    + "</tr>");
+            out.println("<tr>\n"
                     + "	<td>Receive</td>\n"
                     + "	<td>"+emptycc+"</td>\n"
                     + "	\n"
-                    + "	<td>"+amountpaid+"</td>\n"
+                    + "	<td></td>\n"
                     + "</tr>");
             out.println("<tr>\n"
                     + "	<td>Final</td>\n"
@@ -287,12 +263,32 @@ public class NDCustomerEntry extends HttpServlet {
                     + "	<td>"+rate+"</td>\n"
                     + "	<td>"+amountpaid+"</td>\n"
                     + "</tr>");
+            out.println("<tr>\n"
+                    +"<td></td>\n"
+                    +"<td></td>\n"
+            +"<td>Vat</td>\n"
+            + "	<td>"+vat+"</td>\n"           
+            + "</tr>");
+            out.println("<tr>\n"
+                    +"<td></td>\n"
+                    +"<td></td>\n"
+            + "	<td>Total</td>\n"
+            + "	<td>"+f+"</td>\n"
+            + "</tr>");
+            out.println("<tr>\n"
+            +"<td colspan='2' height='20px'></td>\n"
+            +"<td colspan='2' height='20px'></td>\n"
+            +"</tr>");
+            out.println("<tr>\n"
+            +"<td colspan='2'>Customer Signature</td>\n"
+            +"<td colspan='2'>Delivery Men Signature</td>\n"
+            +"</tr>");
             out.println("</table>");
              out.println("<br/>");
             out.println("</table>");
             out.println("<table border='1px'>");
             out.println("<tr><td colspan='2'>Tin No: 08390014694</td><td colspan='2' align='right'>Customer Challan</td></tr>");
-            out.println("<tr><td colspan='4' align='center'><h3>Shree Manglam Indane</h3></td></tr>");
+            out.println("<tr><td colspan='2' align='center'><img src='assets/img/indane-gas-agency-in-faridabad.jpg' height='60px' width='200px'></td><td colspan='2' align='center'><h3>Shree Manglam Indane</h3></td></tr>");
             out.println("<tr><td colspan='4'>C-66, B.K.Kaul Nagar, Hari Bhau Upadhayay Nagar Ajmer(305001)</td></tr>");
             out.println("<tr><td colspan='2'>S.No </td> <td colspan='3'>Date: " + new java.util.Date() + "</td></tr>");
             out.println("<tr><td colspan='4' align='center'><h3>Name: " + name + " </h3></td></tr>");
@@ -313,7 +309,7 @@ public class NDCustomerEntry extends HttpServlet {
                     + "	<td>Issue Cly</td>\n"
                     + "	<td>"+filledcc+"</td>\n"
                     + "	<td>"+rate+"</td>\n"
-                    + "	<td>"+ra+"</td>\n"
+                    + "	<td></td>\n"
                     + "</tr>");
             out.println("<tr>\n"
                     + "	<td>Advance</td>\n"
@@ -322,10 +318,16 @@ public class NDCustomerEntry extends HttpServlet {
                     + "	<td>"+advance+"</td>\n"
                     + "</tr>");
             out.println("<tr>\n"
+                    + "	<td>Discount</td>\n"
+                    + "	<td></td>\n"
+                    + "	<td></td>\n"
+                    + "	<td>"+discount+"</td>\n"
+                    + "</tr>");
+            out.println("<tr>\n"
                     + "	<td>Receive</td>\n"
                     + "	<td>"+emptycc+"</td>\n"
                     + "	\n"
-                    + "	<td>"+amountpaid+"</td>\n"
+                    + "	<td></td>\n"
                     + "</tr>");
             out.println("<tr>\n"
                     + "	<td>Final</td>\n"
@@ -333,15 +335,40 @@ public class NDCustomerEntry extends HttpServlet {
                     + "	<td>"+rate+"</td>\n"
                     + "	<td>"+amountpaid+"</td>\n"
                     + "</tr>");
+            out.println("<tr>\n"
+                    +"<td></td>\n"
+                    +"<td></td>\n"
+            +"<td>Vat</td>\n"
+            + "	<td>"+vat+"</td>\n"           
+            + "</tr>");
+            out.println("<tr>\n"
+                    +"<td></td>\n"
+                    +"<td></td>\n"
+            + "	<td>Total</td>\n"
+            + "	<td>"+f+"</td>\n"
+            + "</tr>");
+            out.println("<tr>\n"
+            +"<td colspan='2' height='20px'></td>\n"
+            +"<td colspan='2' height='20px'></td>\n"
+            +"</tr>");
+            out.println("<tr>\n"
+            +"<td colspan='2'>Customer Signature</td>\n"
+            +"<td colspan='2'>Delivery Men Signature</td>\n"
+            +"</tr>");
             out.println("</table>");
             
             out.println("<p align='center'> <input type='button' value=' Print this Page' onclick='window.print()'/> </p>");
+            }
+            else{
+                out.println("<h3> Not Enough Stock Available </h3>");
+            }
             }
             else{
                String sql ="update gasrate set rate='"+rate1+"' where id="+2;
                db.conn.createStatement();
                db.st.executeUpdate(sql);
             }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

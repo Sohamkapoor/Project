@@ -206,7 +206,7 @@
                         
                         $('#cashonly').click(function () {
                             var e = document.getElementById("registration-form");
-                            e.style.width = "760px";
+                            e.style.width = "800px";
                             $('#cashSelect').show();
                             $('#cvChequeDeposite').hide();
                             $('#cvCashDeposite').hide();
@@ -227,7 +227,7 @@
 
                         $('#cheque').click(function () {
                             var e = document.getElementById("registration-form");
-                            e.style.width = "860px";
+                            e.style.width = "920px";
                             $('#cashSelect').show();
                             $('#cvChequeDeposite').hide();
                             $('#cvCashDeposite').hide();

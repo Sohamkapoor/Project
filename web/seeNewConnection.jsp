@@ -42,7 +42,28 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-
+        <script>
+            $(document).ready(function(){
+               var e = document.getElementById("registration-form");
+               e.style.width = "800px";
+               $('.idno').hide();
+            });  
+            function f(){
+                var e = document.getElementById("registration-form");
+               e.style.width = "850px";
+                var checkboxes = document.getElementsByName('status');
+                var selected = [];
+                var select;
+                $('#hideshow').show();
+                for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    selected.push(checkboxes[i].value);
+                    select= checkboxes[i].value;
+                    $('.idno').show();
+                }
+                }                
+            };
+        </script>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
@@ -98,7 +119,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                            <form role="form" action="LinkCustomer" method="post" class="registration-form">
+                            <form role="form" action="LinkCustomer" method="post" class="registration-form" id="registration-form">
 
                                 <fieldset>
                                     <div class="form-top">
@@ -112,7 +133,7 @@
                                     </div>
 
                                     <div class="form-bottom">
-                                        
+
                                         <div class="form-group">
                                         </div>
                                         <table border="1px">
@@ -126,29 +147,30 @@
                                                 <th> Id Number </th>
                                                 <th> Type </th>
                                                 <th> Status </th>
+                                                <th id="hideshow" hidden="true">Consumer Number Generated</th>
                                             </tr>
-                                               <%
-                                            Datab db = new Datab();
-                                            String sql="", salutation="" ,name="",dob="",fathername="",mothername="",spousename="",address="",pincode="",telephone="" ;
-                                            String mobile="",email="",bankname="",bankadd="",ifsc="",accno="",idsubmitted="",idnumber="",type="";
-                                            int id=0;
-                                            sql = "select * from new_customer where status='Not Verified'";
-                                            db.rs = db.st.executeQuery(sql);
-                                            while (db.rs.next()) { 
+                                            <%
+                                                Datab db = new Datab();
+                                                String sql = "", salutation = "", name = "", dob = "", fathername = "", mothername = "", spousename = "", address = "", pincode = "", telephone = "";
+                                                String mobile = "", email = "", bankname = "", bankadd = "", ifsc = "", accno = "", idsubmitted = "", idnumber = "", type = "";
+                                                sql = "select * from new_customer where status='Not Verified'";
+                                                db.rs = db.st.executeQuery(sql);
+                                                while (db.rs.next()) {
                                             %>
                                             <tr>
                                                 <td align="center"><%= db.rs.getString("salutation")%></td>
-                                                <td align="center"><%= db.rs.getString("name") %></td>
-                                                <td align="center"><%= db.rs.getString("dob") %></td>
-                                                <td align="center"><%= db.rs.getString("address") %></td>
-                                                <td align="center"><%= db.rs.getString("mobile") %></td>
-                                                <td align="center"><%= db.rs.getString("idsubmitted") %></td>
-                                                <td align="center"><%= db.rs.getString("idnumber") %></td>
-                                                <td align="center"><%= db.rs.getString("type") %></td>
-                                                <td align="center"><input type="checkbox" name="status" id="<%= db.rs.getInt("id")%>" value="<%= db.rs.getInt("id")%>" /></td>                                               
-                                            </tr><% } %>
+                                                <td align="center"><%= db.rs.getString("name")%></td>
+                                                <td align="center"><%= db.rs.getString("dob")%></td>
+                                                <td align="center"><%= db.rs.getString("address")%></td>
+                                                <td align="center"><%= db.rs.getString("mobile")%></td>
+                                                <td align="center"><%= db.rs.getString("idsubmitted")%></td>
+                                                <td align="center"><%= db.rs.getString("idnumber")%></td>
+                                                <td align="center"><%= db.rs.getString("type")%></td>
+                                                <td align="center"><input type="checkbox" name="status" id="<%= db.rs.getInt("id")%>" value="<%= db.rs.getInt("id")%>" onclick="f()" /></td>                                               
+                                                <td><input type="text" name="idno" class="idno" id="<%=db.rs.getInt("id")%>" style="width:80px" placeholder="Enter Customer Number"></td>
+                                            </tr><% }%>
                                         </table>
-                                        
+
                                         <input type="submit" class="btn btn-success" value="Submit Details">
                                     </div>
                                 </fieldset>

@@ -223,8 +223,7 @@ public class Stove extends HttpServlet {
                 extra = (Integer.parseInt(table7)) - (counter1 + counter2 + counter3 + counter4);
                 
                 if ((stove1975 < 0) && (stove1990 < 0) && (pr < 0) && (pipe15 < 0) && (cy < 0) && (dairy < 0) && (extra < 0)) {
-                    out.println("<html><body onload=\"alert('Error!!! There is not enough stock')\"></body></html>");
-                    response.sendRedirect("http://localhost:8080/gas/Stove.jsp");
+                    out.println("<h3> Error!!! There is not enough stock </h3>");
                 }
                 
                 else if ((stove1975 >= 0) && (stove1990 >= 0) && (pr >= 0) && (pipe15 >= 0) && (cy >= 0) && (dairy >= 0) && (extra >= 0)) {

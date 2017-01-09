@@ -84,24 +84,40 @@ public class LinkCustomer extends HttpServlet {
             String[] cy = new String[50];
             String[] dairy = new String[50];
             String[] pipe = new String[50];
+            String[] customers = request.getParameterValues("idno");
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
             String tod=formatter.format(date);
             String sql="",four="",nine="",five="",sql1="";
-            int fourteen=0 , nineteen=0 , fiveteen=0,cylinde=0,dair=0,p=0,pip=0,c=0;
+            int fourteen=0 , nineteen=0 , fiveteen=0,cylinde=0,dair=0,p=0,pip=0,c=0,k=0;
             // call type from connection table
-            for(int i=0;i<check.length;i++)
+            int len = check.length;
+            System.out.println(len);
+            System.out.println(check[0]);
+            for(int i=0;i<customers.length;i++)
             {
-                sql="update new_customer set status ='verified' where id='"+check[i]+"'";
-                db.conn.createStatement();
-                db.st.executeUpdate(sql);
-                
+                if(!customers[i].equals(""))
+                {
+                    if(len==1){
+                    sql="update new_customer set customerno ='"+customers[i]+"',status ='verified',dairy='1' where id="+check[0]+" ";
+                    db.conn.createStatement();
+                    db.st.executeUpdate(sql);
+                    }
+                    else{//count length increment it
+                        k++;
+                        sql="update new_customer set customerno ='"+customers[i]+"',status ='verified',dairy='1' where id="+check[k]+" ";
+                        db.conn.createStatement();
+                        db.st.executeUpdate(sql);
+                    }
+                }          
+            }
+            for(int i=0;i<check.length;i++)
+            {                             
                 sql =" select type,dairy from new_customer where id ='"+check[i]+"'";
                 db.rs = db.st.executeQuery(sql);
                 while (db.rs.next()) {
                 type[i] = db.rs.getString("type");
                 dairy[i] = db.rs.getString("dairy");
-
                 }
             }
             
@@ -144,7 +160,7 @@ public class LinkCustomer extends HttpServlet {
 //                  db.conn.createStatement();
 //                  db.st.executeUpdate(sql);
                   dair = (Integer.parseInt(dairy1)) - (Integer.parseInt(dairy[i]));
-                  sql ="update stove_factory set dairy ='"+dair+"',date ='"+date+"' where id='1'";
+                  sql ="update stove_factory set dairy ='"+dair+"',day ='"+date+"' where id='1'";
                   db.conn.createStatement();
                   db.st.executeUpdate(sql);
               }
