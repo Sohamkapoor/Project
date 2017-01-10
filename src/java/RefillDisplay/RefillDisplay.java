@@ -186,15 +186,18 @@ public class RefillDisplay extends HttpServlet {
                                 returnfour1 += db.rs.getInt("empty_fourteenws");
                                 returnfour += db.rs.getInt("empty_fourteen");
                             }
-                            four -= Integer.parseInt(filled.get(emptytextbox));
-                            four1 -= Integer.parseInt(filled.get(emptytextbox));
+                            if(refer.equals("domesticWS")){
+                             four1 -= Integer.parseInt(filled.get(emptytextbox));
+                             returnfour1 += Integer.parseInt(empty.get(emptytextbox));
+                            }
+                            else{
+                            four -= Integer.parseInt(filled.get(emptytextbox));                            
                             returnfour += Integer.parseInt(empty.get(emptytextbox));
-                            returnfour1 += Integer.parseInt(empty.get(emptytextbox));
-                            if (four >= 0) {
+                            }
+                            if ((four >= 0) && (four1 >= 0)) {
                                 sql = "insert into refill(name,filledcv,emptycv,amount,amtpaid,diffcv,diffamt,refillthrough,datoday,typeofpay,chequeno)values('" + employee + "','" + filled.get(emptytextbox) + "','" + empty.get(emptytextbox) + "','" + amount.get(emptytextbox) + "','" + amountpaid.get(emptytextbox) + "','" + differencecv.get(emptytextbox) + "','" + difference.get(emptytextbox) + "','" + ref + "','" + todayWithZeroTime + "','" + radio + "','" + chequeno + "')";
                                 db.conn.createStatement();
                                 db.st.executeUpdate(sql);
-
                                 if (refer.equals("domesticWS")) {
                                     sql = "update godown set filled_fourteenws ='" + four1 + "',empty_fourteenws ='" + returnfour1 + "' where id='" + var + "'";
                                     db.conn.createStatement();
@@ -211,8 +214,12 @@ public class RefillDisplay extends HttpServlet {
                     }
                 }
             }
-            out.println("<h3>Name : " + employee + " </h3>");
+            if((four>=0) && (four1>=0)){
             out.println("<table border=\"1px\">");
+            out.println("<tr><td colspan='3'>Tin No: 08390014694</td> <td colspan='3' align='right'> Employee Copy </td>");
+                out.println("<tr><td align='center' colspan='3'><h3>Shree Mangalam Indane</h3></td><td align='center' colspan='3'><img src='assets/img/indane-gas-agency-in-faridabad.jpg' height='60px' width='200px'></td></tr>");
+                out.println("<tr><td colspan='6' align='center'>C-66, B.K.Kaul Nagar, Hari Bhau Upadhayay Nagar Ajmer(305001)</td></tr>");
+                out.println("<tr><td colspan='6'><h3>Name : " + employee + " </h3></td></tr>");
             out.println("<tr>");
             out.println("<th>Refill</th>");
             out.println("<th>Filled CV</th>");
@@ -262,7 +269,10 @@ public class RefillDisplay extends HttpServlet {
                     + "                <td><label for=\"form-emptycv\"> " + difference.get(4) + " </label></td>");
             out.println("</tr>\n"
                     + "        </table>");
-
+            out.println("<p align='center'> <input type='button' value=' Print this Page' onclick='window.print()'/> </p>");
+            } else {
+                out.println(" <h3> Please ask for delivery of cylinders </h3>");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -97,7 +97,7 @@ public class Miscellaneous extends HttpServlet {
             SimpleDateFormat sdf1 = new SimpleDateFormat();
             sdf1.applyPattern("dd/MM/yyyy");
             Date date = sdf1.parse(strDate);
-            
+            System.out.println("bank ="+bankwithdraw);
             
             String sql="",snak="",ban="",name="",adv="",ext="",amtadv="",pet="",vehno="",pic="",dro="",repair="",sa="",ph="",na="",banwith="";
             int counter=0,counter1=0;
@@ -118,9 +118,11 @@ public class Miscellaneous extends HttpServlet {
             }
             if(counter==0)
             {
-                sql="insert into miscellaneous(snacks,bank,banwith,extra,date)values('"+snacks+"','"+bank+"','"+banwith+"','"+extra+"','"+date+"')";
+                sql="insert into miscellaneous(snacks,bank,banwith,extra,date)values('"+snacks+"','"+bank+"','"+bankwithdraw+"','"+extra+"','"+date+"')";
                 db.conn.createStatement();
                 db.st.executeUpdate(sql);
+                response.setIntHeader("Refresh", 2);
+                response.sendRedirect("http://localhost:8080/gas/Miscellaneous_exp.jsp");
             }
             else if(counter>0)
             {
@@ -131,7 +133,9 @@ public class Miscellaneous extends HttpServlet {
                 System.out.println(ba+" "+ sna+" "+ex);
                 sql="update miscellaneous set snacks ='"+sna+"' , bank = '"+ba+"' , extra='"+ex+"',banwith='"+bawith+"'  where date = '"+date+"'";
                 db.conn.createStatement();
-                db.st.executeUpdate(sql);              
+                db.st.executeUpdate(sql); 
+                response.setIntHeader("Refresh", 2);
+                response.sendRedirect("http://localhost:8080/gas/Miscellaneous_exp.jsp");
             }
 
             

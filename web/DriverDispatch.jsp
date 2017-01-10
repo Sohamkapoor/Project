@@ -124,7 +124,7 @@
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p> Get Your Gate Pass :</p>
+                                            <p> Enter Your Dispatch Details :</p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-database"></i>

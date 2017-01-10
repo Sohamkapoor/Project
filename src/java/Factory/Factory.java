@@ -165,6 +165,9 @@ public class Factory extends HttpServlet {
             sql = "update godown set filled_fourteen ='"+four+"',filled_fourteenws ='"+fourws+"',filled_nineteen='"+nine+"',filled_five='"+f5+"',filled_defective='"+defect+"',empty_five='"+returnf5+"',empty_fourteen='"+returnfour+"',empty_fourteenws='"+returnfourws+"',empty_nineteen='"+returnnine+"',empty_defective='"+returndefect+"', day='"+today+"' where id ="+1;
             db.conn.createStatement();
             db.st.executeUpdate(sql);
+            out.println("<html><head><script>alert('Successful');</script></head><body></body></html>");
+            response.setIntHeader("Refresh", 40);
+            response.sendRedirect("http://localhost:8080/gas/Factory.jsp");
              }
              else
              {

@@ -56,6 +56,9 @@
         $(document).ready(function () {
             var e = document.getElementById("registration-form");
             e.style.width = "600px";
+            $('#selling').hide();
+            $('#stove').hide();
+            $('#submit').hide();
             $('#agency_name').hide();
             $('#nameoc').hide();
             $('#invoice_no').hide();
@@ -66,9 +69,9 @@
             $('#invoice_no').val("0");
             $('#tin_no').val("0");
             $('#tax_no').val("0");
-            $('#factory').click(function(){
+            $('#factory').click(function () {
                 $('#form-group').show();
-                $('#stove').show(); 
+                $('#stove').show();
                 $('#selling').hide();
                 $('#agency_name').val("");
                 $('#invoice_no').val("");
@@ -77,29 +80,40 @@
                 $('#nameoc').hide();
                 $('#button').show();
                 $('#agency_name').show();
+                $('#submit').show();
                 $('#invoice_no').show();
                 $('#tin_no').show();
                 $('#tax_no').show();
                 $()
             });
-            $('#sell').click(function(){
+            $('#sell').click(function () {
                 $('#agency_name').hide();
                 $('#invoice_no').hide();
                 $('#tin_no').hide();
                 $('#nameoc').show();
-                $('#tax_no').hide();
+                $('#tax_no').show();
                 $('#agency_name').val("0");
                 $('#invoice_no').val("0");
                 $('#tin_no').val("0");
-                $('#tax_no').val("0");
+                $('#tax_no').val("");
                 $('#form-group').show();
+                $('#submit').show();
                 $('#stove').hide();
                 $('#selling').show();
                 $('#button').show();
             });
+            $('#tax_no').focusout(function(){
+               if(document.getElementById("form-taxno").value < 0)
+               {
+                   $('#errtaxno').text("Please enter value greater than 0");
+               }
+            });
+            $('#tax_no').focusin(function(){
+                $('#errtaxno').text("");
+            });
         });
-        
-        
+
+
         counter = 1;
         limit = 5;
         var s;
@@ -130,98 +144,96 @@
                     s = document.getElementById("registration-form");
                     s.style.width = "890px";
                 }
-                if(document.getElementById("factory").checked === true)
+                if (document.getElementById("factory").checked === true)
                 {
                     element = prompt("Please enter your Product Name");
-                    if(element === "" || element === "undefined")
+                    if (element === "" || element === "undefined")
                     {
-                    element = prompt("Please enter some value"); 
-                    newdiv = document.createElement("label");
-                    newdiv.setAttribute("for", element);
-                    newdiv.innerHTML = element;
-                    $('#c'+counter).val(element);
-                    $('#count1111'+counter).show();
-                    document.getElementById("count1111" + counter).appendChild(newdiv);
+                        element = prompt("Please enter some value");
+                        newdiv = document.createElement("label");
+                        newdiv.setAttribute("for", element);
+                        newdiv.innerHTML = element;
+                        $('#c' + counter).val(element);
+                        $('#count1111' + counter).show();
+                        document.getElementById("count1111" + counter).appendChild(newdiv);
 
-                    newdiv = document.createElement("input");
-                    newdiv.type = "text";
-                    newdiv.id = "counter" + counter;
-                    newdiv.name = "counter" + counter;
-                    newdiv.style.width = "80px";
-                    newdiv.style.height = "50px";
-                    newdiv.placeholder = "enter" + element + "quantity";
-                    $('#counter1111'+counter).show();
-                    document.getElementById("counter1111" + counter).appendChild(newdiv);
-                    counter++;
-                    }
-                    else
+                        newdiv = document.createElement("input");
+                        newdiv.type = "text";
+                        newdiv.id = "counter" + counter;
+                        newdiv.name = "counter" + counter;
+                        newdiv.style.width = "80px";
+                        newdiv.style.height = "50px";
+                        newdiv.placeholder = "enter" + element + "quantity";
+                        $('#counter1111' + counter).show();
+                        document.getElementById("counter1111" + counter).appendChild(newdiv);
+                        counter++;
+                    } else
                     {
-                    newdiv = document.createElement("label");
-                    newdiv.setAttribute("for", element);
-                    newdiv.innerHTML = element;
-                    $('#count1111'+counter).show();
-                    $('#c'+counter).val(element);
-                    document.getElementById("count1111" + counter).appendChild(newdiv);
+                        newdiv = document.createElement("label");
+                        newdiv.setAttribute("for", element);
+                        newdiv.innerHTML = element;
+                        $('#count1111' + counter).show();
+                        $('#c' + counter).val(element);
+                        document.getElementById("count1111" + counter).appendChild(newdiv);
 
-                    newdiv = document.createElement("input");
-                    newdiv.type = "text";
-                    newdiv.id = "counter" + counter;
-                    newdiv.name = "counter" + counter;
-                    newdiv.style.width = "80px";
-                    newdiv.style.height = "50px";
-                    newdiv.placeholder = "enter" + element + "quantity";
-                    $('#counter1111'+counter).show();
-                    document.getElementById("counter1111" + counter).appendChild(newdiv);
-                    counter++;
+                        newdiv = document.createElement("input");
+                        newdiv.type = "text";
+                        newdiv.id = "counter" + counter;
+                        newdiv.name = "counter" + counter;
+                        newdiv.style.width = "80px";
+                        newdiv.style.height = "50px";
+                        newdiv.placeholder = "enter" + element + "quantity";
+                        $('#counter1111' + counter).show();
+                        document.getElementById("counter1111" + counter).appendChild(newdiv);
+                        counter++;
                     }
-                }
-                else if(document.getElementById("sell").checked === true)
+                } else if (document.getElementById("sell").checked === true)
                 {
                     element = prompt("Please enter your Product Name");
-                    if(element === "" || element === "undefined")
+                    if (element === "" || element === "undefined")
                     {
-                    element = prompt("Please enter some value"); 
-                    newdiv = document.createElement("label");
-                    newdiv.setAttribute("for", element);
-                    newdiv.innerHTML = element;
-                    $('#c'+counter).val(element);
-                    $('#count111'+counter).show();
-                    document.getElementById("count111" + counter).appendChild(newdiv);
+                        element = prompt("Please enter some value");
+                        newdiv = document.createElement("label");
+                        newdiv.setAttribute("for", element);
+                        newdiv.innerHTML = element;
+                        $('#c' + counter).val(element);
+                        $('#count111' + counter).show();
+                        document.getElementById("count111" + counter).appendChild(newdiv);
 
-                    newdiv = document.createElement("input");
-                    newdiv.type = "text";
-                    newdiv.id = "counter11" + counter;
-                    newdiv.name = "counter11" + counter;
-                    newdiv.style.width = "80px";
-                    newdiv.style.height = "50px";
-                    newdiv.placeholder = "enter" + element + "quantity";
-                    $('#counter111'+counter).show();
-                    document.getElementById("counter111" + counter).appendChild(newdiv);
-                    counter++;
-                    }
-                    else{
-                    newdiv = document.createElement("label");
-                    newdiv.setAttribute("for", element);
-                    newdiv.innerHTML = element;
-                    $('#c'+counter).val(element);
-                    $('#count111'+counter).show();
-                    document.getElementById("count111" + counter).appendChild(newdiv);
+                        newdiv = document.createElement("input");
+                        newdiv.type = "text";
+                        newdiv.id = "counter11" + counter;
+                        newdiv.name = "counter11" + counter;
+                        newdiv.style.width = "80px";
+                        newdiv.style.height = "50px";
+                        newdiv.placeholder = "enter" + element + "quantity";
+                        $('#counter111' + counter).show();
+                        document.getElementById("counter111" + counter).appendChild(newdiv);
+                        counter++;
+                    } else {
+                        newdiv = document.createElement("label");
+                        newdiv.setAttribute("for", element);
+                        newdiv.innerHTML = element;
+                        $('#c' + counter).val(element);
+                        $('#count111' + counter).show();
+                        document.getElementById("count111" + counter).appendChild(newdiv);
 
-                    newdiv = document.createElement("input");
-                    newdiv.type = "text";
-                    newdiv.id = "counter11" + counter;
-                    newdiv.name = "counter11" + counter;
-                    newdiv.style.width = "80px";
-                    newdiv.style.height = "50px";
-                    newdiv.placeholder = "enter" + element + "quantity";
-                    $('#counter111'+counter).show();
-                    document.getElementById("counter111" + counter).appendChild(newdiv);
-                    counter++;
+                        newdiv = document.createElement("input");
+                        newdiv.type = "text";
+                        newdiv.id = "counter11" + counter;
+                        newdiv.name = "counter11" + counter;
+                        newdiv.style.width = "80px";
+                        newdiv.style.height = "50px";
+                        newdiv.placeholder = "enter" + element + "quantity";
+                        $('#counter111' + counter).show();
+                        document.getElementById("counter111" + counter).appendChild(newdiv);
+                        counter++;
                     }
                 }
             }
 
-        };
+        }
+        ;
     </script>
 
     <body>
@@ -313,86 +325,97 @@
                                             <input type="text" name="tin_no" id="tin_no" placeholder="Enter Tin Number"/><br/>
                                         </div>  
                                         <div class="form-group">
-                                            <label class="sr-only" for="form-noc">Tin Number </label>
-                                            <input type="text" name="tax_no" id="tax_no" placeholder="Enter VAT Amount"/><br/>
+                                            <label class="sr-only" for="form-noc">Tax Number </label>
+                                            <input type="text" name="tax_no" id="tax_no" placeholder="Enter VAT Amount"/>
+                                            <span id="errtaxno" style="color:red;"></span><br/>
                                         </div> 
-                                            <!-- Rate insert -->
-                                            <!-- === add form here === -->                                            
-                                            <table id="stove" border="1px solid">
-                                                <tr>
-                                                    
-                                                    <th> &nbsp; Stove 1975 &nbsp; </th>
-                                                    <th> &nbsp; Bill Price &nbsp;</th>
-                                                    <th> &nbsp; Stove 99 &nbsp; </th>
-                                                    <th> &nbsp; Bill Price &nbsp;</th>
-                                                    <th> &nbsp; PR &nbsp; </th>
-                                                    <th> &nbsp; Bill Price &nbsp;</th>
-                                                    <th> &nbsp; 1.5 Pipe &nbsp; </th>
-                                                    <th> &nbsp; Bill Price &nbsp;</th>
-                                                    <th> &nbsp; Dairy &nbsp; </th>
-                                                    <th> &nbsp; Bill Price &nbsp;</th>
-                                                    <th id="count11111" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
-                                                    <th id="count11112" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
-                                                    <th id="count11113" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
-                                                    <th id="count11114" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="number" name="stove1975" id="stove1975" placeholder="Enter Quantity" style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="stove1975price" id="stove1975price" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="stove1990" id="stove1990" placeholder="Enter Quantity"style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="stove1990price" id="stove1990price" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="pr" id="pr" placeholder="PR"style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="prprice" id="prprice" placeholder="Enter Pr Price" style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="1.5pipe" id="1.5pipe" placeholder="Enter Pipe"style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="1.5pipeprice" id="s1.5pipeprice" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="dairy" id="dairy" placeholder="Enter Dairy"style="width:50px; height:50px;"></td>
-                                                    <td><input type="number" name="dairyprice" id="dairyprice" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
-                                                    <td id="counter11111" style="width:98px;" hidden="true"></td>
-                                                    <td id="counter11112" style="width:98px;" hidden="true"></td>
-                                                    <td id="counter11113" style="width:98px;" hidden="true"></td>
-                                                    <td id="counter11114" style="width:98px;" hidden="true"></td>
-                                                </tr>
-                                            </table>
-                                            
-                                            <table id="selling" border="1px">
-                                                <tr>
-                                                    <th> &nbsp; Stove 1975 &nbsp; </th>
-                                                    <th> &nbsp; Stove 990 &nbsp; </th>
-                                                    <th> &nbsp; PR &nbsp; </th>
-                                                    <th> &nbsp; 1.5 Pipe &nbsp; </th>
-                                                    <th> &nbsp; Dairy &nbsp; </th>
-                                                    <th id="count1111" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
-                                                    <th id="count1112" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
-                                                    <th id="count1113" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
-                                                    <th id="count1114" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="number" name="stove197" id="stove197" placeholder="Enter Quantity" style="width:98px; height:50px;"></td>
-                                                    <td><input type="number" name="stove199" id="stove199" placeholder="Enter Quantity"style="width:98px; height:50px;"></td>
-                                                    <td><input type="number" name="prsell" id="prsell" placeholder="PR"style="width:80px; height:50px;"></td>
-                                                    <td><input type="number" name="pipe1.5" id="pipe1.5" placeholder="Enter Pipe"style="width:80px; height:50px;"></td>
-                                                    <td><input type="number" name="dairysell" id="dairysell" placeholder="Enter Dairy"style="width:80px; height:50px;"></td>
-                                                    <td id="counter1111" style="width:98px;" hidden="true"></td>
-                                                    <td id="counter1112" style="width:98px;" hidden="true"></td>
-                                                    <td id="counter1113" style="width:98px;" hidden="true"></td>
-                                                    <td id="counter1114" style="width:98px;" hidden="true"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                        <!-- Rate insert -->
+                                        <!-- === add form here === -->                                            
+                                        <table id="stove" border="1px solid">
+                                            <tr>
+
+                                                <th> &nbsp; Stove 1975 &nbsp; </th>
+                                                <th> &nbsp; Bill Price &nbsp;</th>
+                                                <th> &nbsp; Stove 990 &nbsp; </th>
+                                                <th> &nbsp; Bill Price &nbsp;</th>
+                                                <th> &nbsp; PR &nbsp; </th>
+                                                <th> &nbsp; Bill Price &nbsp;</th>
+                                                <th> &nbsp; 1.5 Pipe &nbsp; </th>
+                                                <th> &nbsp; Bill Price &nbsp;</th>
+                                                <th> &nbsp; Dairy &nbsp; </th>
+                                                <th> &nbsp; Bill Price &nbsp;</th>
+                                                <th id="count11111" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
+                                                <th id="count11112" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
+                                                <th id="count11113" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
+                                                <th id="count11114" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="number" name="stove1975" id="stove1975" placeholder="Enter Quantity" style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="stove1975price" id="stove1975price" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="stove1990" id="stove1990" placeholder="Enter Quantity"style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="stove1990price" id="stove1990price" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="pr" id="pr" placeholder="PR"style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="prprice" id="prprice" placeholder="Enter Pr Price" style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="1.5pipe" id="1.5pipe" placeholder="Enter Pipe"style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="1.5pipeprice" id="s1.5pipeprice" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="dairy" id="dairy" placeholder="Enter Dairy"style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="dairyprice" id="dairyprice" placeholder="Enter Quantity Price" style="width:50px; height:50px;"></td>
+                                                <td id="counter11111" style="width:98px;" hidden="true"></td>
+                                                <td id="counter11112" style="width:98px;" hidden="true"></td>
+                                                <td id="counter11113" style="width:98px;" hidden="true"></td>
+                                                <td id="counter11114" style="width:98px;" hidden="true"></td>
+                                            </tr>
+                                        </table>
+
+                                        <table id="selling" border="1px">
+                                            <tr>
+                                                <th> &nbsp; Stove 1975 &nbsp; </th>
+                                                <th> &nbsp; Price 1975 &nbsp; </th>
+                                                <th> &nbsp; Stove 990 &nbsp; </th>
+                                                <th> &nbsp; Price 990 &nbsp; </th>
+                                                <th> &nbsp; PR &nbsp; </th>
+                                                <th> &nbsp; PR Price &nbsp; </th>
+                                                <th> &nbsp; 1.5 Pipe &nbsp; </th>
+                                                <th> &nbsp; Pipe Price &nbsp; </th>
+                                                <th> &nbsp; Dairy &nbsp; </th>
+                                                <th> &nbsp; Dairy Price &nbsp; </th>
+                                                <th id="count1111" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
+                                                <th id="count1112" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
+                                                <th id="count1113" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
+                                                <th id="count1114" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="number" name="stove197" id="stove197" placeholder="Enter Quantity" style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="stoveprice1975" id="stoveprice1975" placeholder="Enter Price" style="width:50px; height:50px;"</td> 
+                                                <td><input type="number" name="stove199" id="stove199" placeholder="Enter Quantity"style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="pricestove1990" id="pricestove1990" placeholder="Enter Price" style="width:50px; height:50px;"</td> 
+                                                <td><input type="number" name="prsell" id="prsell" placeholder="PR"style="width:80px; height:50px;"></td>
+                                                <td><input type="number" name="pricepr" id="pricepr" placeholder="Enter Price" style="width:50px; height:50px;"</td> 
+                                                <td><input type="number" name="pipe1.5" id="pipe1.5" placeholder="Enter Pipe"style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="pricepipe" id="pricepipe" placeholder="Enter Price" style="width:50px; height:50px;"</td> 
+                                                <td><input type="number" name="dairysell" id="dairysell" placeholder="Enter Dairy"style="width:50px; height:50px;"></td>
+                                                <td><input type="number" name="pricedairy" id="pricedairy" placeholder="Enter Price" style="width:50px; height:50px;"</td> 
+                                                <td id="counter1111" style="width:98px;" hidden="true"></td>
+                                                <td id="counter1112" style="width:98px;" hidden="true"></td>
+                                                <td id="counter1113" style="width:98px;" hidden="true"></td>
+                                                <td id="counter1114" style="width:98px;" hidden="true"></td>
+                                            </tr>
+                                        </table>
                                         <input type="hidden" id="c1"/>
                                         <input type="hidden" id="c2"/>
                                         <input type="hidden" id="c3"/>
                                         <input type="hidden" id="c4"/>
                                         <input type="button" class="btn btn-success" id="button" value="Add" onclick="count();">
-                                        <input type="submit" value="submit details"/>
-                                    </div>
+                                        <input type="submit" id="submit" value="submit details"/>
+                                    </div>  
                                 </fieldset>
                             </form>
-                        </div>
+                        </div>                          
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
@@ -400,11 +423,11 @@
 
 
 
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="assets/js/placeholder.js"></script>
+    <![endif]-->
 
-    </body>
+</body>
 
 </html>
 

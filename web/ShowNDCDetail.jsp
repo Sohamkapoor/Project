@@ -109,7 +109,7 @@
                                     <div class="form-top">
                                         <div class="form-top-left">
                                             <h3>Step 1 / 1</h3>
-                                            <p>Tell us who you are:</p>
+                                            <p> Get ND Customer Detail : </p>
                                         </div>
                                         <div class="form-top-right">
                                             <i class="fa fa-user"></i>

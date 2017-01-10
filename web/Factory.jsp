@@ -55,6 +55,7 @@
             // domestic=0,nondomestic=0,
             defective=0,returnload=0,domesticempty=0,nondomesticempty=0,five=0,domesticwsempty=0;
             $(document).ready(function(){
+                
                 $('#form-return-load').hide();
                 $('#form-2domestic').hide();
                 $('#form-2nondomestic').hide();
@@ -127,6 +128,7 @@
                 $('#form-fourteen-wprice').click(function(){
                     $('#errwdomesticprice').text("");
                 });
+                
                 $('#form-fourteen-price').focusout(function(){
                     if(document.getElementById("form-fourteen-price").value <= 0)
                     {

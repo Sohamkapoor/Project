@@ -129,89 +129,92 @@ public class New_Connection extends HttpServlet {
             if (passport == null) {
                 passport = "";
             }
-            out.println("<table border=\"1px\" width=\"60%\">");
-            out.println("<tr> <td align=\"center\" colspan=\"2\"> <h3> Customer Details </h3> </td> </tr>");
+            out.println("<table border='1p' width='60%'>");
+            out.println("<tr> <td align='center' colspan='2'> Customer Details </td> </tr>");
+            out.println("<tr><td colspan='2'>Tin No: 08390014694</td>");
+            out.println("<tr><td align='center'><img src='assets/img/indane-gas-agency-in-faridabad.jpg' height='60px' width='200px'></td><td align='center'>Shree Mangalam Indane</td></tr>");
+            out.println("<tr><td colspan='2' align='center'>C-66, B.K.Kaul Nagar, Hari Bhau Upadhayay Nagar Ajmer(305001)</td></tr>");
             out.println("<tr>\n"
                     + "                <th> Details </th>\n"
                     + "                <th> User Input </th>\n"
                     + "            </tr>");
-            out.println("<tr> <td align=\"center\"> <h3>Customer Joining Date :</h3></td>\n"
-                    + "                    <td align=\"center\"> " + new java.util.Date() + " </td> </tr> ");
-            out.println("<tr> <td align=\"center\"> <h3>Salutation :</h3></td> <td align=\"center\"> " + salutation + " </td></tr>");
-            out.println("<tr> <td align=\"center\"> <h3>Type Of Customer :</h3></td> <td align=\"center\"> " + type + " </td></tr>");
-            out.println("<tr> <td align=\"center\"> <h3>Name :</h3></td> <td align=\"center\"> " + customername + " </td></tr>");
-            out.println("<tr> <td align=\"center\"><h3>Date Of Birth :</h3></td> <td align=\"center\"> " + dob + " </td></tr>");
-            out.println("<tr> <td align=\"center\"><h3>Father's Name :</h3></td> <td align=\"center\"> " + father + " </td></tr>");
-            out.println("<tr> <td align=\"center\"><h3>Mother's Name :</h3></td> <td align=\"center\"> " + mother + " </td></tr>");
+            out.println("<tr> <td align='center'> <h3>Customer Joining Date :</h3></td>\n"
+                    + "                    <td align='center'> " + new java.util.Date() + " </td> </tr> ");
+            out.println("<tr> <td align='center'> <h3>Salutation :</h3></td> <td align='center'> " + salutation + " </td></tr>");
+            out.println("<tr> <td align='center'> <h3>Type Of Customer :</h3></td> <td align='center'> " + type + " </td></tr>");
+            out.println("<tr> <td align='center'> <h3>Name :</h3></td> <td align='center'> " + customername + " </td></tr>");
+            out.println("<tr> <td align='center'><h3>Date Of Birth :</h3></td> <td align='center'> " + dob + " </td></tr>");
+            out.println("<tr> <td align='center'><h3>Father's Name :</h3></td> <td align='center'> " + father + " </td></tr>");
+            out.println("<tr> <td align='center'><h3>Mother's Name :</h3></td> <td align='center'> " + mother + " </td></tr>");
             if (spouse.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Spouse Name :</h3></td> <td align=\"center\"> " + spouse + " </td></tr>");
+                out.println("<tr> <td align='center'><h3>Spouse Name :</h3></td> <td align='center'> " + spouse + " </td></tr>");
             }
-            out.println("<tr> <td align=\"center\"><h3>Customer address :</h3></td> <td align=\"center\"> " + address + " </td></tr>");
-            out.println("<tr> <td align=\"center\"> <h3> Pin Code :</h3> </td> <td align=\"center\"> " + pincode + " </td></tr>");
+            out.println("<tr> <td align='center'><h3>Customer address :</h3></td> <td align='center'> " + address + " </td></tr>");
+            out.println("<tr> <td align='center'> <h3> Pin Code :</h3> </td> <td align='center'> " + pincode + " </td></tr>");
             if (telephone.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"> <h3>Telephone :</h3> </td> <td align=\"center\"> " + telephone + " </td></tr>");
+                out.println("<tr> <td align='center'> <h3>Telephone :</h3> </td> <td align='center'> " + telephone + " </td></tr>");
             }
-            out.println("<tr> <td align=\"center\"><h3>Mobile Number:</h3></td> <td align=\"center\"> " + mob + " </td></tr>");
+            out.println("<tr> <td align='center'><h3>Mobile Number:</h3></td> <td align='center'> " + mob + " </td></tr>");
             if (email.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Email ID :</h3></td> <td align=\"center\"> " + email + " </td></tr>");
+                out.println("<tr> <td align='center'><h3>Email ID :</h3></td> <td align='center'> " + email + " </td></tr>");
             }
             if (bank.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Bank Name :</h3></td> <td align=\"center\"> " + bank + " </td></tr>");
+                out.println("<tr> <td align='center'><h3>Bank Name :</h3></td> <td align='center'> " + bank + " </td></tr>");
             }
             if (branch.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Branch & Address :</h3></td> <td align=\"center\"> " + branch + " </td></tr>");
+                out.println("<tr> <td align='center'><h3>Branch & Address :</h3></td> <td align='center'> " + branch + " </td></tr>");
             }
             if (ifsc.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>IFSC Code :</h3></td> <td align=\"center\"> " + ifsc + " </td></tr>");
+                out.println("<tr> <td align='center'><h3>IFSC Code :</h3></td> <td align='center'> " + ifsc + " </td></tr>");
             }
             if (acc.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Account Number :</h3></td> <td align=\"center\"> " + acc + " </td></tr>");
+                out.println("<tr> <td align='center'><h3>Account Number :</h3></td> <td align='center'> " + acc + " </td></tr>");
             }
             if (adharno.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Adhar Number :</h3></td> <td align=\"center\"> " + adharno + "</td></tr>");
+                out.println("<tr> <td align='center'><h3>Adhar Number :</h3></td> <td align='center'> " + adharno + "</td></tr>");
                 idnumber = idnumber +" " + adharno;
             }
             if (pan.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Pan Number :</h3></td> <td align=\"center\"> " + pan + "</td> </tr>");
+                out.println("<tr> <td align='center'><h3>Pan Number :</h3></td> <td align='center'> " + pan + "</td> </tr>");
                 idnumber = idnumber +" " + pan;
             }
             if (dl.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Driving Licence :</h3></td> <td align=\"center\"> " + dl + " </td></tr>");
+                out.println("<tr> <td align='center'><h3>Driving Licence :</h3></td> <td align='center'> " + dl + " </td></tr>");
                 idnumber = idnumber +" " +dl;
             }
             if (ration.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Ration Card :</h3> </td> <td align=\"center\"> " + ration +  "</td></tr>");
+                out.println("<tr> <td align='center'><h3>Ration Card :</h3> </td> <td align='center'> " + ration +  "</td></tr>");
                 idnumber = idnumber +" "+ration;
             }
             if (passport.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Passport Number :</h3> </td> <td align=\"center\"> " + passport + "</td></tr>");
+                out.println("<tr> <td align='center'><h3>Passport Number :</h3> </td> <td align='center'> " + passport + "</td></tr>");
                 idnumber = idnumber +" " + passport;
             }
             if (voter.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>Voter ID :</h3> </td> <td align=\"center\"> " + voter + " </td></tr>");
+                out.println("<tr> <td align='center'><h3>Voter ID :</h3> </td> <td align='center'> " + voter + " </td></tr>");
                 idnumber = idnumber +" " + voter;
             }
             if (state.equals("")) {
             } else {
-                out.println("<tr> <td align=\"center\"><h3>State & Central ID :</h3></td> <td align=\"center\"> " + state +  "</td></tr>");
+                out.println("<tr> <td align='center'><h3>State & Central ID :</h3></td> <td align='center'> " + state +  "</td></tr>");
                 idnumber = idnumber +" " + state;
             }
             try {
                 for (int i = 0; i < id.length; i++) {
-                    out.println("<tr><td align=\"center\"><h3>ID Submitted :</h3></td> <td align=\"center\">" + id[i] + " </td></tr>");
+                    out.println("<tr><td align='center'><h3>ID Submitted :</h3></td> <td align='center'>" + id[i] + " </td></tr>");
                     idselected = idselected + " " + id[i];
                 }
 
@@ -255,14 +258,16 @@ public class New_Connection extends HttpServlet {
                     + "            and also in the event of any violation of Government Regulation<br/> related to the supply and distributor of LPG, IOCL\n"
                     + "            will be well within its right to take necessary action including discontinuation of supply of LPG cylinders,\n"
                     + "            can forfeit the security<br/> deposit and can levy panel charges as per the policy and guidelines. I am willing/not\n"
-                    + "            willing to avail the subsidy on LPG cylinders therefore I have provided/not provided my Bank account details on the above request form.</font></p><br/>\n"
-                    + "        <br/> Name : " + customername + "   <p align=\"right\">Signature Of Customer : </p> \n"
-                    + "        <p>Date : " + new java.util.Date() + "</p>");            
+                    + "            willing to avail the subsidy on LPG cylinders therefore I have provided/not provided my Bank account details on the above request form.</font></p><br/>\n");
+            out.println("<table>");
+            out.println("<tr><td colspan='10'>Name : " + customername + " </td><td align='right' colspan='10'>Signature Of Customer : </td></tr>\n" +
+"<tr><td colspan='5'> Date : " + new java.util.Date() + "</td></tr>");
+            out.println("</table>");
             if (type.equals("domestic")) {
                 out.println("<br/>");
-            out.println("<h3 align=\"center\">Format for Declaration</h3>\n"
-                    + "        <p align=\"center\">(To be submitted by persons desirous of New LPG connection or connection against Termination Voucher)</p>\n"
-                    + "        <h3 align=\"center\">Declaration</h3>");
+            out.println("<h3 align='center'>Format for Declaration</h3>\n"
+                    + "        <p align='center'>(To be submitted by persons desirous of New LPG connection or connection against Termination Voucher)</p>\n"
+                    + "        <h3 align='center'>Declaration</h3>");
             out.println("<p class=\"declaration\"><font size=\"3\">I " + customername + " Son/Daughter Of " + father + " Age <% /* age */%> Years. resident of "+ address +"\n"
                     + "            desire to take domestic LPG connection in my name and affirm as under.<br/>\n"
                     + "            1) That I am an Indian citizen/Non Resident Indian/Staff of Foreign nationality serving in India/ Foreign \n"
@@ -273,7 +278,7 @@ public class New_Connection extends HttpServlet {
                     + "            children and dependent parents living together in a dwelling unit having common kitchen), possess any LPG connection \n"
                     + "            from PSU Oil Companies or piped Natural Gas Connection for domestic use in our dwelling unit.<br/>\n"
                     + "            4) @ That I am enclosing a copy of Ration Card number " + ration + " including my name.<br/>");
-            out.println("<p align=\"center\"> or </p>");
+            out.println("<p align='center'> or </p>");
             out.println("@ That I don't have Ration Card in my name or in the name of any member of my 'household' as defined above. As and when \n"
                     + "        a ration card is issued in my name or in the name of any of the member of the 'household', the same shall be produced to Oil Company LPG distributor for updation records.<br/>\n"
                     + "        @ delete, whichever is not applicable.<br/>\n"
@@ -295,13 +300,15 @@ public class New_Connection extends HttpServlet {
                     + "        what so ever against IOCL/BPCL/HPCL for such withdrawal/Termination/Seizure/forfeiture.\n"
                     + "\n"
                     + "        I hereby declare that whatever has been stated above is true to the best of my knowledge, correct and nothing material has\n"
-                    + "        been concealed there from <br/></font> </p>\n"
-                    + "    Date: " + new java.util.Date() + " <p align=\"right\"> Signature Of person giving the Declaration</p><br/>\n"
-                    + "    Place:   <p align=\"right\">Name: " + customername + "</p>");
-
+                    + "        been concealed there from <br/></font> </p>");
+                    out.println("<table><tr><td colspan='10'>Date: " + new java.util.Date() + " </td> <p align='right'><td align='right' colspan='10'>Signature Of person giving the Declaration</td></p></tr>\n" +
+"<tr><td colspan='10'>Place:   </td> <p align='right'> <td align='right' colspan='10'>Name: " + customername + "</td></p></tr> </table>");
             if (stove.equals("no")) {
-                out.println("<h4 align=\"center\"> Shri Mangalam Indane</h4>\n"
-                        + "    <h3 align=\"center\">C-66 B.K. Kaul, Haribhau Upadhaya Nagar, Ajmer </h3>\n"
+                out.println("<br/>");
+                out.println("<br/>");
+                out.println("<br/>");
+                out.println("<h4 align='center'> Shri Mangalam Indane</h4>\n"
+                        + "    <h3 align='center'>C-66 B.K. Kaul, Haribhau Upadhaya Nagar, Ajmer </h3>\n"
                         + "    <p> Before providing Gas Connection for security reasons quality testing report by mechanic of consumer gas stove and kitchen is as follows</p><br/>\n"
                         + "    Number : ________ <p align=\"right\">Date :- " + new java.util.Date() + "</p><br/>\n"
                         + "    Shri/Miss " + customername + " date of birth " + dob + " address " + address + " <br/>\n"
@@ -322,7 +329,7 @@ public class New_Connection extends HttpServlet {
                         + "    <br/> <br/>\n"
                         + "    Signature Of Customer <p align=\"right\">Signature Of Mechanic</p>");
 
-                out.println("<h3 align=\"center\"> Office Report </h3>");
+                out.println("<h3 align='center'> Office Report </h3>");
                 out.println("<p>\n"
                         + "        1) Issue Gas connection. Customer Number :- _____________________ <br/>\n"
                         + "        2) Reason for, Why gas connection is not issued :-<br/>\n"
@@ -382,7 +389,14 @@ public class New_Connection extends HttpServlet {
                 }
                 grandtotal = vatVal + sum;
                 out.println("<br/>");
-                out.println("<table border=\"1px\" cellspacing=\"5\">");
+                out.println("<br/>");
+                out.println("<br/>");
+                out.println("<br/>");
+                out.println("<br/>");
+                out.println("<table border='1px' cellspacing='5'>");
+                out.println("<tr><td colspan='2'>Tin No: 08390014694</td> <td colspan='3' align='right'> Customer Bill Copy </td>");
+                out.println("<tr><td align='center' colspan='2'><h3>Shree Mangalam Indane</h3></td><td align='center' colspan='3'><img src='assets/img/indane-gas-agency-in-faridabad.jpg' height='60px' width='200px'></td></tr>");
+                out.println("<tr><td colspan='5' align='center'>C-66, B.K.Kaul Nagar, Hari Bhau Upadhayay Nagar Ajmer(305001)</td></tr>");
                 out.println("<tr>\n"
                         + "            <th><h3>S.No</h3></th> \n"
                         + "    <th><h3>Particulars</h3></th>                                                \n"

@@ -86,14 +86,19 @@ public class DriverDispatch extends HttpServlet {
           fillednondomestic = request.getParameter("form-filled-nondomestic-godown");
           emptygodown = request.getParameter("form-empty-domestic-godown");
           emptynondomestic = request.getParameter("form-empty-nondomestic-godown");
-          Calendar cal = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            String strDate = sdf.format(cal.getTime());
-            System.out.println("Current date in String Format: " + strDate);
-            SimpleDateFormat sdf1 = new SimpleDateFormat();
-            sdf1.applyPattern("dd/MM/yyyy");
-            Date date = sdf1.parse(strDate);
-          sql="insert into dispatchdriver(drivername,customername,defective,filledgodown,fillednondomestic,emptygodown,emptynondomestic,day)values('"+drivername+"','"+name+"','"+defective+"','"+filledgodown+"','"+fillednondomestic+"','"+emptygodown+"','"+emptynondomestic+"','"+date+"')";
+          if(emptygodown.equals("")){emptygodown="0";}
+          if(emptynondomestic.equals("")){emptynondomestic="0";}
+          if(filledgodown.equals("")){filledgodown="0";}
+          if(fillednondomestic.equals("")){fillednondomestic="0";}
+          if(defective.equals("")){defective="0";}
+//          Calendar cal = Calendar.getInstance();
+//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//            String strDate = sdf.format(cal.getTime());
+//            System.out.println("Current date in String Format: " + strDate);
+//            SimpleDateFormat sdf1 = new SimpleDateFormat();
+//            sdf1.applyPattern("dd/MM/yyyy");
+//            Date date = sdf1.parse(strDate);
+          sql="insert into dispatchdriver(drivername,customername,defective,filledgodown,fillednondomestic,emptygodown,emptynondomestic,day)values('"+drivername+"','"+name+"','"+defective+"','"+filledgodown+"','"+fillednondomestic+"','"+emptygodown+"','"+emptynondomestic+"','"+new java.util.Date()+"')";
           db.conn.createStatement();
           db.st.executeUpdate(sql);
           sql="select * from godown ";
@@ -113,9 +118,11 @@ public class DriverDispatch extends HttpServlet {
              nine += Integer.parseInt(fillednondomestic);
              returnnine -= Integer.parseInt(emptynondomestic);
              defect += Integer.parseInt(defective);
-             sql="update godown set filled_fourteen ='"+four+"',filled_nineteen='"+nine+"',filled_defective='"+defect+"',empty_fourteen='"+returnfour+"',empty_nineteen='"+returnnine+"',day='"+date+"' where id ="+1;
+             sql="update godown set filled_fourteen ='"+four+"',filled_nineteen='"+nine+"',filled_defective='"+defect+"',empty_fourteen='"+returnfour+"',empty_nineteen='"+returnnine+"',day='"+new java.util.Date()+"' where id ="+1;
              db.conn.createStatement();
              db.st.executeUpdate(sql);
+             response.setIntHeader("Refresh", 2);
+            response.sendRedirect("http://localhost:8080/gas/DriverDispatch.jsp");
          }catch(Exception e)
          {
              e.printStackTrace();
