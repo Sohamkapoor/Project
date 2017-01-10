@@ -225,9 +225,7 @@
                                             <% }%>   
                                         </table><br/>
                                         <input type="hidden" name="count" id="count" value="<%=vehicleno.size()%>"/>
-                                        <input type="hidden" name="counter" id="count">
-                                        
-                                        <input type="button" class="btn btn-success" onclick="f();" value="Add Form"><br/>                                      
+                                        <input type="hidden" name="counter" id="count">                                      
                                         <a href ="Miscellaneous_exp.jsp"> Miscellaneous Expenses </a>
                                         <input type="submit" value="submit"/>
                                         <a href ="Advance_Salary.jsp"> Advance Salary </a>

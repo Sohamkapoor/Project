@@ -116,7 +116,7 @@ public class Stove extends HttpServlet {
                 if(pricedai.equals("")){pricedai="0";}
                 
             }
-            String stov197="",stov199="",pr11="",pipee="",dairy11="";
+            String stov197="",stov199="",pr11="",pipee="",dairy11="",count11="",count12="",count13="",count14="";
             if (type.equals("godown")) {
                 stov197 = request.getParameter("stove1975");
                 price1975 = request.getParameter("stove1975price");
@@ -128,10 +128,10 @@ public class Stove extends HttpServlet {
                 pipeprice = request.getParameter("1.5pipeprice");
                 dairy11 = request.getParameter("dairy");
                 pricedairy = request.getParameter("dairyprice");
-                String count11 = request.getParameter("counter11111");
-                String count12 = request.getParameter("counter11112");
-                String count13 = request.getParameter("counter11113");
-                String count14 = request.getParameter("counter11114"); 
+                count11 = request.getParameter("counter11111");
+                count12 = request.getParameter("counter11112");
+                count13 = request.getParameter("counter11113");
+                count14 = request.getParameter("counter11114"); 
                 if(stov197.equals("")){stov197 = "0";}
                 if(stov199.equals("")){stov199 = "0";}
                 if(pr11.equals("")){pr11="0";}
@@ -143,7 +143,10 @@ public class Stove extends HttpServlet {
                 if (pipeprice.equals("")) {pipeprice = "0";}
                 if(pricedairy.equals("")){pricedairy="0";}
             }
-
+            if(count11 == null){count11="0";}
+            if(count12 == null){count12="0";}
+            if(count13 == null){count13="0";}
+            if(count14 == null){count14="0";}
             c = request.getParameter("c1");
             c1 = request.getParameter("c2");
             c2 = request.getParameter("c3");
@@ -187,7 +190,7 @@ public class Stove extends HttpServlet {
             if (count4 == null) {
                 count4 = "0";
             }
-
+            
             /* === get data from stove factory table and uupdate new data === */
             sql = "select * from stove_factory";
             db.rs = db.st.executeQuery(sql);
@@ -223,10 +226,11 @@ public class Stove extends HttpServlet {
                 pr = Integer.parseInt(table3) + Integer.parseInt(pr11);
                 pipe15 = (Integer.parseInt(table4)) + (Integer.parseInt(pipee));
                 dairy = (Integer.parseInt(table6)) + (Integer.parseInt(dairy11));
-                counter1 = Integer.parseInt(count1);
-                counter2 = Integer.parseInt(count2);
-                counter3 = Integer.parseInt(count3);
-                counter4 = Integer.parseInt(count4);
+                System.out.println("stove1975 ="+stove1975+"stove1990 ="+stove1990+" pr= "+pr+"pipe15 ="+pipe15+"daairy ="+dairy);
+                counter1 = Integer.parseInt(count11);
+                counter2 = Integer.parseInt(count12);
+                counter3 = Integer.parseInt(count13);
+                counter4 = Integer.parseInt(count14);
                 extra = (Integer.parseInt(table7)) + counter1 + counter2 + counter3 + counter4;
                 sql = "insert into stove(agencyname,tinno,taxno,invoiceno,customername,stove1975,price1975,stove1990,price990,pr,prprice,pipe15,pipeprice,dairy,dairyprice,type,offername1,offer1,offername2,offer2,offername3,offer3,offername4,offer4,day)values('" + agencyname + "','" + tinno + "','" + taxno + "','" + invoiceno + "','" + nameoc + "','" + stov197 + "','" + price1975 + "','" + stov199 + "','" + price990 + "','" + pr11 + "','" + prprice + "','" + pipee + "','" + pipeprice + "','" + dairy11 + "','" + pricedairy + "','" + type + "','" + c + "','" + count1 + "','" + c1 + "','" + count2 + "','" + c2 + "','" + count3 + "','" + c3 + "','" + count4 + "','" + date + "')";
                 db.conn.createStatement();
@@ -239,6 +243,7 @@ public class Stove extends HttpServlet {
             }
 
             if (type.equals("sell")) {
+                System.out.println("in");
                 stove1975 = Integer.parseInt(table1) - Integer.parseInt(stove197);
                 stove1990 = Integer.parseInt(table2) - Integer.parseInt(stove199);
                 pr = Integer.parseInt(table3) - Integer.parseInt(pr1);
@@ -249,7 +254,7 @@ public class Stove extends HttpServlet {
                 counter3 = Integer.parseInt(count3);
                 counter4 = Integer.parseInt(count4);
                 extra = (Integer.parseInt(table7)) - (counter1 + counter2 + counter3 + counter4);
-                int product1 =0,product2=0,product3=0,product4=0,product5=0;
+                double product1 =0,product2=0,product3=0,product4=0,product5=0;
                 double product6=0.0;
                         product1 = ((Integer.parseInt(price19)) * (Integer.parseInt(stove197))) ;
                         product2 = ((Integer.parseInt(pric990)) * (Integer.parseInt(stove199)));
@@ -257,9 +262,8 @@ public class Stove extends HttpServlet {
                         product4 = ((Integer.parseInt(pipepr))* (Integer.parseInt(pipe)));
                         product5 = ((Integer.parseInt(pricedai))* (Integer.parseInt(dairy1)));
                         product6 = product1+product2+product3+product4+product5+taxno;
-                if ((stove1975 < 0) && (stove1990 < 0) && (pr < 0) && (pipe15 < 0) && (dairy < 0) && (extra < 0)) {
-                    out.println("<h3> Error!!! There is not enough stock </h3>");
-                } else if ((stove1975 >= 0) && (stove1990 >= 0) && (pr >= 0) && (pipe15 >= 0) && (dairy >= 0) && (extra >= 0)) {
+                
+                if ((stove1975 >= 0) && (stove1990 >= 0) && (pr >= 0) && (pipe15 >= 0) && (dairy >= 0) && (extra >= 0)) {
                     /* === Store date wise data in table === */
                     sql = "insert into stove(agencyname,tinno,taxno,invoiceno,customername,stove1975,price1975,stove1990,price990,pr,prprice,pipe15,pipeprice,dairy,dairyprice,type,offername1,offer1,offername2,offer2,offername3,offer3,offername4,offer4,day)values('" + agencyname + "','" + tinno + "','" + taxno + "','" + invoiceno + "','" + nameoc + "','" + stove197 + "','"+price19+"','" + stove199 + "','"+pric990+"','" + pr1 + "','"+prpr+"','" + pipe + "','"+pipepr+"','" + dairy1 + "','"+pricedai+"','" + type + "','" + c + "','" + count1 + "','" + c1 + "','" + count2 + "','" + c2 + "','" + count3 + "','" + c3 + "','" + count4 + "','" + date + "')";
                     db.conn.createStatement();
@@ -322,6 +326,8 @@ public class Stove extends HttpServlet {
                             + "	<td>"+product6+"</td>\n"
                             + "</tr>");
                     out.println("</table>");
+                    out.println("<br/>");
+                    out.println("<br/>");
                     out.println("<table border='1px'>");
                     out.println("<tr><td colspan='2'>Tin No: 08390014694</td><td colspan='2' align='right'> Customer Copy </td>");
                     out.println("<tr><td align='center' colspan='2'><h3> Mangalam Enterprises </h3></td><td align='center' colspan='3'><img src='assets/img/indane-gas-agency-in-faridabad.jpg' height='60px' width='200px'></td></tr>");
@@ -377,6 +383,9 @@ public class Stove extends HttpServlet {
                             + "</tr>");
                     out.println("</table>");
                     out.println("<p align='center'> <input type='button' value=' Print this Page' onclick='window.print()'/> </p>");
+                }
+                else{
+                    out.println("<h3> Error!!! There is not enough stock </h3>");                
                 }
             }
         } catch (Exception e) {

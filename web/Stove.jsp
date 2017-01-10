@@ -58,6 +58,7 @@
             e.style.width = "600px";
             $('#selling').hide();
             $('#stove').hide();
+            $('#ab').hide();
             $('#submit').hide();
             $('#agency_name').hide();
             $('#nameoc').hide();
@@ -73,6 +74,7 @@
                 $('#form-group').show();
                 $('#stove').show();
                 $('#selling').hide();
+                $('#ab').hide();
                 $('#agency_name').val("");
                 $('#invoice_no').val("");
                 $('#tin_no').val("");
@@ -91,6 +93,7 @@
                 $('#invoice_no').hide();
                 $('#tin_no').hide();
                 $('#nameoc').show();
+                $('#ab').show();
                 $('#tax_no').show();
                 $('#agency_name').val("0");
                 $('#invoice_no').val("0");
@@ -328,7 +331,9 @@
                                             <label class="sr-only" for="form-noc">Tax Number </label>
                                             <input type="text" name="tax_no" id="tax_no" placeholder="Enter VAT Amount"/>
                                             <span id="errtaxno" style="color:red;"></span><br/>
+                                            <section id="ab"><h3>Note: Please enter price of only 1 piece and use round up values</h3></section>
                                         </div> 
+                                        
                                         <!-- Rate insert -->
                                         <!-- === add form here === -->                                            
                                         <table id="stove" border="1px solid">
@@ -366,19 +371,19 @@
                                                 <td id="counter11114" style="width:98px;" hidden="true"></td>
                                             </tr>
                                         </table>
-
+                                        
                                         <table id="selling" border="1px">
                                             <tr>
                                                 <th> &nbsp; Stove 1975 &nbsp; </th>
-                                                <th> &nbsp; Price 1975 &nbsp; </th>
+                                                <th> &nbsp; Price 1975 /piece &nbsp; </th>
                                                 <th> &nbsp; Stove 990 &nbsp; </th>
-                                                <th> &nbsp; Price 990 &nbsp; </th>
+                                                <th> &nbsp; Price 990 /piece &nbsp; </th>
                                                 <th> &nbsp; PR &nbsp; </th>
-                                                <th> &nbsp; PR Price &nbsp; </th>
+                                                <th> &nbsp; PR Price /piece &nbsp; </th>
                                                 <th> &nbsp; 1.5 Pipe &nbsp; </th>
-                                                <th> &nbsp; Pipe Price &nbsp; </th>
+                                                <th> &nbsp; Pipe Price /piece &nbsp; </th>
                                                 <th> &nbsp; Dairy &nbsp; </th>
-                                                <th> &nbsp; Dairy Price &nbsp; </th>
+                                                <th> &nbsp; Dairy Price /piece &nbsp; </th>
                                                 <th id="count1111" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
                                                 <th id="count1112" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
                                                 <th id="count1113" style="width:98px;" hidden="true"> &nbsp;  &nbsp; </th>
