@@ -94,7 +94,6 @@ public class Attendance extends HttpServlet {
             }
             else{*/
             sql = "insert into attendance (name,date,attendance)values('" + name + "','" + date + "','" + attendance + "')"; 
-            System.out.println("sq"+sql);
             db.conn.createStatement();           
             db.st.executeUpdate(sql);
             //}

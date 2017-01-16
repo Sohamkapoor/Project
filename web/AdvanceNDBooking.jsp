@@ -36,6 +36,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="assets/css/dropdown.css">
         <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -85,9 +86,15 @@
     </head>
 
     <body>
-
+       <% 
+            if ((session.getAttribute("UserName") == null) || (session.getAttribute("UserName").equals("")) || (!session.getAttribute("UserName").equals("mangalam")))
+            {
+                response.sendRedirect("http://localhost:8080/gas/index.jsp");
+            }
+            else if(session.getAttribute("UserName") == "mangalam") { 
+        %>
         <!-- Top menu -->
-        <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+<!--        <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
@@ -98,16 +105,16 @@
                     </button>
                     <a class="navbar-brand" href="index.html">Consumer Information Sheet</a>
                 </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                 Collect the nav links, forms, and other content for toggling 
                 <div class="collapse navbar-collapse" id="top-navbar-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <span class="li-text">
-                                <!--Put some text or-->
+                                Put some text or
                             </span> 
-                            <!--a href="#"><strong>links</strong></a--> 
+                            a href="#"><strong>links</strong></a 
                             <span class="li-text">
-                                <!--here, or some icons: -->
+                                here, or some icons: 
                             </span> 
                             <span class="li-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a> 
@@ -119,7 +126,12 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
         <!-- Top content -->
         <div class="top-content">
@@ -218,7 +230,9 @@
             </div>
         </div>
 
-
+    <% } %>
+    </body>
+</html>
 
 
 

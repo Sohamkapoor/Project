@@ -40,6 +40,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="assets/css/dropdown.css">
         <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -52,15 +53,57 @@
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->
-        <script>
-            
-       
-        </script>
     </head>
     <body>
-
+       <% 
+            if ((session.getAttribute("UserName") == null) || (session.getAttribute("UserName").equals("")) || (!session.getAttribute("UserName").equals("mangalam")))
+            {
+                response.sendRedirect("http://localhost:8080/gas/index.jsp");
+            }
+            else if(session.getAttribute("UserName") == "mangalam") { 
+        %>
+         <div id="nav">
+            <div id="nav_wrapper">
+            <ul>
+                <li><a href="http://localhost:8080/gas/central.jsp"> Home </a></li>
+                <li><a href="http://localhost:8080/gas/Attendence.jsp"> Attendance </a> </li>
+                <li><a href="#"> Order Plant </a>
+                    <ul>
+                        <li><a href="http://localhost:8080/gas/Factory.jsp"> Factory </a></li>
+                        <li><a href="http://localhost:8080/gas/Stove.jsp"> Stove </a></li>
+                    </ul>
+                </li>
+                <li><a href="#"> Expenses </a>
+                    <ul>
+                        <li><a href="http://localhost:8080/gas/Miscellaneous_exp.jsp"> Miscellaneous Expenses </a></li>
+                        <li><a href="http://localhost:8080/gas/miscellaneous_vehicle.jsp"> Miscellaneous Vehicle </a></li>
+                        <li><a href="http://localhost:8080/gas/vehicle_display.jsp"> Enter Evening Vehicle K.M. </a></li>
+                        <li><a href="http://localhost:8080/gas/Advance_Salary.jsp"> Advance Salary </a></li>
+                    </ul>
+                </li>
+                <li><a href="#"> New </a>
+                    <ul>
+                        <li><a href="http://localhost:8080/gas/newconnection.jsp"> New Connection </a></li>
+                        <li><a href="http://localhost:8080/gas/seeNewConnection.jsp"> See New Connections </a></li>
+                        <li><a href="http://localhost:8080/gas/AddEmployee.jsp"> Add Employee </a></li>
+                        <li><a href="http://localhost:8080/gas/GatePass.jsp"> Gate Pass </a> </li>
+                    </ul>
+                </li>
+                <li><a href="#"> Cylinder </a>
+                    <ul>
+                        <li><a href="http://localhost:8080/gas/Refill.jsp"> 14.2 Kg(Domestic) </a></li>
+                        <li><a href="http://localhost:8080/gas/NonDomestic.jsp"> 19 Kg(Non Domestic) </a></li>
+                        <li><a href="http://localhost:8080/gas/ShowNDCDetail.jsp"> Show ND Customer Detail </a></li>
+                    </ul>
+                </li>
+                <li> <a href="http://localhost:8080/gas/DriverDispatch.jsp"> Driver Dispatch </a></li>
+                
+                
+            </ul>
+            </div>
+        </div>
         <!-- Top menu -->
-        <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+<!--        <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
@@ -71,16 +114,16 @@
                     </button>
                     <a class="navbar-brand" href="index.html">Consumer Information Sheet</a>
                 </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                 Collect the nav links, forms, and other content for toggling 
                 <div class="collapse navbar-collapse" id="top-navbar-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <span class="li-text">
-                                <!--Put some text or-->
+                                Put some text or
                             </span> 
-                            <!--a href="#"><strong>links</strong></a--> 
+                            a href="#"><strong>links</strong></a 
                             <span class="li-text">
-                                <!--here, or some icons: -->
+                                here, or some icons: 
                             </span> 
                             <span class="li-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a> 
@@ -92,8 +135,12 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-
+        </nav>-->
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         <!-- Top content -->
         <div class="top-content">
 
@@ -141,8 +188,6 @@
                                                 <th> &nbsp; Name &nbsp; &nbsp; </th>
                                                 <th> &nbsp; Present &nbsp; &nbsp; </th>
                                                 <th> &nbsp; Absent &nbsp; &nbsp; </th>
-                                                <th> &nbsp; Date &nbsp; &nbsp; </th>
-                                                <th> &nbsp; Half Day &nbsp; &nbsp; </th>
                                             </tr>  
                                             <% 
                                              Calendar cal = Calendar.getInstance();
@@ -163,14 +208,7 @@
                                             <tr>                                               
                                                 <td><input type="text" name="<%= em+"name" %>" onkeydown="return false" id="name" value="<%= em %>"> </td>
                                                 <td><p align="center"><input type="radio" name="<%= em+"attendance"%>" id="present" value="present" checked="checked"></p></td>
-                                                <td><p align="center"><input type="radio" name="<%= em+"attendance"%>" id="absent" value="absent" ></p> </td>
-                                                <td><input type="date" onkeydown="return false" name="datepicker"  class="form-dob form-control" id="picker" value="<%= date %>" ></td> 
-                                                <%
-                                                    if(hours >= 14 || hours <= 17)
-                                                    {%>
-                                                <td><p align="center"><input type="radio" name="<%= em+"halfday"%>" id="halfday" value="halfday"></p></td>
-                                                    <%}
-                                                %>
+                                                <td><p align="center"><input type="radio" name="<%= em+"attendance"%>" id="absent" value="absent" ></p> </td>                                                
                                             </tr>
                                             <% } 
                                             session.setAttribute("allnames", emp);
@@ -180,7 +218,7 @@
                                                <br/>                                                                                                               
                                         <div class="form-group">
                                         <a href="AddEmployee.jsp">Add Employee</a> &nbsp; &nbsp; &nbsp;
-                                        <input type="submit" value="submit"/>
+                                        <input type="submit" value="submit" id="submit"/>
                            
                                         </div>
                                     </div>                                  
@@ -192,4 +230,6 @@
             </div>
         </div>
 
-
+                                        <% } %>
+    </body>
+</html>

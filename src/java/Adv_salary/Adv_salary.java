@@ -77,87 +77,103 @@ public class Adv_salary extends HttpServlet {
         processRequest(request, response);
         try (PrintWriter out = response.getWriter()) {
             Datab db = new Datab();
-            Calendar cal = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            String strDate = sdf.format(cal.getTime());
-            System.out.println("Current date in String Format: " + strDate);
-
-            SimpleDateFormat sdf1 = new SimpleDateFormat();
-            sdf1.applyPattern("dd/MM/yyyy");
-            Date date = sdf1.parse(strDate);
             String nameoe="",phno="",advamt="";
             nameoe = request.getParameter("form-adv");
             phno = request.getParameter("form-phno");
             advamt = request.getParameter("form-advamt");
             System.out.println("adv amt="+advamt);
-            String sql = "", na = "", ph = "", sa = "";
-            int sal=0;
-            sql = "insert into adv_salary(nameoe,phno,advamt,date)values('" + nameoe + "','" + phno + "','" + advamt + "','" + date + "')";
-            db.conn.createStatement();
-            db.st.executeUpdate(sql);
-
-            sql = "select salary from employee";
+            String sql = "",sql1="",name="";
+            int sal=0,advance=0,salary=0,counter=0,adv=0;
+            
+            sql=" select salary from employee where name ='"+nameoe+"' and phno ='"+phno+"' ";
+            System.out.println(sql);
             db.rs = db.st.executeQuery(sql);
-            while (db.rs.next()) {
-                sa = db.rs.getString("salary");
+                while (db.rs.next()) {
+                    sal = db.rs.getInt("salary");
+                }
+            advance = sal-(Integer.parseInt(advamt));
+            
+            if(advance>=0){    
+                sql1 = "update employee set salary ='"+advance+"' where name='"+nameoe+"' and phno='"+phno+"'";
+                db.conn.createStatement();
+                db.st.executeUpdate(sql1);
+                sql = "select nameoe,advance from adv_salary";
+                db.rs = db.st.executeQuery(sql);
+                while (db.rs.next()) {
+                    name = db.rs.getString("nameoe");
+                    adv = db.rs.getInt("advance");
+                    counter++;
+                }
+                if((counter > 0) && (adv > 0)){
+                    sql = "update adv_salary set advance="+adv+" where nameoe ='"+nameoe+"' and phno='"+phno+"'";
+                    db.conn.createStatement();
+                    db.st.executeUpdate(sql);
+                    
+                }
+                if((counter > 0) && (adv == 0)){
+                    sql = "update adv_salary set advance ="+0+" where nameoe='"+nameoe+"' and phno='"+phno+"'";
+                    db.conn.createStatement();
+                    db.st.executeUpdate(sql);
+                }
+                if(counter == 0){
+                    sql1="insert into adv_salary(nameoe,phno,advamt,advance,date) values ('"+nameoe+"','"+phno+"','"+advamt+"',"+0+",'"+ new java.util.Date() +"')";
+                    db.conn.createStatement();
+                    db.st.executeUpdate(sql1);
+                }                
             }
-            System.out.println("sa ="+sa);
-              //  System.out.println("name ="+ nameoe + "na ="+ na);
-            //  System.out.println("phno ="+ phno + "ph ="+ ph);
-            sal = ((Integer.parseInt(sa)) - (Integer.parseInt(advamt))) ;
-            System.out.println("sal ="+sal);
-            //    System.out.println("petrol =" + petrol + " " + "vehicleno =" + vehicleno + " " + "pick =" + pick + " " + "drop =" + drop + "repairing =" + repairing);
-            sql = "update employee set salary ='" + sal + "' where name='" + nameoe + "' and phno ='" + phno + "'";
-            db.conn.createStatement();
-            db.st.executeUpdate(sql);
+            else{
+                advance = (Integer.parseInt(advamt)) - sal;
+                sql1 = "update employee set salary ="+0+" where name='"+nameoe+"' and phno='"+phno+"'";
+                db.conn.createStatement();
+                db.st.executeUpdate(sql1); 
+                
+                sql = "select nameoe,advance from adv_salary";
+                db.rs = db.st.executeQuery(sql);
+                while (db.rs.next()) {
+                    name = db.rs.getString("nameoe");
+                    adv = db.rs.getInt("advance");
+                    counter++;
+                }              
+                if((counter > 0) && (adv > 0)){
+                    advance +=  adv;
+                    sql = "update adv_salary set advance="+advance+" where nameoe ='"+nameoe+"' and phno='"+phno+"'";
+                    db.conn.createStatement();
+                    db.st.executeUpdate(sql);
+                    
+                }
+                if((counter > 0) && (adv == 0)){
+                    sql = "update adv_salary set advance ="+advance+" where nameoe='"+nameoe+"' and phno='"+phno+"'";
+                    db.conn.createStatement();
+                    db.st.executeUpdate(sql);
+                }
+                if(counter == 0){
+                    sql1="insert into adv_salary(nameoe,phno,advamt,advance,date) values ('"+nameoe+"','"+phno+"','"+advamt+"','"+advance+"','"+ new java.util.Date() +"')";
+                    db.conn.createStatement();
+                    db.st.executeUpdate(sql1);
+                }                
+            }
+                
+//            sql = "insert into adv_salary(nameoe,phno,advamt,date)values('" + nameoe + "','" + phno + "','" + advamt + "','" + date + "')";
+//            db.conn.createStatement();
+//            db.st.executeUpdate(sql);
+//
+//            sql = "select salary from employee";
+//            db.rs = db.st.executeQuery(sql);
+//            while (db.rs.next()) {
+//                sa = db.rs.getString("salary");
+//            }
+//            System.out.println("sa ="+sa);
+//              //  System.out.println("name ="+ nameoe + "na ="+ na);
+//            //  System.out.println("phno ="+ phno + "ph ="+ ph);
+//            sal = ((Integer.parseInt(sa)) - (Integer.parseInt(advamt))) ;
+//            System.out.println("sal ="+sal);
+//            //    System.out.println("petrol =" + petrol + " " + "vehicleno =" + vehicleno + " " + "pick =" + pick + " " + "drop =" + drop + "repairing =" + repairing);
+//            sql = "update employee set salary ='" + sal + "' where name='" + nameoe + "' and phno ='" + phno + "'";
+//            db.conn.createStatement();
+//            db.st.executeUpdate(sql);
             /*,snak="",ban="",name="",adv="",ext="",count="",amtadv="",pet="",vehno="",pic="",dro="",repair="",sa="",ph="",na="";
              int counter=0,counter1=0;
-            
-             sql="select * from vehicle where date ='"+date+"'";
-             db.rs = db.st.executeQuery(sql);
-             while(db.rs.next()){
-             String count1 = db.rs.getString("date");
-             pet = db.rs.getString("petrol");
-             if(pet.equals("")){pet="0";}
-             System.out.println("Petrol ="+pet);
-             vehno = db.rs.getString("vehicleno");           
-             if(vehno.equals("")){vehno="0";}
-             System.out.println("vehicle no ="+vehno);
-             pic= db.rs.getString("pick");           
-             if(pic.equals("")){pic="0";}
-             System.out.println("pic ="+pic);
-             dro = db.rs.getString("dropkm");
-             if(dro.equals("")){dro="0";}
-             System.out.println("drop ="+dro);
-             repair = db.rs.getString("repairing");
-             if(repair.equals("")){repair="0";}
-             System.out.println("repair ="+repair);
-             counter1++;
-             }
-             if(counter1==0){
-             sql="insert into vehicle(petrol,vehicleno,pick,dropkm,repairing,date)values('"+petrol+"','"+vehicleno+"','"+pick+"','"+drop+"','"+repairing+"','"+date+"')";
-             db.conn.createStatement();
-             db.st.executeUpdate(sql);
-             }
-             else if(counter1>0)
-             {
-             int pe=0,veh=0,petro=0,dr=0,rep=0;
-             petro= Integer.parseInt(petrol) + Integer.parseInt(pet);
-             pe = Integer.parseInt(pick) + Integer.parseInt(pic);
-             dr = Integer.parseInt(drop) + Integer.parseInt(dro);
-             rep = Integer.parseInt(repairing) + Integer.parseInt(repair);
-                
-             if(vehicleno.equals(vehno))
-             {
-             sql= "update vehicle set petrol ='"+petro+"', pick='"+pe+"', dropkm='"+dr+"',repairing ='"+rep+"' where date='"+date+"' and vehicleno ='"+vehicleno+"'";
-             db.conn.createStatement();
-             db.st.executeUpdate(sql);
-             }
-             else{
-             sql="insert into vehicle(petrol,vehicleno,pick,dropkm,repairing,date)values('"+petro+"','"+vehno+"','"+pe+"','"+dr+"','"+repair+"','"+date+"')";
-             db.conn.createStatement();
-             db.st.executeUpdate(sql);
-             }
+             
              }*/
 
         } catch (Exception e) {

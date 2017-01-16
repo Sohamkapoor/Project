@@ -88,6 +88,14 @@
         <servlet-name>NDCustomerEntry</servlet-name>
         <servlet-class>NDCustomerEntry.NDCustomerEntry</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Login.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowNDC</servlet-name>
+        <servlet-class>ShowNDC.ShowNDC</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailFill</servlet-name>
         <url-pattern>/DetailFill</url-pattern>
@@ -159,6 +167,21 @@
     <servlet-mapping>
         <servlet-name>NDCustomerEntry</servlet-name>
         <url-pattern>/NDCustomerEntry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>SeeNDC</servlet-name>
+        <url-pattern>/SeeNDC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowNDC</servlet-name>
+        <url-pattern>/ShowNDC</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

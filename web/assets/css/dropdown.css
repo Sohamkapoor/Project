@@ -1,0 +1,54 @@
+body{
+    background-image: url(../img/index.png);
+    padding:0;
+    margin:0;
+    overflow-y: scroll;
+    font-size: 18px;
+}
+/*#nav{
+    background-color: #222;
+}
+#nav_wrapper{
+    width:960px;
+    margin: 0 auto;
+    text-align: left;
+}*/
+ul{
+    margin: 0px;
+    padding: 0px;
+}
+ul li a{
+    text-decoration: none;
+    color: white;
+    display:block;
+    position: relative;
+}
+ul li{
+    float:left;
+    width:150px;
+    height:40px;
+    background-color: black;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;   
+    opacity: .5;
+    list-style-type: none;
+    border:1px solid white;
+}
+ul li a:hover{
+    background-color: blue;
+}
+ul li a:visited{
+    color:#ccc;
+    display:block;
+    padding:15px;
+}
+
+ul li ul li{
+    display:none;
+}
+ul li:hover ul li{
+    display:block;
+    width:300px;
+    opacity:0.8;
+}

@@ -217,9 +217,9 @@ public class RefillDisplay extends HttpServlet {
             if((four>=0) && (four1>=0)){
             out.println("<table border=\"1px\">");
             out.println("<tr><td colspan='3'>Tin No: 08390014694</td> <td colspan='3' align='right'> Employee Copy </td>");
-                out.println("<tr><td align='center' colspan='3'><h3>Shree Mangalam Indane</h3></td><td align='center' colspan='3'><img src='assets/img/indane-gas-agency-in-faridabad.jpg' height='60px' width='200px'></td></tr>");
-                out.println("<tr><td colspan='6' align='center'>C-66, B.K.Kaul Nagar, Hari Bhau Upadhayay Nagar Ajmer(305001)</td></tr>");
-                out.println("<tr><td colspan='6'><h3>Name : " + employee + " </h3></td></tr>");
+            out.println("<tr><td align='center' colspan='3'><h3>Shree Mangalam Indane</h3></td><td align='center' colspan='3'><img src='assets/img/indane-gas-agency-in-faridabad.jpg' height='60px' width='200px'></td></tr>");
+            out.println("<tr><td colspan='6' align='center'>C-66, B.K.Kaul Nagar, Hari Bhau Upadhayay Nagar Ajmer(305001)</td></tr>");
+            out.println("<tr><td colspan='6'><h3>Name : " + employee + " </h3></td></tr>");
             out.println("<tr>");
             out.println("<th>Refill</th>");
             out.println("<th>Filled CV</th>");
