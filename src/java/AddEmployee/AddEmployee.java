@@ -72,7 +72,7 @@ public class AddEmployee extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-          try (PrintWriter out = response.getWriter()) {
+               try (PrintWriter out = response.getWriter()) {
             Datab db=new Datab();
             String name=request.getParameter("form-nameoe");
             String phno = request.getParameter("form-phno");

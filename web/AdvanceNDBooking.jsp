@@ -87,11 +87,11 @@
 
     <body>
        <% 
-            if ((session.getAttribute("UserName") == null) || (session.getAttribute("UserName").equals("")) || (!session.getAttribute("UserName").equals("mangalam")))
+            if ((session.getAttribute("UserName") == null) || (session.getAttribute("UserName").equals("")))
             {
                 response.sendRedirect("http://localhost:8080/gas/index.jsp");
             }
-            else if(session.getAttribute("UserName") == "mangalam") { 
+            else { 
         %>
         <!-- Top menu -->
 <!--        <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">

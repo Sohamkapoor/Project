@@ -8,9 +8,6 @@ package DriverDispatch;
 import Datab.Datab;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -75,7 +72,7 @@ public class DriverDispatch extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-         try (PrintWriter out = response.getWriter()) {
+          try (PrintWriter out = response.getWriter()) {
           Datab db = new Datab();
           String name="",drivername="",defective="",filledgodown="",emptygodown="",sql="",fillednondomestic="",emptynondomestic="";
           int four=0,nine=0,f5=0,defect=0,returnfour=0,returnnine=0,returnf5=0,returndefect=0;

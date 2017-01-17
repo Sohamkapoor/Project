@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <!--servlet>
-        <servlet-name>Connection</servlet-name>
-        <servlet-class>Connection.Connection</servlet-class>
+    <servlet>
+        <servlet-name>AddEmployee</servlet-name>
+        <servlet-class>AddEmployee.AddEmployee</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NewCustomerInfo</servlet-name>
-        <servlet-class>NewCustomerInfo.NewCustomerInfo</servlet-class>
-    </servlet-->
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Login.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Adv_salary</servlet-name>
+        <servlet-class>Adv_salary.Adv_salary</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdvanceND</servlet-name>
+        <servlet-class>AdvanceND.AdvanceND</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Attendance</servlet-name>
+        <servlet-class>Attendance.Attendance</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>DetailFill</servlet-name>
         <servlet-class>DetailFill.DetailFill</servlet-class>
     </servlet>
-    <!--servlet>
-        <servlet-name>AdvanceBooking</servlet-name>
-        <servlet-class>AdvanceBooking.AdvanceBooking</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Connection</servlet-name>
-        <url-pattern>/Connection</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NewCustomerInfo</servlet-name>
-        <url-pattern>/NewCustomerInfo</url-pattern>
-    </servlet-mapping-->
     <servlet>
-        <servlet-name>Attendance</servlet-name>
-        <servlet-class>Attendance.Attendance</servlet-class>
+        <servlet-name>DriverDispatch</servlet-name>
+        <servlet-class>DriverDispatch.DriverDispatch</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Factory</servlet-name>
+        <servlet-class>Factory.Factory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GatePass</servlet-name>
+        <servlet-class>GatePass.GatePass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LinkCustomer</servlet-name>
+        <servlet-class>LinkCustomer.LinkCustomer</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Miscellaneous</servlet-name>
@@ -37,76 +49,72 @@
         <servlet-class>Miscellaneous_vehicle.Miscellaneous_vehicle</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Adv_salary</servlet-name>
-        <servlet-class>Adv_salary.Adv_salary</servlet-class>
+        <servlet-name>NDCustomerEntry</servlet-name>
+        <servlet-class>NDCustomerEntry.NDCustomerEntry</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>vehicle</servlet-name>
-        <servlet-class>vehicle.vehicle</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GatePass</servlet-name>
-        <servlet-class>GatePass.GatePass</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Factory</servlet-name>
-        <servlet-class>Factory.Factory</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DriverDispatch</servlet-name>
-        <servlet-class>DriverDispatch.DriverDispatch</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AdvanceND</servlet-name>
-        <servlet-class>AdvanceND.AdvanceND</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Stove</servlet-name>
-        <servlet-class>Stove.Stove</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LinkCustomer</servlet-name>
-        <servlet-class>LinkCustomer.LinkCustomer</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>New</servlet-name>
-        <servlet-class>New.New</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddEmployee</servlet-name>
-        <servlet-class>AddEmployee.AddEmployee</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>RefillDisplay</servlet-name>
-        <servlet-class>RefillDisplay.RefillDisplay</servlet-class>
+        <servlet-name>NewCustomerInfo</servlet-name>
+        <servlet-class>NewCustomerInfo.NewCustomerInfo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>New_Connection</servlet-name>
         <servlet-class>New_Connection.New_Connection</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NDCustomerEntry</servlet-name>
-        <servlet-class>NDCustomerEntry.NDCustomerEntry</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>Login.Login</servlet-class>
+        <servlet-name>RefillDisplay</servlet-name>
+        <servlet-class>RefillDisplay.RefillDisplay</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowNDC</servlet-name>
         <servlet-class>ShowNDC.ShowNDC</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Stove</servlet-name>
+        <servlet-class>Stove.Stove</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vehicle</servlet-name>
+        <servlet-class>vehicle.vehicle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddEmployee</servlet-name>
+        <url-pattern>/AddEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Adv_salary</servlet-name>
+        <url-pattern>/Adv_salary</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdvanceND</servlet-name>
+        <url-pattern>/AdvanceND</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Attendance</servlet-name>
+        <url-pattern>/Attendance</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DetailFill</servlet-name>
         <url-pattern>/DetailFill</url-pattern>
     </servlet-mapping>
-    <!--servlet-mapping>
-        <servlet-name>AdvanceBooking</servlet-name>
-        <url-pattern>/AdvanceBooking</url-pattern>
-    </servlet-mapping-->
     <servlet-mapping>
-        <servlet-name>Attendance</servlet-name>
-        <url-pattern>/Attendance</url-pattern>
+        <servlet-name>DriverDispatch</servlet-name>
+        <url-pattern>/DriverDispatch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Factory</servlet-name>
+        <url-pattern>/Factory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GatePass</servlet-name>
+        <url-pattern>/GatePass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LinkCustomer</servlet-name>
+        <url-pattern>/LinkCustomer</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Miscellaneous</servlet-name>
@@ -117,71 +125,32 @@
         <url-pattern>/Miscellaneous_vehicle</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Adv_salary</servlet-name>
-        <url-pattern>/Adv_salary</url-pattern>
+        <servlet-name>NDCustomerEntry</servlet-name>
+        <url-pattern>/NDCustomerEntry</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>vehicle</servlet-name>
-        <url-pattern>/vehicle</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GatePass</servlet-name>
-        <url-pattern>/GatePass</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Factory</servlet-name>
-        <url-pattern>/Factory</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DriverDispatch</servlet-name>
-        <url-pattern>/DriverDispatch</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdvanceND</servlet-name>
-        <url-pattern>/AdvanceND</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Stove</servlet-name>
-        <url-pattern>/Stove</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LinkCustomer</servlet-name>
-        <url-pattern>/LinkCustomer</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>New</servlet-name>
-        <url-pattern>/New</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddEmployee</servlet-name>
-        <url-pattern>/AddEmployee</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RefillDisplay</servlet-name>
-        <url-pattern>/RefillDisplay</url-pattern>
+        <servlet-name>NewCustomerInfo</servlet-name>
+        <url-pattern>/NewCustomerInfo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>New_Connection</servlet-name>
         <url-pattern>/New_Connection</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>NDCustomerEntry</servlet-name>
-        <url-pattern>/NDCustomerEntry</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-    <servlet-mapping>
-        <servlet-name>SeeNDC</servlet-name>
-        <url-pattern>/SeeNDC</url-pattern>
+        <servlet-name>RefillDisplay</servlet-name>
+        <url-pattern>/RefillDisplay</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowNDC</servlet-name>
         <url-pattern>/ShowNDC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Stove</servlet-name>
+        <url-pattern>/Stove</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vehicle</servlet-name>
+        <url-pattern>/vehicle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
