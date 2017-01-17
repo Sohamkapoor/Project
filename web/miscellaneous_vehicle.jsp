@@ -153,7 +153,7 @@
                     </ul>
                 </li>
                 <li> <a href="http://localhost:8080/gas/DriverDispatch.jsp"> Driver Dispatch </a></li>
-                
+                <li> <a href="http://localhost:8080/gas/logout.jsp"> Logout </a></li>
                 
             </ul>
             </div>
